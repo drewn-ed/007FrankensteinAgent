@@ -6,6 +6,8 @@ David chce pokračovat směrem asistenta, který plní úkoly v aplikacích, z v
 
 ## Podklady pro dalšího agenta
 
+**Pro nezávislé posouzení začni zde: [zadání pro Claude](docs/claude-independent-review-2026-10-09.md).** Obsahuje kontext eventu, pořadí čtení, vývoj úvah, stav důkazů a otázky pro kritický verdikt.
+
 | Dokument | Obsah |
 | --- | --- |
 | [AGENTS.md](AGENTS.md) | Pravidla práce v repozitáři |
@@ -20,7 +22,6 @@ David chce pokračovat směrem asistenta, který plní úkoly v aplikacích, z v
 Tyto dokumenty zachycují starší úvahy; nejsou aktuálním zadáním ani potvrzeným plánem:
 
 - [Průzkum problémů](docs/problem-research-2026-10-08.md) — počáteční hledání problémů a možných scénářů.
-- [Android research](docs/android-research-2026-10-08.md) — dřívější průzkum jiné platformy a spolupráce, která pro tento sólo projekt neplatí.
 - [Návrh porovnávání dodavatelských nabídek](docs/solo-project-proposal.md) — Davidem odmítnutý návrh.
 
 **Uzávěrka:** 9. října 2026 v **07:14 Europe/Prague**. Odevzdání: veřejné repo a YouTube Unlisted demo do **90 sekund**. Živý pitch má podle Davidova zadání **60 sekund**.

@@ -1,6 +1,6 @@
 # Pracovní návrh agenta učícího se práci v aplikacích
 
-**Stav k 9. 10. 2026 přibližně 00:10 Europe/Prague.** Podklad pro Davida a dalšího agenta k rychlému rozhodnutí o nočním prototypu. Davidovi se líbí agent, který plní uživatelské úkoly v aplikacích a z vlastní práce získává opakovaně použitelné schopnosti. Konkrétní demo, název a stack ještě nepotvrdil. Tento dokument není tvrzením o funkční implementaci ani pokynem začít libovolný produkt.
+**Stav k 9. 10. 2026 přibližně 00:17 Europe/Prague.** Podklad pro Davida a dalšího agenta k rychlému rozhodnutí o nočním prototypu. Davidovi se líbí agent, který plní uživatelské úkoly v aplikacích a z vlastní práce získává opakovaně použitelné schopnosti. Konkrétní demo, název a stack ještě nepotvrdil. Tento dokument není tvrzením o funkční implementaci ani pokynem začít libovolný produkt.
 
 **Doporučení asistenta:** jeden agent, jeden prohlížeč a malá knihovna schopností, které agent vytvoří za běhu, otestuje a použije v další session. Lidská ukázka je případná pomoc, nikoli povinný začátek. Přínos ověřovat proti stejnému agentovi bez naučených schopností. Dnes nerozšiřovat rešerši o další obecné frameworky.
 
@@ -39,18 +39,27 @@ MCP je rozhraní k nástrojům, nikoli mechanismus učení. [Playwright MCP](htt
 
 ## Navržený průchod pro hackathon
 
-Následující scénář konkretizuje Davidův příklad. Je to návrh k rozhodnutí, nikoli tvrzení, že umíme obsloužit YouTube. Pro první implementační pokus zvolit jedinou cílovou aplikaci. Podklady k videu, krátký vlastní testovací soubor a styl musí být připravené; zpracování řeči či generování videa není součástí návrhu.
+David předal kritiku dalšího agenta: první návrh spoléhal na přenos z uploadu do úprav existujícího videa, ale první úkol nemusel přirozeně vytvořit operaci update. Tato námitka je správná. Následující návrh asistenta proto nahrazuje původní dvojici „upload → hromadné úpravy“ dvojicí „dokončení existujícího záznamu → audit a výběrová oprava dalších záznamů“. David tuto změnu ještě nepotvrdil.
+
+Oba úkoly pracují s již nahranými soukromými videi a potřebují číst, kontrolovat a upravovat metadata. Upload by byl až rozšíření mimo hlavní důkaz. Konkrétní aplikace zůstává otevřená; příklad netvrdí funkční podporu YouTube. Podklady, časované přepisy a pravidla jsou dodané vstupy; zpracování řeči ani generování videa nejsou součástí návrhu.
 
 ### První session vytvoří schopnosti z uživatelského úkolu
 
-Příklad zadání: **„Z tohoto videa a přiložených podkladů připrav soukromé nahrání. Titulek má být věcný, česky a bez emoji. Popis má obsahovat shrnutí, dodané odkazy a kapitoly podle časovaného přepisu.“** Příslušný kanál, soubor a rozsah zápisu musí být určené.
+Příklad zadání: **„Dokonči metadata tohoto již nahraného soukromého videa podle dodaných podkladů a pravidel. Zachovej správné části, doplň chybějící odkazy a kapitoly z přepisu, ulož změny a ověř výsledek. Viditelnost videa neměň.“** Příslušný kanál, video a rozsah zápisu musí být určené.
 
 Agent nejprve přečte pravdivý výchozí registr a sám zjistí, které opakovatelné části práce mu chybí. Má základní nástroje pro pozorování, navigaci, kliknutí, vstupy a kontrolu stavu. Základní browser nástroje jsou týmový boilerplate a nesmějí se prezentovat jako jeho výtvor.
 
 Možné rozdělení výsledných schopností, nikoli názvy předepsané runtime promptem:
 
-- **Příprava publikačních metadat:** z podkladů a pravidel připraví strukturovaný titulek a popis, sestaví časové značky, zachová povinné odkazy a ověří konkrétní omezení. Pouhé obecné „piš hezky“ nestačí. Tvůrčí návrh textu lze oddělit od kódu, který skládá a kontroluje výsledek.
-- **Uložení metadat ke správnému videu:** parametrizovaný postup pro nalezení nebo vytvoření pracovního záznamu podle smluvených vstupů, uložení a následné přečtení hodnot. Musí rozlišit nové video a existující ID; nesmí založit duplicitní záznam jen proto, že opakuje nejasně dokončený krok.
+| Schopnost | Vstup a výstup | Co se prověří |
+| --- | --- | --- |
+| Přečíst konkrétní video | ID → aktuální strukturovaná metadata a identita záznamu | Správné ID, chybějící záznam, rozpoznání špatného formuláře |
+| Zkontrolovat metadata | Metadata, podklady a explicitní pravidla → konkrétní nálezy nebo vyhovující stav | Správná i chybná varianta, povinné odkazy, formát časových značek, povolené zásahy |
+| Upravit existující video | ID a změny konkrétních polí → uložený výsledek | Zachování ostatních hodnot a viditelnosti, správný záznam, opakování bez duplicit a nezávislé přečtení výsledku |
+
+Návrh textu může dodat základní model; netvrdit, že samotné psaní českého titulku je nová schopnost. Viditelným samorozšířením mají být opakovatelná práce s aplikací a kontrola konkrétních pravidel. Požadavek „věcný titulek“ má subjektivní část, kterou formální test nevyřeší.
+
+První úkol skutečně potřebuje všechny uvedené operace: přečíst stav → vyhodnotit nedostatky → připravit změny → uložit → přečíst a ověřit. Jestli agent vytvoří pouze jeden monolit pro jediný konkrétní záznam, nelze tvrdit, že vznikly tyto samostatně kombinovatelné schopnosti. Rozdělení musí být vidět ve skutečných artefaktech.
 
 Kandidáti běží v sandboxu. Testovací brána ověří rozhraní a chování na oddělených případech; až potom je povolí registrovat. Agent následně dokončí uživatelův úkol pomocí přijatých schopností. Průzkumné browser kroky mohou tvorbě předcházet. Varianta „nejdřív vše hotovo, potom pouze uložené shrnutí chatu“ nedokládá celý požadovaný průchod.
 
@@ -58,19 +67,23 @@ Browser testy používají izolované testovací prostředí a známé varianty 
 
 ### Agent také rozšíří vyhledávání a správu
 
-Tým dodá neměnnou základní vrstvu pro bezpečné uložení kandidáta, kontrolu testů a atomickou aktivaci verze. Nad ní agent vytvoří nebo rozšíří pomocníka, který z manifestů vybere kompatibilní aktivní schopnosti podle úkolu a který eviduje použitelnost konkrétní verze pro konkrétní prostředí. Například po prokázané regresi označí verzi za nepoužitelnou pro danou variantu aplikace a discovery ji vynechá.
+Tým dodá neměnnou základní vrstvu pro bezpečné uložení kandidáta, kontrolu testů a atomickou aktivaci verze. Návrh rozšíření agentem: malý katalog nad vzniklými manifesty, který umí obnovit index přijatých verzí a vyhledat kompatibilní aktivní schopnosti podle operace, vstupů a prostředí. Obnova indexu představuje konkrétní správu knihovny; vyhledání představuje discovery. Pevnou testovací bránu ani politiku katalog nemění.
+
+Konkrétní potřeba k ověření: po vzniku schopností jsou artefakty uložené, ale základ systému neposkytuje výběr podle jejich nových rozhraní a stavu. Agent při přípravě dalšího použití musí tento nedostatek sám rozpoznat. Není nutné tvrdit, že jde o inovaci nebo velký správní systém; je to povinná část soutěžního prototypu. U malé knihovny by člověku stačil i prostý seznam, takže zákaznickou hodnotu na samotném katalogu nestavět.
 
 Potřeba musí vyplynout z práce s novými schopnostmi a jejich metadaty; nesmí ji nahrazovat skrytý příkaz „teď napiš správce“. Pokud ji agent v demonstraci sám nerozpozná, tato část zadání není splněná. Nevyvolávat umělou poruchu a netvrdit, že vznikla spontánně. Záměrně vložená porucha je označený test.
 
-Generovaný pomocník smí spravovat záznamy v přiděleném registru, nikoli upravovat pevná oprávnění, testovací bránu nebo rozpočtové limity. Otestovat například vyřazení neaktivní verze, odlišení úpravy metadat od komentářů a odmítnutí verze vyžadující jiná oprávnění.
+Generovaný pomocník smí spravovat index v přiděleném registru, nikoli upravovat pevná oprávnění, testovací bránu nebo rozpočtové limity. Test musí vložit manifest přijaté verze, obnovit index a tuto verzi nalézt; po označení za neaktivní ji další obnova a vyhledání nesmějí vrátit. Přidat neslučitelný vstup a jinou operaci. Testovací manifesty jsou označené fixtures, nikoli schopnosti vydávané za naučené z uživatelské práce. Nová session musí prokazatelně zavolat tento generovaný katalog. Návrh mechanismu ještě není důkaz, že jej agent samostatně vytvoří nebo že splní výklad poroty.
 
 ### Nová session použije schopnosti pro jinou práci
 
 Restartovat agentní proces a vyčistit konverzační historii. Zachovat jen deklarovaný registr, schválené preference a potřebný stav připojení aplikace.
 
-Druhý příklad zadání: **„U těchto dvou starších soukromých videí sjednoť titulky a popisy podle mého stylu a dodaných přepisů. Nenahrávej nové soubory. Na konci ukaž přehled skutečně uložených změn.“**
+Druhý příklad zadání: **„Proveď audit těchto dalších čtyř soukromých videí podle stejných publikačních pravidel. Oprav pouze nevyhovující části podle přiložených podkladů. Správná videa nech beze změny a vrať přehled nálezů a skutečných oprav.“**
 
-Agent sám vyhledá a spojí již vytvořenou přípravu metadat a práci se záznamem v aplikaci. Nový úkol upravuje existující záznamy a zpracovává více položek; nejde jen o záměnu data při stejném uploadu. Důkazy ukážou použité verze a hashe bez přegenerování schopností. Rozhraní první session musí skutečně pokrývat tuto variantu; pokud chybí operace update, nelze předstírat reuse pomocí skrytého nového kódu.
+Agent přes svůj katalog vyhledá dříve vytvořené čtení, kontrolu a úpravy. Nejprve načte a zkontroluje všechny záznamy, rozdělí je podle nálezů, u problémových sestaví a uloží změny a ověří je. Základní orchestrátor smí nově plánovat, větvit a iterovat; nesmí skrýt implementaci chybějící specializované operace do nového kódu.
+
+Výchozí data musejí obsahovat vyhovující i nevyhovující záznam. Důkaz ukáže nezměněné hodnoty u správného záznamu, opravené chyby u dalších, stejné verze a hashe použitých schopností a nulovou tvorbu nových specializovaných schopností ve druhé session. Rozdíl úkolů je dokončení konkrétního záznamu proti auditu a selektivní údržbě kolekce. Jde o omezený přenos v jedné oblasti, ne důkaz zvládnutí libovolné aplikace; dostatečnou odlišnost pro porotu nelze předem garantovat.
 
 ## YouTube a volba cílové aplikace
 

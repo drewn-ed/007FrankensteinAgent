@@ -32,6 +32,8 @@ Povinný průchod a technické hranice jsou v [AGENTS.md](../AGENTS.md). Při n�
 
 ## Povolené směry a hranice podle HQ
 
+**Aktualizace směru 9. 10.:** David chce pokračovat v učenlivém pracovním asistentovi a žádá celkovou produktovou koncepci. [Nový produktový návrh](learning-agent-product-blueprint-2026-10-09.md) odděluje širší funkce, škálovatelnost a noční MVP; YouTube, Meta Ads a DaVinci zůstávají příklady. Stack ani konkrétní integrace nejsou potvrzené. Tato aktualizace nemění soutěžní požadavky ani nepředstavuje nové ověření HQ.
+
 Smysluplné směry zahrnují odhalování chybějících schopností, generování nástrojů/MCP serverů/skills, automatické testování, trvalý registr, verzování, rollback a agentem vytvořené nástroje pro discovery a správu. Vizuální, akční nebo hlasové schopnosti jsou volitelné.
 
 Do soutěžního výsledku se nepočítá pouhé routování mezi předem připravenými nástroji ani prezentace toho, co už umí základní framework. Tým může dodat základ systému, ale nesmí podvrhnout vlastní kód jako nově vygenerovanou schopnost. Triviální ukázkové funkce, fine-tuning a neotestované zásahy do řídicího cyklu či systémového promptu jsou mimo zamýšlený rozsah.

@@ -9,6 +9,7 @@ Ověřeno v přihlášeném HQ dne **8. 10. 2026**. Časy jsou v **Europe/Prague
 - Na projektu pracuje **David sám — Frankenstein sólo**. Petr na tomto projektu nespolupracuje.
 - Tento veřejný repozitář obsahuje podklady: <https://github.com/drewn-ed/007FrankensteinAgent>. Nepovažuj tento repozitář automaticky za aktuální zdroj implementace ani finální odevzdávané repo.
 - **Stitch není Davidův projekt a není součástí tohoto zadání.** David nyní zkoumá jiné zadání; nový produkt, název a stack zatím nejsou potvrzené.
+- **Aktuální směr 9. 10.:** David chce pokračovat v pracovním prostředí s agentem, který si osvojuje aplikace a postupy. Žádá celkovou produktovou koncepci, užitečné navazující funkce a kritické posouzení škálovatelnosti. Výchozí je [produktový návrh](docs/learning-agent-product-blueprint-2026-10-09.md); úzký scénář v handoffu není definicí celého produktu. YouTube, Meta Ads a DaVinci jsou jen příklady. Konkrétní rozsah implementace, integrace a stack zůstávají otevřené.
 - Samostatný Davidův projekt pro tvorbu videí je mimo rozsah tohoto projektu; bez nového požadavku do něj nevstupuj ani jej neupravuj.
 - Zapamatování mapy UI nebo historie samo o sobě nedokládá splnění Frankensteina. Ověř vznik otestovaných schopností, agentem rozvíjenou správu a jejich kombinaci v nové session. Nevydávej popis nebo plán za naměřenou vlastnost.
 - Pracovní komunikace je česky. Při přípravě vystoupení počítej s angličtinou; veřejný program ji uvádí pro společný program a dema.

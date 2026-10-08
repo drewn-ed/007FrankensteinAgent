@@ -1,5 +1,7 @@
 # Pracovní návrh agenta učícího se práci v aplikacích
 
+**Navazující produktová koncepce:** [Pracovní prostředí s učenlivým asistentem](learning-agent-product-blueprint-2026-10-09.md). David žádá širší produkt s užitečnými navazujícími funkcemi; následující návrh dema není omezením produktu na YouTube ani potvrzením této integrace.
+
 **Stav k 9. 10. 2026 přibližně 00:17 Europe/Prague.** Podklad pro Davida a dalšího agenta k rychlému rozhodnutí o nočním prototypu. Davidovi se líbí agent, který plní uživatelské úkoly v aplikacích a z vlastní práce získává opakovaně použitelné schopnosti. Konkrétní demo, název a stack ještě nepotvrdil. Tento dokument není tvrzením o funkční implementaci ani pokynem začít libovolný produkt.
 
 **Doporučení asistenta:** jeden agent, jeden prohlížeč a malá knihovna schopností, které agent vytvoří za běhu, otestuje a použije v další session. Lidská ukázka je případná pomoc, nikoli povinný začátek. Přínos ověřovat proti stejnému agentovi bez naučených schopností. Dnes nerozšiřovat rešerši o další obecné frameworky.

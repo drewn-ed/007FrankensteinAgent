@@ -12,7 +12,7 @@ Nejnovější příklad: „Go on YouTube, upload this video, make the title and
 
 David nechce automatický souhlas ani další seznam buzzwords. Chce užitečný, srozumitelný produkt, dobrý uživatelský zážitek a přesvědčivou ukázku. „Plain“ se nemá řešit přidáním zbytečných funkcí: důležitý je pozorovatelný přenos zkušenosti na další práci.
 
-Projekt je Frankenstein sólo. Dřívější Stitch a Petrova implementace nejsou základem, na který lze spoléhat. Inspirace jeho principem neautorizuje přístup k jeho kódu. Davidův samostatný projekt pro tvorbu videí zůstává mimo rozsah; tento příklad není souhlas do něj zasahovat. Dřívější dodavatelské nabídky byly odmítnuty, kontrola webů není aktuální výchozí zadání.
+David na projektu Frankenstein pracuje sám. Stitch není jeho projekt; Petrova implementace není základem tohoto zadání. Inspirace jeho principem neautorizuje přístup k jeho kódu. Davidův samostatný projekt pro tvorbu videí zůstává mimo rozsah; tento příklad není souhlas do něj zasahovat. Dřívější dodavatelské nabídky byly odmítnuty, kontrola webů není aktuální výchozí zadání.
 
 ## Produktová hypotéza a její slabiny
 

@@ -1,19 +1,27 @@
-# Stitch — podklady pro hackathon
+# Frankenstein — sólo výzkum agenta učícího se práci v aplikacích
 
-Projekt týmu **Frankeinsteins** (David a Petr) pro **Agents 0.0.7 — From Dusk Till Dawn #01**, 8.–9. října 2026 v Praze. Soutěžíme v tracku **Frankenstein**.
+**Stav k 9. 10. 2026:** David na projektu pracuje sám. Tento repozitář obsahuje rešerše a pracovní návrhy pro track **Frankenstein** hackathonu **Agents 0.0.7 — From Dusk Till Dawn #01**. Konkrétní produkt, název, demo a stack zatím nejsou potvrzené; repozitář neobsahuje hotovou implementaci.
 
-**Stitch** automatizuje Android a má využívat zkušenosti z předchozích úkolů. Tým podle svého popisu testuje orientaci v rozhraní a opakované úkoly na YouTube Music. Tyto vlastnosti zde zatím nebyly ověřené spuštěním.
+Zkoumaný směr: asistent, který plní úkoly v aplikacích, z vlastní práce vytváří otestované opakovaně použitelné schopnosti a kombinuje je při dalších úkolech. Nejnovější diskusi zachycuje [learning browser agent handoff](docs/learning-browser-agent-handoff-2026-10-09.md). Příklady v dokumentech jsou pracovní návrhy, nikoli vybrané integrace nebo ověřené výsledky.
 
-Agent má z úkolu odhalit chybějící schopnosti, vytvořit je, otestovat, zaregistrovat a v nové session je zkombinovat pro jiný úkol. Součástí zadání je také agentem rozvíjené vyhledávání a správa schopností při nezměněných oprávněních.
+## Podklady pro dalšího agenta
 
-## Než začneš pracovat
+| Dokument | Obsah |
+| --- | --- |
+| [AGENTS.md](AGENTS.md) | Pravidla práce v repozitáři |
+| [Hackathon brief](docs/hackathon-brief.md) | Ověřené soutěžní požadavky, hodnocení, porota a odevzdání |
+| [Learning browser agent — handoff, 9. 10.](docs/learning-browser-agent-handoff-2026-10-09.md) | Nejnovější produktová hypotéza, návrh dema a otevřené otázky |
+| [Learning Agent Concepts](docs/learning-agent-concepts.md) | Vývoj úvah o učení z úkolů, workflow a lidských ukázek |
+| [Self-extending agents — rešerše](docs/self-extending-agents-research-2026-10-08.md) | Existující řešení, zdroje, limity důkazů a možné odlišení |
 
-- [AGENTS.md](AGENTS.md) — instrukce pro všechny agenty pracující v repozitáři.
-- [Ověřený brief](docs/hackathon-brief.md) — pravidla, aktuální hodnocení, porota, harmonogram a checklist odevzdání.
-- [Aktuální stav Stitche](docs/stitch-project.md) — co víme, předání implementace a návrh ověření učení.
+## Dřívější průzkumy
 
-**Stav:** směr a název jsou zvolené. Tento repozitář obsahuje dokumentaci. Petr má podle Davida implementaci v samostatném repozitáři; čekáme na URL a přístup. Landing page vzniká, vizuální styl není uzavřený. Zde nebyl spuštěn agent ani provedeny produktové testy.
+Tyto dokumenty zachycují starší úvahy; nejsou aktuálním zadáním ani potvrzeným plánem:
 
-**Uzávěrka:** 9. října 2026 v **07:14 Europe/Prague**. Odevzdání: veřejné repo a YouTube Unlisted demo do **90 sekund**. Živý pitch plánujeme na **60 sekund** podle zadání týmu.
+- [Průzkum problémů](docs/problem-research-2026-10-08.md) — počáteční hledání problémů a možných scénářů.
+- [Android research](docs/android-research-2026-10-08.md) — dřívější průzkum jiné platformy a spolupráce, která pro tento sólo projekt neplatí.
+- [Návrh porovnávání dodavatelských nabídek](docs/solo-project-proposal.md) — Davidem odmítnutý návrh.
 
-Pravidla byla ověřena v [přihlášeném HQ](https://hq.agents007.ai/topics#frankenstein) dne 8. října 2026. Aktuální HQ se v hodnocení a délce videa liší od veřejné stránky akce; podrobnosti jsou v briefu.
+**Uzávěrka:** 9. října 2026 v **07:14 Europe/Prague**. Odevzdání: veřejné repo a YouTube Unlisted demo do **90 sekund**. Živý pitch má podle Davidova zadání **60 sekund**.
+
+Pravidla byla ověřena v [přihlášeném HQ](https://hq.agents007.ai/topics#frankenstein) dne 8. října 2026. Podrobnosti a rozdíly proti veřejné stránce akce jsou v briefu.

@@ -1,4 +1,6 @@
-# Stitch — aktuální stav a předání
+# Stitch — neplatný podklad mimo Davidův projekt
+
+> **Mimo rozsah Davidova projektu:** David pracuje sám a Stitch není jeho projekt. Níže je uložený neplatný podklad; jeho formulace o týmu, spolupráci a předání nejsou aktuálním zadáním. Aktuální podklady jsou v [README](../README.md).
 
 **Aktualizace:** 8. 10. 2026. Zdrojem produktového popisu je David; implementace zatím nebyla v tomto pracovním prostoru dostupná k ověření. Soutěžní požadavky jsou v [briefu](hackathon-brief.md).
 

@@ -9,9 +9,9 @@ Stav ověřený **8. října 2026** v přihlášeném HQ. Všechny časy jsou m�
 | [HQ — Frankenstein, ground rules a judging](https://hq.agents007.ai/topics#frankenstein) | Definice hotového projektu, povinnosti, nevhodné směry, FAQ, porota, aktuální váhy |
 | [HQ — odevzdání](https://hq.agents007.ai/submit) | Povinná pole, veřejné repo, YouTube Unlisted, 90sekundové video |
 | [HQ — dashboard](https://hq.agents007.ai/) | Harmonogram a dostupné partnerské nástroje |
-| [HQ — tým](https://hq.agents007.ai/team) | Dvoučlenný tým Frankeinsteins, zvolený track, stav propojení repozitáře |
+| [HQ — tým](https://hq.agents007.ai/team) | Tehdejší stav registrace týmu, zvolený track a propojení repozitáře; David nyní pracuje sólo |
 | [Veřejný web](https://agents007.ai/hackathon01/) | Kontext akce a angličtina společného programu; některé údaje se liší od HQ |
-| Zadání Davida v tomto projektu | Dva lidé, nejdřív brief a rešerše, následně produkt, 60sekundový pitch a video do 90 sekund |
+| Zadání Davida v tomto projektu | David pracuje sólo; nejdřív brief a rešerše, následně produkt, 60sekundový pitch a video do 90 sekund |
 
 Za pracovní zdroj pravdy pro soutěžní parametry bereme aktuální HQ. Novější výslovné upřesnění organizátorů má být zaznamenáno a promítnuto do obou dokumentů.
 
@@ -28,7 +28,7 @@ Povinný průchod a technické hranice jsou v [AGENTS.md](../AGENTS.md). Při n�
 - Co nového zvládne po spuštění další session bez ruční pomoci?
 - Jak prokážeme, že nový výsledek vznikl kombinací dřívějších schopností a se stejným rozsahem oprávnění?
 
-**Aktualizace podle Davida, 8. 10. 2026:** tým zvolil Stitch, agenta pro Android, který využívá zkušenosti z předchozích úkolů; aktuální zkoušky probíhají na YouTube Music. Podrobnosti a neověřené body jsou v [aktuálním stavu produktu](stitch-project.md). Tato volba nemění soutěžní povinnosti výše.
+**Poslední směr podle Davida, synchronizovaný 8. 10. přibližně 23:59:** Frankenstein sólo. Rozvíjí [agenta, který si osvojuje práci v aplikacích z vlastního řešení úkolů, případně lidských ukázek](learning-agent-concepts.md). Bakaláři jsou pouze příklad; konkrétní use case, odlišení a stack nejsou vybrané. Kontrola webů je dřívější návrh, ne výchozí zadání. Nový produkt a název nejsou potvrzené. Tyto změny nemění soutěžní povinnosti výše; změnu týmu v HQ je potřeba vyřešit s organizátory. Frankenstein brief byl dříve během diskuse znovu přečten v přihlášeném HQ; povinnosti a váhy zůstaly shodné s tímto dokumentem. Synchronizace chatů není novým ověřením HQ.
 
 ## Povolené směry a hranice podle HQ
 
@@ -143,6 +143,6 @@ Konkrétní kódy a přístupové údaje zůstávají v HQ. Použití partnerů 
 - **Video:** veřejný web uváděl dvě minuty; HQ brief i formulář shodně uvádějí **nejvýše 90 sekund**. Používej 90 sekund.
 - **Pitch:** minuta pochází od Davida, nikoli z ověřeného textu HQ.
 - **Tým a repo:** GitHub repo existuje a je veřejné. Při kontrole 8. 10. týmová stránka HQ stále uváděla, že repozitář není připojený. Jde o zachycený stav, který se může změnit.
-- **Produkt:** původní brief vznikl před výběrem. Nyní je podle Davida zvolený Stitch pro Android, testovaný týmem na YouTube Music. Implementace je podle něj v samostatném Petrově repozitáři; zde jsme ji ještě nečetli ani nespustili. Finální odkaz pro odevzdání je nutné sladit se skutečným umístěním kódu.
+- **Produkt:** David pracuje sólo a nový produkt není potvrzený. Finální tým a odkaz pro odevzdání je nutné sladit se skutečným stavem; žádná změna v HQ zde nebyla provedena.
 
 Při změně rozhodnutí nebo upřesnění organizátorů aktualizuj tento dokument i stručné instrukce v `AGENTS.md`. Staré rozpory nemaž tak, aby vznikl dojem, že předchozí neověřené informace byly potvrzené.

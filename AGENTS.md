@@ -6,10 +6,10 @@ Ověřeno v přihlášeném HQ dne **8. 10. 2026**. Časy jsou v **Europe/Prague
 ## Kontext a zdroje
 
 - Stavíme projekt pro **Agents 0.0.7 — From Dusk Till Dawn #01**, track **Frankenstein**.
-- Tým tvoří **David a Petr**; v HQ se jmenuje **Frankeinsteins**.
-- Tento veřejný repozitář obsahuje týmové podklady: <https://github.com/drewn-ed/007FrankensteinAgent>. Podle Davida má Petr implementaci v jiném repozitáři; jeho URL zatím nemáme a David čeká na přístup. Nepovažuj tento repozitář automaticky za aktuální zdroj implementace ani finální odevzdávané repo.
-- Produkt se jmenuje **Stitch**: agent pro automatizaci Android zařízení, který podle popisu týmu mapuje interaktivní prvky a využívá zkušenosti z předchozích úkolů. Tým jej zkouší na **YouTube Music**. Kód ani toto chování zde zatím nebyly nezávisle ověřené; stack a přesná podoba paměti nejsou známé. Aktuální rozhodnutí a předání jsou v [podkladu ke Stitchi](docs/stitch-project.md).
-- Landing page vzniká; její vizuální styl zatím není finální. Prezentaci později přizpůsob potvrzenému vzhledu. Samostatný Davidův projekt pro tvorbu videí je mimo rozsah práce na Stitchi; bez nového požadavku do něj nevstupuj ani jej neupravuj.
+- Na projektu pracuje **David sám — Frankenstein sólo**. Petr na tomto projektu nespolupracuje.
+- Tento veřejný repozitář obsahuje podklady: <https://github.com/drewn-ed/007FrankensteinAgent>. Nepovažuj tento repozitář automaticky za aktuální zdroj implementace ani finální odevzdávané repo.
+- **Stitch není Davidův projekt a není součástí tohoto zadání.** David nyní zkoumá jiné zadání; nový produkt, název a stack zatím nejsou potvrzené.
+- Samostatný Davidův projekt pro tvorbu videí je mimo rozsah tohoto projektu; bez nového požadavku do něj nevstupuj ani jej neupravuj.
 - Zapamatování mapy UI nebo historie samo o sobě nedokládá splnění Frankensteina. Ověř vznik otestovaných schopností, agentem rozvíjenou správu a jejich kombinaci v nové session. Nevydávej popis nebo plán za naměřenou vlastnost.
 - Pracovní komunikace je česky. Při přípravě vystoupení počítej s angličtinou; veřejný program ji uvádí pro společný program a dema.
 - Požadavky soutěže vycházejí z [HQ briefu](https://hq.agents007.ai/topics#frankenstein) a [formuláře odevzdání](https://hq.agents007.ai/submit). Referenční dokument odděluje tyto požadavky od doporučení týmu a neověřených bodů.
@@ -48,7 +48,7 @@ Frameworky a vlastní boilerplate jsou povolené. Odděluj infrastrukturu napsan
 
 Následující postup je naše pracovní interpretace, nikoli další pravidlo organizátorů:
 
-- Nejdřív pojmenuj uživatele, jeho problém a ověřitelný užitek. Vybírej scénář zvládnutelný dvěma lidmi během jedné noci.
+- Nejdřív pojmenuj uživatele, jeho problém a ověřitelný užitek. Vybírej scénář zvládnutelný Davidem sólo během jedné noci.
 - U každého návrhu vysvětli přínos, originalitu, chybějící schopnosti, způsob ověření a druhý úkol, který je zkombinuje. Nevybírej stack před problémem bez věcného důvodu.
 - Preferuj malý úplný průchod před mnoha rozpracovanými funkcemi. Samorozšiřování a jeho přínos musejí být v demu vidět.
 - Navrhuj trvalý registr s rozhraními, verzemi, oprávněními, původem artefaktů a výsledky testů. Verze a rollback jsou doporučený směr briefu, ne samostatně vyjmenovaná povinná odevzdávka.

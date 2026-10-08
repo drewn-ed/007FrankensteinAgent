@@ -28,7 +28,7 @@ Povinný průchod a technické hranice jsou v [AGENTS.md](../AGENTS.md). Při n�
 - Co nového zvládne po spuštění další session bez ruční pomoci?
 - Jak prokážeme, že nový výsledek vznikl kombinací dřívějších schopností a se stejným rozsahem oprávnění?
 
-Produkt ani doména zatím nejsou vybrané. Příští krok je rešerše problémů a porovnání nápadů podle těchto otázek a vah poroty.
+**Aktualizace podle Davida, 8. 10. 2026:** tým zvolil Stitch, agenta pro Android, který využívá zkušenosti z předchozích úkolů; aktuální zkoušky probíhají na YouTube Music. Podrobnosti a neověřené body jsou v [aktuálním stavu produktu](stitch-project.md). Tato volba nemění soutěžní povinnosti výše.
 
 ## Povolené směry a hranice podle HQ
 
@@ -143,6 +143,6 @@ Konkrétní kódy a přístupové údaje zůstávají v HQ. Použití partnerů 
 - **Video:** veřejný web uváděl dvě minuty; HQ brief i formulář shodně uvádějí **nejvýše 90 sekund**. Používej 90 sekund.
 - **Pitch:** minuta pochází od Davida, nikoli z ověřeného textu HQ.
 - **Tým a repo:** GitHub repo existuje a je veřejné. Při kontrole 8. 10. týmová stránka HQ stále uváděla, že repozitář není připojený. Jde o zachycený stav, který se může změnit.
-- **Produkt:** není vybraný; tento commit dokumentuje pravidla a nezavádí architekturu ani funkčního agenta.
+- **Produkt:** původní brief vznikl před výběrem. Nyní je podle Davida zvolený Stitch pro Android, testovaný týmem na YouTube Music. Implementace je podle něj v samostatném Petrově repozitáři; zde jsme ji ještě nečetli ani nespustili. Finální odkaz pro odevzdání je nutné sladit se skutečným umístěním kódu.
 
 Při změně rozhodnutí nebo upřesnění organizátorů aktualizuj tento dokument i stručné instrukce v `AGENTS.md`. Staré rozpory nemaž tak, aby vznikl dojem, že předchozí neověřené informace byly potvrzené.

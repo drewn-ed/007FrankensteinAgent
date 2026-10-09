@@ -1,0 +1,154 @@
+/* Generated from tokens.json. Run: python3 design/build_tokens.py */
+@font-face {
+  font-family: 'Geist Pixel Square'; src: url('./fonts/GeistPixel-Square.woff2') format('woff2');
+  font-style: normal; font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; src: url('./fonts/IBMPlexMono-Regular.ttf') format('truetype');
+  font-style: normal; font-weight: 400; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; src: url('./fonts/IBMPlexMono-Medium.ttf') format('truetype');
+  font-style: normal; font-weight: 500; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; src: url('./fonts/IBMPlexMono-SemiBold.ttf') format('truetype');
+  font-style: normal; font-weight: 600; font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Mono'; src: url('./fonts/IBMPlexMono-Bold.ttf') format('truetype');
+  font-style: normal; font-weight: 700; font-display: swap;
+}
+:root {
+  --ds-font-display: 'Geist Pixel Square', 'IBM Plex Mono', monospace;
+  --ds-font-text: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --ds-font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --ds-palette-beige: #F5F2EC;
+  --ds-palette-sand: #EBE5DA;
+  --ds-palette-ink: #292622;
+  --ds-palette-orange: #FF8A3D;
+  --ds-palette-orangeHover: #FF9C5C;
+  --ds-palette-orangeDeep: #A94312;
+  --ds-palette-orangeSoft: #FFF0E3;
+  --ds-palette-muted: #756B60;
+  --ds-palette-line: #DED7CB;
+  --ds-palette-controlLine: #8A7561;
+  --ds-palette-white: #FFFFFF;
+  --ds-space-1: 0.25rem;
+  --ds-space-2: 0.5rem;
+  --ds-space-3: 0.75rem;
+  --ds-space-4: 1rem;
+  --ds-space-5: 1.25rem;
+  --ds-space-6: 1.5rem;
+  --ds-space-8: 2rem;
+  --ds-space-10: 2.5rem;
+  --ds-space-12: 3rem;
+  --ds-space-16: 4rem;
+  --ds-space-20: 5rem;
+  --ds-space-24: 6rem;
+  --ds-radius-small: 0.375rem;
+  --ds-radius-control: 0.625rem;
+  --ds-radius-panel: 1rem;
+  --ds-radius-pill: 62.4375rem;
+  --ds-radius-workspace: 1.5rem;
+  --ds-motion-fast: 120ms;
+  --ds-motion-standard: 200ms;
+  --ds-motion-expressive: 400ms;
+  --ds-motion-stagger: 80ms;
+  --ds-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ds-icon-size: 24px;
+  --ds-icon-large: 48px;
+  --ds-icon-stroke: 2px;
+}
+:root, [data-ds-theme="light"] {
+  color-scheme: light;
+  --ds-canvas: #F5F2EC;
+  --ds-surface: #FFFFFF;
+  --ds-surface-alt: #EBE5DA;
+  --ds-text: #292622;
+  --ds-text-muted: #756B60;
+  --ds-border: #DED7CB;
+  --ds-border-control: #8A7561;
+  --ds-accent: #FF8A3D;
+  --ds-on-accent: #292622;
+  --ds-accent-hover: #FF9C5C;
+  --ds-accent-text: #A94312;
+  --ds-accent-soft: #FFF0E3;
+  --ds-on-accent-soft: #88360D;
+  --ds-focus: #A94312;
+  --ds-success: #326044;
+  --ds-success-soft: #E3EBDC;
+  --ds-warning: #835314;
+  --ds-warning-soft: #F7E7C6;
+  --ds-danger: #AB3434;
+  --ds-danger-soft: #F8DEDA;
+  --ds-info: #385B83;
+  --ds-info-soft: #E2E9EF;
+}
+[data-ds-theme="dark"] {
+  color-scheme: dark;
+  --ds-canvas: #211A16;
+  --ds-surface: #30261F;
+  --ds-surface-alt: #3B3027;
+  --ds-text: #F5F2EC;
+  --ds-text-muted: #C7B6A3;
+  --ds-border: #5B493B;
+  --ds-border-control: #A28B74;
+  --ds-accent: #FF8A3D;
+  --ds-on-accent: #292622;
+  --ds-accent-hover: #FF9C5C;
+  --ds-accent-text: #FF966A;
+  --ds-accent-soft: #512B1E;
+  --ds-on-accent-soft: #FFBB99;
+  --ds-focus: #FF966A;
+  --ds-success: #B5D7AA;
+  --ds-success-soft: #253927;
+  --ds-warning: #F1CA83;
+  --ds-warning-soft: #493617;
+  --ds-danger: #FFADA3;
+  --ds-danger-soft: #512727;
+  --ds-info: #B4CEE8;
+  --ds-info-soft: #273747;
+}
+[data-ds-type="plain"] { --ds-font-display: var(--ds-font-text); }
+.ds-root { font-family: var(--ds-font-text); color: var(--ds-text); background: var(--ds-canvas); font-synthesis: none; }
+.ds-type-display { font-family: var(--ds-font-display); font-size: 4.5rem; line-height: 1.11111; font-weight: 400; letter-spacing: 0em; }
+.ds-type-hero { font-family: var(--ds-font-display); font-size: 3.5rem; line-height: 1.14286; font-weight: 400; letter-spacing: 0em; }
+.ds-type-title { font-family: var(--ds-font-display); font-size: 2rem; line-height: 1.25000; font-weight: 400; letter-spacing: 0em; }
+.ds-type-section { font-family: var(--ds-font-display); font-size: 1.5rem; line-height: 1.33333; font-weight: 400; letter-spacing: 0em; }
+.ds-type-lead { font-family: var(--ds-font-text); font-size: 1.25rem; line-height: 1.50000; font-weight: 400; letter-spacing: 0em; }
+.ds-type-body { font-family: var(--ds-font-text); font-size: 1rem; line-height: 1.62500; font-weight: 400; letter-spacing: 0em; }
+.ds-type-ui { font-family: var(--ds-font-text); font-size: 1rem; line-height: 1.50000; font-weight: 500; letter-spacing: 0em; }
+.ds-type-label { font-family: var(--ds-font-text); font-size: 1rem; line-height: 1.50000; font-weight: 600; letter-spacing: 0em; }
+.ds-type-caption { font-family: var(--ds-font-text); font-size: 0.875rem; line-height: 1.42857; font-weight: 500; letter-spacing: 0.01em; }
+.ds-type-code { font-family: var(--ds-font-mono); font-size: 0.8125rem; line-height: 1.53846; font-weight: 400; letter-spacing: 0em; }
+.ds-type-eyebrow { font-family: var(--ds-font-mono); font-size: 0.875rem; line-height: 1.42857; font-weight: 500; letter-spacing: 0.04em; }
+.ds-numbers { font-variant-numeric: tabular-nums; }
+.ds-icon { width: var(--ds-icon-size); height: var(--ds-icon-size); display: inline-block; flex: none; vertical-align: middle; color: inherit; }
+.ds-icon--large { width: var(--ds-icon-large); height: var(--ds-icon-large); }
+.ds-button {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--ds-space-2);
+  min-height: 44px; padding: 10px 18px; border: 1px solid transparent;
+  border-radius: var(--ds-radius-control); font: 600 1rem/1.5 var(--ds-font-text);
+  background: var(--ds-accent); color: var(--ds-on-accent); text-decoration: none;
+  cursor: pointer; transition: background var(--ds-motion-fast) ease;
+}
+.ds-button:hover { background: var(--ds-accent-hover); }
+.ds-button--secondary { background: var(--ds-surface); color: var(--ds-text); border-color: var(--ds-border-control); }
+.ds-button--secondary:hover { background: var(--ds-surface-alt); }
+.ds-button:disabled { cursor: not-allowed; opacity: 0.45; }
+.ds-button:focus-visible, .ds-input:focus-visible, .ds-link:focus-visible {
+  outline: 3px solid var(--ds-focus); outline-offset: 3px;
+}
+.ds-input { width: 100%; padding: 12px 14px; border: 1px solid var(--ds-border-control); border-radius: var(--ds-radius-control); background: var(--ds-surface); color: var(--ds-text); font: 400 1rem/1.5 var(--ds-font-text); }
+.ds-input::placeholder { color: var(--ds-text-muted); opacity: 1; }
+.ds-link { color: var(--ds-accent-text); text-decoration: underline; text-underline-offset: 0.2em; }
+.ds-status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: var(--ds-radius-small); font: 500 0.875rem/1.5 var(--ds-font-text); }
+.ds-status--success { color: var(--ds-success); background: var(--ds-success-soft); }
+.ds-status--warning { color: var(--ds-warning); background: var(--ds-warning-soft); }
+.ds-status--danger { color: var(--ds-danger); background: var(--ds-danger-soft); }
+.ds-status--info { color: var(--ds-info); background: var(--ds-info-soft); }
+@media (prefers-reduced-motion: reduce) {
+  :root { --ds-motion-fast: 0ms; --ds-motion-standard: 0ms; --ds-motion-expressive: 0ms; --ds-motion-stagger: 0ms; }
+  .ds-button { transition: none; }
+}

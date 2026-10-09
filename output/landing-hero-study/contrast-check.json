@@ -1,0 +1,36 @@
+{
+  "light": {
+    "h1": {
+      "minimum_background_contrast": 12.95,
+      "text_color": "rgb(41, 38, 34)"
+    },
+    ".description": {
+      "minimum_background_contrast": 13.16,
+      "text_color": "rgb(41, 38, 34)"
+    },
+    "cta": {
+      "contrast": 6.42
+    },
+    "asset_dimensions": [
+      1672,
+      941
+    ]
+  },
+  "dark": {
+    "h1": {
+      "minimum_background_contrast": 14.87,
+      "text_color": "rgb(245, 242, 236)"
+    },
+    ".description": {
+      "minimum_background_contrast": 15.31,
+      "text_color": "rgb(245, 242, 236)"
+    },
+    "cta": {
+      "contrast": 6.42
+    },
+    "asset_dimensions": [
+      1672,
+      941
+    ]
+  }
+}

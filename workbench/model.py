@@ -7,6 +7,16 @@ from dataclasses import dataclass, field
 from .usage import price_snapshot, read_usage
 
 
+class NoCredentialRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def provider_open(request, timeout):
+    # Provider credentials must never follow even a same-origin redirect.
+    return urllib.request.build_opener(NoCredentialRedirect()).open(request, timeout=timeout)
+
+
 class RunError(Exception):
     pass
 
@@ -125,7 +135,7 @@ class Gemini:
             data=json.dumps(body).encode(),
             headers={"Content-Type": "application/json", "x-goog-api-key": self.config.key})
         try:
-            with urllib.request.urlopen(request, timeout=min(55, budget.remaining_seconds())) as response:
+            with provider_open(request, timeout=min(55, budget.remaining_seconds())) as response:
                 raw = response.read(500_001)
             if len(raw) > 500_000:
                 raise RunError("The model response exceeded the size limit.")

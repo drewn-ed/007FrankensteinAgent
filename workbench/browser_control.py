@@ -116,7 +116,8 @@ class BrowserControl:
                 raise RunError("Upload is limited to files attached to this task or created during this run.")
         budget.check()
         # External interactions wait for explicit operator review. The local practice app is unrestricted.
-        if operation["action"] not in ("inspect", "navigate") and self.cached.get("origin") not in ("https://workspace.demo", "https://event.workspace.demo"):
+        # A navigation can hit a state-changing GET endpoint; review it too.
+        if operation["action"] != "inspect" and self.cached.get("origin") not in ("https://workspace.demo", "https://event.workspace.demo"):
             self.decision.clear()
             self.pending = {"operation": operation, "reason": action.get("reason", "Review this browser step."), "approved": None}
             event("approval", "A browser action is waiting for your review.", operation=operation)

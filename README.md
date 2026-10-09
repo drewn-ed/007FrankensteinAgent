@@ -82,7 +82,7 @@ Open **[http://127.0.0.1:8767](http://127.0.0.1:8767)**. Use the checkout contai
 
 Choose one model connection:
 
-- **ChatGPT, outside strict-budget mode:** this connection has no local USD guarantee. To use it deliberately, set `SPEND_POLICY=existing_plan` in `.env` and restart; then open **Personal workspace → Settings → Continue with ChatGPT**, complete account consent, choose an available model and click **Activate model**. Connecting the account and activating a model are separate steps. No Gemini key is needed on this path.
+- **ChatGPT, outside strict-budget mode:** this connection has no local USD guarantee. To use it deliberately, set `SPEND_POLICY=existing_plan` in `.env` and restart; then open **Personal workspace → Settings → Continue with ChatGPT**, complete account consent, choose an available model and click **Use selected model**. Connecting the account and activating a model are separate steps. No Gemini key is needed on this path.
 - **Gemini:** put your own `GEMINI_API_KEY` in `.env`. Confirm the associated project is on the Free tier, then set `GEMINI_FREE_TIER_CONFIRMED=true`. Keep `MODEL_PROVIDER=gemini` and restart the server. The checked-in default is `gemini-3.5-flash-lite`; the adapter has an explicit model allowlist.
 
 See [exact configuration blocks and sign-in steps](docs/jury-quickstart.md#3-optional-connect-a-model-for-fresh-learning). No shared key is bundled. A ChatGPT subscription is not an OpenAI API key, and account eligibility/allowance must be confirmed by the actual sign-in flow. Wisp uses the [documented Sign in with ChatGPT plan-usage flow](https://developers.openai.com/siwc/token-sharing-open-source/sign-in), not a reverse proxy or extracted Codex token. There is no custom base URL setting, `OPENAI_API_KEY` adapter or proxy installation step.
@@ -170,3 +170,7 @@ This is a local prototype. It has no team sharing, external MCP integration or a
 The Python source is in [`workbench/`](workbench/), UI in [`web/`](web/), fixtures in [`examples/`](examples/) and tests in [`tests/`](tests/). The [documentation index](docs/README.md) separates current guides from historical research. The separate landing page and brand work are not runtime evidence.
 
 No project-wide software license has been selected in this repository; public visibility alone is not an open-source license. Bundled fonts and icons retain their own license/copyright files under [`design/`](design/) and [`web/fonts/`](web/fonts/).
+
+## Security review
+
+See the [focused security review](docs/security-review-2026-10-09.md) for verified fixes, test results, spending assumptions and local-only deployment boundaries.

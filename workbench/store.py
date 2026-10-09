@@ -21,8 +21,11 @@ def digest(value):
 class Store:
     def __init__(self, directory):
         directory.mkdir(parents=True, exist_ok=True, mode=0o700)
+        # mkdir(exist_ok=True) does not tighten permissions on an older workspace.
+        directory.chmod(0o700)
         self.lock = threading.RLock()
         self.db = sqlite3.connect(directory / "workbench.sqlite", check_same_thread=False)
+        (directory / "workbench.sqlite").chmod(0o600)
         self.db.execute("PRAGMA journal_mode=WAL")
         self.db.executescript('''
         CREATE TABLE IF NOT EXISTS versions(id TEXT, version INTEGER, body TEXT, PRIMARY KEY(id,version));

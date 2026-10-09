@@ -105,7 +105,7 @@ You need your **own ChatGPT account eligible for plan usage**, permission to use
 1. Set `SPEND_POLICY=existing_plan` in `.env`. This is a deliberate alternative to strict mode: **there is no local USD spending guarantee**. Plan limits and credits are managed by OpenAI. You can leave `MODEL_PROVIDER=gemini` temporarily and leave the Gemini key blank; the UI still opens for sign-in.
 2. Start or restart `uv run python -m workbench.server`, and open **http://127.0.0.1:8767** on the same computer.
 3. Open **Personal workspace → Settings → Continue with ChatGPT**. Complete the OpenAI login and plan-usage consent. Keep Wisp running for the local callback.
-4. Return to Settings, select one of the models returned for your account, and click **Activate model**. Login alone does not activate inference.
+4. Return to Settings, select one of the models returned for your account, and click **Use selected model**. Login alone does not activate inference.
 5. Confirm the active provider/model and readiness. Activation saves `MODEL_PROVIDER=chatgpt` and the selected `CHATGPT_MODEL` in your local `.env`; it does not publish credentials. Review provider allowance in ChatGPT Settings → Usage.
 
 **Do not supply an `OPENAI_API_KEY`, copy Codex tokens, install a reverse API proxy or configure a custom base URL.** None of those is supported by this checkout. The implemented ChatGPT connection uses OAuth directly; it needs neither a paid OpenAI API key nor a proxy. A ChatGPT subscription and paid API billing are different access mechanisms. The app also has no Anthropic adapter.

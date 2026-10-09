@@ -47,7 +47,7 @@ class UsageTests(unittest.TestCase):
         snapshots=[]
         budget=Budget(on_usage=lambda b:snapshots.append(json.loads(json.dumps(b.usage))))
         budget.purpose="Writing a skill"
-        with patch("urllib.request.urlopen", return_value=response(text="invalid json")):
+        with patch("workbench.model.provider_open", return_value=response(text="invalid json")):
             with self.assertRaises(RunError):
                 self.model.ask("system", {"private": "do not log payload"}, budget)
         self.assertEqual(snapshots[0][0]["status"], "pending")
@@ -60,7 +60,7 @@ class UsageTests(unittest.TestCase):
 
     def test_http_failure_counts_attempt_without_fabricating_usage(self):
         budget=Budget()
-        with patch("urllib.request.urlopen", side_effect=HTTPError("url",429,"quota",{},None)):
+        with patch("workbench.model.provider_open", side_effect=HTTPError("url",429,"quota",{},None)):
             with self.assertRaisesRegex(RunError,"quota"):
                 self.model.ask("system", {}, budget)
         cost=summarize({"usage_version":1,"model_calls":budget.calls,"model_usage":budget.usage})
@@ -111,7 +111,7 @@ class UsageTests(unittest.TestCase):
             store=Store(Path(temp))
             run=store.new_run("Synthetic task",{})
             engine=Engine(self.model.config,self.model,ReadySandbox(),store)
-            with patch("urllib.request.urlopen",return_value=response(text='{"action":"finish","result":"done"}')):
+            with patch("workbench.model.provider_open",return_value=response(text='{"action":"finish","result":"done"}')):
                 engine.execute(run)
             store.close()
             store=Store(Path(temp))

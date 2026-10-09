@@ -103,12 +103,12 @@ class Boundaries(unittest.TestCase):
         with self.assertRaises(RunError):
             Budget(max_seconds=1, started=time.monotonic() - 2).check()
         model = Gemini(Config(key="synthetic", free_confirmed=False))
-        with patch("urllib.request.urlopen") as request:
+        with patch("workbench.model.provider_open") as request:
             with self.assertRaisesRegex(RunError, "Free"):
                 model.ask("x", {}, Budget())
             request.assert_not_called()
         model = Gemini(Config(key="synthetic", free_confirmed=True))
-        with patch("urllib.request.urlopen", side_effect=HTTPError("", 429, "quota", {}, None)) as request:
+        with patch("workbench.model.provider_open", side_effect=HTTPError("", 429, "quota", {}, None)) as request:
             with self.assertRaisesRegex(RunError, "quota"):
                 model.ask("x", {}, Budget())
             self.assertEqual(request.call_count, 1)

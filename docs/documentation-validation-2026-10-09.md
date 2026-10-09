@@ -10,7 +10,7 @@ This revision rewrites the public README and submission copy, adds the user/arch
 | Infrastructure suite | **57 tests passed**, 32.317 seconds, using the then-current local working tree |
 | Recorded generated skills | Code hashes verified using the repository's canonical `digest()` serialization; **12 of 12 cases replayed successfully in Docker** |
 | Live-evidence consistency | Three runs completed; empty conversations; tests precede installation; third run uses two earlier skills, no installation, equal registry hashes and a passing independent preservation check |
-| HQ story lengths | What it does: **1,556 / 3,000**; what works: **1,555 / 2,000**; limitations: **1,786 / 2,000** characters |
+| HQ story lengths | What it does: **1,551 / 3,000**; what works: **1,555 / 2,000**; limitations: **1,786 / 2,000** characters |
 | Public documentation language | All newly written public guides are English; historical records retain their original text |
 | Navigation labels | Matched the concurrent UI update: Library → Skills / Saved workflows / Schedules, Try an example, Prepare room change |
 | Quick guide | Opened in the running application; all six sections present; visually checked desktop layout; Explore skills opens Library → Skills |

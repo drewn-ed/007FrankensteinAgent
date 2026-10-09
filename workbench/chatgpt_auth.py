@@ -165,7 +165,7 @@ class ChatGPTAuth:
                       "state": state, "nonce": nonce, "code_challenge_method": "S256",
                       "code_challenge": base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).decode().rstrip("=")}
             if not selected:
-                params["agent_name_hint"] = "Frankenstein Workspace"
+                params["agent_name_hint"] = "Wisp"
             # No token hints in URLs/logs; returning accounts can use the account selector.
             return AUTHORIZE + "?" + urlencode(params)
 

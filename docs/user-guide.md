@@ -1,10 +1,10 @@
-# Using Workspace
+# Using Wisp
 
 This guide describes the current local application. All example attendees are synthetic. For installation and provider setup, start with the [README](../README.md#run-locally).
 
 ## Before the first task
 
-Start Docker and the Workspace server, open [localhost:8767](http://127.0.0.1:8767), and check **Personal workspace → Settings → Runtime & limits**. Configure and activate a model. A connected ChatGPT account alone does not select the active model.
+Start Docker and the Wisp server, open [localhost:8767](http://127.0.0.1:8767), and check **Personal workspace → Settings → Runtime & limits**. Configure and activate a model. A connected ChatGPT account alone does not select the active model.
 
 For the full event example, use `MAX_MODEL_CALLS=20` and `MAX_RUN_SECONDS=600` in `.env`, then restart the server before the run. Only one task executes at a time. **Stop task** prevents further steps after the current operation; it does not undo changes already made.
 
@@ -34,11 +34,11 @@ Replies in a chat can use up to six recent turns selected by the server, includi
 
 ## Event walkthrough
 
-Fieldwork is a local event operations application served through the connector at `https://event.workspace.demo`. This address is a local fixture handled by Workspace, not a public hosted demo. It includes a roster, workshop board, room changes, allocation preview and report export.
+Fieldwork is a local event operations application served through the connector at `https://event.workspace.demo`. This address is a local fixture handled by Wisp, not a public hosted demo. It includes a roster, workshop board, room changes, allocation preview and report export.
 
 ### 1. Clean the roster and allocate seats
 
-Open **Computer → Web browser → Open event operations**. Workspace connects a separate Chrome session, creates or reuses the **Event operations** project, and opens a chat with a task and registration CSV. If Fieldwork is already connected, use **Computer → Start a task** to prepare it. Confirm **Use browser** is enabled, then send the prepared task.
+Open **Computer → Web browser → Open event operations**. Wisp connects a separate Chrome session, creates or reuses the **Event operations** project, and opens a chat with a task and registration CSV. If Fieldwork is already connected, use **Computer → Start a task** to prepare it. Confirm **Use browser** is enabled, then send the prepared task.
 
 The task asks to normalize the roster, keep the first valid registration per email, assign attendees in roster order to an available preferred workshop, apply the checked plan and export a report. It does not name a tool to create. The source is also available as [october-registrations.csv](../examples/october-registrations.csv).
 

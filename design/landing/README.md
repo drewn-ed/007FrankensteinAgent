@@ -1,4 +1,4 @@
-# Landing hero backgrounds
+# Wisp landing-page artwork
 
 Created October 9, 2026 with the built-in ImageGen tool for David's landing-page exploration. These background illustrations complement the approved pixel ghost logo. Version 2 was refined after rendering the first version with the real project fonts, headline, copy and action button.
 

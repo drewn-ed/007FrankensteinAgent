@@ -1,6 +1,6 @@
 # Jury guide
 
-**Workspace · 007 Frankenstein — solo prototype by David.** Documentation reviewed on 9 October 2026. The [Frankenstein brief](https://hq.agents007.ai/topics#frankenstein) and [submission form](https://hq.agents007.ai/submit) were re-read in authenticated HQ on that date. No submission was made by this documentation update.
+**Wisp · 007 Frankenstein — solo prototype by David.** Documentation reviewed on 9 October 2026. The [Frankenstein brief](https://hq.agents007.ai/topics#frankenstein) and [submission form](https://hq.agents007.ai/submit) were re-read in authenticated HQ on that date. No submission was made by this documentation update.
 
 ## The user and the value
 

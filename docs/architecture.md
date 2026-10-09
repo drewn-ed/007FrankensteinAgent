@@ -1,6 +1,6 @@
 # Architecture and execution boundaries
 
-Workspace is a local Python application with an HTML/CSS/JavaScript UI, SQLite persistence, a Docker execution sandbox, and fixed browser/native connectors. It uses an explicitly selected Gemini or ChatGPT provider. It does not fine-tune model weights or let generated skills rewrite the controller.
+Wisp is a local Python application with an HTML/CSS/JavaScript UI, SQLite persistence, a Docker execution sandbox, and fixed browser/native connectors. It uses an explicitly selected Gemini or ChatGPT provider. It does not fine-tune model weights or let generated skills rewrite the controller.
 
 ## From a task to a reusable skill
 

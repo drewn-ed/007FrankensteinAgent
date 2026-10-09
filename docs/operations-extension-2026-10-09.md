@@ -1,6 +1,6 @@
 # Files, desktop connection, schedules and event showcase
 
-Implemented on 9 October 2026 in response to David rejecting the single-form showcase and requesting the missing application capabilities. The approved Workspace visual system is retained. Fieldwork is a fictional target application for the demo, not a new name for the product or an integration with a real event service.
+Implemented on 9 October 2026 in response to David rejecting the single-form showcase and requesting the missing application capabilities. The approved Wisp visual system is retained. Fieldwork is a fictional target application for the demo, not a new name for the product or an integration with a real event service.
 
 ## What now exists
 

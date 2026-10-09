@@ -335,7 +335,7 @@ def main():
     app = Application(Config.from_env())
     app.scheduler.start_loop()
     server = ThreadingHTTPServer(("127.0.0.1", args.port), handler_for(app, args.port))
-    print(f"Workbench running at http://127.0.0.1:{args.port}", flush=True)
+    print(f"Wisp running at http://127.0.0.1:{args.port}", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

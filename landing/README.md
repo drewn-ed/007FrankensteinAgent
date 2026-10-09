@@ -1,6 +1,6 @@
-# Learning workspace landing page
+# Wisp landing page
 
-First landing-page draft for David's Agents 0.0.7 project, October 9, 2026. The product name remains undecided; “Learning workspace” is a descriptive placeholder.
+First landing-page draft for David's Agents 0.0.7 project, October 9, 2026. David confirmed the name **Wisp** on October 9, 2026; it replaces the earlier “Learning workspace” placeholder.
 
 The editable, buildless site is in `dist/index.html` and `dist/style.css`. Serve `dist` with any static HTTP server. No installation, JavaScript runtime or API key is needed in the browser.
 
@@ -12,7 +12,7 @@ The editable, buildless site is in `dist/index.html` and `dist/style.css`. Serve
 - `dist/assets/ghost-background.png` is the existing ImageGen background from `design/landing/ghost-background-v1.png`; it is decorative. The original remains unchanged.
 - No third-party icon library is used by this page.
 
-The main action scrolls to the learning-loop explanation. The project link opens the existing public reference repository, which is not represented as the final implementation or submission.
+The main action scrolls to the learning-loop explanation. The project link opens the current public repository. Its GitHub name is still `007FrankensteinAgent`; David will rename it separately. The landing page is a product presentation, not evidence of an HQ submission.
 
 ## Initial verification
 

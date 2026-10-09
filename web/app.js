@@ -61,7 +61,7 @@ function renderSidebar(){
   $('new-chat').classList.toggle('active',route.type==='chat'&&!route.id&&!route.projectId);
   interactions.syncNavigation();
 }
-function header(title,projectId){const p=projectById(projectId);$('breadcrumb-page').textContent=title;$('breadcrumb-project').textContent=p?.name||'';$('breadcrumb-project').hidden=!p;$('context-button').hidden=!p;$('context-button').dataset.projectId=projectId||'';document.title=title+' · Workspace';}
+function header(title,projectId){const p=projectById(projectId);$('breadcrumb-page').textContent=title;$('breadcrumb-project').textContent=p?.name||'';$('breadcrumb-project').hidden=!p;$('context-button').hidden=!p;$('context-button').dataset.projectId=projectId||'';document.title=title+' · Wisp';}
 function showView(name){if(matchMedia('(max-width:760px)').matches)setSidebar(false);for(const v of ['chat','library','project'])$(`${v}-view`).hidden=v!==name;interactions.enterView($(`${name}-view`));}
 async function openChat(id=null,projectId=null){
   leave();const chat=chatById(id);route={type:'chat',id:chat?.id||null,projectId:chat?.projectId||projectId};if(route.projectId)expandedProjects.add(route.projectId);showView('chat');header(chat?.title||'New chat',route.projectId);renderSidebar();restoreDraft();renderChat();
@@ -70,7 +70,7 @@ async function openChat(id=null,projectId=null){
 }
 function newChat(projectId=null){openChat(null,projectId);$('message').focus();}
 function userMessage(text,attachments=[]){return `<div class="message user">${esc(text)}${attachments.length?`<div class="attachments">${attachments.map(f=>`<span class="attachment">${icon('file')}${esc(f.name)}</span>`).join('')}</div>`:''}</div>`;}
-function assistant(content){return `<div class="message assistant"><div class="message-label">${logo}Workspace</div>${content}</div>`;}
+function assistant(content){return `<div class="message assistant"><div class="message-label">${logo}Wisp</div>${content}</div>`;}
 function activity(run){
   const logs=events.get(run.id)||[];
   if(!logs.length)return run.status==='running'?'<p class="progress-caption">Starting the task…</p>':'';

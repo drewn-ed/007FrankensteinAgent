@@ -6,9 +6,11 @@ Implementováno podle oficiálního Sign in with ChatGPT pro lokální aplikace,
 
 1. Nainstalovat závislosti pomocí `uv sync`, spustit `uv run python -m workbench.server`.
 2. Otevřít Personal workspace / Settings → **Continue with ChatGPT**.
-3. V přihlašovacím okně OpenAI sám potvrdit účet, workspace a oprávnění používat předplatné pro **Frankenstein Workspace**. Přístup ke konverzacím se tímto flow neposkytuje. Pokud nechceš placené čerpání, nepovoluj aplikaci kredity po vyčerpání plánu; zkontroluj její oprávnění v ChatGPT Settings → Usage.
+3. V přihlašovacím okně OpenAI sám potvrdit účet, workspace a oprávnění používat předplatné pro **Wisp**. Přístup ke konverzacím se tímto flow neposkytuje. Pokud nechceš placené čerpání, nepovoluj aplikaci kredity po vyčerpání plánu; zkontroluj její oprávnění v ChatGPT Settings → Usage.
 4. Po návratu otevřít Settings, vybrat model z katalogu připojeného účtu a zvolit **Activate model**. Připojený účet a aktivní poskytovatel jsou samostatné stavy; přihlášení samo model nepřepíná. Aktivní volba je označena **Active model**, opakované přihlášení je označeno **Reconnect account**.
 5. Ověřit malý skutečný běh. Přihlášení ani seznam modelů samy nedokládají dostupnou inferenci.
+
+Nové registrace používají název **Wisp**. Dříve připojený účet může v OpenAI dál ukazovat původní název aplikace; přejmenování produktu nemění jeho registraci, tokeny ani oprávnění.
 
 Přihlašovací údaje jsou v `~/.config/007-frankenstein/accounts.json` (0600, adresář 0700), mimo repo. Obsahují oddělené registrace účtů a tokeny; nikdy je neposílat do chatu, GitHubu, veřejných logů ani sandboxu. Ukládání je atomické, refresh rotujících tokenů používá procesový zámek. ID token prochází ověřením podpisu RS256, issuer/audience/expiry a nonce. Callback má jednorázový state a PKCE.
 

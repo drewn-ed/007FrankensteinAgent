@@ -1,6 +1,6 @@
 # Demo video and live pitch
 
-These are English production scripts, not a claim that a video has been recorded or uploaded. Use the current **Workspace** label consistently. Fieldwork is the synthetic target app, not the agent's name. Source requirements: [HQ submission](https://hq.agents007.ai/submit) and the organizers' 60-second-pitch clarification relayed by David on 9 October 2026, summarized in the [brief](hackathon-brief.md).
+These are English production scripts, not a claim that a video has been recorded or uploaded. Use the confirmed product name **Wisp** consistently. Fieldwork is the synthetic target app, not the agent's name. Source requirements: [HQ submission](https://hq.agents007.ai/submit) and the organizers' 60-second-pitch clarification relayed by David on 9 October 2026, summarized in the [brief](hackathon-brief.md).
 
 ## 90-second submission video
 
@@ -8,7 +8,7 @@ The jury needs a running product and traceable outcomes. Aim for 85–88 seconds
 
 | Time | Screen / evidence | English narration |
 | --- | --- | --- |
-| 0–15 s | Workspace beside Fieldwork; registration CSV and room capacities. Label: **Synthetic event data · real execution**. | “An event organizer has messy registrations, workshop preferences and limited seats. When a room closes, the plan changes again. Workspace turns the missing steps into tested skills it can use next time.” |
+| 0–15 s | Wisp beside Fieldwork; registration CSV and room capacities. Label: **Synthetic event data · real execution**. | “An event organizer has messy registrations, workshop preferences and limited seats. When a room closes, the plan changes again. Wisp turns the missing steps into tested skills it can use next time.” |
 | 15–33 s | Starting registry and outcome-based task. Show gap, generated contract, test results, then installed versions. | “The task exposes the gap. The agent writes separate normalization and allocation skills. Tests run in Docker before activation. Generated skills get compute permission only.” |
 | 33–46 s | Actual Fieldwork roster and board, then report download: **24 attendees / 24 seated**. | “Twenty-eight source rows become twenty-four attendees. The browser imports the roster, applies the checked seating plan and downloads the actual report.” |
 | 46–59 s | Room-change task: Hall A closed, Studio D selected; new replanning skill and **22 seated / 3 waiting**. | “A room closes. The agent learns replanning while preserving unaffected seats.” |
@@ -25,7 +25,7 @@ Focus on two messages: useful task logic survives the conversation, and new skil
 
 > Every time a work process changes, an AI assistant can leave you explaining the same rules again.
 >
-> Workspace keeps useful task logic. An event organizer gives it messy registrations and workshop capacities. When a room closes, it must preserve existing bookings and produce a new plan.
+> Wisp keeps useful task logic. An event organizer gives it messy registrations and workshop capacities. When a room closes, it must preserve existing bookings and produce a new plan.
 >
 > The agent identifies a missing step, writes a reusable skill, and tests it before activation. In our recorded demo, a fresh chat combines two earlier skills without rebuilding them. The result is a checked seating plan and a downloadable report.
 >

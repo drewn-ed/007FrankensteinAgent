@@ -1,6 +1,6 @@
-# Landing-page hero: image and typography previews
+# Wisp landing-page hero: image and typography previews
 
-Start here to review the opening screen or hand the assets to another agent. These are visual studies with proposed English copy, not the final landing page.
+Start here to review the opening screen or hand the assets to another agent. These are visual studies for Wisp with proposed English copy, not the final landing page. Existing screenshots predate the naming decision; the editable HTML uses Wisp.
 
 ## Preview gallery
 

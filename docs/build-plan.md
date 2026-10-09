@@ -1,6 +1,6 @@
 # První implementace — 9. 10. 2026
 
-David autorizoval zahájení stavby; konkrétní cílová aplikace ani finální název nejsou zvolené.
+David autorizoval zahájení stavby. Později 9. 10. potvrdil název **Wisp**; rané produktové úvahy níže zachovávají svůj původní kontext.
 
 Typografii a vizuální identitu David řeší samostatně s jiným agentem. Rozhraní přebírá aktuální tokeny, písma a Nucleo ikony přímo z `design/`; tyto zdroje nepřepisovat.
 

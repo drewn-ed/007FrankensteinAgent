@@ -1,0 +1,113 @@
+Create a finished launch film for our actual product, not just a storyboard.
+
+DELIVERABLE
+Produce a polished 30-second maximum product launch video: 1920×1080, 16:9, 30 fps, H.264 MP4 with audio. Aim for 29–30 seconds, including the end card and audio tail. This is the short launch segment for our landing page and can precede a separately recorded hands-on demo. David will record that detailed demo later. Do not try to compress the entire hackathon demonstration into this film.
+
+Act as the director and producer. Make ordinary creative decisions yourself, work through a representative keyframe and a short transition prototype, then finish and review the render. Do not stop at proposing a plan or ask David to design the shots. Communicate with David in Czech; all film text, captions and narration must be English.
+
+USE THE EXISTING SKILL
+Read and follow product-pitch-video:
+/Users/daved/Documents/ChatGPT/AI/skills/product-pitch-video/SKILL.md
+GitHub source: https://github.com/drewn-ed/landing-video-lab/blob/main/skills/product-pitch-video/SKILL.md
+
+The local skill matched GitHub blob e12e54729729f4f188fbc8cbe30df8de36007f5e when this brief was prepared. Read its motion-direction and review-and-revision references. If using Remotion, also read remotion-production and the relevant motion/effects reference, and verify compatibility with the installed version. Reuse available production tools; do not rewrite, reinstall or change the skill or old video experiments. Read-only use of this skill is intended; keep all new production work inside this hackathon project. Respect existing approval rules for third-party skill installation and paid services.
+
+PROJECT AND SOURCES OF TRUTH
+Project root: /Users/daved/Documents/ChatGPT/007 Agent - Hackathon
+Running product: http://127.0.0.1:8767/
+Repository: https://github.com/drewn-ed/007FrankensteinAgent
+
+Use the current LOCAL working tree, which contains implementation and evidence that may not yet be on GitHub's default branch. Do not reset, replace, switch branches or publish the project. Read these files relative to the project root:
+- AGENTS.md and docs/hackathon-brief.md
+- README.md and docs/user-guide.md
+- docs/operations-extension-2026-10-09.md
+- docs/operations-evidence-2026-10-09/summary.json
+- docs/operations-evidence-2026-10-09/main-ui-check.json
+- docs/operations-evidence-2026-10-09/generated-skills.json
+- docs/documentation-validation-2026-10-09.md
+- design/README.md, design/accessibility-typography.md and design/logo/README.md
+
+Inspect the actual running UI before capturing footage. Follow current labels rather than older screenshots. The current route to generated capabilities is Library → Skills. The current result is in Event operations → “Prepare this event for opening…” → View result. Expand the task steps to inspect generation, tests and activation. A skill's details contain Versions & tests, Origin & permissions, and Interface and source.
+
+PRODUCT, AUDIENCE AND ONE MESSAGE
+Use “Workspace”, the existing application label, as an editable working name. Do not rename it Stitch, Frankenstein, Ghost or Fieldwork. Fieldwork is the synthetic event application that Workspace operates, not our product's name.
+
+Audience: people repeatedly preparing files and operating business applications, illustrated by an event organizer. This is a general agent workspace; the event is one understandable example, not a claim that we built only a seating application.
+
+Core message: Useful work becomes a tested capability the agent can use again.
+
+Actual mechanism: the user describes an outcome and supplies inputs; the task exposes a missing operation; the agent generates a Python capability with an interface and tests; tests run in Docker; installation is allowed only after passing; a later task can reuse and combine saved capabilities. Corrections can produce tested versions. Learning here means executable skills and regression tests, not fine-tuning, continuous screen surveillance or remembering everything about the user.
+
+Keep the film focused on this mechanism and its useful result. Do not turn it into a tour of settings, login, the model picker, schedules and every sidebar feature.
+
+APPROVED LOGO AND VISUAL SYSTEM
+Use the actual supplied logo image in the opening/product reveal and closing frame:
+- PNG: design/logo/pixel-ghost.png — transparent 768×768, suitable for import.
+- Master SVG: design/logo/pixel-ghost.svg — preferred when crisp scaling is supported.
+- Preview: design/logo/pixel-ghost-preview.png.
+- Confirmed remote asset: https://github.com/drewn-ed/007FrankensteinAgent/blob/codex/pixel-ghost-logo/design/logo/pixel-ghost.png
+
+It is the approved ink-colored pixel ghost with orange wing details. Preserve its stepped silhouette, eye cutouts, proportions and colors. Do not redraw it as an AI mascot, generate a replacement or animate it into a different shape. A short position/scale entrance is enough.
+
+Palette: beige #F5F2EC, white #FFFFFF, ink #292622, orange #FF8A3D. Use ink text on orange. Use the project's local Geist Pixel Square for short large titles and IBM Plex Mono for supporting text, captions and UI. Font assets are in design/fonts/. Follow the existing tokens rather than inventing a new brand style. Keep important content within 5% safe margins.
+
+Direction: a confident, tactile software launch with controlled energy, clear hierarchy and pixel detail. Alternate a strong typographic beat, a close product interaction and a readable result. Give the viewer one focal action at a time. Use purposeful crops, camera moves and a small number of consistent transitions tied to UI geometry. Avoid neon dashboards, stock robots, unrelated particles, constant glitches, fake 3D interfaces, arbitrary floating cards and a slideshow of generic slogans. Keep real UI sharp and recognizable. Titles should be large enough for phone playback; enlarge the relevant panel instead of expecting viewers to read an entire desktop screenshot.
+
+30-SECOND SHOT PLAN
+You may refine timing and copy while preserving the story, evidence and hard duration limit.
+
+0–3 s — THE PROBLEM
+Headline: “Stop starting from scratch.”
+Introduce the repetitive-work problem using a tight, readable view of the supplied registration CSV or its real product attachment, then hand the focal object into Workspace. Use the small approved logo as a visual anchor. No long logo-only intro. Do not invent a competitor UI or claim all other assistants forget everything.
+
+3–7 s — THE USER'S INTENT
+Headline: “Ask for the outcome.”
+Show the real Workspace composer/task with the source CSV and the event-preparation request. Focus on “Prepare this event for opening” and the attachment; the whole long prompt need not be readable. Reveal the real software by this point, not just abstract animation. If showing a click, capture a real interaction or clearly present a recorded task; do not fake execution by changing HTML text.
+
+7–13 s — THE DIFFERENCE
+Headline: “It builds the missing skill.”
+Use real task steps and a generated skill detail to show the causal order: capability created → tests passed → saved/active. Highlight the actual “Versions & tests” state. The main application's “Normalize preference roster CSV” v1 showed 5/5 tests passed during brief preparation; use the number actually visible in the chosen source, not a fabricated counter. A short explanatory graphic may label “Build → Test → Save”, but it must remain visibly editorial, separate from the real UI. Do not animate a static successful result as if it were a newly executing test.
+
+13–18 s — THE PAYOFF
+Headline: “From messy data to a working result.”
+Show the real task's View result panel: 24 attendees, 24 seats assigned, 0 waiting, plus the actual event-operations.json download link. Crop and hold the result so it can be understood. This is backed by main-app run 03449f772f844c83951dd0d173eef955. Its live execution took about 206 seconds; the film must not imply it completed in these five seconds.
+
+18–25 s — WHAT SURVIVES THE TASK
+Headline: “Keep the skill. Use it again.”
+Show real saved capabilities in Library → Skills, then introduce the next task/fresh-chat idea. Favor clear, legible source material over a fake new success state.
+There is documented fresh-chat composition in validation run ede440fdec46485e93f93a1221beaf84: earlier normalization + replanning skills, no installation, unchanged registry hash. Show its genuine captured evidence or an explicitly labeled evidence excerpt if useful. Replanning was created during an intervening room-change task; do not edit this into a false story where the first task created both of those reused skills. If the separate validation run is not available as UI footage, show the actual saved-skills library and keep the claim to their documented reusability. Do not import fabricated chat history or manufacture an empty-registry-to-success scene.
+
+25–30 s — THE HANDOFF
+Approved ghost logo + “Workspace”.
+Main line: “Build on every task.”
+Small CTA: “See it in action.”
+Resolve to a stable end card with roughly one second of hold and a clean audio ending, ready for David's separate demo to follow. No invented public app URL, “Download now”, pricing or signup promise.
+
+NARRATION AND SOUND
+Create an English voiceover and a restrained rhythmic music/SFX mix, while making the message understandable with sound off. Use a natural, direct delivery; no trailer voice or exaggerated hype. Suggested script, 48 words:
+
+“Every new task shouldn’t mean starting over. Meet Workspace: an agent that turns missing steps into tested skills. Give it the outcome. It builds the capability, checks it, and puts it to work. Later tasks can use what it learned. Build on every task. See it in action.”
+
+Fit the actual recorded delivery to the timeline; shorten the script before speeding up an unnatural voice. Use an already authorized high-quality voice source and licensed/approved audio. Do not clone a person's voice or incur new paid-service charges without authorization. If final narration cannot be produced, finish the independent visual work, deliver a clearly labeled music/SFX-only variant plus the timed voice script, and disclose the missing narration rather than calling a robotic system-voice preview final. Keep music below speech and tie a few subtle cues to the actual actions. Retain separate stems where feasible.
+
+REAL PRODUCT MATERIAL AND HONESTY
+Fresh reference screenshots from the running product are available at:
+- output/launch-video-brief/product-result-reference.jpg
+- output/launch-video-brief/generated-skill-reference.jpg
+They are visual references/saved-result captures, not a recording of a new execution. Recapture clean, readable frames or short real interactions where useful. Never use design/preview-*.png as proof of working features. Do not alter product code, historical data or evidence just to make the film look successful. Leave unrelated tabs and ongoing work intact.
+
+The demonstrated event and attendees are synthetic; the model, Docker tests, browser actions and exports are real. Label the relevant product footage “Local prototype · synthetic event data”. Label archival evidence “Recorded run” and accelerated waiting “Waiting sped up” when applicable. Do not remove a failure from a depicted run or invent test results, speedups, savings, customers or conversion numbers. Crop private emails, account settings, credentials and unrelated chats out of the film. Use the English event example; do not rewrite historical Czech tasks for filming.
+
+Do not claim complete Frankenstein compliance: agent-created discovery/management and an independent dollar cap remain incomplete. Native macOS actions are not yet live-validated. Do not claim universal app control, autonomous permission expansion, always-on operation, a finished installer, team collaboration or currently unsupported providers. The 30-second launch film does not replace the required running-product submission video; the later demo must carry the full evidence and limitations.
+
+PRODUCTION AND HANDOFF
+Work in output/workspace-launch-30s/ inside this project. Preserve other agents' work and all earlier video projects. Build an editable project, with identifiable scenes and separate logo, UI captures, titles, subtitles and audio. Prefer an established suitable video stack over a custom renderer. Use the actual skill's production and review workflow; a preview alone is not a finished deliverable.
+
+Deliver:
+1. workspace-launch-30s.mp4, no longer than 30 seconds.
+2. Editable source, local assets, fonts/licenses, and exact render instructions.
+3. Timed English narration/captions and the available audio stems.
+4. A strong cover frame and a concise source-to-shot list identifying which captures/evidence support each product claim.
+5. A short QA note: actual duration, resolution/fps, which transitions and text holds were viewed, whether audio was actually listened to, and any unfinished requirement.
+
+Verify the exported file, not only the preview: decoding, duration, start/end frames, loaded fonts/assets, legibility at reduced size, clipping/overlaps, sound timing and a clean transition into the later demo. Correct observable defects, then deliver the files. Do not upload to YouTube, publish the site or submit to HQ as part of this production prompt.

@@ -1,6 +1,6 @@
 # HQ submission copy
 
-Prepared in English on 9 October 2026 against the current code, recorded evidence and authenticated [HQ form](https://hq.agents007.ai/submit). **Prepared locally, not submitted.** The copy uses **Workspace**, the existing application label, rather than introducing a new brand. Final naming and the video link still need to be settled before submission.
+Prepared in English on 9 October 2026 against the current code, recorded evidence and authenticated [HQ form](https://hq.agents007.ai/submit). **Prepared locally, not submitted.** **Wisp** is the product name confirmed by David on 9 October 2026. The video link still needs to be supplied before submission.
 
 Only the text inside each block belongs in its corresponding field. Character limits are 3,000 / 2,000 / 2,000 for the three story fields. Do not paste the checklist or editorial notes into those fields.
 
@@ -8,7 +8,7 @@ Only the text inside each block belongs in its corresponding field. Character li
 
 <!-- hq:project_name -->
 ```text
-Workspace
+Wisp
 ```
 
 ## One-line pitch
@@ -22,7 +22,7 @@ An agent workspace that turns missing steps into tested skills and combines them
 
 <!-- hq:what_it_does -->
 ```text
-Workspace is a local work environment for people who repeatedly prepare data and operate applications. The product hypothesis: useful task logic should survive the conversation, so the next task can build on work that has already been tested.
+Wisp is a local work environment for people who repeatedly prepare data and operate applications. The product hypothesis: useful task logic should survive the conversation, so the next task can build on work that has already been tested.
 
 Our concrete user is an event organizer. A messy registration file must become a valid workshop seating plan. When a room closes, the organizer needs a revised plan that respects capacity and preferences while keeping unaffected bookings intact.
 
@@ -83,7 +83,7 @@ Python 3.11+, SQLite, Docker (Python 3.12 sandbox), JSON Schema, HTML/CSS/JavaSc
 
 The verified deadline is **9 October 2026, 07:14 Europe/Prague**. Later commits are not judged. This checklist records unfinished publication work, not a claim it has happened.
 
-- [ ] Settle the displayed project name and use it consistently in HQ, video and repository.
+- [x] Product name confirmed: **Wisp**. Use it in HQ, video and repository; the GitHub repository rename is handled separately by David.
 - [ ] Review the three story fields against the final evidence; retain every remaining limitation.
 - [ ] Record a running-product demo, no longer than 90 seconds; retain failures and label speedups/synthetic data.
 - [ ] Upload the video to YouTube as Unlisted and verify playback from the jury's perspective.

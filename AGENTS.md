@@ -1,4 +1,4 @@
-# Pravidla pro agenty — 007FrankensteinAgent
+# Pravidla pro agenty — Wisp
 
 Platí pro celý repozitář. Před prací si přečti také [referenční brief](docs/hackathon-brief.md).
 Ověřeno v přihlášeném HQ dne **8. 10. 2026**. Časy jsou v **Europe/Prague**.
@@ -6,16 +6,18 @@ Rozlišení videa a živého pitche doplněno **9. 10. 2026** podle zprávy orga
 
 ## Kontext a zdroje
 
-- **Dokumentace pro porotu 9. 10.:** aktuální anglický vstup je `README.md` a [index dokumentace](docs/README.md): návod k aplikaci, architektura, důkazy, texty do HQ a scénáře videa/pitche. Název Workspace odpovídá současnému UI; Fieldwork je syntetická cílová aplikace. Při tvorbě byly znovu přečteny track a formulář v přihlášeném HQ. Podklady nejsou odevzdání ani potvrzení zveřejnění pracovního stromu. Agentem vytvořená správa/discovery zůstává nedoložená a samostatný dolarový limit není implementovaný. Starší audity a návrhy zachovávají historický stav, nikoli aktuální návod.
+- **Potvrzený název 9. 10.: Wisp.** David výslovně zvolil název produktu. Používej Wisp v aktuálních README, UI, dokumentaci, prezentacích a videu. Workspace / Learning workspace jsou dřívější pracovní názvy; Frankenstein je soutěžní track a Fieldwork demonstrační aplikace. GitHub repozitář přejmenuje David zvlášť; do té doby zachovej funkční původní URL. Neměň historické důkazy, uložená data, technické identifikátory ani oprávnění kvůli přejmenování.
 
-- **Zahájená implementace 9. 10.:** David autorizoval plánování a zahájení stavby. Na větvi `codex/learning-agent-mvp` vzniká lokální Python prototyp s Gemini API, Docker sandboxem, testovací branou, registrem a webovým rozhraním. Viz `docs/build-plan.md` a `docs/submission-draft.md`. Free tarif projektu Gemini David potvrdil; žádný automatický placený fallback. Finální název, cílová aplikace a soutěžní demo zůstávají otevřené. Typografii David řeší s jiným agentem; tuto paralelní práci nepřebírej ani nepřepisuj. Soubory `design/` nejsou výstupem implementačního agenta.
+- **Dokumentace pro porotu 9. 10.:** aktuální anglický vstup je `README.md` a [index dokumentace](docs/README.md): návod k aplikaci, architektura, důkazy, texty do HQ a scénáře videa/pitche. Potvrzený název produktu je Wisp; Fieldwork je syntetická cílová aplikace. Při tvorbě byly znovu přečteny track a formulář v přihlášeném HQ. Podklady nejsou odevzdání ani potvrzení zveřejnění pracovního stromu. Agentem vytvořená správa/discovery zůstává nedoložená a samostatný dolarový limit není implementovaný. Starší audity a návrhy zachovávají historický stav, nikoli aktuální návod.
+
+- **Zahájená implementace 9. 10.:** David autorizoval plánování a zahájení stavby. Na větvi `codex/learning-agent-mvp` vzniká lokální Python prototyp s Gemini API, Docker sandboxem, testovací branou, registrem a webovým rozhraním. Viz `docs/build-plan.md` a `docs/submission-draft.md`. Free tarif projektu Gemini David potvrdil; žádný automatický placený fallback. Při zahájení nebyly název, cílová aplikace a soutěžní demo zvolené; název Wisp byl následně potvrzen. Typografii David řeší s jiným agentem; tuto paralelní práci nepřebírej ani nepřepisuj. Soubory `design/` nejsou výstupem implementačního agenta.
 
 - **Navazující funkční verze 9. 10.:** UI je napojené na engine, používá schválené logo a ukládá projekty/chaty/workflows na lokální server. `Computer` ovládá samostatný Chrome přes pevný Playwright konektor, jeden origin a operátorskou bránu pro externí interakce. Generovaný `browser_plan` pouze počítá deklarativní kroky v Dockeru; nesmí spouštět hostitelský kód. Nově fungují přílohy, browser upload/download a trvalý lokální plánovač. Nativní macOS konektor je implementovaný, ale skutečné klikání a psaní čeká na Accessibility oprávnění a není ověřené. Komplexní showcase organizace akce doložil vznik schopností a kombinaci dvou dřívějších schopností v nové konverzaci; agentem vytvořená správa/vyhledávání stále nejsou doložené. Týmové sdílení není implementované. Viz `docs/operations-extension-2026-10-09.md`; neoznačovat celý soutěžní průchod za splněný.
 
 - Stavíme projekt pro **Agents 0.0.7 — From Dusk Till Dawn #01**, track **Frankenstein**.
 - Na projektu pracuje **David sám — Frankenstein sólo**. Petr na tomto projektu nespolupracuje.
 - Tento veřejný repozitář obsahuje podklady: <https://github.com/drewn-ed/007FrankensteinAgent>. Nepovažuj tento repozitář automaticky za aktuální zdroj implementace ani finální odevzdávané repo.
-- **Stitch není Davidův projekt a není součástí tohoto zadání.** David nyní zkoumá jiné zadání; nový produkt, název a stack zatím nejsou potvrzené.
+- **Stitch není Davidův projekt a není součástí tohoto zadání.** David nyní zkoumá jiné zadání; dřívější směr a stack nebyly v této fázi potvrzené; aktuální název je Wisp.
 - **Aktuální směr 9. 10.:** David chce pokračovat v pracovním prostředí s agentem, který si osvojuje aplikace a postupy. Žádá celkovou produktovou koncepci, užitečné navazující funkce a kritické posouzení škálovatelnosti. Výchozí je [produktový návrh](docs/learning-agent-product-blueprint-2026-10-09.md); úzký scénář v handoffu není definicí celého produktu. YouTube, Meta Ads a DaVinci jsou jen příklady. Konkrétní rozsah implementace, integrace a stack zůstávají otevřené.
 - Samostatný Davidův projekt pro tvorbu videí je mimo rozsah tohoto projektu; bez nového požadavku do něj nevstupuj ani jej neupravuj.
 - Zapamatování mapy UI nebo historie samo o sobě nedokládá splnění Frankensteina. Ověř vznik otestovaných schopností, agentem rozvíjenou správu a jejich kombinaci v nové session. Nevydávej popis nebo plán za naměřenou vlastnost.
@@ -95,7 +97,7 @@ Aktuální váhy **z HQ**, nikoli ze staršího veřejného webu:
 - David zvolil velmi světlou béžovou s bílou pracovní plochou a světlejší oranžovou pro hlavní akce. Základ: `#F5F2EC`, `#FFFFFF`, `#FF8A3D`, text `#292622`. David odmítl Manrope. Písma: **Geist Pixel Square 400** pro krátké nadpisy od 24 px, **IBM Plex Mono 400–700** pro čtení, ovládání a technické údaje (Davidova preference). Formuláře, navigace, tlačítka, chyby, delší texty a titulky videa používají IBM Plex Mono. Běžný text má 16 / 26 px. Přesná pravidla a zdroje jsou v `design/accessibility-typography.md`; hranice 24 px je naše designové rozhodnutí, nikoli předpis WCAG.
 - Společné hodnoty jsou v `design/tokens.json`; CSS generuje `python3 design/build_tokens.py`. Při implementaci přebírej významové tokeny, lokální fonty a jejich licence. Velikosti pro video a slidy jsou v manuálu odlišné od UI.
 - David vybral **pixelové ikony Nucleo** a nechce za ikony platit. Používej přiložený bezplatný výběr `design/icons/nucleo-pixel` (Pixel Essential, 20 SVG), 24px mřížku a 2px tah; pro větší záběry násobky 24 px. Zachovej copyright notice a původ. Pixelové detaily nekombinuj s jinou hladkou ikonovou sadou. Typografie navazuje na pixelový styl pomocí Geist Pixel Square; pro čtení a ovládání používá IBM Plex Mono.
-- Název a logo produktu nejsou tímto návrhem potvrzené. Ukázkové obrazovky obsahují ilustrační data a nejsou důkazem funkčnosti.
+- Název Wisp a pixelové ghost logo jsou potvrzené následnými rozhodnutími Davida. Ukázkové obrazovky obsahují ilustrační data a nejsou důkazem funkčnosti.
 
 ## Práce se skills a přístupy
 

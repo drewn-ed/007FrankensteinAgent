@@ -1,6 +1,6 @@
-# Documentation
+# Wisp documentation
 
-Current public-facing documentation is in English. Historical research and internal project notes retain their original language and dates.
+Current public-facing documentation is in English. Historical research and internal project notes retain their original language and dates. David confirmed the name Wisp on 9 October 2026; older evidence, screenshots and early naming proposals record their original state.
 
 | Start here | Purpose |
 | --- | --- |

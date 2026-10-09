@@ -1,6 +1,6 @@
-# Pixel ghost logo
+# Wisp pixel ghost logo
 
-Approved by David on October 9, 2026. This is the selected standalone mark: an ink pixel ghost with an orange wing, with no name or wordmark. The product name remains undecided.
+Approved by David on October 9, 2026. This is the selected standalone mark: an ink pixel ghost with an orange wing, with no name or wordmark. The product name is **Wisp**, confirmed by David on October 9, 2026.
 
 ![Approved pixel ghost logo](pixel-ghost-preview.png)
 

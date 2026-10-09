@@ -1,10 +1,10 @@
-# Visual system for the application and communications
+# Wisp visual system
 
 Draft **0.5 — October 9, 2026** unifies the application, presentation and launch video. David chose light beige, white work surfaces and a brighter orange accent, followed by Nucleo pixel icons from the free selection. The supplied Flow screenshot informs the relationship between surfaces and colors; its branding and private content are not included.
 
 **English is the only product language.** This includes interface copy, accessible names, placeholders, loading and empty states, errors, sample tasks, agent-generated messages and descriptions, this guide, slides and video. Use `lang="en"` and English formatting. Preserve user-supplied data and historical evidence in their original form unless translation is requested. Internal project discussion may remain in Czech.
 
-“Workspace” and “Learning workspace” are placeholders. The product name, logo and final marketing copy remain open. The visual character combines pixel headlines, quiet surfaces, generous spacing and pixel details and clear reading text.
+**Wisp** is the product name confirmed by David on October 9, 2026, replacing the earlier “Workspace” and “Learning workspace” placeholders. The approved logo is the pixel ghost in `logo/`. Earlier rendered previews retain their original capture; editable sources use Wisp. The visual character combines pixel headlines, quiet surfaces, generous spacing and pixel details and clear reading text.
 
 ## Files
 

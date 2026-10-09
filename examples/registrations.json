@@ -1,0 +1,10 @@
+{
+  "source": "Synthetic verification data; not real participants or a selected product niche.",
+  "registrations": [
+    {"name": "Anna", "email": " ANNA@example.test ", "workshop": "Design", "seats": 2},
+    {"name": "Boris", "email": "boris@example.test", "workshop": "AI", "seats": 1},
+    {"name": "Anna", "email": "anna@example.test", "workshop": "Design", "seats": 2},
+    {"name": "Cyril", "email": "cyril@example.test ", "workshop": "Design", "seats": 1}
+  ],
+  "capacities": {"Design": 2, "AI": 3}
+}

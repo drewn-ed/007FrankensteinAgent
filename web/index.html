@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pracovní prostředí · prototyp</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a href="/" class="brand"><span class="brand-mark" aria-hidden="true">↳</span> Pracovní prostředí <small>PROTOTYP / 0.1</small></a>
+    <span id="connection" role="status">Připojuji…</span>
+  </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <button class="nav active" id="work-tab" aria-pressed="true">Práce <span>↗</span></button>
+      <button class="nav" id="skills-tab" aria-pressed="false">Naučené postupy <span id="skill-count">0</span></button>
+      <div class="side-heading">PŘEDCHOZÍ BĚHY</div>
+      <div id="history"><p class="muted">Tady se objeví dokončená práce.</p></div>
+      <div class="side-note"><span class="dot"></span> Lokální prototyp<p>Pracuje pouze s vloženými daty.<br>Externí aplikace zatím neovládá.</p></div>
+    </aside>
+    <main>
+      <section id="work-view">
+        <div class="page-heading"><div><div class="eyebrow">NOVÝ ÚKOL</div><h1>Co potřebuješ udělat?</h1><p class="muted">Zadej práci. Výsledek můžeš opravit a postup použít příště.</p></div><button class="quiet" id="fresh-session">Nová session ↗</button></div>
+        <form id="task-form" class="composer">
+          <label for="task">Zadání</label>
+          <textarea id="task" rows="3" maxlength="4000" placeholder="Popiš výsledek, který potřebuješ…" required></textarea>
+          <details class="input-details" open><summary>Podklady <span>Text, JSON, CSV</span></summary>
+            <label class="sr-only" for="input-data">Vstupní data</label><textarea id="input-data" rows="5" placeholder="Vlož data nebo přidej textový soubor. Odesílají se vybranému modelu."></textarea>
+            <div class="input-actions"><label class="file-button" for="file-input">＋ Přidat soubor</label><input type="file" id="file-input" accept=".txt,.json,.csv,.md" hidden><button type="button" class="text-button" id="example">Vyzkoušet na ukázkových datech</button></div>
+          </details>
+          <div class="composer-bottom"><span id="limits" class="muted">Každý nový běh začíná bez předchozí konverzace.</span><button class="primary" id="submit" type="submit">Spustit úkol <span>↗</span></button></div>
+        </form>
+        <p id="notice" role="alert" hidden></p>
+        <div class="work-grid">
+          <section class="result-panel"><div class="panel-heading"><h2>Výsledek práce</h2><span class="badge" id="run-status">ČEKÁ NA ZADÁNÍ</span></div>
+            <div id="result-empty" class="empty"><span class="empty-symbol">↳</span><h3>Výsledek se objeví tady.</h3><p>Uvidíš, co agent skutečně udělal,<br>a můžeš upřesnit, co má příště změnit.</p></div>
+            <div id="result-content" hidden><p id="result-message"></p><div id="result-value"></div><button id="download-result" class="quiet">Stáhnout výsledek ↓</button></div>
+            <form id="correction-form" hidden><h3>Co má příště udělat jinak?</h3><label for="capability">Postup k úpravě</label><select id="capability" required></select><label class="sr-only" for="correction">Oprava</label><textarea id="correction" rows="3" placeholder="Například: neúplné záznamy zachovej a označ je ke kontrole." required></textarea><details><summary>Vlastní ověřovací příklad <span>volitelné</span></summary><p class="muted">Přesný vstup a správný výsledek pomohou ověřit tvoji opravu.</p><label for="case-input">Vstup (JSON)</label><textarea id="case-input" rows="3"></textarea><label for="case-expected">Správný výsledek (JSON)</label><textarea id="case-expected" rows="3"></textarea></details><button class="primary" type="submit" id="correct-submit">Ověřit a naučit opravu ↗</button><p class="muted small">Nová verze musí projít novým i předchozími testy. Testy nepokrývají všechny možné situace.</p></form>
+          </section>
+          <section class="activity-panel"><div class="panel-heading"><h2>Co se právě děje</h2><span id="activity-count" class="muted">0 kroků</span></div><ol id="activity"><li class="activity-empty">Skutečné kroky, testy a použité postupy — jakmile spustíš úkol.</li></ol><div id="run-metrics" class="run-metrics" hidden></div></section>
+        </div>
+      </section>
+      <section id="skills-view" hidden><div class="eyebrow">TRVALÁ ZKUŠENOST</div><h1>Naučené postupy</h1><p class="muted">Jen aktivní verze, které prošly testy. Každá má dohledatelný původ.</p><div id="skills-list"></div></section>
+    </main>
+  </div>
+</body>
+</html>

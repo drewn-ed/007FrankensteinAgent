@@ -5,6 +5,8 @@ Ověřeno v přihlášeném HQ dne **8. 10. 2026**. Časy jsou v **Europe/Prague
 
 ## Kontext a zdroje
 
+- **Zahájená implementace 9. 10.:** David autorizoval plánování a zahájení stavby. Na větvi `codex/learning-agent-mvp` vzniká lokální Python prototyp s Gemini API, Docker sandboxem, testovací branou, registrem a webovým rozhraním. Viz `docs/build-plan.md` a `docs/submission-draft.md`. Free tarif projektu Gemini David potvrdil; žádný automatický placený fallback. Finální název, cílová aplikace a soutěžní demo zůstávají otevřené. Typografii David řeší s jiným agentem; tuto paralelní práci nepřebírej ani nepřepisuj. Soubory `design/` nejsou výstupem implementačního agenta.
+
 - Stavíme projekt pro **Agents 0.0.7 — From Dusk Till Dawn #01**, track **Frankenstein**.
 - Na projektu pracuje **David sám — Frankenstein sólo**. Petr na tomto projektu nespolupracuje.
 - Tento veřejný repozitář obsahuje podklady: <https://github.com/drewn-ed/007FrankensteinAgent>. Nepovažuj tento repozitář automaticky za aktuální zdroj implementace ani finální odevzdávané repo.

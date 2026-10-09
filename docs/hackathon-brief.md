@@ -2,6 +2,10 @@
 
 Stav ověřený **8. října 2026** v přihlášeném HQ. Všechny časy jsou místní pro **Prahu (Europe/Prague)**. Tento dokument je shrnutí zadání a pracovních důsledků, nikoli kopie obsahu portálu.
 
+**Doplnění 9. 10. 2026:** David v chatu předal zprávu organizátorů „SUBMITTED VIDEOS vs. ON-STAGE PITCHES“. Níže je zachycen její význam pro video a pitch; původní odkaz ani datum vydání zprávy nebyly dodány. Jde o předaný zdroj, nikoli nové ověření původní zprávy v HQ.
+
+**Kontrola při přípravě dokumentace 9. 10. 2026:** v přihlášeném HQ byly znovu přečteny Frankenstein, ground rules, váhy hodnocení a formulář odevzdání. Povinný průchod, váhy, limity textů 3 000 / 2 000 / 2 000 znaků, YouTube Unlisted do 90 sekund a uzávěrka 07:14 odpovídají tomuto briefu. Formulář byl neodeslaný DRAFT s prázdnými projektovými poli a odkazy. Aktuální anglické podklady jsou v [indexu dokumentace](README.md), zejména [průvodci pro porotu](jury-guide.md) a [textech do formuláře](submission-draft.md). Starší produktové úvahy níže jsou historický kontext; aktuální implementaci popisuje hlavní README. Zpráva o minutovém živém pitchi tímto nebyla nově ověřena v původním zdroji.
+
 ## Zdroje a jejich role
 
 | Zdroj | Co jsme z něj ověřili |
@@ -12,6 +16,7 @@ Stav ověřený **8. října 2026** v přihlášeném HQ. Všechny časy jsou m�
 | [HQ — tým](https://hq.agents007.ai/team) | Tehdejší stav registrace týmu, zvolený track a propojení repozitáře; David nyní pracuje sólo |
 | [Veřejný web](https://agents007.ai/hackathon01/) | Kontext akce a angličtina společného programu; některé údaje se liší od HQ |
 | Zadání Davida v tomto projektu | David pracuje sólo; nejdřív brief a rešerše, následně produkt, 60sekundový pitch a video do 90 sekund |
+| Zpráva organizátorů „SUBMITTED VIDEOS vs. ON-STAGE PITCHES“, vložená Davidem do chatu 9. 10. 2026 | Video 90 s vysvětluje porotě postavený produkt; pitch 60 s představuje myšlenku, relevanci, originalitu a hodnotu. Doporučení 1–2 nejsilnějších sdělení kvůli sérii přes čtyřicet minutových pitchů. Původní odkaz nebyl dodán. |
 
 Za pracovní zdroj pravdy pro soutěžní parametry bereme aktuální HQ. Novější výslovné upřesnění organizátorů má být zaznamenáno a promítnuto do obou dokumentů.
 
@@ -73,7 +78,7 @@ Naše doporučené otázky pro osobní rozhovor, nikoli nevyřešené podmínky 
 
 1. Splňuje náš konkrétní návrh dostatečně agentem vytvořené discovery a správu, nebo příliš spoléhá na hotový framework?
 2. Je náš druhý úkol dostatečně odlišný a je kombinace vzniklých schopností přesvědčivá?
-3. Jak přesně probíhá minutový pitch: slidy, živé demo, případné dotazy a striktní časový limit?
+3. Jaké jsou technické podmínky minutového pitche: slidy, živé demo a případné dotazy? Délku 60 sekund a zaměření potvrzuje zpráva organizátorů předaná Davidem 9. 10.
 
 ## Časy a výstupy
 
@@ -93,7 +98,12 @@ Naše doporučené otázky pro osobní rozhovor, nikoli nevyřešené podmínky 
 
 Doporučená struktura videa přímo v HQ: **15 sekund problém a uživatel → 60 sekund kompletní demo → 15 sekund co je skutečné, simulované a co zbývá**. Čekání lze zrychlit, selhání se nesmějí vystříhat. Marketingový úvod tedy musí nechat dost času na důkaz funkčnosti.
 
-**Živý pitch:** připravujeme **60 sekund podle zadání Davida**. Přesný limit není na přečtených stránkách HQ uveden; konkrétní prezentaci a scénář vytvoříme po výběru produktu. Veřejný web uvádí angličtinu pro společný program a dema.
+**Upřesnění organizátorů předané Davidem 9. 10. — video versus živý pitch:**
+
+- **Video, 90 sekund:** vysvětlení pro porotu, co během noci vzniklo. Může být techničtější a popisné; ukazuje skutečně postavený produkt, jeho mechanismus a výsledek. Povinný Frankenstein průchod a přiznání limitů nadále platí.
+- **Pitch na pódiu, 60 sekund:** myšlenka, její relevance, originalita a hodnota pro uživatele. Organizátoři odkazují na otázky u nejvýše vážených kritérií v HQ/Topics. Kvůli rychlé sérii přes čtyřicet minutových pitchů doporučují **1–2 nejsilnější zapamatovatelná sdělení**.
+
+**Naše produkční interpretace:** připravit tři související výstupy se společným příběhem a vizuály: soutěžní video s vysvětlením funkčnosti a důkazy; minutový pitch s problémem, uživatelem, přínosem a originalitou; samostatný launch film pro landing page. Délka launch filmu zatím není rozhodnutá ani předepsaná organizátory. Dlouhý marketingový úvod nesmí vytlačit potřebné důkazy ze soutěžního videa. Konkrétní demo scénář zůstává otevřený a musí odpovídat skutečným schopnostem enginu. Veřejný web uvádí angličtinu pro společný program a dema; Davidovo produktové rozhodnutí vyžaduje angličtinu i pro video a slidy.
 
 ### Pole formuláře pro odevzdání
 
@@ -143,7 +153,7 @@ Konkrétní kódy a přístupové údaje zůstávají v HQ. Použití partnerů 
 
 - **Váhy:** veřejný web uváděl 35 % funkčnost / 25 % hodnotu / 20 % techniku / 10 % originalitu / 10 % validaci. Přihlášené HQ uvádí tabulku výše. První chatové shrnutí vycházelo z veřejného webu; pro další práci je tímto opravené.
 - **Video:** veřejný web uváděl dvě minuty; HQ brief i formulář shodně uvádějí **nejvýše 90 sekund**. Používej 90 sekund.
-- **Pitch:** minuta pochází od Davida, nikoli z ověřeného textu HQ.
+- **Pitch:** při ověření HQ 8. 10. minuta pocházela pouze od Davida. Zpráva organizátorů „SUBMITTED VIDEOS vs. ON-STAGE PITCHES“, kterou David předal 9. 10., nově potvrzuje **60 sekund** a zaměření na relevanci, originalitu a hodnotu. Původní odkaz nebyl dodán; netvrdíme, že jsme tuto zprávu nezávisle přečetli v HQ.
 - **Tým a repo:** GitHub repo existuje a je veřejné. Při kontrole 8. 10. týmová stránka HQ stále uváděla, že repozitář není připojený. Jde o zachycený stav, který se může změnit.
 - **Produkt:** David pracuje sólo a nový produkt není potvrzený. Finální tým a odkaz pro odevzdání je nutné sladit se skutečným stavem; žádná změna v HQ zde nebyla provedena.
 

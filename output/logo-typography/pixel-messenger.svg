@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
+  <title id="title">Pixel messenger — logo concept</title>
+  <desc id="desc">A stepped ghost with two cutout eyes, a drifting tail and a small orange pixel wing.</desc>
+  <path fill="#292622" fill-rule="evenodd" d="M9 3h5v1h2v2h1v8h-1v3h-2v2h-3v1H6v-1H3v-1H1v-2h4v-1h1V7h1V5h2V3ZM9 8v3h2V8H9Zm4 0v3h2V8h-2Z"/>
+  <path fill="#FF8A3D" d="M18 5h2V4h2V3h2v3h-2v1h-4V5Zm0 4h2V8h2v2h-2v1h-2V9Z"/>
+</svg>

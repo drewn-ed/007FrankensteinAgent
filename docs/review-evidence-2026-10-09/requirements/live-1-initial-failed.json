@@ -1,0 +1,93 @@
+{
+  "stage": 1,
+  "pid": 27976,
+  "config": {
+    "model": "gemini-3.5-flash-lite",
+    "free_confirmed": true,
+    "max_calls": 12,
+    "max_seconds": 240,
+    "max_output": 8192
+  },
+  "before": [],
+  "after": [],
+  "run": {
+    "id": "515c09099e0d462ebbcd62b639bb0510",
+    "task": "Read this event registration CSV and return valid unique registrations plus rejected rows. Trim names and group IDs, lowercase and trim email, split preferences by | and trim each. A valid email has exactly one @ and nonempty parts on both sides. Reject missing names and invalid emails. For duplicate normalized emails keep the first valid row. Preserve valid row order. Each registration needs name, email, group, preferences (an array). Every rejected row needs its original 1-based data-row number and reason.",
+    "input": {
+      "csv": "name,email,group,preferences\n Ada , ADA@example.test , G1 ,Design|AI\nBen,ben@example.test,G1,Design|AI\nAda duplicate,ada@example.test,,AI\nCy,invalid,,AI\nDee,dee@example.test,,AI\n"
+    },
+    "kind": "task",
+    "status": "failed",
+    "created_at": 1791512391.364366,
+    "result": null,
+    "registry_before": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "model_calls": 1,
+    "tokens": 2228,
+    "conversation": [],
+    "usage_version": 1,
+    "model_usage": [
+      {
+        "call": 1,
+        "purpose": "Planning",
+        "provider": "Google Gemini",
+        "model": "gemini-3.5-flash-lite",
+        "started_at": 1791512391.429798,
+        "status": "failed",
+        "usage": {
+          "input": 1379,
+          "output": 849,
+          "thinking": 0,
+          "cached_input": 0,
+          "total": 2228,
+          "tool_input": 0
+        },
+        "pricing": {
+          "tier": "free_confirmed",
+          "currency": "USD",
+          "source": "https://ai.google.dev/gemini-api/docs/pricing",
+          "checked_at": "2026-10-09",
+          "paid_standard_per_million": {
+            "input": 0.3,
+            "output": 2.5,
+            "cached_input": 0.03
+          }
+        },
+        "resolved_model": "gemini-3.5-flash-lite",
+        "service_tier": "standard",
+        "duration_ms": 2603
+      }
+    ],
+    "cost": {
+      "tracked": true,
+      "calls": 1,
+      "recorded_calls": 1,
+      "known_cost_calls": 1,
+      "unknown_cost_calls": 0,
+      "estimated_usd": 0.0,
+      "cost_complete": true,
+      "paid_equivalent_usd": 0.0025362,
+      "paid_equivalent_calls": 1,
+      "billed_usd": null
+    },
+    "error": "The model returned invalid JSON.",
+    "duration_ms": 2670,
+    "registry_after": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "events": [
+    {
+      "seq": 1,
+      "at": 1791512391.428947,
+      "context_run_ids": [],
+      "kind": "session",
+      "message": "New session; only the persistent registry was loaded.",
+      "registry": []
+    },
+    {
+      "seq": 2,
+      "at": 1791512394.034183,
+      "kind": "error",
+      "message": "The model returned invalid JSON."
+    }
+  ],
+  "catalog": null
+}

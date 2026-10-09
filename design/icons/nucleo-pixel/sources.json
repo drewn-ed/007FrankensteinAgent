@@ -1,0 +1,172 @@
+{
+  "package": "nucleo-pixel-essential",
+  "version": "1.0.1",
+  "source": "https://registry.npmjs.org/nucleo-pixel-essential/-/nucleo-pixel-essential-1.0.1.tgz",
+  "integrity": "sha512-OLyHKhbJFHpO2A8hCj+D/ZlH1xqAHk1FiYuHhd2EpPWVE2yH0F3VSHXYCUxdBaQbECE/9j7W84OHtZpGfwPq3Q==",
+  "officialFreePage": "https://nucleoapp.com/free-pixel-icons",
+  "license": "https://nucleoapp.com/license",
+  "retrieved": "2026-10-09",
+  "method": "Static conversion of published free React SVG geometry to SVG; no package code executed. Geometry and strokes unchanged.",
+  "icons": [
+    {
+      "file": "folder-open.svg",
+      "component": "IconFolderOpen",
+      "role": "Projects",
+      "sourceFile": "package/dist/components/IconFolderOpen.js",
+      "sourceSha256": "95f7ed9f96f7d7f6d4b67413e991ada721d041af06e2246519de27bd455cbe90",
+      "svgSha256": "32e4ac4191a2a54517bea0724c22551e166c01e56217d5e87d0c19d9293372c9"
+    },
+    {
+      "file": "book-magic-skill.svg",
+      "component": "IconBookMagicSkill",
+      "role": "Learned skills",
+      "sourceFile": "package/dist/components/IconBookMagicSkill.js",
+      "sourceSha256": "9cb83d8686b3b4b79a77d7228bc658f443f6ee58a2910abd1247b21c1d474149",
+      "svgSha256": "bade43a412ba840c5d9daffcc5e5aadc38182ed4b14d27db50ae319ec30e8e24"
+    },
+    {
+      "file": "sliders.svg",
+      "component": "IconSliders",
+      "role": "Project rules",
+      "sourceFile": "package/dist/components/IconSliders.js",
+      "sourceSha256": "d03070a02c9bd45f244d6d22119cdb79b93148d5a310a796eb2e2ca2fd02107c",
+      "svgSha256": "d5b0f410956e9db20440592cc2bc214fa9c07e93157039a3976318f2b73af657"
+    },
+    {
+      "file": "magnifier.svg",
+      "component": "IconMagnifier",
+      "role": "Search",
+      "sourceFile": "package/dist/components/IconMagnifier.js",
+      "sourceSha256": "4fa4241e45f984659834e50e822c075b2d2ccbde4a80f26895c715e216d23dc1",
+      "svgSha256": "8c0179c6fd253de15a24b6470b19ce8def39233d00749e9901fd2c70c215b912"
+    },
+    {
+      "file": "plus.svg",
+      "component": "IconPlus",
+      "role": "New task",
+      "sourceFile": "package/dist/components/IconPlus.js",
+      "sourceSha256": "b4849c094ecf1cbb108e5bc16f879b10be60ec8a873fa5d240ca19c3dd9f36b6",
+      "svgSha256": "9a30c283248bbc9f1e690be140523ac6f13afa779be1c2d416bfc745fd0f2810"
+    },
+    {
+      "file": "check.svg",
+      "component": "IconCheck",
+      "role": "Verified",
+      "sourceFile": "package/dist/components/IconCheck.js",
+      "sourceSha256": "ee6050c1b59aea446ab40d4cfb820689321fdf0f5c56ca23d90fedad885d551c",
+      "svgSha256": "6f5cc1ea6af0445be8eedf6e1d2987f26b350e3fe9c14fe1fc5e5b51edb80763"
+    },
+    {
+      "file": "xmark.svg",
+      "component": "IconXmark",
+      "role": "Close or error",
+      "sourceFile": "package/dist/components/IconXmark.js",
+      "sourceSha256": "adf310ba71123a01af914cb84644f1120c3de6521156b9d8fb55dc517432fd5c",
+      "svgSha256": "55a55ed95760d62e9033fc1cbfd74f48b722f4446d819194e45d1b323f743c43"
+    },
+    {
+      "file": "triangle-warning.svg",
+      "component": "IconTriangleWarning",
+      "role": "Needs review",
+      "sourceFile": "package/dist/components/IconTriangleWarning.js",
+      "sourceSha256": "0ff5644eb850811d24bebf1b71914978d7e3946c25fdf1a5a88f81c6e2b6d9ef",
+      "svgSha256": "ffb7c364bc55f564e707ff309fac41d450da7280fb19662062debc1e62284287"
+    },
+    {
+      "file": "loader.svg",
+      "component": "IconLoader",
+      "role": "In progress",
+      "sourceFile": "package/dist/components/IconLoader.js",
+      "sourceSha256": "4cfec5c67b950317a5c827b067e381abf5673fa16ed0d529671f4b4776c25399",
+      "svgSha256": "8cd7fd87db13bafd68e6f9e7c72075e655b93b0fa6d07ed9d57374e5390d685a"
+    },
+    {
+      "file": "paper-plane.svg",
+      "component": "IconPaperPlane2",
+      "role": "Start task",
+      "sourceFile": "package/dist/components/IconPaperPlane2.js",
+      "sourceSha256": "1013b33e6449059d378597609e1d99cec9f2c29a11e4785e0a1e7f18f90c0e63",
+      "svgSha256": "eb6cfde29e7331e4a0f7c09115d148bcf7e62a8c9906bac90112ba7fdeee5564"
+    },
+    {
+      "file": "layers.svg",
+      "component": "IconLayers",
+      "role": "Skill layers",
+      "sourceFile": "package/dist/components/IconLayers.js",
+      "sourceSha256": "0369d2052b6420f8c2f4467de7c21bbb44546840f8fc90ec159b7e143aa0bad4",
+      "svgSha256": "903cf1e06dcbf85ad15afda2ef2295b3ddca51156b585cb996b700b9113b4f31"
+    },
+    {
+      "file": "shield-check.svg",
+      "component": "IconShieldCheck",
+      "role": "Permissions",
+      "sourceFile": "package/dist/components/IconShieldCheck.js",
+      "sourceSha256": "7b787cc08c326ad88f99787248384f1ce3105266138aee804d78f746ea7b4d8f",
+      "svgSha256": "408044233582c34402101f74e4e4f7a44057fd3dfede9c5d2229502d1bba900a"
+    },
+    {
+      "file": "clock.svg",
+      "component": "IconCircleHalfDottedClock",
+      "role": "History",
+      "sourceFile": "package/dist/components/IconCircleHalfDottedClock.js",
+      "sourceSha256": "c879f888dbefc39249754e80f973e3ed70493f0b1968972e96a9cc978d2e3784",
+      "svgSha256": "402370833ae7e43d1e3cb51ccee3c777b6b429431a0bfda2304b3c7f7efa5e5e"
+    },
+    {
+      "file": "gear.svg",
+      "component": "IconGear2",
+      "role": "Settings",
+      "sourceFile": "package/dist/components/IconGear2.js",
+      "sourceSha256": "9433fae0b2368a32d5d97268dff44848d586efe4566d0520158ace95a92ffa49",
+      "svgSha256": "02a73e08003db633cac8da3e68b3ab7eb96ed99d1b0176402cf570b197044b6d"
+    },
+    {
+      "file": "file.svg",
+      "component": "IconFile",
+      "role": "Source files",
+      "sourceFile": "package/dist/components/IconFile.js",
+      "sourceSha256": "f7689d5e6712ad99bf745895d9962dec988e4571cc16a8550b6c0843449ae1c2",
+      "svgSha256": "7e30b828ebcbd19549ec5b0fda9c739fbaf904181c20ff65b67b1cae5c5428ba"
+    },
+    {
+      "file": "nodes.svg",
+      "component": "IconNodes3",
+      "role": "Skill composition",
+      "sourceFile": "package/dist/components/IconNodes3.js",
+      "sourceSha256": "5e4ba89b146f43f4a256dfec0cc5065e1f1622d5638bcd938f3a1c7a65a57a33",
+      "svgSha256": "74865cb90b4f5d03c00db8130b5ce5ca3241306bb5d0c23ea1a40d4549167849"
+    },
+    {
+      "file": "clipboard-check.svg",
+      "component": "IconClipboardCheck",
+      "role": "Test results",
+      "sourceFile": "package/dist/components/IconClipboardCheck.js",
+      "sourceSha256": "d261517766801655c08352f01e502faf59a629805c370570e3e8368aa208cee3",
+      "svgSha256": "b7961dc612c6f42a6888852b535222efbf5f12642f80a9d354b6149701affd3b"
+    },
+    {
+      "file": "reuse.svg",
+      "component": "IconArrowDottedRotateAnticlockwise",
+      "role": "Reuse",
+      "sourceFile": "package/dist/components/IconArrowDottedRotateAnticlockwise.js",
+      "sourceSha256": "dfdcbe4beaf6ec402e9f0f0887d789f28affb3f1ae6178e7cabce043dc8cc76e",
+      "svgSha256": "476633000abffee62ab4cf4a0de143c92e88014b50224657f13826322db00c2d"
+    },
+    {
+      "file": "user.svg",
+      "component": "IconUser",
+      "role": "User",
+      "sourceFile": "package/dist/components/IconUser.js",
+      "sourceSha256": "b79c6af7e1231534bed5974389a0e5e04e9864af252a23cfb0a2ddf0b4987d49",
+      "svgSha256": "2ebe33cd8714a6b1c6d06b87907484a9defb5dc631abaaa882c2130fdef873d3"
+    },
+    {
+      "file": "trash.svg",
+      "component": "IconTrash",
+      "role": "Delete",
+      "sourceFile": "package/dist/components/IconTrash.js",
+      "sourceSha256": "8c928ed46945beab4bdd01f79dc4cddcab80d83a4dc43e394b1364c5c2b57ae6",
+      "svgSha256": "37f5636d8c052e505b80e6fd0582727781ecc606c5202d4c4c8aa4236566b189"
+    }
+  ]
+}

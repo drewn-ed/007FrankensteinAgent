@@ -1,0 +1,1928 @@
+[
+  {
+    "cases": [
+      {
+        "expected": {
+          "assignments": [],
+          "waitlist": []
+        },
+        "input": {
+          "participants": [],
+          "rooms": [],
+          "workshops": []
+        },
+        "name": "Empty roster produces no assignments or waitlist entries"
+      },
+      {
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p01",
+              "workshop_id": "design"
+            }
+          ],
+          "waitlist": [
+            "p03"
+          ]
+        },
+        "input": {
+          "participants": [
+            {
+              "email": "sam.rivera@example.test",
+              "first_choice": "agents",
+              "id": "p02",
+              "name": "Sam Rivera",
+              "second_choice": "design"
+            },
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "taylor.brooks@example.test",
+              "first_choice": "agents",
+              "id": "p03",
+              "name": "Taylor Brooks",
+              "second_choice": "design"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 1,
+              "id": "a",
+              "name": "Hall A",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "b",
+              "name": "Room B",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "name": "Agents lab",
+              "room": "a",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "design",
+              "name": "Product studio",
+              "room": "b",
+              "time": "10:00–11:30"
+            }
+          ]
+        },
+        "name": "Allocate in roster order rather than ID order, falling back to second choice before waitlisting"
+      },
+      {
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p19",
+              "workshop_id": "story"
+            }
+          ],
+          "waitlist": [
+            "p02"
+          ]
+        },
+        "input": {
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "jamie.cole@example.test",
+              "first_choice": "design",
+              "id": "p11",
+              "name": "Jamie Cole",
+              "second_choice": "story"
+            },
+            {
+              "email": "sam.rivera@example.test",
+              "first_choice": "agents",
+              "id": "p02",
+              "name": "Sam Rivera",
+              "second_choice": "design"
+            },
+            {
+              "email": "emerson.hale@example.test",
+              "first_choice": "story",
+              "id": "p19",
+              "name": "Emerson Hale",
+              "second_choice": "agents"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 2,
+              "id": "a",
+              "name": "Hall A",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "c",
+              "name": "Room C",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "name": "Agents lab",
+              "room": "a",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "design",
+              "name": "Product studio",
+              "room": "a",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "story",
+              "name": "Storytelling",
+              "room": "c",
+              "time": "10:00–11:30"
+            }
+          ]
+        },
+        "name": "Workshops in the same room share capacity while another room remains independently available"
+      },
+      {
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "design"
+            }
+          ],
+          "waitlist": [
+            "p02",
+            "p19"
+          ]
+        },
+        "input": {
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "sam.rivera@example.test",
+              "first_choice": "agents",
+              "id": "p02",
+              "name": "Sam Rivera",
+              "second_choice": "design"
+            },
+            {
+              "email": "emerson.hale@example.test",
+              "first_choice": "story",
+              "id": "p19",
+              "name": "Emerson Hale",
+              "second_choice": "agents"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 2,
+              "id": "a",
+              "name": "Hall A",
+              "open": false
+            },
+            {
+              "capacity": 1,
+              "id": "b",
+              "name": "Room B",
+              "open": true
+            },
+            {
+              "capacity": 0,
+              "id": "c",
+              "name": "Room C",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "name": "Agents lab",
+              "room": "a",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "design",
+              "name": "Product studio",
+              "room": "b",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "story",
+              "name": "Storytelling",
+              "room": "c",
+              "time": "10:00–11:30"
+            }
+          ]
+        },
+        "name": "Closed rooms and open rooms with zero capacity provide no seats"
+      }
+    ],
+    "code": "def run(data):\n    \"\"\"Create a fresh, roster-ordered allocation using runtime room capacities.\n\n    Existing assignments and reservations are intentionally ignored. Invalid\n    input raises ValueError; unknown preference IDs simply provide no seat.\n    \"\"\"\n    if not isinstance(data, dict):\n        raise ValueError('Input must be an object.')\n\n    schemas = {\n        'participants': {'id': str, 'name': str, 'email': str,\n                         'first_choice': str, 'second_choice': str},\n        'rooms': {'id': str, 'name': str, 'capacity': int, 'open': bool},\n        'workshops': {'id': str, 'name': str, 'room': str, 'time': str},\n    }\n    indexed = {}\n    for collection, fields in schemas.items():\n        if collection not in data or not isinstance(data[collection], list):\n            raise ValueError(f'{collection} must be an array.')\n        by_id = {}\n        for position, record in enumerate(data[collection]):\n            label = f'{collection}[{position}]'\n            if not isinstance(record, dict):\n                raise ValueError(f'{label} must be an object.')\n            for field, expected_type in fields.items():\n                if field not in record:\n                    raise ValueError(f'{label} is missing required field {field}.')\n                value = record[field]\n                if expected_type is int:\n                    valid = isinstance(value, int) and not isinstance(value, bool)\n                else:\n                    valid = isinstance(value, expected_type)\n                if not valid:\n                    type_name = {str: 'string', int: 'integer', bool: 'boolean'}[expected_type]\n                    raise ValueError(f'{label}.{field} must be a {type_name}.')\n            identifier = record['id']\n            if identifier in by_id:\n                raise ValueError(f'Duplicate ID in {collection}: {identifier!r}.')\n            if collection == 'rooms' and record['capacity'] < 0:\n                raise ValueError(f'Room {identifier!r} has a negative capacity.')\n            by_id[identifier] = record\n        indexed[collection] = by_id\n\n    rooms = indexed['rooms']\n    workshops = indexed['workshops']\n    for workshop in data['workshops']:\n        if workshop['room'] not in rooms:\n            raise ValueError(\n                f'Workshop {workshop[\"id\"]!r} references missing room {workshop[\"room\"]!r}.'\n            )\n\n    remaining = {\n        room_id: room['capacity'] if room['open'] else 0\n        for room_id, room in rooms.items()\n    }\n    assignments = []\n    waitlist = []\n    for participant in data['participants']:\n        for choice in (participant['first_choice'], participant['second_choice']):\n            workshop = workshops.get(choice)\n            if workshop is None:\n                continue\n            room_id = workshop['room']\n            if remaining[room_id] > 0:\n                assignments.append({\n                    'participant_id': participant['id'],\n                    'workshop_id': workshop['id'],\n                })\n                remaining[room_id] -= 1\n                break\n        else:\n            waitlist.append(participant['id'])\n\n    return {'assignments': assignments, 'waitlist': waitlist}\n",
+    "code_hash": "9d65fecb24d63c604bce1a6a6fb7f8c835a383fc95c14e4f2ae96f4c44ec2a66",
+    "created_at": 1791514859.1059048,
+    "manifest": {
+      "description": "Create a fresh allocation for all participants in input order. Try first_choice then second_choice, assigning to the first workshop with an open room and remaining capacity; otherwise waitlist the participant. Use runtime room capacities, sharing room capacity across workshops in that room. Closed rooms provide no seats. Unknown choices are unavailable. Reject duplicate participant, room or workshop IDs, missing workshop room references and negative capacities. Account for each participant exactly once. Do not carry forward existing reservations.",
+      "id": "peventops_allocate_preferred_workshops",
+      "input_schema": {
+        "properties": {
+          "participants": {
+            "items": {
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "first_choice": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "second_choice": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "email",
+                "first_choice",
+                "second_choice"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "rooms": {
+            "items": {
+              "properties": {
+                "capacity": {
+                  "type": "integer"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "open": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "capacity",
+                "open"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "workshops": {
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "room": {
+                  "type": "string"
+                },
+                "time": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "room",
+                "time"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "participants",
+          "rooms",
+          "workshops"
+        ],
+        "type": "object"
+      },
+      "kind": "task",
+      "output_schema": {
+        "properties": {
+          "assignments": {
+            "items": {
+              "properties": {
+                "participant_id": {
+                  "type": "string"
+                },
+                "workshop_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "participant_id",
+                "workshop_id"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "waitlist": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "assignments",
+          "waitlist"
+        ],
+        "type": "object"
+      },
+      "permissions": [
+        "compute"
+      ],
+      "title": "Allocate preferred workshops in roster order"
+    },
+    "provenance": {
+      "model": "gpt-6.1-sol",
+      "parent": null,
+      "project_id": "event-ops-chatgpt",
+      "run_id": "5b8453c25ac6449dbc2d94c6de58f34e",
+      "source": "agent",
+      "test_source": "independent_model_context"
+    },
+    "tests": [
+      {
+        "actual": {
+          "assignments": [],
+          "waitlist": []
+        },
+        "duration_ms": 249,
+        "expected": {
+          "assignments": [],
+          "waitlist": []
+        },
+        "input": {
+          "participants": [],
+          "rooms": [],
+          "workshops": []
+        },
+        "name": "Empty roster produces no assignments or waitlist entries",
+        "passed": true
+      },
+      {
+        "actual": {
+          "assignments": [
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p01",
+              "workshop_id": "design"
+            }
+          ],
+          "waitlist": [
+            "p03"
+          ]
+        },
+        "duration_ms": 192,
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p01",
+              "workshop_id": "design"
+            }
+          ],
+          "waitlist": [
+            "p03"
+          ]
+        },
+        "input": {
+          "participants": [
+            {
+              "email": "sam.rivera@example.test",
+              "first_choice": "agents",
+              "id": "p02",
+              "name": "Sam Rivera",
+              "second_choice": "design"
+            },
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "taylor.brooks@example.test",
+              "first_choice": "agents",
+              "id": "p03",
+              "name": "Taylor Brooks",
+              "second_choice": "design"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 1,
+              "id": "a",
+              "name": "Hall A",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "b",
+              "name": "Room B",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "name": "Agents lab",
+              "room": "a",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "design",
+              "name": "Product studio",
+              "room": "b",
+              "time": "10:00–11:30"
+            }
+          ]
+        },
+        "name": "Allocate in roster order rather than ID order, falling back to second choice before waitlisting",
+        "passed": true
+      },
+      {
+        "actual": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p19",
+              "workshop_id": "story"
+            }
+          ],
+          "waitlist": [
+            "p02"
+          ]
+        },
+        "duration_ms": 163,
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p19",
+              "workshop_id": "story"
+            }
+          ],
+          "waitlist": [
+            "p02"
+          ]
+        },
+        "input": {
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "jamie.cole@example.test",
+              "first_choice": "design",
+              "id": "p11",
+              "name": "Jamie Cole",
+              "second_choice": "story"
+            },
+            {
+              "email": "sam.rivera@example.test",
+              "first_choice": "agents",
+              "id": "p02",
+              "name": "Sam Rivera",
+              "second_choice": "design"
+            },
+            {
+              "email": "emerson.hale@example.test",
+              "first_choice": "story",
+              "id": "p19",
+              "name": "Emerson Hale",
+              "second_choice": "agents"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 2,
+              "id": "a",
+              "name": "Hall A",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "c",
+              "name": "Room C",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "name": "Agents lab",
+              "room": "a",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "design",
+              "name": "Product studio",
+              "room": "a",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "story",
+              "name": "Storytelling",
+              "room": "c",
+              "time": "10:00–11:30"
+            }
+          ]
+        },
+        "name": "Workshops in the same room share capacity while another room remains independently available",
+        "passed": true
+      },
+      {
+        "actual": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "design"
+            }
+          ],
+          "waitlist": [
+            "p02",
+            "p19"
+          ]
+        },
+        "duration_ms": 226,
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "design"
+            }
+          ],
+          "waitlist": [
+            "p02",
+            "p19"
+          ]
+        },
+        "input": {
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "sam.rivera@example.test",
+              "first_choice": "agents",
+              "id": "p02",
+              "name": "Sam Rivera",
+              "second_choice": "design"
+            },
+            {
+              "email": "emerson.hale@example.test",
+              "first_choice": "story",
+              "id": "p19",
+              "name": "Emerson Hale",
+              "second_choice": "agents"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 2,
+              "id": "a",
+              "name": "Hall A",
+              "open": false
+            },
+            {
+              "capacity": 1,
+              "id": "b",
+              "name": "Room B",
+              "open": true
+            },
+            {
+              "capacity": 0,
+              "id": "c",
+              "name": "Room C",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "name": "Agents lab",
+              "room": "a",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "design",
+              "name": "Product studio",
+              "room": "b",
+              "time": "10:00–11:30"
+            },
+            {
+              "id": "story",
+              "name": "Storytelling",
+              "room": "c",
+              "time": "10:00–11:30"
+            }
+          ]
+        },
+        "name": "Closed rooms and open rooms with zero capacity provide no seats",
+        "passed": true
+      }
+    ],
+    "version": 1
+  },
+  {
+    "cases": [
+      {
+        "expected": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np05,Casey Chen,casey.chen@example.test,agents,design\np07,Morgan Ellis,morgan.ellis@example.test,agents,design\n",
+          "duplicate_rows": 0,
+          "input_rows": 3,
+          "invalid_rows": 0,
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "casey.chen@example.test",
+              "first_choice": "agents",
+              "id": "p05",
+              "name": "Casey Chen",
+              "second_choice": "design"
+            },
+            {
+              "email": "morgan.ellis@example.test",
+              "first_choice": "agents",
+              "id": "p07",
+              "name": "Morgan Ellis",
+              "second_choice": "design"
+            }
+          ],
+          "retained_rows": 3
+        },
+        "input": {
+          "csv_text": "id,name,email,first_choice,second_choice\n p01 , Alex Morgan , ALEX.MORGAN@EXAMPLE.TEST , agents , design \np05, Casey Chen ,casey.chen@example.test,agents,design\np07,Morgan Ellis,MORGAN.ELLIS@EXAMPLE.TEST,agents,design\n",
+          "valid_workshop_ids": [
+            "agents",
+            "design",
+            "story"
+          ]
+        },
+        "name": "Trim every field and lowercase emails while preserving participant order and other values"
+      },
+      {
+        "expected": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np06,Riley Park,riley.park@example.test,agents,design\n",
+          "duplicate_rows": 2,
+          "input_rows": 4,
+          "invalid_rows": 0,
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "riley.park@example.test",
+              "first_choice": "agents",
+              "id": "p06",
+              "name": "Riley Park",
+              "second_choice": "design"
+            }
+          ],
+          "retained_rows": 2
+        },
+        "input": {
+          "csv_text": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np06,Riley Park,riley.park@example.test,agents,design\ndup01, Alex Morgan ,alex.morgan@example.test,agents,design\ndup02,Riley Park,riley.park@example.test,agents,design\n",
+          "valid_workshop_ids": [
+            "agents",
+            "design",
+            "story"
+          ]
+        },
+        "name": "Keep the first valid registration per normalized email and count later duplicates"
+      },
+      {
+        "expected": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\np11,Jamie Cole,jamie.cole@example.test,design,story\n",
+          "duplicate_rows": 0,
+          "input_rows": 3,
+          "invalid_rows": 2,
+          "participants": [
+            {
+              "email": "jamie.cole@example.test",
+              "first_choice": "design",
+              "id": "p11",
+              "name": "Jamie Cole",
+              "second_choice": "story"
+            }
+          ],
+          "retained_rows": 1
+        },
+        "input": {
+          "csv_text": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np11,Jamie Cole,jamie.cole@example.test,design,story\nincomplete,Incomplete registration,,agents,design\n",
+          "valid_workshop_ids": [
+            "design",
+            "story"
+          ]
+        },
+        "name": "Drop records with an unavailable preference or missing email without disturbing retained order"
+      },
+      {
+        "expected": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\n",
+          "duplicate_rows": 0,
+          "input_rows": 0,
+          "invalid_rows": 0,
+          "participants": [],
+          "retained_rows": 0
+        },
+        "input": {
+          "csv_text": "id,name,email,first_choice,second_choice\n",
+          "valid_workshop_ids": []
+        },
+        "name": "A header-only CSV produces an empty roster and zero counts"
+      }
+    ],
+    "code": "import csv\nimport io\n\nHEADERS = ('id', 'name', 'email', 'first_choice', 'second_choice')\n\n\ndef run(data):\n    if not isinstance(data, dict):\n        raise ValueError('Input must be an object.')\n    text = data.get('csv_text')\n    workshop_ids = data.get('valid_workshop_ids')\n    if not isinstance(text, str):\n        raise ValueError('csv_text must be a string.')\n    if not isinstance(workshop_ids, list) or any(not isinstance(item, str) for item in workshop_ids):\n        raise ValueError('valid_workshop_ids must be an array of strings.')\n    valid_choices = set(workshop_ids)\n    reader = csv.DictReader(io.StringIO(text, newline=''))\n    try:\n        headers = reader.fieldnames\n    except csv.Error as exc:\n        raise ValueError('Invalid CSV: ' + str(exc)) from exc\n    missing = [field for field in HEADERS if headers is None or field not in headers]\n    if missing:\n        raise ValueError('Missing required CSV headers: ' + ', '.join(missing))\n    if any(headers.count(field) != 1 for field in HEADERS):\n        raise ValueError('Required CSV headers must occur exactly once.')\n\n    participants = []\n    seen = set()\n    input_rows = invalid_rows = duplicate_rows = 0\n    try:\n        for row in reader:\n            input_rows += 1\n            participant = {field: (row.get(field) or '').strip() for field in HEADERS}\n            participant['email'] = participant['email'].lower()\n            email = participant['email']\n            valid_email = False\n            if email.count('@') == 1 and not any(char.isspace() for char in email):\n                local, domain = email.split('@')\n                valid_email = bool(local) and '.' in domain\n            if (not all(participant.values()) or not valid_email\n                    or participant['first_choice'] not in valid_choices\n                    or participant['second_choice'] not in valid_choices):\n                invalid_rows += 1\n                continue\n            if email in seen:\n                duplicate_rows += 1\n                continue\n            seen.add(email)\n            participants.append(participant)\n    except csv.Error as exc:\n        raise ValueError('Invalid CSV: ' + str(exc)) from exc\n\n    output = io.StringIO(newline='')\n    writer = csv.DictWriter(output, fieldnames=HEADERS, lineterminator='\\n')\n    writer.writeheader()\n    writer.writerows(participants)\n    return {\n        'cleaned_csv': output.getvalue(),\n        'participants': participants,\n        'input_rows': input_rows,\n        'invalid_rows': invalid_rows,\n        'duplicate_rows': duplicate_rows,\n        'retained_rows': len(participants),\n    }\n",
+    "code_hash": "916422e557f0d20230e824491951fc05fcf92d9e662d04f6ffc6bc472612f672",
+    "created_at": 1791514771.699571,
+    "manifest": {
+      "description": "Read CSV with headers id,name,email,first_choice,second_choice. Trim all fields and lowercase emails. Drop rows with missing required fields, invalid email (must have exactly one @, nonempty local part and dotted domain, and no whitespace), or choices outside valid_workshop_ids. Retain the first valid row per normalized email in source order; invalid rows do not reserve an email. Preserve other field values and order. Return cleaned CSV with the same five headers, normalized participants, and counts of input, invalid, duplicate and retained rows. Reject missing headers.",
+      "id": "peventops_normalize_registration_csv",
+      "input_schema": {
+        "properties": {
+          "csv_text": {
+            "type": "string"
+          },
+          "valid_workshop_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "csv_text",
+          "valid_workshop_ids"
+        ],
+        "type": "object"
+      },
+      "kind": "task",
+      "output_schema": {
+        "properties": {
+          "cleaned_csv": {
+            "type": "string"
+          },
+          "duplicate_rows": {
+            "type": "integer"
+          },
+          "input_rows": {
+            "type": "integer"
+          },
+          "invalid_rows": {
+            "type": "integer"
+          },
+          "participants": {
+            "items": {
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "first_choice": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "second_choice": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "email",
+                "first_choice",
+                "second_choice"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "retained_rows": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "cleaned_csv",
+          "participants",
+          "input_rows",
+          "invalid_rows",
+          "duplicate_rows",
+          "retained_rows"
+        ],
+        "type": "object"
+      },
+      "permissions": [
+        "compute"
+      ],
+      "title": "Normalize registration CSV"
+    },
+    "provenance": {
+      "model": "gpt-6.1-sol",
+      "parent": null,
+      "project_id": "event-ops-chatgpt",
+      "run_id": "5b8453c25ac6449dbc2d94c6de58f34e",
+      "source": "agent",
+      "test_source": "independent_model_context"
+    },
+    "tests": [
+      {
+        "actual": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np05,Casey Chen,casey.chen@example.test,agents,design\np07,Morgan Ellis,morgan.ellis@example.test,agents,design\n",
+          "duplicate_rows": 0,
+          "input_rows": 3,
+          "invalid_rows": 0,
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "casey.chen@example.test",
+              "first_choice": "agents",
+              "id": "p05",
+              "name": "Casey Chen",
+              "second_choice": "design"
+            },
+            {
+              "email": "morgan.ellis@example.test",
+              "first_choice": "agents",
+              "id": "p07",
+              "name": "Morgan Ellis",
+              "second_choice": "design"
+            }
+          ],
+          "retained_rows": 3
+        },
+        "duration_ms": 313,
+        "expected": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np05,Casey Chen,casey.chen@example.test,agents,design\np07,Morgan Ellis,morgan.ellis@example.test,agents,design\n",
+          "duplicate_rows": 0,
+          "input_rows": 3,
+          "invalid_rows": 0,
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "casey.chen@example.test",
+              "first_choice": "agents",
+              "id": "p05",
+              "name": "Casey Chen",
+              "second_choice": "design"
+            },
+            {
+              "email": "morgan.ellis@example.test",
+              "first_choice": "agents",
+              "id": "p07",
+              "name": "Morgan Ellis",
+              "second_choice": "design"
+            }
+          ],
+          "retained_rows": 3
+        },
+        "input": {
+          "csv_text": "id,name,email,first_choice,second_choice\n p01 , Alex Morgan , ALEX.MORGAN@EXAMPLE.TEST , agents , design \np05, Casey Chen ,casey.chen@example.test,agents,design\np07,Morgan Ellis,MORGAN.ELLIS@EXAMPLE.TEST,agents,design\n",
+          "valid_workshop_ids": [
+            "agents",
+            "design",
+            "story"
+          ]
+        },
+        "name": "Trim every field and lowercase emails while preserving participant order and other values",
+        "passed": true
+      },
+      {
+        "actual": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np06,Riley Park,riley.park@example.test,agents,design\n",
+          "duplicate_rows": 2,
+          "input_rows": 4,
+          "invalid_rows": 0,
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "riley.park@example.test",
+              "first_choice": "agents",
+              "id": "p06",
+              "name": "Riley Park",
+              "second_choice": "design"
+            }
+          ],
+          "retained_rows": 2
+        },
+        "duration_ms": 201,
+        "expected": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np06,Riley Park,riley.park@example.test,agents,design\n",
+          "duplicate_rows": 2,
+          "input_rows": 4,
+          "invalid_rows": 0,
+          "participants": [
+            {
+              "email": "alex.morgan@example.test",
+              "first_choice": "agents",
+              "id": "p01",
+              "name": "Alex Morgan",
+              "second_choice": "design"
+            },
+            {
+              "email": "riley.park@example.test",
+              "first_choice": "agents",
+              "id": "p06",
+              "name": "Riley Park",
+              "second_choice": "design"
+            }
+          ],
+          "retained_rows": 2
+        },
+        "input": {
+          "csv_text": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np06,Riley Park,riley.park@example.test,agents,design\ndup01, Alex Morgan ,alex.morgan@example.test,agents,design\ndup02,Riley Park,riley.park@example.test,agents,design\n",
+          "valid_workshop_ids": [
+            "agents",
+            "design",
+            "story"
+          ]
+        },
+        "name": "Keep the first valid registration per normalized email and count later duplicates",
+        "passed": true
+      },
+      {
+        "actual": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\np11,Jamie Cole,jamie.cole@example.test,design,story\n",
+          "duplicate_rows": 0,
+          "input_rows": 3,
+          "invalid_rows": 2,
+          "participants": [
+            {
+              "email": "jamie.cole@example.test",
+              "first_choice": "design",
+              "id": "p11",
+              "name": "Jamie Cole",
+              "second_choice": "story"
+            }
+          ],
+          "retained_rows": 1
+        },
+        "duration_ms": 233,
+        "expected": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\np11,Jamie Cole,jamie.cole@example.test,design,story\n",
+          "duplicate_rows": 0,
+          "input_rows": 3,
+          "invalid_rows": 2,
+          "participants": [
+            {
+              "email": "jamie.cole@example.test",
+              "first_choice": "design",
+              "id": "p11",
+              "name": "Jamie Cole",
+              "second_choice": "story"
+            }
+          ],
+          "retained_rows": 1
+        },
+        "input": {
+          "csv_text": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np11,Jamie Cole,jamie.cole@example.test,design,story\nincomplete,Incomplete registration,,agents,design\n",
+          "valid_workshop_ids": [
+            "design",
+            "story"
+          ]
+        },
+        "name": "Drop records with an unavailable preference or missing email without disturbing retained order",
+        "passed": true
+      },
+      {
+        "actual": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\n",
+          "duplicate_rows": 0,
+          "input_rows": 0,
+          "invalid_rows": 0,
+          "participants": [],
+          "retained_rows": 0
+        },
+        "duration_ms": 182,
+        "expected": {
+          "cleaned_csv": "id,name,email,first_choice,second_choice\n",
+          "duplicate_rows": 0,
+          "input_rows": 0,
+          "invalid_rows": 0,
+          "participants": [],
+          "retained_rows": 0
+        },
+        "input": {
+          "csv_text": "id,name,email,first_choice,second_choice\n",
+          "valid_workshop_ids": []
+        },
+        "name": "A header-only CSV produces an empty roster and zero counts",
+        "passed": true
+      }
+    ],
+    "version": 1
+  },
+  {
+    "cases": [
+      {
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p25",
+              "workshop_id": "story"
+            }
+          ],
+          "waitlist": [
+            "p09"
+          ]
+        },
+        "input": {
+          "affected_workshop_ids": [
+            "agents"
+          ],
+          "existing_assignments": [
+            {
+              "participant_id": "p09",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            }
+          ],
+          "participants": [
+            {
+              "first_choice": "agents",
+              "id": "p01",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "agents",
+              "id": "p09",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "design",
+              "id": "p11",
+              "second_choice": "story"
+            },
+            {
+              "first_choice": "story",
+              "id": "p25",
+              "second_choice": "agents"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 1,
+              "id": "d",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "b",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "c",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "room": "d"
+            },
+            {
+              "id": "design",
+              "room": "b"
+            },
+            {
+              "id": "story",
+              "room": "c"
+            }
+          ]
+        },
+        "name": "Reserve unaffected assignments before processing displaced and new attendees"
+      },
+      {
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            }
+          ],
+          "waitlist": [
+            "p03"
+          ]
+        },
+        "input": {
+          "affected_workshop_ids": [
+            "agents"
+          ],
+          "existing_assignments": [
+            {
+              "participant_id": "p03",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            }
+          ],
+          "participants": [
+            {
+              "first_choice": "agents",
+              "id": "p01",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "agents",
+              "id": "p02",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "agents",
+              "id": "p03",
+              "second_choice": "design"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 1,
+              "id": "d",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "b",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "room": "d"
+            },
+            {
+              "id": "design",
+              "room": "b"
+            }
+          ]
+        },
+        "name": "Retain affected existing attendees in roster order before allocating an earlier new attendee"
+      },
+      {
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            }
+          ],
+          "waitlist": [
+            "p02",
+            "p19"
+          ]
+        },
+        "input": {
+          "affected_workshop_ids": [
+            "agents",
+            "story"
+          ],
+          "existing_assignments": [
+            {
+              "participant_id": "p19",
+              "workshop_id": "story"
+            },
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            }
+          ],
+          "participants": [
+            {
+              "first_choice": "agents",
+              "id": "p01",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "agents",
+              "id": "p02",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "design",
+              "id": "p11",
+              "second_choice": "story"
+            },
+            {
+              "first_choice": "story",
+              "id": "p19",
+              "second_choice": "agents"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 2,
+              "id": "d",
+              "open": true
+            },
+            {
+              "capacity": 2,
+              "id": "c",
+              "open": false
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "room": "d"
+            },
+            {
+              "id": "design",
+              "room": "d"
+            },
+            {
+              "id": "story",
+              "room": "c"
+            }
+          ]
+        },
+        "name": "Share room capacity across workshops and treat a closed room as having zero seats"
+      },
+      {
+        "expected": {
+          "assignments": [],
+          "waitlist": []
+        },
+        "input": {
+          "affected_workshop_ids": [],
+          "existing_assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            }
+          ],
+          "participants": [],
+          "rooms": [
+            {
+              "capacity": 1,
+              "id": "a",
+              "open": false
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "room": "a"
+            }
+          ]
+        },
+        "name": "An empty roster ignores departed attendees' existing reservations even in a closed room"
+      }
+    ],
+    "code": "def run(data):\n    \"\"\"Replan allocations using runtime capacities and existing reservations.\"\"\"\n    if not isinstance(data, dict):\n        raise ValueError('Input must be an object.')\n\n    def array(key):\n        if key not in data or not isinstance(data[key], list):\n            raise ValueError(f'{key} must be an array.')\n        return data[key]\n\n    def string_field(record, key, context):\n        if not isinstance(record, dict):\n            raise ValueError(f'{context} must be an object.')\n        if key not in record or not isinstance(record[key], str):\n            raise ValueError(f'{context}.{key} must be a string.')\n        return record[key]\n\n    participants = array('participants')\n    rooms = array('rooms')\n    workshops = array('workshops')\n    existing = array('existing_assignments')\n    affected_ids = array('affected_workshop_ids')\n\n    participant_map = {}\n    for participant in participants:\n        pid = string_field(participant, 'id', 'Participant')\n        if pid in participant_map:\n            raise ValueError(f'Duplicate participant ID: {pid!r}.')\n        string_field(participant, 'first_choice', 'Participant')\n        string_field(participant, 'second_choice', 'Participant')\n        participant_map[pid] = participant\n\n    remaining = {}\n    for room in rooms:\n        rid = string_field(room, 'id', 'Room')\n        if rid in remaining:\n            raise ValueError(f'Duplicate room ID: {rid!r}.')\n        capacity = room.get('capacity')\n        if type(capacity) is not int or capacity < 0:\n            raise ValueError(f'Room {rid!r} capacity must be a nonnegative integer.')\n        if type(room.get('open')) is not bool:\n            raise ValueError(f'Room {rid!r} open must be a boolean.')\n        remaining[rid] = capacity if room['open'] else 0\n\n    workshop_rooms = {}\n    for workshop in workshops:\n        wid = string_field(workshop, 'id', 'Workshop')\n        if wid in workshop_rooms:\n            raise ValueError(f'Duplicate workshop ID: {wid!r}.')\n        rid = string_field(workshop, 'room', 'Workshop')\n        if rid not in remaining:\n            raise ValueError(f'Workshop {wid!r} references unknown room {rid!r}.')\n        workshop_rooms[wid] = rid\n\n    def check_workshop(wid, context):\n        if wid not in workshop_rooms:\n            raise ValueError(f'{context} references unknown workshop {wid!r}.')\n\n    for participant in participants:\n        for key in ('first_choice', 'second_choice'):\n            check_workshop(participant[key], f'Participant {participant[\"id\"]!r} {key}')\n\n    affected = set()\n    for wid in affected_ids:\n        if not isinstance(wid, str):\n            raise ValueError('Affected workshop IDs must be strings.')\n        check_workshop(wid, 'Affected workshop list')\n        affected.add(wid)\n\n    previous = {}\n    for assignment in existing:\n        pid = string_field(assignment, 'participant_id', 'Existing assignment')\n        wid = string_field(assignment, 'workshop_id', 'Existing assignment')\n        if pid in previous:\n            raise ValueError(f'Duplicate existing-assignment participant ID: {pid!r}.')\n        check_workshop(wid, f'Existing assignment for {pid!r}')\n        previous[pid] = wid\n\n    allocated = {}\n\n    def reserve(pid, wid):\n        rid = workshop_rooms[wid]\n        if remaining[rid] <= 0:\n            return False\n        remaining[rid] -= 1\n        allocated[pid] = wid\n        return True\n\n    # Fixed reservations take precedence over all affected and new attendees.\n    for participant in participants:\n        pid = participant['id']\n        if pid in previous and previous[pid] not in affected:\n            wid = previous[pid]\n            if not reserve(pid, wid):\n                raise ValueError(\n                    f'Fixed assignment for participant {pid!r} in workshop {wid!r} '\n                    'violates room availability or shared capacity.'\n                )\n\n    # Retain affected attendees in roster order before filling free seats.\n    for participant in participants:\n        pid = participant['id']\n        if pid in previous and previous[pid] in affected:\n            reserve(pid, previous[pid])\n\n    for participant in participants:\n        pid = participant['id']\n        if pid in allocated:\n            continue\n        for key in ('first_choice', 'second_choice'):\n            if reserve(pid, participant[key]):\n                break\n\n    return {\n        'assignments': [\n            {'participant_id': p['id'], 'workshop_id': allocated[p['id']]}\n            for p in participants if p['id'] in allocated\n        ],\n        'waitlist': [p['id'] for p in participants if p['id'] not in allocated]\n    }\n",
+    "code_hash": "fe8a94adbe555b1a6d9657a2b76baa5c0e126c155991f12bb457eaef4f4a4345",
+    "created_at": 1791515199.0895302,
+    "manifest": {
+      "description": "Use participants in roster order, runtime rooms and workshops, existing assignments, and affected_workshop_ids. Preserve every existing assignment of a retained participant in an unaffected workshop exactly; reject if these fixed assignments violate current room availability or capacity. Then retain existing attendees in affected workshops in roster order up to remaining open room capacity. Finally process all unassigned participants in roster order, trying first_choice then second_choice with available capacity, otherwise waitlist. Share capacity across workshops in the same room. Closed rooms have zero capacity. Ignore existing assignments for participants no longer in the roster. Reject duplicate participant, room, workshop or existing-assignment participant IDs, unknown workshops or missing room references, and negative capacities. Output each roster participant exactly once, with assignments and waitlist ordered by roster order. No CSV parsing.",
+      "id": "peventops_replan_preserving_unaffected_assignments",
+      "input_schema": {
+        "properties": {
+          "affected_workshop_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "existing_assignments": {
+            "items": {
+              "properties": {
+                "participant_id": {
+                  "type": "string"
+                },
+                "workshop_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "participant_id",
+                "workshop_id"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "participants": {
+            "items": {
+              "properties": {
+                "first_choice": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "second_choice": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "first_choice",
+                "second_choice"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "rooms": {
+            "items": {
+              "properties": {
+                "capacity": {
+                  "type": "integer"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "open": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "capacity",
+                "open"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "workshops": {
+            "items": {
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "room": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "room"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "participants",
+          "rooms",
+          "workshops",
+          "existing_assignments",
+          "affected_workshop_ids"
+        ],
+        "type": "object"
+      },
+      "kind": "task",
+      "output_schema": {
+        "properties": {
+          "assignments": {
+            "items": {
+              "properties": {
+                "participant_id": {
+                  "type": "string"
+                },
+                "workshop_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "participant_id",
+                "workshop_id"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "waitlist": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "assignments",
+          "waitlist"
+        ],
+        "type": "object"
+      },
+      "permissions": [
+        "compute"
+      ],
+      "title": "Replan workshops while preserving unaffected assignments"
+    },
+    "provenance": {
+      "model": "gpt-6.1-sol",
+      "parent": null,
+      "project_id": "event-ops-chatgpt",
+      "run_id": "daf5ccc0cdfb4613a480a6cea12032b4",
+      "source": "agent",
+      "test_source": "independent_model_context"
+    },
+    "tests": [
+      {
+        "actual": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p25",
+              "workshop_id": "story"
+            }
+          ],
+          "waitlist": [
+            "p09"
+          ]
+        },
+        "duration_ms": 245,
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p25",
+              "workshop_id": "story"
+            }
+          ],
+          "waitlist": [
+            "p09"
+          ]
+        },
+        "input": {
+          "affected_workshop_ids": [
+            "agents"
+          ],
+          "existing_assignments": [
+            {
+              "participant_id": "p09",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            }
+          ],
+          "participants": [
+            {
+              "first_choice": "agents",
+              "id": "p01",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "agents",
+              "id": "p09",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "design",
+              "id": "p11",
+              "second_choice": "story"
+            },
+            {
+              "first_choice": "story",
+              "id": "p25",
+              "second_choice": "agents"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 1,
+              "id": "d",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "b",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "c",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "room": "d"
+            },
+            {
+              "id": "design",
+              "room": "b"
+            },
+            {
+              "id": "story",
+              "room": "c"
+            }
+          ]
+        },
+        "name": "Reserve unaffected assignments before processing displaced and new attendees",
+        "passed": true
+      },
+      {
+        "actual": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            }
+          ],
+          "waitlist": [
+            "p03"
+          ]
+        },
+        "duration_ms": 225,
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            }
+          ],
+          "waitlist": [
+            "p03"
+          ]
+        },
+        "input": {
+          "affected_workshop_ids": [
+            "agents"
+          ],
+          "existing_assignments": [
+            {
+              "participant_id": "p03",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            }
+          ],
+          "participants": [
+            {
+              "first_choice": "agents",
+              "id": "p01",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "agents",
+              "id": "p02",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "agents",
+              "id": "p03",
+              "second_choice": "design"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 1,
+              "id": "d",
+              "open": true
+            },
+            {
+              "capacity": 1,
+              "id": "b",
+              "open": true
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "room": "d"
+            },
+            {
+              "id": "design",
+              "room": "b"
+            }
+          ]
+        },
+        "name": "Retain affected existing attendees in roster order before allocating an earlier new attendee",
+        "passed": true
+      },
+      {
+        "actual": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            }
+          ],
+          "waitlist": [
+            "p02",
+            "p19"
+          ]
+        },
+        "duration_ms": 175,
+        "expected": {
+          "assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            }
+          ],
+          "waitlist": [
+            "p02",
+            "p19"
+          ]
+        },
+        "input": {
+          "affected_workshop_ids": [
+            "agents",
+            "story"
+          ],
+          "existing_assignments": [
+            {
+              "participant_id": "p19",
+              "workshop_id": "story"
+            },
+            {
+              "participant_id": "p02",
+              "workshop_id": "agents"
+            },
+            {
+              "participant_id": "p11",
+              "workshop_id": "design"
+            },
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            }
+          ],
+          "participants": [
+            {
+              "first_choice": "agents",
+              "id": "p01",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "agents",
+              "id": "p02",
+              "second_choice": "design"
+            },
+            {
+              "first_choice": "design",
+              "id": "p11",
+              "second_choice": "story"
+            },
+            {
+              "first_choice": "story",
+              "id": "p19",
+              "second_choice": "agents"
+            }
+          ],
+          "rooms": [
+            {
+              "capacity": 2,
+              "id": "d",
+              "open": true
+            },
+            {
+              "capacity": 2,
+              "id": "c",
+              "open": false
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "room": "d"
+            },
+            {
+              "id": "design",
+              "room": "d"
+            },
+            {
+              "id": "story",
+              "room": "c"
+            }
+          ]
+        },
+        "name": "Share room capacity across workshops and treat a closed room as having zero seats",
+        "passed": true
+      },
+      {
+        "actual": {
+          "assignments": [],
+          "waitlist": []
+        },
+        "duration_ms": 167,
+        "expected": {
+          "assignments": [],
+          "waitlist": []
+        },
+        "input": {
+          "affected_workshop_ids": [],
+          "existing_assignments": [
+            {
+              "participant_id": "p01",
+              "workshop_id": "agents"
+            }
+          ],
+          "participants": [],
+          "rooms": [
+            {
+              "capacity": 1,
+              "id": "a",
+              "open": false
+            }
+          ],
+          "workshops": [
+            {
+              "id": "agents",
+              "room": "a"
+            }
+          ]
+        },
+        "name": "An empty roster ignores departed attendees' existing reservations even in a closed room",
+        "passed": true
+      }
+    ],
+    "version": 1
+  }
+]

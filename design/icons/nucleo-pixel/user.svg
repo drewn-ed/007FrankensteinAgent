@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path d="M5 16H6" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 16H19" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M8 14H16" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M3 18V21H21V18" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10.5 3H13.5" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M10.5 10H13.5" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M15.5 5L15.5 8" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M8.5 5L8.5 8" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+</svg>

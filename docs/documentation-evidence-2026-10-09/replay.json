@@ -1,0 +1,23 @@
+[
+  {
+    "id": "peventops_allocate_preferred_workshops",
+    "version": 1,
+    "cases": 4,
+    "passed": true,
+    "hash_verified": true
+  },
+  {
+    "id": "peventops_normalize_registration_csv",
+    "version": 1,
+    "cases": 4,
+    "passed": true,
+    "hash_verified": true
+  },
+  {
+    "id": "peventops_replan_preserving_unaffected_assignments",
+    "version": 1,
+    "cases": 4,
+    "passed": true,
+    "hash_verified": true
+  }
+]

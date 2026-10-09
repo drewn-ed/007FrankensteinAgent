@@ -1,0 +1,25 @@
+Copyright © Nucleo
+Version 1.3, January 3, 2024
+
+Nucleo Icons
+https://nucleoapp.com/
+
+- Redistribution of icons is prohibited.
+- Icons are restricted for use only within the product they are bundled with.
+
+For more details:
+https://nucleoapp.com/license
+
+Source of this notice: https://nucleoapp.com/copyright-notice
+
+Project context (not part of Nucleo's notice):
+These 20 icons are bundled with 007FrankensteinAgent from the publicly offered
+nucleo-pixel-essential 1.0.1 free sample package. They are not offered as a
+standalone icon library and are not relicensed under the project's license.
+The current Nucleo license allows up to 100 included icons in an open-source
+project with its copyright notice. Retain this notice and consult the linked
+terms before reusing these assets in a different project.
+
+No Nucleo paid package, license key, account, skill, or MCP installation was used.
+SVG geometry and stroke attributes are unchanged; only the React component
+wrapper was converted to SVG. See sources.json for exact origin and hashes.

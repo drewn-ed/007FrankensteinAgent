@@ -1,0 +1,404 @@
+{
+  "version": "0.5.0",
+  "scope": "Design assets only; not an application accessibility audit",
+  "contrast": [
+    {
+      "theme": "light",
+      "foreground": "text",
+      "background": "canvas",
+      "ratio": 13.4764,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "text",
+      "background": "surface",
+      "ratio": 15.0578,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "text",
+      "background": "surface-alt",
+      "ratio": 12.0122,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "text-muted",
+      "background": "canvas",
+      "ratio": 4.6656,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "text-muted",
+      "background": "surface",
+      "ratio": 5.213,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "on-accent",
+      "background": "accent",
+      "ratio": 6.4209,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "on-accent",
+      "background": "accent-hover",
+      "ratio": 7.2865,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "accent-text",
+      "background": "canvas",
+      "ratio": 5.372,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "accent-text",
+      "background": "surface",
+      "ratio": 6.0024,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "on-accent-soft",
+      "background": "accent-soft",
+      "ratio": 7.2957,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "success",
+      "background": "success-soft",
+      "ratio": 5.9411,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "warning",
+      "background": "warning-soft",
+      "ratio": 5.3543,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "danger",
+      "background": "danger-soft",
+      "ratio": 5.0276,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "info",
+      "background": "info-soft",
+      "ratio": 5.7266,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "border-control",
+      "background": "surface",
+      "ratio": 4.377,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "border-control",
+      "background": "canvas",
+      "ratio": 3.9173,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "focus",
+      "background": "surface",
+      "ratio": 6.0024,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "theme": "light",
+      "foreground": "focus",
+      "background": "canvas",
+      "ratio": 5.372,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "text",
+      "background": "canvas",
+      "ratio": 15.3549,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "text",
+      "background": "surface",
+      "ratio": 13.2104,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "text",
+      "background": "surface-alt",
+      "ratio": 11.4738,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "text-muted",
+      "background": "canvas",
+      "ratio": 8.6997,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "text-muted",
+      "background": "surface",
+      "ratio": 7.4847,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "on-accent",
+      "background": "accent",
+      "ratio": 6.4209,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "on-accent",
+      "background": "accent-hover",
+      "ratio": 7.2865,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "accent-text",
+      "background": "canvas",
+      "ratio": 8.025,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "accent-text",
+      "background": "surface",
+      "ratio": 6.9042,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "on-accent-soft",
+      "background": "accent-soft",
+      "ratio": 7.4789,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "success",
+      "background": "success-soft",
+      "ratio": 7.8345,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "warning",
+      "background": "warning-soft",
+      "ratio": 7.4129,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "danger",
+      "background": "danger-soft",
+      "ratio": 7.0436,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "info",
+      "background": "info-soft",
+      "ratio": 7.5037,
+      "minimum": 4.5,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "border-control",
+      "background": "surface",
+      "ratio": 4.5558,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "border-control",
+      "background": "canvas",
+      "ratio": 5.2953,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "focus",
+      "background": "surface",
+      "ratio": 6.9042,
+      "minimum": 3,
+      "pass": true
+    },
+    {
+      "theme": "dark",
+      "foreground": "focus",
+      "background": "canvas",
+      "ratio": 8.025,
+      "minimum": 3,
+      "pass": true
+    }
+  ],
+  "fonts": [
+    {
+      "file": "GeistPixel-Square.ttf",
+      "missing": [],
+      "sha256": "c1fbf7316997c1749857708998958e8ca0343416b3f8d2c7156d634a9520e997",
+      "pass": true
+    },
+    {
+      "file": "IBMPlexMono-Bold.ttf",
+      "missing": [],
+      "sha256": "ac27abd6450a64dd94467580a02fe6235156d5b92f2926ebbc8e7489df64e0be",
+      "pass": true
+    },
+    {
+      "file": "IBMPlexMono-Medium.ttf",
+      "missing": [],
+      "sha256": "a9b4c49bb299e05b5f6c481e7fb5e78943d2793249a0c8874ab574a2d1ea6755",
+      "pass": true
+    },
+    {
+      "file": "IBMPlexMono-Regular.ttf",
+      "missing": [],
+      "sha256": "6a3412f058c7d8dfd9170c41e85ade48e5156ecb89356110ca57a0a27734af46",
+      "pass": true
+    },
+    {
+      "file": "IBMPlexMono-SemiBold.ttf",
+      "missing": [],
+      "sha256": "d3c38e55c78f5b0f28009fddba4834ec503278936a5986032424c9bd2d23aa46",
+      "pass": true
+    }
+  ],
+  "references": [
+    {
+      "source": "brand-guide.html",
+      "target": "tokens.css",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "accessibility-typography.md",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "icons/nucleo-pixel/NOTICE.txt",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "icons/nucleo-pixel/sources.json",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "tokens.json",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "tokens.css",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "README.md",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "title-card.html",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "fonts/GeistPixel-Square.ttf",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "fonts/IBMPlexMono-Regular.ttf",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "fonts/sources.json",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "fonts/geist-OFL.txt",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "fonts/ibmplexmono-OFL.txt",
+      "pass": true
+    },
+    {
+      "source": "brand-guide.html",
+      "target": "validation.json",
+      "pass": true
+    },
+    {
+      "source": "title-card.html",
+      "target": "tokens.css",
+      "pass": true
+    }
+  ],
+  "passed": true
+}

@@ -1,0 +1,23 @@
+{
+  "project_registry_fingerprint": {
+    "actual_global_registry_unchanged": true,
+    "recorded_before_equals_after": false,
+    "status": "completed"
+  },
+  "application_memory_scope": {
+    "project_b_can_read_project_a_map": true,
+    "map_count": 1
+  },
+  "unverified_browser_completion": {
+    "status": "completed",
+    "result": {
+      "created": true
+    },
+    "events": [
+      "session",
+      "finished"
+    ],
+    "browser_action_count": 0,
+    "note": "Fault-injected planner response, not observed real Gemini behavior"
+  }
+}

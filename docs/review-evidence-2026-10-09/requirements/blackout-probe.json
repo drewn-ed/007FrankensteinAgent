@@ -1,0 +1,44 @@
+{
+  "source": "Previously Gemini-generated v2 from independent UI review; direct developer harness, not an existing model-free UI feature",
+  "capability": "p692979a2_process_contacts_csv",
+  "version": 2,
+  "code_hash": "ff06850a95b40463cbd8f9c2e9c82b0c5422d1f33e6724e9910183471cd41232",
+  "provenance": {
+    "correction": "Do not merge different contacts just because their email is missing. Keep every row with an empty email in contacts, with email set to an empty string. Continue deduplicating nonempty normalized emails as before.",
+    "model": "gemini-3.5-flash-lite",
+    "parent": 1,
+    "project_id": "692979a2-a8af-4d66-b4b5-ac988b1bc0dd",
+    "run_id": "39769213e1df4b65bddc7b17ba7cd008",
+    "source": "agent_correction",
+    "test_source": "explicit_operator_expected_result"
+  },
+  "model_adapter_instantiated": false,
+  "model_calls": 0,
+  "sandbox_network": "none",
+  "input": {
+    "content": "name,email\nIvy, IVY@example.test \nIvy Duplicate,ivy@example.test\nJay,\nKai,\n"
+  },
+  "result": {
+    "contacts": [
+      {
+        "name": "Ivy",
+        "email": "ivy@example.test"
+      },
+      {
+        "name": "Jay",
+        "email": ""
+      },
+      {
+        "name": "Kai",
+        "email": ""
+      }
+    ],
+    "duplicates": [
+      {
+        "name": "Ivy Duplicate",
+        "email": "ivy@example.test"
+      }
+    ]
+  },
+  "expected_contacts_passed": true
+}

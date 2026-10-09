@@ -1,0 +1,27 @@
+{
+  "id": "03449f772f844c83951dd0d173eef955",
+  "status": "completed",
+  "model_calls": 15,
+  "duration_ms": 206481,
+  "result": {
+    "assigned": 24,
+    "checks": [
+      "Source roster matches",
+      "Every attendee accounted for once",
+      "Preferences respected",
+      "Available capacities respected",
+      "New allocation applied"
+    ],
+    "first_preferences": 24,
+    "participants": 24,
+    "scope": "Showcase constraints only; not a proof of optimal allocation or all user intent.",
+    "unaffected_reservations_preserved": false,
+    "verified_constraints": true,
+    "waitlist": 0
+  },
+  "launched_through_ui": true,
+  "download_checked_through_ui": true,
+  "page_errors": [],
+  "mobile_horizontal_overflow": false,
+  "notice": "Main application acceptance check with synthetic event data; raw run retained locally."
+}

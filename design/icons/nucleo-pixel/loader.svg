@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <path opacity="0.5" d="M12 19V22" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.63" d="M19.01 19L19 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.38" d="M5.01001 19L5.00001 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.63" d="M17.01 17L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.38" d="M7.01001 17L7.00001 17" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.75" d="M22.005 11.995L19.005 11.995" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.25" d="M5.005 11.995L2.005 11.995" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.88" d="M17.01 7L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.13" d="M7.01001 7L7.00001 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.88" d="M19.01 5L19 5" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.13" d="M5.01001 5L5.00001 5" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M12 2V5" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</svg>

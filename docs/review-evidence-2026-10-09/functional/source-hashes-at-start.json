@@ -1,0 +1,17 @@
+{
+  "workbench/catalog.py": "ef633e356a1c7e5d9ae115d420dbd3ca0f68812fce8dca2e231f1ef212d5f35b",
+  "workbench/store.py": "42d74dc55460c9a8a6175ccba91658e7a3db0f5de45cbeca06b76448eb07f3bf",
+  "workbench/server.py": "9aeb1e6d0585cfd6bb29805f498f0d5a0ee3112433c807bf1ba1622f6103323e",
+  "workbench/config.py": "f4fee96324c778389acefa34e9695c63f951fcd3f481a4797f4db4e06672b874",
+  "workbench/browser_control.py": "d6ea3f1ccf128dc69c8d186a2b363a5f47e47309b4c3bd9629a2ac5619559368",
+  "workbench/__init__.py": "d3af25d2fd61390c97d343f17e2217dfb75df5065bc27c9a82b914cddc0def6f",
+  "workbench/model.py": "712e98eaf9a29b744ce11363ce5b3bec3669a5e1821b47c050d16a9957be8dcc",
+  "workbench/sandbox.py": "665b915a30a27fe389eba0f59c5fb17e956ff001abd6bb6daf21020f2348131f",
+  "workbench/engine.py": "4f886948c810ec2255bfeafae8b3f7adec491a7af7b8364bbf31452735bfb4a7",
+  "workbench/cli.py": "d9889597bbd09fd462edad8b418e545985da510eddce611d2a0dee86149b2937",
+  "web/typography.js": "4687902c37695ff0679f87e32cb0a64e0de3a34f4d49aa253353bb857272fb28",
+  "web/app.js": "47c290c99ea73ac8b094aaf6d8ec49bb638a91e4d3f8f0fe5dc1c26b7ddf3437",
+  "tests/test_catalog.py": "aa20493d6bc1cafda0d7b0b8950410487713138cae4c1e2eed62530214d9970c",
+  "tests/test_workspace.py": "7697fcfd04663f228b6b264118d61ecac8f6680801449f2409e6a7e5970bfb39",
+  "tests/test_boundaries.py": "6374f97b10b3bbb828721dcc034f84136d7953a3ae7fa66d464cfd5a841b6ca1"
+}

@@ -1,0 +1,63 @@
+{
+  "scope": "Typography of the browser design preview with its default example content; API requests intercepted, no inference. Document overflow checks do not detect clipping inside fixed app panels. Not a complete accessibility audit.",
+  "checks": [
+    {
+      "name": "Actual pixel font loaded",
+      "pass": true
+    },
+    {
+      "name": "Actual IBM Plex Mono loaded",
+      "pass": true
+    },
+    {
+      "name": "Pixel heading",
+      "pass": true
+    },
+    {
+      "name": "IBM Plex Mono task input",
+      "pass": true
+    },
+    {
+      "name": "Keyboard preference changes heading",
+      "pass": true
+    },
+    {
+      "name": "Plain preference persists",
+      "pass": true
+    },
+    {
+      "name": "Document width at 1440",
+      "pass": true
+    },
+    {
+      "name": "Document width at 720",
+      "pass": true
+    },
+    {
+      "name": "Document width at 390",
+      "pass": true
+    },
+    {
+      "name": "Document width at 320",
+      "pass": true
+    },
+    {
+      "name": "Spacing at 320 CSS px",
+      "pass": true
+    },
+    {
+      "name": "200% text enlargement",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "manualReview": {
+    "desktopFontPair": "verified in screenshot",
+    "limitations": [
+      "At 320 CSS px, the current application sidebar leaves insufficient space for the main content, which is clipped.",
+      "At 200% text size, the fixed sidebar header clips controls and navigation text needs more vertical spacing."
+    ],
+    "fullLayoutPass": false
+  }
+}

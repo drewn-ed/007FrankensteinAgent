@@ -1,0 +1,78 @@
+/* Workspace settings use the shared palette and typography. */
+#settings-dialog {
+  width:min(560px,calc(100vw - 32px));
+  max-height:calc(100dvh - 32px);
+  padding:28px;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+
+#settings-dialog .dialog-heading { margin-bottom:28px; }
+#settings-dialog h3,#settings-dialog strong { font-size:14px; }
+#settings-dialog p { font-size:13px; line-height:1.7; }
+#settings-dialog .quiet-button { min-height:44px; }
+#settings-dialog :is(button,select,summary,a):focus-visible {
+  outline:2px solid var(--ds-focus);
+  outline-offset:3px;
+}
+#settings-runtime { border:0; padding:0; }
+.settings-section-heading { display:grid; gap:6px; margin-bottom:16px; }
+.model-connection {
+  padding:20px;
+  border:1px solid var(--ds-border);
+  border-radius:var(--ds-radius-panel);
+  background:var(--ds-canvas);
+}
+.model-connection-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.connection-status { font-size:12px; color:var(--ds-text-muted); }
+.connection-status.is-connected { color:var(--ds-success); }
+.connection-status.is-connected::before { content:''; display:inline-block; width:6px; height:6px; margin-right:8px; background:currentColor; }
+#settings-dialog .connection-account { margin-top:6px; overflow-wrap:anywhere; }
+#settings-dialog .connection-hint { margin-top:16px; }
+.connection-hint:empty,.settings-message:empty { display:none; }
+.connect-plan { width:100%; margin-top:20px; }
+#chatgpt-models { margin-top:24px; }
+#settings-dialog .model-field label { margin:0 0 8px; font-size:14px; font-weight:500; }
+#settings-dialog .model-field select {
+  display:block;
+  width:100%;
+  min-width:0;
+  min-height:48px;
+  padding:11px 14px;
+  border:1px solid var(--ds-border-control);
+  border-radius:var(--ds-radius-control);
+  background-color:var(--ds-surface);
+  color:var(--ds-text);
+  font:400 14px/1.5 var(--ds-font-text);
+  cursor:pointer;
+  color-scheme:light;
+}
+#settings-dialog .model-field select:disabled { cursor:wait; opacity:.65; }
+.model-selection-footer { display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-top:16px; }
+#settings-dialog .model-selection-footer p { margin:0; font-size:12px; }
+#settings-dialog .model-selection-footer .is-current { color:var(--ds-success); }
+.model-selection-footer .primary-button { min-height:44px; flex-shrink:0; }
+.connection-footer { display:flex; align-items:center; justify-content:space-between; gap:8px 16px; flex-wrap:wrap; padding-top:20px; margin-top:20px; border-top:1px solid var(--ds-border); font-size:12px; color:var(--ds-text-muted); }
+.connection-footer a { display:inline-flex; align-items:center; min-height:44px; color:var(--ds-text); text-underline-offset:4px; }
+.account-options { margin-top:8px; }
+.account-options summary,.settings-disclosure summary { cursor:pointer; min-height:44px; padding:10px 0; font-size:13px; color:var(--ds-text-muted); }
+.account-actions { display:flex; flex-wrap:wrap; gap:8px; padding:8px 0; }
+.account-actions .quiet-button { border:1px solid var(--ds-border-control); background:var(--ds-surface); }
+#settings-dialog .account-options p { font-size:12px; margin:8px 0 0; }
+#settings-dialog .settings-message { margin:16px 0 0; overflow-wrap:anywhere; }
+.settings-disclosure { border-bottom:1px solid var(--ds-border); padding:10px 0; }
+.settings-disclosure summary { color:var(--ds-text); font-weight:500; }
+.settings-disclosure-content { display:grid; gap:12px; padding:6px 0 16px; }
+#settings-dialog .settings-disclosure-content p { margin:0; }
+.settings-disclosure-content .text-button { justify-self:start; min-height:44px; }
+#settings-dialog .setting-row { margin:0; padding-top:24px; justify-content:space-between; }
+#settings-dialog .setting-row p { font-size:12px; margin-top:4px; }
+#settings-dialog .toggle-button { min-width:44px; min-height:44px; }
+
+@media(max-width:480px) {
+  #settings-dialog { padding:20px; }
+  .model-connection { padding:16px; }
+  .model-selection-footer { align-items:stretch; flex-direction:column; gap:12px; }
+  .model-selection-footer .primary-button { width:100%; }
+  .account-actions { flex-direction:column; }
+}

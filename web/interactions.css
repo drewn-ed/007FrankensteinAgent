@@ -1,0 +1,112 @@
+/* Motion builds on the shared palette, fonts and Nucleo pixel icons. */
+:root {
+  --ux-feedback:120ms;
+  --ux-transition:200ms;
+  --ux-ease:cubic-bezier(.22, 1, .36, 1);
+}
+
+.primary-nav { position:relative; isolation:isolate; }
+.nav-bubble {
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:11px;
+  background:var(--ds-surface-alt);
+  box-shadow:inset 3px 0 0 var(--ds-accent-text);
+}
+.primary-nav.has-nav-bubble .nav-row.active { background:transparent; }
+.primary-nav .nav-row > .icon {
+  transition:color var(--ux-transition) ease;
+}
+
+button:where(:not(.sidebar-shade)) {
+  position:relative;
+  transition:background-color var(--ux-feedback) ease, color var(--ux-feedback) ease,
+    border-color var(--ux-feedback) ease, box-shadow var(--ux-transition) ease,
+    transform var(--ux-feedback) var(--ux-ease), opacity var(--ux-feedback) ease;
+}
+button:not(.sidebar-shade):not(:disabled):not([aria-disabled="true"]):active {
+  transform:scale(.975);
+}
+:is(.nav-row,.chat-link,.library-row):not(:disabled):active { transform:scale(.99); }
+button:disabled { cursor:not-allowed; }
+button[aria-busy="true"] { cursor:progress; }
+.button-ripple {
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  border-radius:inherit;
+  pointer-events:none;
+}
+.button-ripple > span {
+  position:absolute;
+  border-radius:50%;
+  background:currentColor;
+  opacity:0;
+  animation:ux-ripple 400ms ease-out;
+}
+@keyframes ux-ripple {
+  from { transform:scale(.08); opacity:.16; }
+  to { transform:scale(1); opacity:0; }
+}
+
+@media(hover:hover) {
+  :is(.primary-button,.secondary-button,.send-button):not(:disabled):hover {
+    transform:translateY(-1px);
+    box-shadow:0 3px 8px #29262214;
+  }
+  :is(.primary-button,.secondary-button,.send-button):not(:disabled):active {
+    transform:translateY(0) scale(.975);
+    box-shadow:none;
+  }
+  :is(.library-row,.result-card,.artifact-download):hover {
+    border-color:var(--ds-border-control);
+  }
+}
+
+:is(a,select,summary):focus-visible {
+  outline:2px solid var(--ds-focus);
+  outline-offset:3px;
+}
+.composer {
+  transition:border-color var(--ux-transition) ease, box-shadow var(--ux-transition) ease;
+}
+.composer:focus-within {
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--ds-accent-text) 12%, transparent);
+}
+.button-loader { animation:ux-loader 1.2s steps(8) infinite; }
+@keyframes ux-loader { to { transform:rotate(360deg); } }
+
+dialog[open] { animation:ux-dialog-in var(--ux-transition) var(--ux-ease); }
+dialog[open]::backdrop { animation:ux-fade-in var(--ux-transition) ease; }
+.inspector:not([hidden]) { animation:ux-inspector-in var(--ux-transition) var(--ux-ease); }
+.toast:not([hidden]) { animation:ux-toast-in var(--ux-transition) var(--ux-ease); }
+.sidebar-shade:not([hidden]) { animation:ux-fade-in var(--ux-transition) ease; }
+@keyframes ux-dialog-in {
+  from { opacity:0; transform:translateY(8px) scale(.99); }
+  to { opacity:1; transform:translateY(0) scale(1); }
+}
+@keyframes ux-inspector-in {
+  from { opacity:0; transform:translateX(12px); }
+  to { opacity:1; transform:translateX(0); }
+}
+@keyframes ux-toast-in {
+  from { opacity:0; transform:translate(-50%, 8px); }
+  to { opacity:1; transform:translate(-50%, 0); }
+}
+@keyframes ux-fade-in { from { opacity:0; } to { opacity:1; } }
+@media(max-width:760px) {
+  .sidebar:not([hidden]) { animation:ux-sidebar-in var(--ux-transition) var(--ux-ease); }
+  @keyframes ux-sidebar-in {
+    from { opacity:0; translate:-12px 0; }
+    to { opacity:1; translate:0 0; }
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after,*::backdrop { animation:none!important; transition:none!important; }
+  button:not(.sidebar-shade):not(:disabled):is(:hover,:active) { transform:none; }
+  .button-ripple { display:none; }
+}

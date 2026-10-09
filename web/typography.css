@@ -1,0 +1,19 @@
+/* Typography integration. Shared values and fonts come from design/tokens.json. */
+body { font-family:var(--ds-font-text); font-size:1rem; line-height:1.625; font-synthesis:none; }
+h1 { font-family:var(--ds-font-display); font-weight:400; font-size:2rem; line-height:1.25; letter-spacing:0; overflow-wrap:anywhere; }
+.panel-heading h2 { font:400 1.5rem/1.3333 var(--ds-font-display); }
+.brand { font:400 1.5rem/1.3333 var(--ds-font-display); flex-wrap:wrap; }
+.brand small { font-family:var(--ds-font-text); }
+.topbar { min-height:76px; height:auto; padding-block:16px; flex-wrap:wrap; }
+.type-tools { display:flex; align-items:center; flex-wrap:wrap; gap:16px; }
+#plain-type[aria-pressed="true"] { color:var(--ds-canvas); background:var(--ds-text); }
+.quiet,.text-button,.nav,.file-button,summary,summary span,.composer>label,.composer-bottom .muted,.badge,.small,.side-note,.side-note p,.side-heading,.eyebrow,.brand small,#connection,#history,#history button small,.activity-panel time,.activity-panel summary,.skill-meta,.run-metrics { font-size:.875rem; }
+.primary,textarea,select,#task,.input-details textarea { font-size:1rem; line-height:1.5; }
+textarea::placeholder { color:var(--ds-text-muted); opacity:1; }
+pre,code { font-family:var(--ds-font-mono); font-size:.875rem; line-height:1.5; }
+button,.file-button,summary { min-height:44px; }
+.page-heading>div { min-width:0; }
+.page-heading,.panel-heading,.composer-bottom,.input-actions { flex-wrap:wrap; }
+.quiet,.text-button { white-space:normal; }
+@media(max-width:720px) { .topbar { padding:16px 20px; } .brand small { margin-left:0; } .type-tools { width:100%; } }
+.file-button { display:inline-flex; align-items:center; }

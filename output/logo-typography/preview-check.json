@@ -1,0 +1,36 @@
+{
+  "fonts": [
+    {
+      "family": "Geist Pixel Square",
+      "weight": "400",
+      "status": "loaded"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "weight": "400",
+      "status": "loaded"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "weight": "500",
+      "status": "loaded"
+    }
+  ],
+  "errors": [],
+  "mono": true,
+  "noWing": true,
+  "layouts": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440
+    },
+    {
+      "width": 760,
+      "scrollWidth": 760
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390
+    }
+  ]
+}

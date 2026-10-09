@@ -1,0 +1,380 @@
+{
+  "scope": "Static design preview only",
+  "layout": [
+    {
+      "width": 1440,
+      "panel": "overview",
+      "scrollWidth": 1440,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "panel": "type",
+      "scrollWidth": 1440,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "panel": "colors",
+      "scrollWidth": 1440,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "panel": "icons",
+      "scrollWidth": 1440,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "panel": "media",
+      "scrollWidth": 1440,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "panel": "use",
+      "scrollWidth": 1440,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "panel": "overview",
+      "scrollWidth": 1024,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "panel": "type",
+      "scrollWidth": 1024,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "panel": "colors",
+      "scrollWidth": 1024,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "panel": "icons",
+      "scrollWidth": 1024,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "panel": "media",
+      "scrollWidth": 1024,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 1024,
+      "panel": "use",
+      "scrollWidth": 1024,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 768,
+      "panel": "overview",
+      "scrollWidth": 768,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 768,
+      "panel": "type",
+      "scrollWidth": 768,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 768,
+      "panel": "colors",
+      "scrollWidth": 768,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 768,
+      "panel": "icons",
+      "scrollWidth": 768,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 768,
+      "panel": "media",
+      "scrollWidth": 768,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 768,
+      "panel": "use",
+      "scrollWidth": 768,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "panel": "overview",
+      "scrollWidth": 390,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "panel": "type",
+      "scrollWidth": 390,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "panel": "colors",
+      "scrollWidth": 390,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "panel": "icons",
+      "scrollWidth": 390,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "panel": "media",
+      "scrollWidth": 390,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 390,
+      "panel": "use",
+      "scrollWidth": 390,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 320,
+      "panel": "overview",
+      "scrollWidth": 320,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 320,
+      "panel": "type",
+      "scrollWidth": 320,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 320,
+      "panel": "colors",
+      "scrollWidth": 320,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 320,
+      "panel": "icons",
+      "scrollWidth": 320,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 320,
+      "panel": "media",
+      "scrollWidth": 320,
+      "visiblePanels": 1,
+      "pass": true
+    },
+    {
+      "width": 320,
+      "panel": "use",
+      "scrollWidth": 320,
+      "visiblePanels": 1,
+      "pass": true
+    }
+  ],
+  "interactions": [
+    {
+      "name": "20 pixel icons resolve and render",
+      "pass": true
+    },
+    {
+      "name": "Font specimen input and available weight",
+      "pass": true
+    },
+    {
+      "name": "Plain typography replaces pixel headings",
+      "pass": true
+    },
+    {
+      "name": "Plain typography preference persists",
+      "pass": true
+    },
+    {
+      "name": "Pixel typography restored",
+      "pass": true
+    },
+    {
+      "name": "Real local pixel font loaded",
+      "pass": true
+    },
+    {
+      "name": "Dark preview toggle",
+      "pass": true
+    },
+    {
+      "name": "Concept button stays illustrative",
+      "pass": true
+    },
+    {
+      "name": "HEX copy or visible fallback",
+      "pass": true
+    },
+    {
+      "name": "One-shot motion preview",
+      "pass": true
+    },
+    {
+      "name": "Reduced motion",
+      "pass": true
+    },
+    {
+      "name": "Keyboard tab navigation",
+      "pass": true
+    },
+    {
+      "name": "Video title dimensions",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "accessibility": [
+    {
+      "mode": "spacing overrides",
+      "panel": "overview",
+      "width": 320,
+      "scrollWidth": 320,
+      "pass": true
+    },
+    {
+      "mode": "spacing overrides",
+      "panel": "type",
+      "width": 320,
+      "scrollWidth": 320,
+      "pass": true
+    },
+    {
+      "mode": "spacing overrides",
+      "panel": "colors",
+      "width": 320,
+      "scrollWidth": 320,
+      "pass": true
+    },
+    {
+      "mode": "spacing overrides",
+      "panel": "icons",
+      "width": 320,
+      "scrollWidth": 320,
+      "pass": true
+    },
+    {
+      "mode": "spacing overrides",
+      "panel": "media",
+      "width": 320,
+      "scrollWidth": 320,
+      "pass": true
+    },
+    {
+      "mode": "spacing overrides",
+      "panel": "use",
+      "width": 320,
+      "scrollWidth": 320,
+      "pass": true
+    },
+    {
+      "mode": "200% text enlargement",
+      "panel": "overview",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "pass": true
+    },
+    {
+      "mode": "200% text enlargement",
+      "panel": "type",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "pass": true
+    },
+    {
+      "mode": "200% text enlargement",
+      "panel": "colors",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "pass": true
+    },
+    {
+      "mode": "200% text enlargement",
+      "panel": "icons",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "pass": true
+    },
+    {
+      "mode": "200% text enlargement",
+      "panel": "media",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "pass": true
+    },
+    {
+      "mode": "200% text enlargement",
+      "panel": "use",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "pass": true
+    }
+  ],
+  "accessibilityScope": "No horizontal overflow under text enlargement and spacing overrides, plus manual screenshot review. Not a full WCAG or assistive-technology audit.",
+  "fonts": [
+    {
+      "family": "Geist Pixel Square",
+      "status": "loaded"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "status": "loaded"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "status": "unloaded"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "status": "loaded"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "status": "loaded"
+    }
+  ],
+  "passed": true
+}

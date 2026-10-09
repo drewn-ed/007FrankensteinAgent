@@ -4,9 +4,15 @@ import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass, field
+from .usage import price_snapshot, read_usage
 
 
 class RunError(Exception):
+    pass
+
+
+class ModelFormatError(RunError):
+    """A completed response could not be parsed; not a quota/transport error."""
     pass
 
 
@@ -17,20 +23,44 @@ class Budget:
     calls: int = 0
     tokens: int = 0
     started: float = field(default_factory=time.monotonic)
+    cancelled: object = None
+    purpose: str = "Planning"
+    usage: list = field(default_factory=list)
+    on_usage: object = None
+    format_retry_used: bool = False
+    on_format_retry: object = None
+
+    def notify_usage(self):
+        if self.on_usage:
+            self.on_usage(self)
 
     def check(self):
+        if self.cancelled and self.cancelled():
+            raise RunError("Stopped by you. No further steps will run.")
         if time.monotonic() - self.started >= self.max_seconds:
-            raise RunError("Běh dosáhl časového limitu.")
+            raise RunError("The run reached its time limit.")
 
     def reserve(self):
         self.check()
         if self.calls >= self.max_calls:
-            raise RunError("Běh vyčerpal povolený počet volání modelu.")
+            raise RunError("The run reached its model call limit.")
         self.calls += 1
 
     def remaining_seconds(self):
         self.check()
         return max(0.1, self.max_seconds - (time.monotonic() - self.started))
+
+
+def response_schema(system, payload):
+    """Constrain transport shape; capability tests still validate semantic correctness."""
+    if system.startswith("Implement the given capability contract"):
+        return {"type": "object", "properties": {"code": {"type": "string"}}, "required": ["code"], "additionalProperties": False}
+    if system.startswith("You design contract tests") and isinstance(payload.get("manifest"), dict):
+        manifest = payload["manifest"]
+        return {"type": "object", "properties": {"cases": {"type": "array", "items": {
+            "type": "object", "properties": {"name": {"type": "string"}, "input": manifest["input_schema"], "expected": manifest["output_schema"]},
+            "required": ["name", "input", "expected"], "additionalProperties": False}}}, "required": ["cases"], "additionalProperties": False}
+    return None
 
 
 class Gemini:
@@ -42,21 +72,40 @@ class Gemini:
 
     def ready(self):
         if not self.config.key:
-            return "Chybí GEMINI_API_KEY v lokálním .env."
+            return "GEMINI_API_KEY is missing from the local .env file."
         if not self.config.free_confirmed:
-            return "Nejdřív potvrď Free tarif projektu v Google AI Studiu; inference je pozastavená."
+            return "Confirm the project uses the Free tier in Google AI Studio before running inference."
         if self.config.model not in self.FREE_MODELS:
-            return "Model není na ověřeném seznamu pro bezplatné testování."
+            return "The model is not on the verified list for free testing."
         return None
 
     def ask(self, system, payload, budget):
         if error := self.ready():
             raise RunError(error)
         budget.reserve()  # Failed requests count too. No automatic retry/fallback.
+        started = time.monotonic()
+        record = {"call": budget.calls, "purpose": budget.purpose, "provider": "Google Gemini",
+                  "model": self.config.model, "started_at": time.time(), "status": "pending", "usage": None,
+                  "pricing": price_snapshot(self.config.model, self.config.free_confirmed)}
+        budget.usage.append(record)
+        budget.notify_usage()
+        try:
+            return self._request(system, payload, budget, record)
+        except Exception:
+            record["status"] = "failed"
+            raise
+        finally:
+            record["duration_ms"] = round((time.monotonic() - started) * 1000)
+            budget.notify_usage()
+
+    def _request(self, system, payload, budget, record):
         body = {"systemInstruction": {"parts": [{"text": system}]},
                 "contents": [{"role": "user", "parts": [{"text": json.dumps(payload, ensure_ascii=False)}]}],
                 "generationConfig": {"responseMimeType": "application/json",
                                      "maxOutputTokens": self.config.max_output}}
+        schema = response_schema(system, payload)
+        if schema:
+            body["generationConfig"]["responseJsonSchema"] = schema
         request = urllib.request.Request(
             f"https://generativelanguage.googleapis.com/v1beta/models/{self.config.model}:generateContent",
             data=json.dumps(body).encode(),
@@ -65,26 +114,34 @@ class Gemini:
             with urllib.request.urlopen(request, timeout=min(55, budget.remaining_seconds())) as response:
                 raw = response.read(500_001)
             if len(raw) > 500_000:
-                raise RunError("Odpověď modelu překročila limit velikosti.")
+                raise RunError("The model response exceeded the size limit.")
             result = json.loads(raw)
         except urllib.error.HTTPError as exc:
             # Never surface provider response bodies or request headers.
             if exc.code == 429:
-                raise RunError("Gemini vyčerpalo kvótu. Běh zastaven, bez placeného fallbacku.") from None
-            raise RunError(f"Gemini odmítlo požadavek (HTTP {exc.code}).") from None
+                raise RunError("Gemini quota exhausted. The run stopped without a paid fallback.") from None
+            raise RunError(f"Gemini rejected the request (HTTP {exc.code}).") from None
         except (TimeoutError, urllib.error.URLError):
-            raise RunError("Gemini neodpovědělo v limitu; běh zastaven.") from None
+            raise RunError("Gemini did not respond in time; the run stopped.") from None
+        if not isinstance(result, dict):
+            raise RunError("The model returned an invalid response envelope.")
+        record["usage"] = read_usage(result.get("usageMetadata"))
+        record["resolved_model"] = result.get("modelVersion")
+        record["service_tier"] = (result.get("usageMetadata") or {}).get("serviceTier")
+        budget.tokens += (record["usage"] or {}).get("total") or 0
         budget.check()
-        budget.tokens += int(result.get("usageMetadata", {}).get("totalTokenCount", 0))
         candidates = result.get("candidates", [])
         if not candidates or candidates[0].get("finishReason") != "STOP":
-            raise RunError("Model nedokončil celou odpověď; částečný výsledek se nepoužije.")
+            raise RunError("The model response was incomplete; the partial result will not be used.")
         try:
             text = "".join(p.get("text", "") for p in candidates[0]["content"]["parts"] if not p.get("thought"))
             data = json.loads(text)
-        except (KeyError, ValueError):
-            raise RunError("Model vrátil neplatný JSON.") from None
+        except json.JSONDecodeError as error:
+            record["format_error"] = {"line": error.lineno, "column": error.colno, "reason": error.msg}
+            raise ModelFormatError("The model returned invalid JSON.") from None
+        except KeyError:
+            raise ModelFormatError("The model response is missing JSON content.") from None
         if not isinstance(data, dict):
-            raise RunError("Model musí vrátit JSON objekt.")
+            raise ModelFormatError("The model must return a JSON object.")
+        record["status"] = "completed"
         return data
-

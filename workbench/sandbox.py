@@ -33,7 +33,7 @@ class Sandbox:
     def run(self, code, data, timeout=None):
         packet = json.dumps({"code": code, "input": data}, allow_nan=False).encode()
         if len(packet) > 180_000 or len(code) > 60_000:
-            raise RunError("Vstup do sandboxu překročil limit velikosti.")
+            raise RunError("Sandbox input exceeded the size limit.")
         name = "learning-" + uuid.uuid4().hex
         command = ["docker", "run", "--rm", "-i", "--pull=never", "--name", name,
                    "--network=none", "--read-only", "--cap-drop=ALL",
@@ -58,7 +58,7 @@ class Sandbox:
                 sel.register(proc.stderr, selectors.EVENT_READ, "err")
                 while sel.get_map():
                     if time.monotonic() - started > limit:
-                        raise RunError("Sandbox překročil časový limit.")
+                        raise RunError("The sandbox exceeded its time limit.")
                     for key, _ in sel.select(0.05):
                         if key.data == "in":
                             try:
@@ -76,17 +76,17 @@ class Sandbox:
                             else:
                                 (out if key.data == "out" else err).extend(chunk)
                                 if len(out) + len(err) > 64_000:
-                                    raise RunError("Sandbox překročil limit výstupu.")
+                                    raise RunError("The sandbox exceeded its output limit.")
                 proc.wait(timeout=1)
             if proc.returncode:
                 # Keep generated diagnostics separate from trusted status.
-                raise RunError("Schopnost v sandboxu selhala: " + err.decode(errors="replace")[-1200:])
+                raise RunError("The skill failed in the sandbox: " + err.decode(errors="replace")[-1200:])
             try:
                 return json.loads(out, parse_constant=lambda value: (_ for _ in ()).throw(ValueError(value)))
             except ValueError:
-                raise RunError("Schopnost nevrátila platný JSON.") from None
+                raise RunError("The skill did not return valid JSON.") from None
         except FileNotFoundError:
-            raise RunError("Docker není dostupný; spuštění na hostiteli není dovoleno.") from None
+            raise RunError("Docker is unavailable; running on the host is not allowed.") from None
         finally:
             if proc is not None:
                 if proc.poll() is None:

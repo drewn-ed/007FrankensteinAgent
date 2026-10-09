@@ -3,7 +3,10 @@ name = "learning-workbench"
 version = "0.1.0"
 description = "Local prototype for tested, persistent agent capabilities"
 requires-python = ">=3.11"
-dependencies = ["jsonschema>=4.23,<5"]
+dependencies = [
+    "jsonschema>=4.23,<5",
+    "pyjwt[crypto]>=2.10,<3",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

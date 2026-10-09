@@ -1,0 +1,99 @@
+{
+  "schedule": {
+    "id": "6d7b9dfa547f4fadab822fe910ae77e2",
+    "title": "Background operations note test",
+    "task": "Write a concise handover note using only this supplied event status: 24 attendees registered, 22 seats assigned, 2 on the waiting list after Hall A closed, Agents lab moved to Studio D. Mention that the waiting list needs organizer review.",
+    "input": {
+      "files": []
+    },
+    "project_id": "event-ops-verification",
+    "interval_minutes": 0,
+    "next_at": 1791514201.820249,
+    "enabled": false,
+    "history": [
+      {
+        "scheduled_for": 1791514200.784686,
+        "started_at": 1791514201.8203242,
+        "status": "started",
+        "run_id": "eb14486dc4654d54ad916a972e114b7a"
+      }
+    ],
+    "mode": "data",
+    "connection": null
+  },
+  "run": {
+    "chat_id": null,
+    "conversation": [],
+    "cost": {
+      "billed_usd": null,
+      "calls": 1,
+      "cost_complete": true,
+      "estimated_usd": 0.0,
+      "known_cost_calls": 1,
+      "paid_equivalent_calls": 1,
+      "paid_equivalent_usd": 0.0005972,
+      "recorded_calls": 1,
+      "tracked": true,
+      "unknown_cost_calls": 0
+    },
+    "created_at": 1791514201.8302588,
+    "duration_ms": 1369,
+    "id": "eb14486dc4654d54ad916a972e114b7a",
+    "input": {
+      "files": []
+    },
+    "kind": "task",
+    "message": "Handover note generated successfully.",
+    "mode": "data",
+    "model_calls": 1,
+    "model_usage": [
+      {
+        "call": 1,
+        "duration_ms": 837,
+        "model": "gemini-3.5-flash-lite",
+        "pricing": {
+          "checked_at": "2026-10-09",
+          "currency": "USD",
+          "paid_standard_per_million": {
+            "cached_input": 0.03,
+            "input": 0.3,
+            "output": 2.5
+          },
+          "source": "https://ai.google.dev/gemini-api/docs/pricing",
+          "tier": "free_confirmed"
+        },
+        "provider": "Google Gemini",
+        "purpose": "Planning",
+        "resolved_model": "gemini-3.5-flash-lite",
+        "service_tier": "standard",
+        "started_at": 1791514202.38444,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 1474,
+          "output": 62,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 1536
+        }
+      }
+    ],
+    "permissions": [
+      "compute",
+      "files:artifacts"
+    ],
+    "project_id": "event-ops-verification",
+    "project_instructions": "Use English. Preserve source records. Do not replace the task with made-up example data.",
+    "registry_after": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "registry_before": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "registry_scope": {
+      "includes_shared": true,
+      "project_id": "event-ops-verification"
+    },
+    "result": "Handover Note: 24 attendees registered, 22 seats assigned, 2 on the waiting list after Hall A closed. Agents lab moved to Studio D. The waiting list needs organizer review.",
+    "status": "completed",
+    "task": "Write a concise handover note using only this supplied event status: 24 attendees registered, 22 seats assigned, 2 on the waiting list after Hall A closed, Agents lab moved to Studio D. Mention that the waiting list needs organizer review.",
+    "tokens": 1536,
+    "usage_version": 1
+  }
+}

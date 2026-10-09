@@ -1,0 +1,281 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<symbol id="nucleo-folder-open" viewBox="0 0 24 24">
+  <path d="M6 21H18" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M22 16V13H2V16" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M20 19.01V18" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M4 19.01V18" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M4 9.00999V5" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M6 3L9.00999 3" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M11 5H11.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 7H13" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M20 9H20.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+</symbol>
+<symbol id="nucleo-book-magic-skill" viewBox="0 0 24 24">
+  <path d="M18 18V22" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4 18H20V12" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12 2H6" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M6 22H20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M14.01 10L14 10" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M10.01 10L10 10" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M12 6L12 8" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M12 12L12 14" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M22 8V8.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M18 2V2.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M16 4V4.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M18 6V6.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M20 4V4.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-sliders" viewBox="0 0 24 24">
+  <path d="M14 20L16 20" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M22 17H22.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M2 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 16L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M12 16L12 18" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M14 14L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M10 10L8 10" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M22 7H16" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M2 7H2.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12 6L12 8" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M6 6L6 8" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M10 4L8 4" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-magnifier" viewBox="0 0 24 24">
+  <path d="M15 19H7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M15 3L7 3" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M3 15L3 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M19 15L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M19 19L19 19.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M21 21L21 21.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M5 17L5 17.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M17 17L17 17.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M17 5L17 5.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M5 5L5 5.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-plus" viewBox="0 0 24 24">
+  <path d="M3 12H10" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M14 12H21" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12 14V21" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M12 3V10" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-check" viewBox="0 0 24 24">
+  <path d="M9.99999 18H10.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M7.99999 16H8.00999" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M14 14H14.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M5.99999 14H6.00999" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M3.99999 12H4.00999" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M22 6H22.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M16 12H16.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M18 10H18.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M20 8H20.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-xmark" viewBox="0 0 24 24">
+  <path d="M20.0001 20L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M4.00006 20L4.00006 20.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18.0001 18L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M6.00006 18L6.00006 18.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M16.0001 16L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M8.00006 16L8.00006 16.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M14.0001 14L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M10.0001 14L10.0001 14.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12.0001 12L12 12" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M14.0001 10L14.0001 10.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10.0001 10L10 10" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M16.0001 8L16.0001 8.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M8.00012 8L8.00002 8" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M18.0001 6L18.0001 6.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M6.00012 6L6.00002 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M20.0001 4L20.0001 4.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4.00012 4L4.00002 4" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-triangle-warning" viewBox="0 0 24 24">
+  <path d="M4 21H20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M22 17L22 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12 17H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M2 17L2 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M20 13L20 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4 13L4 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 9L18 11" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12 13V9" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M6 9L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M16 5L16 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M8 5L8 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10 3H14" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+</symbol>
+<symbol id="nucleo-loader" viewBox="0 0 24 24">
+  <path opacity="0.5" d="M12 19V22" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.63" d="M19.01 19L19 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.38" d="M5.01001 19L5.00001 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.63" d="M17.01 17L17 17" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.38" d="M7.01001 17L7.00001 17" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.75" d="M22.005 11.995L19.005 11.995" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.25" d="M5.005 11.995L2.005 11.995" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.88" d="M17.01 7L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.13" d="M7.01001 7L7.00001 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.88" d="M19.01 5L19 5" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path opacity="0.13" d="M5.01001 5L5.00001 5" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M12 2V5" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-paper-plane" viewBox="0 0 24 24">
+  <path d="M18 3L21 3L21 6" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M19 8L19 11" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M16 5L13 5" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M11 7L8 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M9 13L5 13" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M6 9L3 9L3 11" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M17 13L17 16" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M11 15L11 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M15 18L15 21H13" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-layers" viewBox="0 0 24 24">
+  <path d="M13 21L11 21" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M16 19L15 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M9 19L8 19" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M19 17L18 17" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M6 17L5 17" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M22 15L21 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M13 15L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M3 15L2 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M16 13L15 13" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M9 13L8 13" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M19 11L18 11" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M6 11L5 11" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M22 9L21 9" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M3 9L2 9" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M19 7L18 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M6 7L5 7" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M16 5L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M9 5L8 5" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M13 3L11 3" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-shield-check" viewBox="0 0 24 24">
+  <path d="M6 3H18" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M8.01001 20L8.00001 20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M6.01001 18L6.00001 18" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M16.01 20L16 20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18.01 18L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4 16V5" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M20 16V5" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10 22H14" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10 14.01V14" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M12 12.01V12" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M14 10.01V10" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M16 8.01V8" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M8 12.01V12" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-clock" viewBox="0 0 24 24">
+  <path d="M20 6L20 6.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 4L18 4.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M22 8L22 16" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M16 2L12 2" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12 22H16" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18.01 20L18 20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M20.01 18L20 18" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12.0001 12L12.0001 8" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M16.01 16L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M14.01 14L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M2.00507 11.9951L2.00497 11.9951" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M5 5L5 5.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M5 19L5 19.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-gear" viewBox="0 0 24 24">
+  <path d="M12 23L12 23.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M20 20L20 20.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M16 20L8 20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4 20L4 20.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 18H18.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M6 18H6.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M8 16L8 16.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M10 14L10 14.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M20 12.0001L12 12.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M23.0051 11.9951L23.005 11.9951" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M1.005 11.9951L1.0049 11.9951" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10 10L10 10.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M20 16L20 8" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M8 8L8 8.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M4 16L4 8" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 6H18.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M6 6H6.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M20 4L20 4.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M16 4L8 4" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4 4L4 4.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12 1L12 1.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+</symbol>
+<symbol id="nucleo-file" viewBox="0 0 24 24">
+  <path d="M8 18H16" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M8 14L11 14" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M12 4V10H8" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4 20L4 10" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M20 20L20 4" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12 2L18 2" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M6 22L18 22" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M6 8H6.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M8 6H8.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10 4H10.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+</symbol>
+<symbol id="nucleo-nodes" viewBox="0 0 24 24">
+  <path d="M11 2.00001H13" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M11 8.00001H13" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M15 4L15 6" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M9 4L9 6" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M19 14H21" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M3.00002 14H5.00002" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M19 20H21" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M3.00002 20H5.00002" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M23 16L23 18" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M7 16L7 18" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M17 16L17 18" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M1 16L1 18" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M4.01003 10L4.00003 10" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M20 10L20.01 10" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10 21L10.01 21" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M14 21L14.01 21" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M12 22L12.01 22" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M5.01003 8L5.00003 8" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M19 8L19.01 8" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+</symbol>
+<symbol id="nucleo-clipboard-check" viewBox="0 0 24 24">
+  <path d="M8 4V6H16V4" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M10 2H14" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M20 5V20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4 5V20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 22L6 22" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10 17.01V17" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M12 15.01V15" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M14 13.01V13" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M16 11.01V11" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M8 15.01V15" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-reuse" viewBox="0 0 24 24">
+  <path d="M20 6L20 6.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 4L18 4.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M5.98999 4L5.99999 4" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M22 8L22 13" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M16 2L8 2" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M4 6V2" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M19 19L19 19.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M2.00507 11.9951L2.00497 11.9951" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M5 19L5 19.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M12 22L12 22.0001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-user" viewBox="0 0 24 24">
+  <path d="M5 16H6" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M18 16H19" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M8 14H16" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M3 18V21H21V18" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M10.5 3H13.5" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M10.5 10H13.5" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M15.5 5L15.5 8" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+  <path d="M8.5 5L8.5 8" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="square" fill="none"/>
+</symbol>
+<symbol id="nucleo-trash" viewBox="0 0 24 24">
+  <path d="M17 22L7 22" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M19 10V20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M5 10V20" stroke="currentColor" stroke-width="2" stroke-linecap="square" data-color="color-2" fill="none"/>
+  <path d="M21 6H3" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M16 4H16.01" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M8.00001 4H8.01001" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+  <path d="M14 2H10" stroke="currentColor" stroke-width="2" stroke-linecap="square" fill="none"/>
+</symbol>
+</svg>

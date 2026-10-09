@@ -1,0 +1,146 @@
+{
+  "notice": "Synthetic event data. Live model/browser executions; not a controlled performance benchmark.",
+  "runs": [
+    {
+      "id": "5b8453c25ac6449dbc2d94c6de58f34e",
+      "evidence": "first-task.json",
+      "status": "completed",
+      "model": "gpt-6.1-sol",
+      "calls": 15,
+      "duration_ms": 216316,
+      "result": {
+        "assigned": 24,
+        "checks": [
+          "Source roster matches",
+          "Every attendee accounted for once",
+          "Preferences respected",
+          "Available capacities respected",
+          "New allocation applied"
+        ],
+        "first_preferences": 24,
+        "participants": 24,
+        "scope": "Showcase constraints only; not a proof of optimal allocation or all user intent.",
+        "verified_constraints": true,
+        "waitlist": 0
+      },
+      "conversation_turns": 0,
+      "created": [
+        "peventops_normalize_registration_csv",
+        "peventops_allocate_preferred_workshops"
+      ],
+      "used": [
+        "peventops_normalize_registration_csv",
+        "peventops_allocate_preferred_workshops"
+      ],
+      "registry_unchanged": false
+    },
+    {
+      "id": "daf5ccc0cdfb4613a480a6cea12032b4",
+      "evidence": "room-change.json",
+      "status": "completed",
+      "model": "gpt-6.1-sol",
+      "calls": 15,
+      "duration_ms": 172731,
+      "result": {
+        "assigned": 22,
+        "checks": [
+          "Source roster matches",
+          "Every attendee accounted for once",
+          "Preferences respected",
+          "Available capacities respected",
+          "New allocation applied"
+        ],
+        "first_preferences": 22,
+        "participants": 25,
+        "scope": "Showcase constraints only; not a proof of optimal allocation or all user intent.",
+        "verified_constraints": true,
+        "waitlist": 3
+      },
+      "conversation_turns": 0,
+      "created": [
+        "peventops_replan_preserving_unaffected_assignments"
+      ],
+      "used": [
+        "peventops_normalize_registration_csv",
+        "peventops_replan_preserving_unaffected_assignments"
+      ],
+      "registry_unchanged": false
+    },
+    {
+      "id": "ede440fdec46485e93f93a1221beaf84",
+      "evidence": "reuse-task.json",
+      "status": "completed",
+      "model": "gpt-6.1-sol",
+      "calls": 11,
+      "duration_ms": 81445,
+      "result": {
+        "assigned": 22,
+        "checks": [
+          "Source roster matches",
+          "Every attendee accounted for once",
+          "Preferences respected",
+          "Available capacities respected",
+          "New allocation applied"
+        ],
+        "first_preferences": 22,
+        "participants": 26,
+        "scope": "Showcase constraints only; not a proof of optimal allocation or all user intent.",
+        "verified_constraints": true,
+        "waitlist": 4
+      },
+      "conversation_turns": 0,
+      "created": [],
+      "used": [
+        "peventops_normalize_registration_csv",
+        "peventops_replan_preserving_unaffected_assignments"
+      ],
+      "registry_unchanged": true
+    }
+  ],
+  "agent_generated_discovery_demonstrated": false,
+  "earlier_failed_attempts": [
+    {
+      "id": "93a45447e2904d0f8e54bdab5ef46803",
+      "status": "failed",
+      "calls": 4,
+      "error": "The new skill failed its tests after one repair. It was not installed; review the test failures before retrying.",
+      "model": "gemini-3.5-flash-lite",
+      "installed": []
+    },
+    {
+      "id": "fe72a30f1c0d45b4a690552172b202a3",
+      "status": "failed",
+      "calls": 4,
+      "error": "The model returned invalid JSON.",
+      "model": "gemini-3.5-flash-lite",
+      "installed": []
+    },
+    {
+      "id": "dead196d61154bdd8e120401a918e552",
+      "status": "failed",
+      "calls": 1,
+      "error": "The model proposed an unknown operation.",
+      "model": "gemini-3.5-flash-lite",
+      "installed": []
+    },
+    {
+      "id": "4dea3a635cab4b9c8c0fe9e6d1c57726",
+      "status": "failed",
+      "calls": 4,
+      "error": "The new skill failed its tests after one repair. It was not installed; review the test failures before retrying.",
+      "model": "gemini-3.5-flash-lite",
+      "installed": []
+    },
+    {
+      "id": "38fd2769e3df4e6a9ebc398484887b41",
+      "status": "failed",
+      "calls": 17,
+      "error": "Gemini quota exhausted. The run stopped without a paid fallback.",
+      "model": "gemini-3.5-flash-lite",
+      "installed": [
+        "peventops_clean_registrations_csv",
+        "peventops_allocate_workshops"
+      ]
+    }
+  ]
+}

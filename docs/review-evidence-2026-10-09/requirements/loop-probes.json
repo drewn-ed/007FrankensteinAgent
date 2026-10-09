@@ -1,0 +1,322 @@
+{
+  "source": "handwritten deterministic fault-injection fixtures; NOT a contest demonstration",
+  "creation_failure_gets_one_repair": true,
+  "execution_failure_gets_no_repair": true,
+  "creation_run": {
+    "id": "a551b8f081004767b588be5a450b4fd2",
+    "task": "Fixture: normalize contact emails",
+    "input": {},
+    "kind": "task",
+    "status": "completed",
+    "created_at": 1791512488.524205,
+    "result": [
+      "a@example.test"
+    ],
+    "registry_before": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "model_calls": 6,
+    "tokens": 0,
+    "usage_version": 1,
+    "model_usage": [],
+    "cost": {
+      "tracked": true,
+      "calls": 6,
+      "recorded_calls": 0,
+      "known_cost_calls": 0,
+      "unknown_cost_calls": 6,
+      "estimated_usd": null,
+      "cost_complete": false,
+      "paid_equivalent_usd": null,
+      "paid_equivalent_calls": 0,
+      "billed_usd": null
+    },
+    "message": "Fixture completed",
+    "duration_ms": 5099,
+    "registry_after": "6cfc5923696273b5fddfba3e0fe4fa9764d2882fc2621711018bbe7015d49553"
+  },
+  "creation_events": [
+    {
+      "seq": 1,
+      "at": 1791512488.564802,
+      "context_run_ids": [],
+      "kind": "session",
+      "message": "New session; only the persistent registry was loaded.",
+      "registry": []
+    },
+    {
+      "seq": 2,
+      "at": 1791512488.567509,
+      "kind": "gap",
+      "manifest": {
+        "description": "Normalize emails to lowercase, trim whitespace and remove duplicates in order.",
+        "id": "review_contact_normalizer",
+        "input_schema": {
+          "properties": {
+            "emails": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "emails"
+          ],
+          "type": "object"
+        },
+        "kind": "task",
+        "output_schema": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "permissions": [
+          "compute"
+        ],
+        "title": "Review contact normalizer"
+      },
+      "message": "Synthetic probe gap"
+    },
+    {
+      "seq": 3,
+      "at": 1791512488.567769,
+      "cases": [
+        {
+          "expected": [
+            "a@example.test"
+          ],
+          "input": {
+            "emails": [
+              " a@example.test "
+            ]
+          },
+          "name": "Whitespace"
+        },
+        {
+          "expected": [
+            "a@example.test"
+          ],
+          "input": {
+            "emails": [
+              "A@EXAMPLE.TEST"
+            ]
+          },
+          "name": "Case"
+        },
+        {
+          "expected": [
+            "a@example.test"
+          ],
+          "input": {
+            "emails": [
+              "a@example.test",
+              "a@example.test"
+            ]
+          },
+          "name": "Duplicates"
+        }
+      ],
+      "kind": "test_plan",
+      "message": "Test cases were created without seeing the implementation."
+    },
+    {
+      "seq": 4,
+      "at": 1791512491.0065112,
+      "capability": "review_contact_normalizer",
+      "code_hash": "05b0b9e737145512395229cc0edfc9aec564cb81ae60a51a2517ca470fbc1f47",
+      "kind": "tests_failed",
+      "message": "Review contact normalizer: 0/3 tests passed.",
+      "tests": [
+        {
+          "actual": [],
+          "duration_ms": 431,
+          "expected": [
+            "a@example.test"
+          ],
+          "name": "Whitespace",
+          "passed": false
+        },
+        {
+          "actual": [],
+          "duration_ms": 1354,
+          "expected": [
+            "a@example.test"
+          ],
+          "name": "Case",
+          "passed": false
+        },
+        {
+          "actual": [],
+          "duration_ms": 653,
+          "expected": [
+            "a@example.test"
+          ],
+          "name": "Duplicates",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "seq": 5,
+      "at": 1791512491.0069509,
+      "kind": "repair",
+      "message": "Tests blocked installation; attempting one repair."
+    },
+    {
+      "seq": 6,
+      "at": 1791512492.7656279,
+      "capability": "review_contact_normalizer",
+      "code_hash": "9c14ace0d4b8f42babf816798783ff1f46695ebe9f26581337b115b1cd4014bb",
+      "kind": "tests_passed",
+      "message": "Review contact normalizer: 3/3 tests passed.",
+      "tests": [
+        {
+          "actual": [
+            "a@example.test"
+          ],
+          "duration_ms": 412,
+          "expected": [
+            "a@example.test"
+          ],
+          "name": "Whitespace",
+          "passed": true
+        },
+        {
+          "actual": [
+            "a@example.test"
+          ],
+          "duration_ms": 684,
+          "expected": [
+            "a@example.test"
+          ],
+          "name": "Case",
+          "passed": true
+        },
+        {
+          "actual": [
+            "a@example.test"
+          ],
+          "duration_ms": 659,
+          "expected": [
+            "a@example.test"
+          ],
+          "name": "Duplicates",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "seq": 7,
+      "at": 1791512492.76653,
+      "capability": "review_contact_normalizer",
+      "kind": "installed",
+      "message": "Saved: Review contact normalizer \u00b7 v1",
+      "permissions": [
+        "compute"
+      ],
+      "version": 1
+    },
+    {
+      "seq": 8,
+      "at": 1791512493.6224158,
+      "capability": "review_contact_normalizer",
+      "code_hash": "9c14ace0d4b8f42babf816798783ff1f46695ebe9f26581337b115b1cd4014bb",
+      "input": {
+        "emails": [
+          " A@EXAMPLE.TEST "
+        ]
+      },
+      "kind": "used",
+      "message": "Used: Review contact normalizer \u00b7 v1",
+      "output": [
+        "a@example.test"
+      ],
+      "version": 1
+    },
+    {
+      "seq": 9,
+      "at": 1791512493.6230972,
+      "kind": "finished",
+      "message": "Fixture completed"
+    }
+  ],
+  "execution_run": {
+    "id": "1735d2d1cde14ce0be8d09b1f24f46e7",
+    "task": "Fixture: exercise unseen execution failure",
+    "input": {},
+    "kind": "task",
+    "status": "failed",
+    "created_at": 1791512493.623789,
+    "result": null,
+    "registry_before": "6cfc5923696273b5fddfba3e0fe4fa9764d2882fc2621711018bbe7015d49553",
+    "model_calls": 1,
+    "tokens": 0,
+    "usage_version": 1,
+    "model_usage": [],
+    "cost": {
+      "tracked": true,
+      "calls": 1,
+      "recorded_calls": 0,
+      "known_cost_calls": 0,
+      "unknown_cost_calls": 1,
+      "estimated_usd": null,
+      "cost_complete": false,
+      "paid_equivalent_usd": null,
+      "paid_equivalent_calls": 0,
+      "billed_usd": null
+    },
+    "error": "The skill failed in the sandbox: Traceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"<capability>\", line 3, in run\nValueError: Synthetic unseen-case failure\n",
+    "duration_ms": 1275,
+    "registry_after": "6cfc5923696273b5fddfba3e0fe4fa9764d2882fc2621711018bbe7015d49553"
+  },
+  "execution_events": [
+    {
+      "seq": 10,
+      "at": 1791512494.163318,
+      "context_run_ids": [],
+      "kind": "session",
+      "message": "New session; only the persistent registry was loaded.",
+      "registry": [
+        {
+          "code_hash": "9c14ace0d4b8f42babf816798783ff1f46695ebe9f26581337b115b1cd4014bb",
+          "manifest": {
+            "description": "Normalize emails to lowercase, trim whitespace and remove duplicates in order.",
+            "id": "review_contact_normalizer",
+            "input_schema": {
+              "properties": {
+                "emails": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "emails"
+              ],
+              "type": "object"
+            },
+            "kind": "task",
+            "output_schema": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "permissions": [
+              "compute"
+            ],
+            "title": "Review contact normalizer"
+          },
+          "version": 1
+        }
+      ]
+    },
+    {
+      "seq": 11,
+      "at": 1791512494.898305,
+      "kind": "error",
+      "message": "The skill failed in the sandbox: Traceback (most recent call last):\n  File \"<string>\", line 6, in <module>\n  File \"<capability>\", line 3, in run\nValueError: Synthetic unseen-case failure\n"
+    }
+  ]
+}

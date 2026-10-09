@@ -5,7 +5,7 @@ from pathlib import Path
 
 from .config import Config
 from .engine import Engine
-from .model import Gemini
+from .providers import create_model
 from .sandbox import Sandbox
 from .store import Store
 
@@ -22,7 +22,7 @@ def main():
     store = Store(config.data_dir)
     try:
         run = store.new_run(args.task, json.loads(args.input.read_text()))
-        engine = Engine(config, Gemini(config), Sandbox(config.image), store)
+        engine = Engine(config, create_model(config), Sandbox(config.image), store)
         original = engine.event
         def event(run_record, kind, message, **data):
             original(run_record, kind, message, **data)

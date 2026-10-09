@@ -1,0 +1,5 @@
+{
+  "source": "Different synthetic data for a fresh-session check; no real attendees.",
+  "registrations_csv": "name,email,workshop\nDana, dana@example.test ,Design\nEva,EVA@example.test,Design\nFilip,filip@example.test,Design\nDana,DANA@example.test,Design\nGabriel,gabriel@example.test,AI\n",
+  "capacities": {"Design": 2, "AI": 3}
+}

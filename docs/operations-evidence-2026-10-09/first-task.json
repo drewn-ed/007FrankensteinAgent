@@ -1,0 +1,2313 @@
+{
+  "run": {
+    "artifacts": [
+      {
+        "id": "196e1a233001472ea782749592f71020",
+        "mime": "text/csv",
+        "name": "cleaned-registrations.csv",
+        "run_id": "5b8453c25ac6449dbc2d94c6de58f34e",
+        "size": 1347,
+        "source": "generated_artifact"
+      },
+      {
+        "id": "2e9db76820f148199a32bd534e806a55",
+        "mime": "application/json",
+        "name": "allocation.json",
+        "run_id": "5b8453c25ac6449dbc2d94c6de58f34e",
+        "size": 1813,
+        "source": "generated_artifact"
+      },
+      {
+        "id": "18d8cf64be7140f196119a049774dd2c",
+        "mime": "application/json",
+        "name": "event-operations.json",
+        "run_id": "5b8453c25ac6449dbc2d94c6de58f34e",
+        "size": 7026,
+        "source": "browser_download"
+      }
+    ],
+    "chat_id": null,
+    "conversation": [],
+    "cost": {
+      "billed_usd": null,
+      "calls": 15,
+      "cost_complete": false,
+      "estimated_usd": null,
+      "known_cost_calls": 0,
+      "paid_equivalent_calls": 0,
+      "paid_equivalent_usd": null,
+      "recorded_calls": 15,
+      "tracked": true,
+      "unknown_cost_calls": 15
+    },
+    "created_at": 1791514699.85709,
+    "duration_ms": 216316,
+    "id": "5b8453c25ac6449dbc2d94c6de58f34e",
+    "input": {
+      "files": [
+        {
+          "content": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np02,Sam Rivera,sam.rivera@example.test,agents,design\np03,Taylor Brooks,taylor.brooks@example.test,agents,design\np04,Jordan Lee,jordan.lee@example.test,agents,design\np05, Casey Chen ,casey.chen@example.test,agents,design\np06,Riley Park,riley.park@example.test,agents,design\np07,Morgan Ellis,MORGAN.ELLIS@EXAMPLE.TEST,agents,design\np08,Avery Quinn,avery.quinn@example.test,agents,design\np09, Cameron Blake ,cameron.blake@example.test,agents,design\np10,Drew Hayes,drew.hayes@example.test,agents,design\np11,Jamie Cole,jamie.cole@example.test,design,story\np12,Robin Walsh,robin.walsh@example.test,design,story\np13, Skyler Reed ,SKYLER.REED@EXAMPLE.TEST,design,story\np14,Quinn Foster,quinn.foster@example.test,design,story\np15,Reese Bell,reese.bell@example.test,design,story\np16,Harper Lane,harper.lane@example.test,design,story\np17, Finley Shaw ,finley.shaw@example.test,design,story\np18,Dakota West,dakota.west@example.test,design,story\np19,Emerson Hale,EMERSON.HALE@EXAMPLE.TEST,story,agents\np20,Parker Wells,parker.wells@example.test,story,agents\np21, Rowan Gray ,rowan.gray@example.test,story,agents\np22,Sage Miller,sage.miller@example.test,story,agents\np23,Charlie Ford,charlie.ford@example.test,story,agents\np24,Remy Stone,remy.stone@example.test,story,agents\ndup01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\ndup02,Riley Park,riley.park@example.test,agents,design\ndup03,Jamie Cole,jamie.cole@example.test,design,story\nincomplete,Incomplete registration,,agents,design\n",
+          "id": "8c0bdfa576a2453fbe4821519c930c08",
+          "mime": "text/csv",
+          "name": "october-registrations.csv",
+          "size": 1606
+        }
+      ]
+    },
+    "kind": "task",
+    "message": "Allocation applied: 24 seats assigned, 0 attendees on the waiting list. Source records, preferences and room capacities checked.",
+    "mode": "browser",
+    "model_calls": 15,
+    "model_usage": [
+      {
+        "call": 1,
+        "duration_ms": 11635,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514699.974237,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 4099,
+          "output": 353,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 4452
+        }
+      },
+      {
+        "call": 2,
+        "duration_ms": 38201,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Designing tests",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514711.6188202,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 1944,
+          "output": 1075,
+          "thinking": 272,
+          "tool_input": 0,
+          "total": 3291
+        }
+      },
+      {
+        "call": 3,
+        "duration_ms": 20941,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Writing a skill",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514749.822757,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 2856,
+          "output": 667,
+          "thinking": 74,
+          "tool_input": 0,
+          "total": 3597
+        }
+      },
+      {
+        "call": 4,
+        "duration_ms": 14759,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514771.701077,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 6074,
+          "output": 555,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 6629
+        }
+      },
+      {
+        "call": 5,
+        "duration_ms": 3537,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514786.7513669,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 7506,
+          "output": 48,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 7554
+        }
+      },
+      {
+        "call": 6,
+        "duration_ms": 13411,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514790.558913,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 8591,
+          "output": 431,
+          "thinking": 31,
+          "tool_input": 0,
+          "total": 9053
+        }
+      },
+      {
+        "call": 7,
+        "duration_ms": 33402,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Designing tests",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514803.982645,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 3042,
+          "output": 1475,
+          "thinking": 148,
+          "tool_input": 0,
+          "total": 4665
+        }
+      },
+      {
+        "call": 8,
+        "duration_ms": 20879,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Writing a skill",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514837.386126,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 4141,
+          "output": 796,
+          "thinking": 32,
+          "tool_input": 0,
+          "total": 4969
+        }
+      },
+      {
+        "call": 9,
+        "duration_ms": 21360,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514859.107286,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 10491,
+          "output": 910,
+          "thinking": 45,
+          "tool_input": 0,
+          "total": 11446
+        }
+      },
+      {
+        "call": 10,
+        "duration_ms": 3828,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514880.759795,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 10908,
+          "output": 24,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 10932
+        }
+      },
+      {
+        "call": 11,
+        "duration_ms": 3820,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514884.597125,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 10995,
+          "output": 40,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 11035
+        }
+      },
+      {
+        "call": 12,
+        "duration_ms": 4443,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514888.779186,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 11332,
+          "output": 58,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 11390
+        }
+      },
+      {
+        "call": 13,
+        "duration_ms": 5985,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514893.4539158,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 12098,
+          "output": 48,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 12146
+        }
+      },
+      {
+        "call": 14,
+        "duration_ms": 4890,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514899.715567,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 12915,
+          "output": 43,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 12958
+        }
+      },
+      {
+        "call": 15,
+        "duration_ms": 11138,
+        "model": "gpt-6.1-sol",
+        "pricing": {
+          "currency": "USD",
+          "paid_standard_per_million": null,
+          "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+          "tier": "chatgpt_plan"
+        },
+        "provider": "OpenAI · ChatGPT plan",
+        "purpose": "Planning",
+        "resolved_model": "gpt-6.1-sol",
+        "started_at": 1791514904.922765,
+        "status": "completed",
+        "usage": {
+          "cached_input": 0,
+          "input": 13466,
+          "output": 323,
+          "thinking": 0,
+          "tool_input": 0,
+          "total": 13789
+        }
+      }
+    ],
+    "permissions": [
+      "compute",
+      "files:artifacts",
+      "file:8c0bdfa576a2453fbe4821519c930c08",
+      "browser:https://event.workspace.demo"
+    ],
+    "project_id": "event-ops-chatgpt",
+    "project_instructions": "Use English. Preserve source records. Do not replace the task with made-up example data.",
+    "registry_after": "6f6c45c5935b08adbce316cb884d43afbb78f5f8a915c082d660fbb25732d3e0",
+    "registry_before": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "registry_scope": {
+      "includes_shared": true,
+      "project_id": "event-ops-chatgpt"
+    },
+    "result": {
+      "assigned": 24,
+      "checks": [
+        "Source roster matches",
+        "Every attendee accounted for once",
+        "Preferences respected",
+        "Available capacities respected",
+        "New allocation applied"
+      ],
+      "first_preferences": 24,
+      "participants": 24,
+      "scope": "Showcase constraints only; not a proof of optimal allocation or all user intent.",
+      "verified_constraints": true,
+      "waitlist": 0
+    },
+    "status": "completed",
+    "task": "Prepare this event for opening. Clean the attached registrations: trim fields, lowercase emails, drop incomplete records, and keep the first valid registration per email. Import the cleaned roster into Fieldwork. Allocate people in roster order to their first available preferred workshop, then their second choice; otherwise waitlist them. Respect the room capacities. Apply the checked allocation and export the operations report. Preserve reusable operations so another event can use them.",
+    "tokens": 127906,
+    "usage_version": 1
+  },
+  "events": [
+    {
+      "seq": 46,
+      "at": 1791514699.9711082,
+      "context_run_ids": [],
+      "kind": "session",
+      "message": "New session; only the persistent registry was loaded.",
+      "registry": []
+    },
+    {
+      "seq": 47,
+      "at": 1791514711.6175811,
+      "kind": "gap",
+      "manifest": {
+        "description": "Read CSV with headers id,name,email,first_choice,second_choice. Trim all fields and lowercase emails. Drop rows with missing required fields, invalid email (must have exactly one @, nonempty local part and dotted domain, and no whitespace), or choices outside valid_workshop_ids. Retain the first valid row per normalized email in source order; invalid rows do not reserve an email. Preserve other field values and order. Return cleaned CSV with the same five headers, normalized participants, and counts of input, invalid, duplicate and retained rows. Reject missing headers.",
+        "id": "peventops_normalize_registration_csv",
+        "input_schema": {
+          "properties": {
+            "csv_text": {
+              "type": "string"
+            },
+            "valid_workshop_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "csv_text",
+            "valid_workshop_ids"
+          ],
+          "type": "object"
+        },
+        "kind": "task",
+        "output_schema": {
+          "properties": {
+            "cleaned_csv": {
+              "type": "string"
+            },
+            "duplicate_rows": {
+              "type": "integer"
+            },
+            "input_rows": {
+              "type": "integer"
+            },
+            "invalid_rows": {
+              "type": "integer"
+            },
+            "participants": {
+              "items": {
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "first_choice": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "second_choice": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "email",
+                  "first_choice",
+                  "second_choice"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "retained_rows": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "cleaned_csv",
+            "participants",
+            "input_rows",
+            "invalid_rows",
+            "duplicate_rows",
+            "retained_rows"
+          ],
+          "type": "object"
+        },
+        "permissions": [
+          "compute"
+        ],
+        "title": "Normalize registration CSV"
+      },
+      "message": "The empty registry lacks a reusable CSV registration cleaner required before importing the supplied roster."
+    },
+    {
+      "seq": 48,
+      "at": 1791514749.8215349,
+      "cases": [
+        {
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np05,Casey Chen,casey.chen@example.test,agents,design\np07,Morgan Ellis,morgan.ellis@example.test,agents,design\n",
+            "duplicate_rows": 0,
+            "input_rows": 3,
+            "invalid_rows": 0,
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "casey.chen@example.test",
+                "first_choice": "agents",
+                "id": "p05",
+                "name": "Casey Chen",
+                "second_choice": "design"
+              },
+              {
+                "email": "morgan.ellis@example.test",
+                "first_choice": "agents",
+                "id": "p07",
+                "name": "Morgan Ellis",
+                "second_choice": "design"
+              }
+            ],
+            "retained_rows": 3
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice\n p01 , Alex Morgan , ALEX.MORGAN@EXAMPLE.TEST , agents , design \np05, Casey Chen ,casey.chen@example.test,agents,design\np07,Morgan Ellis,MORGAN.ELLIS@EXAMPLE.TEST,agents,design\n",
+            "valid_workshop_ids": [
+              "agents",
+              "design",
+              "story"
+            ]
+          },
+          "name": "Trim every field and lowercase emails while preserving participant order and other values"
+        },
+        {
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np06,Riley Park,riley.park@example.test,agents,design\n",
+            "duplicate_rows": 2,
+            "input_rows": 4,
+            "invalid_rows": 0,
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "riley.park@example.test",
+                "first_choice": "agents",
+                "id": "p06",
+                "name": "Riley Park",
+                "second_choice": "design"
+              }
+            ],
+            "retained_rows": 2
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np06,Riley Park,riley.park@example.test,agents,design\ndup01, Alex Morgan ,alex.morgan@example.test,agents,design\ndup02,Riley Park,riley.park@example.test,agents,design\n",
+            "valid_workshop_ids": [
+              "agents",
+              "design",
+              "story"
+            ]
+          },
+          "name": "Keep the first valid registration per normalized email and count later duplicates"
+        },
+        {
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\np11,Jamie Cole,jamie.cole@example.test,design,story\n",
+            "duplicate_rows": 0,
+            "input_rows": 3,
+            "invalid_rows": 2,
+            "participants": [
+              {
+                "email": "jamie.cole@example.test",
+                "first_choice": "design",
+                "id": "p11",
+                "name": "Jamie Cole",
+                "second_choice": "story"
+              }
+            ],
+            "retained_rows": 1
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np11,Jamie Cole,jamie.cole@example.test,design,story\nincomplete,Incomplete registration,,agents,design\n",
+            "valid_workshop_ids": [
+              "design",
+              "story"
+            ]
+          },
+          "name": "Drop records with an unavailable preference or missing email without disturbing retained order"
+        },
+        {
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\n",
+            "duplicate_rows": 0,
+            "input_rows": 0,
+            "invalid_rows": 0,
+            "participants": [],
+            "retained_rows": 0
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice\n",
+            "valid_workshop_ids": []
+          },
+          "name": "A header-only CSV produces an empty roster and zero counts"
+        }
+      ],
+      "kind": "test_plan",
+      "message": "Test cases were created without seeing the implementation."
+    },
+    {
+      "seq": 49,
+      "at": 1791514771.697353,
+      "capability": "peventops_normalize_registration_csv",
+      "code_hash": "916422e557f0d20230e824491951fc05fcf92d9e662d04f6ffc6bc472612f672",
+      "kind": "tests_passed",
+      "message": "Normalize registration CSV: 4/4 tests passed.",
+      "tests": [
+        {
+          "actual": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np05,Casey Chen,casey.chen@example.test,agents,design\np07,Morgan Ellis,morgan.ellis@example.test,agents,design\n",
+            "duplicate_rows": 0,
+            "input_rows": 3,
+            "invalid_rows": 0,
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "casey.chen@example.test",
+                "first_choice": "agents",
+                "id": "p05",
+                "name": "Casey Chen",
+                "second_choice": "design"
+              },
+              {
+                "email": "morgan.ellis@example.test",
+                "first_choice": "agents",
+                "id": "p07",
+                "name": "Morgan Ellis",
+                "second_choice": "design"
+              }
+            ],
+            "retained_rows": 3
+          },
+          "duration_ms": 313,
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np05,Casey Chen,casey.chen@example.test,agents,design\np07,Morgan Ellis,morgan.ellis@example.test,agents,design\n",
+            "duplicate_rows": 0,
+            "input_rows": 3,
+            "invalid_rows": 0,
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "casey.chen@example.test",
+                "first_choice": "agents",
+                "id": "p05",
+                "name": "Casey Chen",
+                "second_choice": "design"
+              },
+              {
+                "email": "morgan.ellis@example.test",
+                "first_choice": "agents",
+                "id": "p07",
+                "name": "Morgan Ellis",
+                "second_choice": "design"
+              }
+            ],
+            "retained_rows": 3
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice\n p01 , Alex Morgan , ALEX.MORGAN@EXAMPLE.TEST , agents , design \np05, Casey Chen ,casey.chen@example.test,agents,design\np07,Morgan Ellis,MORGAN.ELLIS@EXAMPLE.TEST,agents,design\n",
+            "valid_workshop_ids": [
+              "agents",
+              "design",
+              "story"
+            ]
+          },
+          "name": "Trim every field and lowercase emails while preserving participant order and other values",
+          "passed": true
+        },
+        {
+          "actual": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np06,Riley Park,riley.park@example.test,agents,design\n",
+            "duplicate_rows": 2,
+            "input_rows": 4,
+            "invalid_rows": 0,
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "riley.park@example.test",
+                "first_choice": "agents",
+                "id": "p06",
+                "name": "Riley Park",
+                "second_choice": "design"
+              }
+            ],
+            "retained_rows": 2
+          },
+          "duration_ms": 201,
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np06,Riley Park,riley.park@example.test,agents,design\n",
+            "duplicate_rows": 2,
+            "input_rows": 4,
+            "invalid_rows": 0,
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "riley.park@example.test",
+                "first_choice": "agents",
+                "id": "p06",
+                "name": "Riley Park",
+                "second_choice": "design"
+              }
+            ],
+            "retained_rows": 2
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np06,Riley Park,riley.park@example.test,agents,design\ndup01, Alex Morgan ,alex.morgan@example.test,agents,design\ndup02,Riley Park,riley.park@example.test,agents,design\n",
+            "valid_workshop_ids": [
+              "agents",
+              "design",
+              "story"
+            ]
+          },
+          "name": "Keep the first valid registration per normalized email and count later duplicates",
+          "passed": true
+        },
+        {
+          "actual": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\np11,Jamie Cole,jamie.cole@example.test,design,story\n",
+            "duplicate_rows": 0,
+            "input_rows": 3,
+            "invalid_rows": 2,
+            "participants": [
+              {
+                "email": "jamie.cole@example.test",
+                "first_choice": "design",
+                "id": "p11",
+                "name": "Jamie Cole",
+                "second_choice": "story"
+              }
+            ],
+            "retained_rows": 1
+          },
+          "duration_ms": 233,
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\np11,Jamie Cole,jamie.cole@example.test,design,story\n",
+            "duplicate_rows": 0,
+            "input_rows": 3,
+            "invalid_rows": 2,
+            "participants": [
+              {
+                "email": "jamie.cole@example.test",
+                "first_choice": "design",
+                "id": "p11",
+                "name": "Jamie Cole",
+                "second_choice": "story"
+              }
+            ],
+            "retained_rows": 1
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np11,Jamie Cole,jamie.cole@example.test,design,story\nincomplete,Incomplete registration,,agents,design\n",
+            "valid_workshop_ids": [
+              "design",
+              "story"
+            ]
+          },
+          "name": "Drop records with an unavailable preference or missing email without disturbing retained order",
+          "passed": true
+        },
+        {
+          "actual": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\n",
+            "duplicate_rows": 0,
+            "input_rows": 0,
+            "invalid_rows": 0,
+            "participants": [],
+            "retained_rows": 0
+          },
+          "duration_ms": 182,
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice\n",
+            "duplicate_rows": 0,
+            "input_rows": 0,
+            "invalid_rows": 0,
+            "participants": [],
+            "retained_rows": 0
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice\n",
+            "valid_workshop_ids": []
+          },
+          "name": "A header-only CSV produces an empty roster and zero counts",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "seq": 50,
+      "at": 1791514771.699855,
+      "capability": "peventops_normalize_registration_csv",
+      "kind": "installed",
+      "message": "Saved: Normalize registration CSV · v1",
+      "permissions": [
+        "compute"
+      ],
+      "version": 1
+    },
+    {
+      "seq": 51,
+      "at": 1791514786.750326,
+      "capability": "peventops_normalize_registration_csv",
+      "code_hash": "916422e557f0d20230e824491951fc05fcf92d9e662d04f6ffc6bc472612f672",
+      "input": {
+        "csv_text": "id,name,email,first_choice,second_choice\np01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\np02,Sam Rivera,sam.rivera@example.test,agents,design\np03,Taylor Brooks,taylor.brooks@example.test,agents,design\np04,Jordan Lee,jordan.lee@example.test,agents,design\np05, Casey Chen ,casey.chen@example.test,agents,design\np06,Riley Park,riley.park@example.test,agents,design\np07,Morgan Ellis,MORGAN.ELLIS@EXAMPLE.TEST,agents,design\np08,Avery Quinn,avery.quinn@example.test,agents,design\np09, Cameron Blake ,cameron.blake@example.test,agents,design\np10,Drew Hayes,drew.hayes@example.test,agents,design\np11,Jamie Cole,jamie.cole@example.test,design,story\np12,Robin Walsh,robin.walsh@example.test,design,story\np13, Skyler Reed ,SKYLER.REED@EXAMPLE.TEST,design,story\np14,Quinn Foster,quinn.foster@example.test,design,story\np15,Reese Bell,reese.bell@example.test,design,story\np16,Harper Lane,harper.lane@example.test,design,story\np17, Finley Shaw ,finley.shaw@example.test,design,story\np18,Dakota West,dakota.west@example.test,design,story\np19,Emerson Hale,EMERSON.HALE@EXAMPLE.TEST,story,agents\np20,Parker Wells,parker.wells@example.test,story,agents\np21, Rowan Gray ,rowan.gray@example.test,story,agents\np22,Sage Miller,sage.miller@example.test,story,agents\np23,Charlie Ford,charlie.ford@example.test,story,agents\np24,Remy Stone,remy.stone@example.test,story,agents\ndup01, Alex Morgan ,ALEX.MORGAN@EXAMPLE.TEST,agents,design\ndup02,Riley Park,riley.park@example.test,agents,design\ndup03,Jamie Cole,jamie.cole@example.test,design,story\nincomplete,Incomplete registration,,agents,design\n",
+        "valid_workshop_ids": [
+          "agents",
+          "design",
+          "story"
+        ]
+      },
+      "kind": "used",
+      "message": "Used: Normalize registration CSV · v1",
+      "output": {
+        "cleaned_csv": "id,name,email,first_choice,second_choice\np01,Alex Morgan,alex.morgan@example.test,agents,design\np02,Sam Rivera,sam.rivera@example.test,agents,design\np03,Taylor Brooks,taylor.brooks@example.test,agents,design\np04,Jordan Lee,jordan.lee@example.test,agents,design\np05,Casey Chen,casey.chen@example.test,agents,design\np06,Riley Park,riley.park@example.test,agents,design\np07,Morgan Ellis,morgan.ellis@example.test,agents,design\np08,Avery Quinn,avery.quinn@example.test,agents,design\np09,Cameron Blake,cameron.blake@example.test,agents,design\np10,Drew Hayes,drew.hayes@example.test,agents,design\np11,Jamie Cole,jamie.cole@example.test,design,story\np12,Robin Walsh,robin.walsh@example.test,design,story\np13,Skyler Reed,skyler.reed@example.test,design,story\np14,Quinn Foster,quinn.foster@example.test,design,story\np15,Reese Bell,reese.bell@example.test,design,story\np16,Harper Lane,harper.lane@example.test,design,story\np17,Finley Shaw,finley.shaw@example.test,design,story\np18,Dakota West,dakota.west@example.test,design,story\np19,Emerson Hale,emerson.hale@example.test,story,agents\np20,Parker Wells,parker.wells@example.test,story,agents\np21,Rowan Gray,rowan.gray@example.test,story,agents\np22,Sage Miller,sage.miller@example.test,story,agents\np23,Charlie Ford,charlie.ford@example.test,story,agents\np24,Remy Stone,remy.stone@example.test,story,agents\n",
+        "duplicate_rows": 3,
+        "input_rows": 28,
+        "invalid_rows": 1,
+        "participants": [
+          {
+            "email": "alex.morgan@example.test",
+            "first_choice": "agents",
+            "id": "p01",
+            "name": "Alex Morgan",
+            "second_choice": "design"
+          },
+          {
+            "email": "sam.rivera@example.test",
+            "first_choice": "agents",
+            "id": "p02",
+            "name": "Sam Rivera",
+            "second_choice": "design"
+          },
+          {
+            "email": "taylor.brooks@example.test",
+            "first_choice": "agents",
+            "id": "p03",
+            "name": "Taylor Brooks",
+            "second_choice": "design"
+          },
+          {
+            "email": "jordan.lee@example.test",
+            "first_choice": "agents",
+            "id": "p04",
+            "name": "Jordan Lee",
+            "second_choice": "design"
+          },
+          {
+            "email": "casey.chen@example.test",
+            "first_choice": "agents",
+            "id": "p05",
+            "name": "Casey Chen",
+            "second_choice": "design"
+          },
+          {
+            "email": "riley.park@example.test",
+            "first_choice": "agents",
+            "id": "p06",
+            "name": "Riley Park",
+            "second_choice": "design"
+          },
+          {
+            "email": "morgan.ellis@example.test",
+            "first_choice": "agents",
+            "id": "p07",
+            "name": "Morgan Ellis",
+            "second_choice": "design"
+          },
+          {
+            "email": "avery.quinn@example.test",
+            "first_choice": "agents",
+            "id": "p08",
+            "name": "Avery Quinn",
+            "second_choice": "design"
+          },
+          {
+            "email": "cameron.blake@example.test",
+            "first_choice": "agents",
+            "id": "p09",
+            "name": "Cameron Blake",
+            "second_choice": "design"
+          },
+          {
+            "email": "drew.hayes@example.test",
+            "first_choice": "agents",
+            "id": "p10",
+            "name": "Drew Hayes",
+            "second_choice": "design"
+          },
+          {
+            "email": "jamie.cole@example.test",
+            "first_choice": "design",
+            "id": "p11",
+            "name": "Jamie Cole",
+            "second_choice": "story"
+          },
+          {
+            "email": "robin.walsh@example.test",
+            "first_choice": "design",
+            "id": "p12",
+            "name": "Robin Walsh",
+            "second_choice": "story"
+          },
+          {
+            "email": "skyler.reed@example.test",
+            "first_choice": "design",
+            "id": "p13",
+            "name": "Skyler Reed",
+            "second_choice": "story"
+          },
+          {
+            "email": "quinn.foster@example.test",
+            "first_choice": "design",
+            "id": "p14",
+            "name": "Quinn Foster",
+            "second_choice": "story"
+          },
+          {
+            "email": "reese.bell@example.test",
+            "first_choice": "design",
+            "id": "p15",
+            "name": "Reese Bell",
+            "second_choice": "story"
+          },
+          {
+            "email": "harper.lane@example.test",
+            "first_choice": "design",
+            "id": "p16",
+            "name": "Harper Lane",
+            "second_choice": "story"
+          },
+          {
+            "email": "finley.shaw@example.test",
+            "first_choice": "design",
+            "id": "p17",
+            "name": "Finley Shaw",
+            "second_choice": "story"
+          },
+          {
+            "email": "dakota.west@example.test",
+            "first_choice": "design",
+            "id": "p18",
+            "name": "Dakota West",
+            "second_choice": "story"
+          },
+          {
+            "email": "emerson.hale@example.test",
+            "first_choice": "story",
+            "id": "p19",
+            "name": "Emerson Hale",
+            "second_choice": "agents"
+          },
+          {
+            "email": "parker.wells@example.test",
+            "first_choice": "story",
+            "id": "p20",
+            "name": "Parker Wells",
+            "second_choice": "agents"
+          },
+          {
+            "email": "rowan.gray@example.test",
+            "first_choice": "story",
+            "id": "p21",
+            "name": "Rowan Gray",
+            "second_choice": "agents"
+          },
+          {
+            "email": "sage.miller@example.test",
+            "first_choice": "story",
+            "id": "p22",
+            "name": "Sage Miller",
+            "second_choice": "agents"
+          },
+          {
+            "email": "charlie.ford@example.test",
+            "first_choice": "story",
+            "id": "p23",
+            "name": "Charlie Ford",
+            "second_choice": "agents"
+          },
+          {
+            "email": "remy.stone@example.test",
+            "first_choice": "story",
+            "id": "p24",
+            "name": "Remy Stone",
+            "second_choice": "agents"
+          }
+        ],
+        "retained_rows": 24
+      },
+      "version": 1
+    },
+    {
+      "seq": 52,
+      "artifact": {
+        "id": "196e1a233001472ea782749592f71020",
+        "mime": "text/csv",
+        "name": "cleaned-registrations.csv",
+        "run_id": "5b8453c25ac6449dbc2d94c6de58f34e",
+        "size": 1347,
+        "source": "generated_artifact"
+      },
+      "at": 1791514790.2913,
+      "kind": "artifact",
+      "message": "Created: cleaned-registrations.csv"
+    },
+    {
+      "seq": 53,
+      "at": 1791514790.292384,
+      "kind": "browser_step",
+      "message": "Upload cleaned-registrations.csv to Import participant CSV",
+      "operation": {
+        "action": "upload",
+        "reason": "Upload cleaned-registrations.csv to Import participant CSV",
+        "ref": "e1_7",
+        "value": "196e1a233001472ea782749592f71020"
+      }
+    },
+    {
+      "seq": 54,
+      "at": 1791514803.981015,
+      "kind": "gap",
+      "manifest": {
+        "description": "Create a fresh allocation for all participants in input order. Try first_choice then second_choice, assigning to the first workshop with an open room and remaining capacity; otherwise waitlist the participant. Use runtime room capacities, sharing room capacity across workshops in that room. Closed rooms provide no seats. Unknown choices are unavailable. Reject duplicate participant, room or workshop IDs, missing workshop room references and negative capacities. Account for each participant exactly once. Do not carry forward existing reservations.",
+        "id": "peventops_allocate_preferred_workshops",
+        "input_schema": {
+          "properties": {
+            "participants": {
+              "items": {
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "first_choice": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "second_choice": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "email",
+                  "first_choice",
+                  "second_choice"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "rooms": {
+              "items": {
+                "properties": {
+                  "capacity": {
+                    "type": "integer"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "open": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "capacity",
+                  "open"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "workshops": {
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "room": {
+                    "type": "string"
+                  },
+                  "time": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "room",
+                  "time"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "participants",
+            "rooms",
+            "workshops"
+          ],
+          "type": "object"
+        },
+        "kind": "task",
+        "output_schema": {
+          "properties": {
+            "assignments": {
+              "items": {
+                "properties": {
+                  "participant_id": {
+                    "type": "string"
+                  },
+                  "workshop_id": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "participant_id",
+                  "workshop_id"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "waitlist": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "assignments",
+            "waitlist"
+          ],
+          "type": "object"
+        },
+        "permissions": [
+          "compute"
+        ],
+        "title": "Allocate preferred workshops in roster order"
+      },
+      "message": "A reusable roster-order allocator is missing; it must use runtime room availability and capacities independently of CSV normalization."
+    },
+    {
+      "seq": 55,
+      "at": 1791514837.385482,
+      "cases": [
+        {
+          "expected": {
+            "assignments": [],
+            "waitlist": []
+          },
+          "input": {
+            "participants": [],
+            "rooms": [],
+            "workshops": []
+          },
+          "name": "Empty roster produces no assignments or waitlist entries"
+        },
+        {
+          "expected": {
+            "assignments": [
+              {
+                "participant_id": "p02",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "p01",
+                "workshop_id": "design"
+              }
+            ],
+            "waitlist": [
+              "p03"
+            ]
+          },
+          "input": {
+            "participants": [
+              {
+                "email": "sam.rivera@example.test",
+                "first_choice": "agents",
+                "id": "p02",
+                "name": "Sam Rivera",
+                "second_choice": "design"
+              },
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "taylor.brooks@example.test",
+                "first_choice": "agents",
+                "id": "p03",
+                "name": "Taylor Brooks",
+                "second_choice": "design"
+              }
+            ],
+            "rooms": [
+              {
+                "capacity": 1,
+                "id": "a",
+                "name": "Hall A",
+                "open": true
+              },
+              {
+                "capacity": 1,
+                "id": "b",
+                "name": "Room B",
+                "open": true
+              }
+            ],
+            "workshops": [
+              {
+                "id": "agents",
+                "name": "Agents lab",
+                "room": "a",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "design",
+                "name": "Product studio",
+                "room": "b",
+                "time": "10:00–11:30"
+              }
+            ]
+          },
+          "name": "Allocate in roster order rather than ID order, falling back to second choice before waitlisting"
+        },
+        {
+          "expected": {
+            "assignments": [
+              {
+                "participant_id": "p01",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "p11",
+                "workshop_id": "design"
+              },
+              {
+                "participant_id": "p19",
+                "workshop_id": "story"
+              }
+            ],
+            "waitlist": [
+              "p02"
+            ]
+          },
+          "input": {
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "jamie.cole@example.test",
+                "first_choice": "design",
+                "id": "p11",
+                "name": "Jamie Cole",
+                "second_choice": "story"
+              },
+              {
+                "email": "sam.rivera@example.test",
+                "first_choice": "agents",
+                "id": "p02",
+                "name": "Sam Rivera",
+                "second_choice": "design"
+              },
+              {
+                "email": "emerson.hale@example.test",
+                "first_choice": "story",
+                "id": "p19",
+                "name": "Emerson Hale",
+                "second_choice": "agents"
+              }
+            ],
+            "rooms": [
+              {
+                "capacity": 2,
+                "id": "a",
+                "name": "Hall A",
+                "open": true
+              },
+              {
+                "capacity": 1,
+                "id": "c",
+                "name": "Room C",
+                "open": true
+              }
+            ],
+            "workshops": [
+              {
+                "id": "agents",
+                "name": "Agents lab",
+                "room": "a",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "design",
+                "name": "Product studio",
+                "room": "a",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "story",
+                "name": "Storytelling",
+                "room": "c",
+                "time": "10:00–11:30"
+              }
+            ]
+          },
+          "name": "Workshops in the same room share capacity while another room remains independently available"
+        },
+        {
+          "expected": {
+            "assignments": [
+              {
+                "participant_id": "p01",
+                "workshop_id": "design"
+              }
+            ],
+            "waitlist": [
+              "p02",
+              "p19"
+            ]
+          },
+          "input": {
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "sam.rivera@example.test",
+                "first_choice": "agents",
+                "id": "p02",
+                "name": "Sam Rivera",
+                "second_choice": "design"
+              },
+              {
+                "email": "emerson.hale@example.test",
+                "first_choice": "story",
+                "id": "p19",
+                "name": "Emerson Hale",
+                "second_choice": "agents"
+              }
+            ],
+            "rooms": [
+              {
+                "capacity": 2,
+                "id": "a",
+                "name": "Hall A",
+                "open": false
+              },
+              {
+                "capacity": 1,
+                "id": "b",
+                "name": "Room B",
+                "open": true
+              },
+              {
+                "capacity": 0,
+                "id": "c",
+                "name": "Room C",
+                "open": true
+              }
+            ],
+            "workshops": [
+              {
+                "id": "agents",
+                "name": "Agents lab",
+                "room": "a",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "design",
+                "name": "Product studio",
+                "room": "b",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "story",
+                "name": "Storytelling",
+                "room": "c",
+                "time": "10:00–11:30"
+              }
+            ]
+          },
+          "name": "Closed rooms and open rooms with zero capacity provide no seats"
+        }
+      ],
+      "kind": "test_plan",
+      "message": "Test cases were created without seeing the implementation."
+    },
+    {
+      "seq": 56,
+      "at": 1791514859.105145,
+      "capability": "peventops_allocate_preferred_workshops",
+      "code_hash": "9d65fecb24d63c604bce1a6a6fb7f8c835a383fc95c14e4f2ae96f4c44ec2a66",
+      "kind": "tests_passed",
+      "message": "Allocate preferred workshops in roster order: 4/4 tests passed.",
+      "tests": [
+        {
+          "actual": {
+            "assignments": [],
+            "waitlist": []
+          },
+          "duration_ms": 249,
+          "expected": {
+            "assignments": [],
+            "waitlist": []
+          },
+          "input": {
+            "participants": [],
+            "rooms": [],
+            "workshops": []
+          },
+          "name": "Empty roster produces no assignments or waitlist entries",
+          "passed": true
+        },
+        {
+          "actual": {
+            "assignments": [
+              {
+                "participant_id": "p02",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "p01",
+                "workshop_id": "design"
+              }
+            ],
+            "waitlist": [
+              "p03"
+            ]
+          },
+          "duration_ms": 192,
+          "expected": {
+            "assignments": [
+              {
+                "participant_id": "p02",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "p01",
+                "workshop_id": "design"
+              }
+            ],
+            "waitlist": [
+              "p03"
+            ]
+          },
+          "input": {
+            "participants": [
+              {
+                "email": "sam.rivera@example.test",
+                "first_choice": "agents",
+                "id": "p02",
+                "name": "Sam Rivera",
+                "second_choice": "design"
+              },
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "taylor.brooks@example.test",
+                "first_choice": "agents",
+                "id": "p03",
+                "name": "Taylor Brooks",
+                "second_choice": "design"
+              }
+            ],
+            "rooms": [
+              {
+                "capacity": 1,
+                "id": "a",
+                "name": "Hall A",
+                "open": true
+              },
+              {
+                "capacity": 1,
+                "id": "b",
+                "name": "Room B",
+                "open": true
+              }
+            ],
+            "workshops": [
+              {
+                "id": "agents",
+                "name": "Agents lab",
+                "room": "a",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "design",
+                "name": "Product studio",
+                "room": "b",
+                "time": "10:00–11:30"
+              }
+            ]
+          },
+          "name": "Allocate in roster order rather than ID order, falling back to second choice before waitlisting",
+          "passed": true
+        },
+        {
+          "actual": {
+            "assignments": [
+              {
+                "participant_id": "p01",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "p11",
+                "workshop_id": "design"
+              },
+              {
+                "participant_id": "p19",
+                "workshop_id": "story"
+              }
+            ],
+            "waitlist": [
+              "p02"
+            ]
+          },
+          "duration_ms": 163,
+          "expected": {
+            "assignments": [
+              {
+                "participant_id": "p01",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "p11",
+                "workshop_id": "design"
+              },
+              {
+                "participant_id": "p19",
+                "workshop_id": "story"
+              }
+            ],
+            "waitlist": [
+              "p02"
+            ]
+          },
+          "input": {
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "jamie.cole@example.test",
+                "first_choice": "design",
+                "id": "p11",
+                "name": "Jamie Cole",
+                "second_choice": "story"
+              },
+              {
+                "email": "sam.rivera@example.test",
+                "first_choice": "agents",
+                "id": "p02",
+                "name": "Sam Rivera",
+                "second_choice": "design"
+              },
+              {
+                "email": "emerson.hale@example.test",
+                "first_choice": "story",
+                "id": "p19",
+                "name": "Emerson Hale",
+                "second_choice": "agents"
+              }
+            ],
+            "rooms": [
+              {
+                "capacity": 2,
+                "id": "a",
+                "name": "Hall A",
+                "open": true
+              },
+              {
+                "capacity": 1,
+                "id": "c",
+                "name": "Room C",
+                "open": true
+              }
+            ],
+            "workshops": [
+              {
+                "id": "agents",
+                "name": "Agents lab",
+                "room": "a",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "design",
+                "name": "Product studio",
+                "room": "a",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "story",
+                "name": "Storytelling",
+                "room": "c",
+                "time": "10:00–11:30"
+              }
+            ]
+          },
+          "name": "Workshops in the same room share capacity while another room remains independently available",
+          "passed": true
+        },
+        {
+          "actual": {
+            "assignments": [
+              {
+                "participant_id": "p01",
+                "workshop_id": "design"
+              }
+            ],
+            "waitlist": [
+              "p02",
+              "p19"
+            ]
+          },
+          "duration_ms": 226,
+          "expected": {
+            "assignments": [
+              {
+                "participant_id": "p01",
+                "workshop_id": "design"
+              }
+            ],
+            "waitlist": [
+              "p02",
+              "p19"
+            ]
+          },
+          "input": {
+            "participants": [
+              {
+                "email": "alex.morgan@example.test",
+                "first_choice": "agents",
+                "id": "p01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "sam.rivera@example.test",
+                "first_choice": "agents",
+                "id": "p02",
+                "name": "Sam Rivera",
+                "second_choice": "design"
+              },
+              {
+                "email": "emerson.hale@example.test",
+                "first_choice": "story",
+                "id": "p19",
+                "name": "Emerson Hale",
+                "second_choice": "agents"
+              }
+            ],
+            "rooms": [
+              {
+                "capacity": 2,
+                "id": "a",
+                "name": "Hall A",
+                "open": false
+              },
+              {
+                "capacity": 1,
+                "id": "b",
+                "name": "Room B",
+                "open": true
+              },
+              {
+                "capacity": 0,
+                "id": "c",
+                "name": "Room C",
+                "open": true
+              }
+            ],
+            "workshops": [
+              {
+                "id": "agents",
+                "name": "Agents lab",
+                "room": "a",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "design",
+                "name": "Product studio",
+                "room": "b",
+                "time": "10:00–11:30"
+              },
+              {
+                "id": "story",
+                "name": "Storytelling",
+                "room": "c",
+                "time": "10:00–11:30"
+              }
+            ]
+          },
+          "name": "Closed rooms and open rooms with zero capacity provide no seats",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "seq": 57,
+      "at": 1791514859.106154,
+      "capability": "peventops_allocate_preferred_workshops",
+      "kind": "installed",
+      "message": "Saved: Allocate preferred workshops in roster order · v1",
+      "permissions": [
+        "compute"
+      ],
+      "version": 1
+    },
+    {
+      "seq": 58,
+      "at": 1791514880.758605,
+      "capability": "peventops_allocate_preferred_workshops",
+      "code_hash": "9d65fecb24d63c604bce1a6a6fb7f8c835a383fc95c14e4f2ae96f4c44ec2a66",
+      "input": {
+        "participants": [
+          {
+            "email": "alex.morgan@example.test",
+            "first_choice": "agents",
+            "id": "p01",
+            "name": "Alex Morgan",
+            "second_choice": "design"
+          },
+          {
+            "email": "sam.rivera@example.test",
+            "first_choice": "agents",
+            "id": "p02",
+            "name": "Sam Rivera",
+            "second_choice": "design"
+          },
+          {
+            "email": "taylor.brooks@example.test",
+            "first_choice": "agents",
+            "id": "p03",
+            "name": "Taylor Brooks",
+            "second_choice": "design"
+          },
+          {
+            "email": "jordan.lee@example.test",
+            "first_choice": "agents",
+            "id": "p04",
+            "name": "Jordan Lee",
+            "second_choice": "design"
+          },
+          {
+            "email": "casey.chen@example.test",
+            "first_choice": "agents",
+            "id": "p05",
+            "name": "Casey Chen",
+            "second_choice": "design"
+          },
+          {
+            "email": "riley.park@example.test",
+            "first_choice": "agents",
+            "id": "p06",
+            "name": "Riley Park",
+            "second_choice": "design"
+          },
+          {
+            "email": "morgan.ellis@example.test",
+            "first_choice": "agents",
+            "id": "p07",
+            "name": "Morgan Ellis",
+            "second_choice": "design"
+          },
+          {
+            "email": "avery.quinn@example.test",
+            "first_choice": "agents",
+            "id": "p08",
+            "name": "Avery Quinn",
+            "second_choice": "design"
+          },
+          {
+            "email": "cameron.blake@example.test",
+            "first_choice": "agents",
+            "id": "p09",
+            "name": "Cameron Blake",
+            "second_choice": "design"
+          },
+          {
+            "email": "drew.hayes@example.test",
+            "first_choice": "agents",
+            "id": "p10",
+            "name": "Drew Hayes",
+            "second_choice": "design"
+          },
+          {
+            "email": "jamie.cole@example.test",
+            "first_choice": "design",
+            "id": "p11",
+            "name": "Jamie Cole",
+            "second_choice": "story"
+          },
+          {
+            "email": "robin.walsh@example.test",
+            "first_choice": "design",
+            "id": "p12",
+            "name": "Robin Walsh",
+            "second_choice": "story"
+          },
+          {
+            "email": "skyler.reed@example.test",
+            "first_choice": "design",
+            "id": "p13",
+            "name": "Skyler Reed",
+            "second_choice": "story"
+          },
+          {
+            "email": "quinn.foster@example.test",
+            "first_choice": "design",
+            "id": "p14",
+            "name": "Quinn Foster",
+            "second_choice": "story"
+          },
+          {
+            "email": "reese.bell@example.test",
+            "first_choice": "design",
+            "id": "p15",
+            "name": "Reese Bell",
+            "second_choice": "story"
+          },
+          {
+            "email": "harper.lane@example.test",
+            "first_choice": "design",
+            "id": "p16",
+            "name": "Harper Lane",
+            "second_choice": "story"
+          },
+          {
+            "email": "finley.shaw@example.test",
+            "first_choice": "design",
+            "id": "p17",
+            "name": "Finley Shaw",
+            "second_choice": "story"
+          },
+          {
+            "email": "dakota.west@example.test",
+            "first_choice": "design",
+            "id": "p18",
+            "name": "Dakota West",
+            "second_choice": "story"
+          },
+          {
+            "email": "emerson.hale@example.test",
+            "first_choice": "story",
+            "id": "p19",
+            "name": "Emerson Hale",
+            "second_choice": "agents"
+          },
+          {
+            "email": "parker.wells@example.test",
+            "first_choice": "story",
+            "id": "p20",
+            "name": "Parker Wells",
+            "second_choice": "agents"
+          },
+          {
+            "email": "rowan.gray@example.test",
+            "first_choice": "story",
+            "id": "p21",
+            "name": "Rowan Gray",
+            "second_choice": "agents"
+          },
+          {
+            "email": "sage.miller@example.test",
+            "first_choice": "story",
+            "id": "p22",
+            "name": "Sage Miller",
+            "second_choice": "agents"
+          },
+          {
+            "email": "charlie.ford@example.test",
+            "first_choice": "story",
+            "id": "p23",
+            "name": "Charlie Ford",
+            "second_choice": "agents"
+          },
+          {
+            "email": "remy.stone@example.test",
+            "first_choice": "story",
+            "id": "p24",
+            "name": "Remy Stone",
+            "second_choice": "agents"
+          }
+        ],
+        "rooms": [
+          {
+            "capacity": 10,
+            "id": "a",
+            "name": "Hall A",
+            "open": true
+          },
+          {
+            "capacity": 8,
+            "id": "b",
+            "name": "Room B",
+            "open": true
+          },
+          {
+            "capacity": 6,
+            "id": "c",
+            "name": "Room C",
+            "open": true
+          },
+          {
+            "capacity": 8,
+            "id": "d",
+            "name": "Studio D",
+            "open": true
+          }
+        ],
+        "workshops": [
+          {
+            "id": "agents",
+            "name": "Agents lab",
+            "room": "a",
+            "time": "10:00–11:30"
+          },
+          {
+            "id": "design",
+            "name": "Product studio",
+            "room": "b",
+            "time": "10:00–11:30"
+          },
+          {
+            "id": "story",
+            "name": "Storytelling",
+            "room": "c",
+            "time": "10:00–11:30"
+          }
+        ]
+      },
+      "kind": "used",
+      "message": "Used: Allocate preferred workshops in roster order · v1",
+      "output": {
+        "assignments": [
+          {
+            "participant_id": "p01",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p02",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p03",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p04",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p05",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p06",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p07",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p08",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p09",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p10",
+            "workshop_id": "agents"
+          },
+          {
+            "participant_id": "p11",
+            "workshop_id": "design"
+          },
+          {
+            "participant_id": "p12",
+            "workshop_id": "design"
+          },
+          {
+            "participant_id": "p13",
+            "workshop_id": "design"
+          },
+          {
+            "participant_id": "p14",
+            "workshop_id": "design"
+          },
+          {
+            "participant_id": "p15",
+            "workshop_id": "design"
+          },
+          {
+            "participant_id": "p16",
+            "workshop_id": "design"
+          },
+          {
+            "participant_id": "p17",
+            "workshop_id": "design"
+          },
+          {
+            "participant_id": "p18",
+            "workshop_id": "design"
+          },
+          {
+            "participant_id": "p19",
+            "workshop_id": "story"
+          },
+          {
+            "participant_id": "p20",
+            "workshop_id": "story"
+          },
+          {
+            "participant_id": "p21",
+            "workshop_id": "story"
+          },
+          {
+            "participant_id": "p22",
+            "workshop_id": "story"
+          },
+          {
+            "participant_id": "p23",
+            "workshop_id": "story"
+          },
+          {
+            "participant_id": "p24",
+            "workshop_id": "story"
+          }
+        ],
+        "waitlist": []
+      },
+      "version": 1
+    },
+    {
+      "seq": 59,
+      "artifact": {
+        "id": "2e9db76820f148199a32bd534e806a55",
+        "mime": "application/json",
+        "name": "allocation.json",
+        "run_id": "5b8453c25ac6449dbc2d94c6de58f34e",
+        "size": 1813,
+        "source": "generated_artifact"
+      },
+      "at": 1791514884.591403,
+      "kind": "artifact",
+      "message": "Created: allocation.json"
+    },
+    {
+      "seq": 60,
+      "at": 1791514888.4177768,
+      "kind": "browser_step",
+      "message": "Open the workshop board to import and check the computed allocation.",
+      "operation": {
+        "action": "click",
+        "reason": "Open the workshop board to import and check the computed allocation.",
+        "ref": "e2_4"
+      }
+    },
+    {
+      "seq": 61,
+      "at": 1791514888.778435,
+      "kind": "browser_observed",
+      "message": "Checked the page after the browser step.",
+      "title": "Fieldwork · Event operations",
+      "url": "https://event.workspace.demo/"
+    },
+    {
+      "seq": 62,
+      "at": 1791514893.223992,
+      "kind": "browser_step",
+      "message": "Import the computed allocation for validation before applying it.",
+      "operation": {
+        "action": "upload",
+        "reason": "Import the computed allocation for validation before applying it.",
+        "ref": "e3_7",
+        "value": "2e9db76820f148199a32bd534e806a55"
+      }
+    },
+    {
+      "seq": 63,
+      "at": 1791514893.45316,
+      "kind": "browser_observed",
+      "message": "Checked the page after the browser step.",
+      "title": "Fieldwork · Event operations",
+      "url": "https://event.workspace.demo/"
+    },
+    {
+      "seq": 64,
+      "at": 1791514899.4404402,
+      "kind": "browser_step",
+      "message": "Apply the allocation that passed checks for all 24 attendees, preferences, duplicate seats and room capacities.",
+      "operation": {
+        "action": "click",
+        "reason": "Apply the allocation that passed checks for all 24 attendees, preferences, duplicate seats and room capacities.",
+        "ref": "e4_8"
+      }
+    },
+    {
+      "seq": 65,
+      "at": 1791514899.714346,
+      "kind": "browser_observed",
+      "message": "Checked the page after the browser step.",
+      "title": "Fieldwork · Event operations",
+      "url": "https://event.workspace.demo/"
+    },
+    {
+      "seq": 66,
+      "at": 1791514904.606775,
+      "kind": "browser_step",
+      "message": "Export the operations report for the imported roster and successfully applied, verified allocation.",
+      "operation": {
+        "action": "click",
+        "reason": "Export the operations report for the imported roster and successfully applied, verified allocation.",
+        "ref": "e5_6"
+      }
+    },
+    {
+      "seq": 67,
+      "artifact": {
+        "id": "18d8cf64be7140f196119a049774dd2c",
+        "mime": "application/json",
+        "name": "event-operations.json",
+        "run_id": "5b8453c25ac6449dbc2d94c6de58f34e",
+        "size": 7026,
+        "source": "browser_download"
+      },
+      "at": 1791514904.921705,
+      "kind": "artifact",
+      "message": "Downloaded: event-operations.json"
+    },
+    {
+      "seq": 68,
+      "at": 1791514904.922111,
+      "kind": "browser_observed",
+      "message": "Checked the page after the browser step.",
+      "title": "Fieldwork · Event operations",
+      "url": "https://event.workspace.demo/"
+    },
+    {
+      "seq": 69,
+      "at": 1791514916.173175,
+      "checks": {
+        "assigned": 24,
+        "checks": [
+          "Source roster matches",
+          "Every attendee accounted for once",
+          "Preferences respected",
+          "Available capacities respected",
+          "New allocation applied"
+        ],
+        "first_preferences": 24,
+        "participants": 24,
+        "scope": "Showcase constraints only; not a proof of optimal allocation or all user intent.",
+        "verified_constraints": true,
+        "waitlist": 0
+      },
+      "kind": "outcome_verified",
+      "message": "Verified the event roster, every assignment and room capacity."
+    },
+    {
+      "seq": 70,
+      "at": 1791514916.173441,
+      "kind": "finished",
+      "message": "Allocation applied: 24 seats assigned, 0 attendees on the waiting list. Source records, preferences and room capacities checked."
+    }
+  ]
+}

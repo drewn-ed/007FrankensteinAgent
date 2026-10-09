@@ -12,7 +12,7 @@ from workbench.model import Budget, Gemini, RunError
 from workbench.sandbox import Sandbox
 from workbench.store import Store, digest
 
-MANIFEST = {"id": "registration_contacts", "title": "Kontakty registrací",
+MANIFEST = {"id": "registration_contacts", "title": "Registration contacts",
             "description": "Return normalized email contacts without changing order. Ignore surrounding spaces.",
             "permissions": ["compute"], "kind": "task",
             "input_schema": {"type": "object", "properties": {"emails": {"type": "array", "items": {"type": "string"}}}, "required": ["emails"]},
@@ -77,9 +77,9 @@ class Boundaries(unittest.TestCase):
         self.assertEqual(result, {"credential": None, "root_writable": False, "network": False})
 
     def test_timeout_and_output_limit_stop_execution(self):
-        with self.assertRaisesRegex(RunError, "časový limit"):
+        with self.assertRaisesRegex(RunError, "time limit"):
             self.sandbox.run('def run(data):\n    while True: pass', {}, timeout=1)
-        with self.assertRaisesRegex(RunError, "limit výstupu"):
+        with self.assertRaisesRegex(RunError, "output limit"):
             self.sandbox.run('def run(data):\n    print("x" * 70000)\n    return {}', {})
 
     def test_fresh_store_preserves_capability_and_deactivation(self):
@@ -109,7 +109,7 @@ class Boundaries(unittest.TestCase):
             request.assert_not_called()
         model = Gemini(Config(key="synthetic", free_confirmed=True))
         with patch("urllib.request.urlopen", side_effect=HTTPError("", 429, "quota", {}, None)) as request:
-            with self.assertRaisesRegex(RunError, "kvótu"):
+            with self.assertRaisesRegex(RunError, "quota"):
                 model.ask("x", {}, Budget())
             self.assertEqual(request.call_count, 1)
 
@@ -160,6 +160,24 @@ class Boundaries(unittest.TestCase):
         self.assertEqual(record["cases"][:len(CASES)], CASES)
         self.assertEqual(record["manifest"]["permissions"], ["compute"])
         self.assertTrue(all(item["passed"] for item in record["tests"]))
+
+    def test_correction_can_document_an_optional_input_without_rewriting_old_contract(self):
+        self.engine.install(self.run_record, MANIFEST, CODE, CASES, Budget(), source="test_fixture")
+        class FixtureModel:
+            def ready(self):
+                return None
+            def ask(self, *args):
+                return {"code": 'def run(data):\n    return [x.strip() if "@" in x or not data.get("domain") else x.strip()+"@"+data["domain"] for x in data["emails"]]'}
+        self.engine.model = FixtureModel()
+        run = self.store.new_run("Accept an optional domain for bare email names", {
+            "capability": MANIFEST["id"], "case": {"name": "Optional domain", "input": {"emails": ["alex"], "domain": "example.test"}, "expected": ["alex@example.test"]}}, "correction")
+        self.engine.execute(run)
+        self.assertEqual(run["status"], "completed", run.get("error"))
+        current = self.store.get(MANIFEST["id"])
+        self.assertEqual(current["manifest"]["input_schema"]["properties"]["domain"]["type"], "string")
+        self.assertEqual(current["manifest"]["input_schema"]["required"], MANIFEST["input_schema"]["required"])
+        self.assertNotIn("domain", self.store.versions()[0]["manifest"]["input_schema"]["properties"])
+        self.assertEqual(current["cases"][:len(CASES)], CASES)
 
 
 if __name__ == "__main__":

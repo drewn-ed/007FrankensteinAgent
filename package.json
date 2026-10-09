@@ -1,0 +1,6 @@
+{
+  "name": "learning-workspace-browser",
+  "private": true,
+  "description": "Trusted browser connector for the local workspace",
+  "dependencies": { "playwright": "1.62.1" }
+}

@@ -1,0 +1,5 @@
+{
+  "source": "Synthetic verification data; no real attendees.",
+  "registrations_csv": "name,email,workshop\nAnna, ANNA@example.test ,Design\nBoris,boris@example.test,AI\nAnna,anna@example.test,Design\nCyril,cyril@example.test,Design\n",
+  "capacities": {"Design": 2, "AI": 2}
+}

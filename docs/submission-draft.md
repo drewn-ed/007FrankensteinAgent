@@ -1,61 +1,97 @@
-# Podklad k odevzdání — pracovní verze
+# HQ submission copy
 
-**Není odesláno do HQ. Název a cílový scénář jsou návrh, nikoli potvrzené rozhodnutí Davida.**
+Prepared in English on 9 October 2026 against the current code, recorded evidence and authenticated [HQ form](https://hq.agents007.ai/submit). **Prepared locally, not submitted.** The copy uses **Workspace**, the existing application label, rather than introducing a new brand. Final naming and the video link still need to be settled before submission.
 
-## 1. Název a jednovětý pitch
+Only the text inside each block belongs in its corresponding field. Character limits are 3,000 / 2,000 / 2,000 for the three story fields. Do not paste the checklist or editorial notes into those fields.
 
-Pracovní název: **Proofwork**. Dostupnost názvu ani značky není prověřená.
+## Project name
 
-> Proofwork turns your corrections into tested, reusable skills for the next task.
+<!-- hq:project_name -->
+```text
+Workspace
+```
 
-Česky: Proofwork převádí tvoje opravy na otestované schopnosti, které agent využije při další práci.
+## One-line pitch
 
-## 2. Co produkt dělá, pro koho a jaký problém řeší
+<!-- hq:pitch -->
+```text
+An agent workspace that turns missing steps into tested skills and combines them for the next task.
+```
 
-Návrh textu; cílového uživatele a pracovní scénář je ještě potřeba potvrdit:
+## What it does — maximum 3,000 characters
 
-Proofwork je pracovní prostředí pro lidi, kteří opakovaně zpracovávají data a podklady a musí AI znovu vysvětlovat stejné opravy. Uživatel zadá skutečný úkol. Když agentovi chybí potřebný postup, vytvoří vykonatelnou schopnost, otestuje ji v izolovaném prostředí a uloží pro další práci. Když uživatel výsledek opraví, systém se pokusí převést opravu na konkrétní test a přijme novou verzi jen tehdy, když projde novým i předchozími testy. V nové session má agent uložené schopnosti najít a kombinovat. Rozhraní ukazuje výsledek práce, původ schopností a skutečné výsledky kontrol.
+<!-- hq:what_it_does -->
+```text
+Workspace is a local work environment for people who repeatedly prepare data and operate applications. The product hypothesis: useful task logic should survive the conversation, so the next task can build on work that has already been tested.
 
-První technický rozsah je zpracování explicitně vložených dat a textových souborů. Ovládání YouTube, jiných webů nebo desktopu zatím není součástí implementace. Poptávka a ekonomický přínos nejsou doložené zákaznickými rozhovory ani srovnávacím měřením.
+Our concrete user is an event organizer. A messy registration file must become a valid workshop seating plan. When a room closes, the organizer needs a revised plan that respects capacity and preferences while keeping unaffected bookings intact.
 
-## 3. Co skutečně funguje od zadání po výsledek
+The user gives an outcome and source files. The agent identifies a missing operation, declares its JSON interface and compute-only permission, writes Python, runs tests in Docker and registers the skill only if it passes. A fixed browser connector applies results in the connected application and captures the downloaded report. In a new chat, the planner can combine earlier skills without asking the user to wire them together.
 
-Stav průběžně aktualizovat až po ověření:
+The intended value is reusable operational logic with visible evidence: source, versions, tests and outcomes. Corrections can become regression cases, and replacement versions must preserve earlier tests. Projects, files, saved workflows, schedules and usage history make this a working environment around that loop.
 
-- Připojení k Gemini 3.5 Flash-Lite bylo ověřeno skutečným generováním JSON odpovědi.
-- Free tarif projektu potvrdil David. Klíč je pouze v ignorovaném lokálním .env.
-- Docker běží; Python image byl stažen.
-- Devět infrastrukturních testů prošlo: izolace bez sítě a klíče, zákaz rozšíření oprávnění, blokace chybné verze, časové a výstupní limity, trvalý registr, oprava s regresními testy a zákaz předání kódu v metadatech autorovi testů. Jde o označené testovací fixtures.
-- První skutečný běh Gemini vytvořil schopnost pro zpracování registrací, prošel třemi sandboxovými testy a uložil verzi 1. Další krok skončil HTTP 503. Nový proces následně schopnost použil beze změny a dokončil úkol.
-- Přes webové rozhraní agent skutečně očistil tři syntetické registrace na dva jedinečné záznamy, uložil schopnost a vrátil výsledek. U těchto prvních testů byla nalezena netěsnost: popis schopnosti obsahoval i kód. Neoznačujeme je za nezávislé; oprava brání předávání nadbytečných polí autorovi testů.
-- Oprava na syntetickém případu zabránila sloučení dvou lidí bez emailu. Původní verze testem neprošla; dvě skutečně vygenerované opravy prošly všemi pěti testy. Verze 2 byla přijata se stejnými oprávněními. Nový test měl explicitně stanovený správný výsledek; nevygeneroval jej testovaný kód.
+Built solo by David. The demonstrated scenario uses synthetic data in Fieldwork, a local event app. Customer demand and productivity gains have not been measured. Agent-created discovery/management and an independent monetary budget remain incomplete, so we do not claim the full Frankenstein checklist is satisfied.
+```
 
-Tento seznam zatím není finální text pole „funguje“. Před odevzdáním jej nahradit konkrétním zaznamenaným scénářem, výsledkem a jeho limity.
+## What works end-to-end — maximum 2,000 characters
 
-## 4. Co je simulované, chybí nebo je nespolehlivé
+<!-- hq:what_works -->
+```text
+Three recorded live runs use ChatGPT model gpt-6.1-sol, real Docker tests and a separate Chrome session. The attendees and target event app are synthetic; the executions are real.
 
-Aktuální návrh pravdivých limitů:
+1. Open the event: 28 CSV rows become 24 valid attendees, all 24 seated. The agent creates separate CSV normalization and preference/capacity allocation skills, passes four tests for each, imports the roster, applies the checked plan and downloads the report.
 
-- Cílový pracovní proces a finální produktové zaměření nejsou potvrzené.
-- Neovládáme browser ani desktopové aplikace. Nové schopnosti mají pouze výpočetní oprávnění nad dodanými daty.
-- Modelový autor testů může nesprávně interpretovat zadání; úspěšné testy nezaručují obecnou správnost ani nemožnost škody.
-- Trvalý registr sám nedokazuje agentem vytvořené vyhledávání/správu. Tuto část i skládání v nové session musíme prokázat skutečným během.
-- Bezplatná kvóta Gemini může běh zastavit. Žádný automatický placený fallback není nastavený.
-- Syntetické vstupy a infrastrukturní testovací implementace budou označené; nesmějí být vydávány za reálnou zákaznickou práci ani tvorbu modelu.
-- Zrychlení, nižší cena, zákaznická poptávka a převaha nad běžným agentem zatím nejsou prokázané.
+2. Room closure: the revised roster has 25 attendees. Hall A closes and Agents lab moves to an 8-seat room. The agent reuses normalization and creates a tested replanning skill. Result: 22 seated, 3 waiting, with unaffected bookings preserved.
 
-## 5. Odkazy
+3. Fresh-chat reuse: another late registration brings the roster to 26. With no prior conversation and an explicitly attached baseline report, the agent combines the earlier normalization and replanning skills. Result: 22 seated, 4 waiting and an exported report. No skill is installed and the registry hash is unchanged.
 
-- Pracovní veřejný repozitář: https://github.com/drewn-ed/007FrankensteinAgent
-- Implementace se nyní připravuje lokálně na větvi `codex/learning-agent-mvp`; veřejné zveřejnění aktuálního kódu je potřeba ověřit před odevzdáním.
-- Demo video: **zatím nevytvořeno**. Požadavek HQ: YouTube Unlisted, maximálně 90 sekund, běžící produkt, přiznané limity.
+The repository includes prompts, event logs, code, schemas, test results, provenance and captured application states. A separate check verifies preservation of unaffected seats. All three generated skills remain compute-only; the connector keeps the same browser origin. New input files are explicitly supplied by the user.
 
-## Dokončení před HQ
+The application also supports version inspection, correction with retained tests, deactivation, task cancellation, file transfer and persistent local schedules. See docs/jury-guide.md for evidence and reproduction steps.
+```
 
-- [ ] Potvrzený název a jednovětý pitch.
-- [ ] Potvrzený uživatel, problém a konkrétní demo.
-- [ ] Pole 2 do 3 000 znaků; pole 3 a 4 každé do 2 000 znaků.
-- [ ] Povinný Frankenstein průchod ověřený skutečným během a novou session.
-- [ ] Repo veřejně obsahuje ověřený kód a návod, bez přístupových údajů.
-- [ ] YouTube Unlisted video funguje a má nejvýše 90 sekund.
-- [ ] HQ skutečně odeslané tlačítkem Submit a poslední commit pushnutý před 07:14.
+## What is simulated, missing or fragile — maximum 2,000 characters
+
+<!-- hq:limitations -->
+```text
+Fieldwork, attendee records and event conditions are synthetic. The target application, browser connector, registry and outcome verifier are team-written infrastructure. Only the documented generated skills are claimed as model-created.
+
+Agent-created discovery/management has not been demonstrated. The catalog protocol and UI search do not satisfy that requirement by themselves. Calls, elapsed time and repair attempts are bounded in code, but there is no independent dollar budget. Gemini requires user-confirmed Free-tier status; ChatGPT uses authorized account allowances. Billing is not verified and usage estimates are not spending enforcement. There is no automatic paid API/provider fallback.
+
+The fresh-session evidence uses an empty conversation with persistent skills and explicit inputs, not a full process restart between all three browser tasks. Generated tests may misunderstand the contract. The showcase verifier checks defined constraints and preservation, not global optimality or arbitrary intent.
+
+Five earlier Gemini attempts failed; their IDs and reasons remain in the evidence. Quota, transport errors or generated test failures can stop a new run. The successful runs used an explicitly selected ChatGPT connection, not a hidden fallback.
+
+Browser control allows one origin and blocks redirects/WebSockets. Other websites and native apps require human outcome review. The macOS bridge compiles, but actual native clicks/typing await permission and validation. Schedules require the local server to remain running and the computer awake. Binary files can be transferred but are not interpreted. Team sharing, external MCP integration and always-on hosting are absent. Demand, time savings, comparative performance and a full accessibility audit are unverified.
+```
+
+## Stack and partner tools — optional
+
+<!-- hq:stack -->
+```text
+Python 3.11+, SQLite, Docker (Python 3.12 sandbox), JSON Schema, HTML/CSS/JavaScript, Node.js + Playwright + Google Chrome. Gemini API and explicitly selected ChatGPT plan connection; successful event evidence used gpt-6.1-sol. Experimental native macOS bridge in Swift. No ElevenLabs integration.
+```
+
+## Links
+
+- Repository: [drewn-ed/007FrankensteinAgent](https://github.com/drewn-ed/007FrankensteinAgent). Verify the public commit actually includes the implementation, runtime assets, lockfiles and these guides; working-tree files alone are not visible to the jury.
+- Live demo: optional. The app currently runs locally; do not enter `localhost` or `event.workspace.demo` as a public demo URL. A marketing landing page is not a hosted application.
+- YouTube Unlisted video: **not supplied**. Insert only a real playable link, no placeholder.
+- Best ElevenLabs Use: current implementation has no ElevenLabs integration; the existing evidence does not justify entering that side prize.
+
+## Final publication checklist
+
+The verified deadline is **9 October 2026, 07:14 Europe/Prague**. Later commits are not judged. This checklist records unfinished publication work, not a claim it has happened.
+
+- [ ] Settle the displayed project name and use it consistently in HQ, video and repository.
+- [ ] Review the three story fields against the final evidence; retain every remaining limitation.
+- [ ] Record a running-product demo, no longer than 90 seconds; retain failures and label speedups/synthetic data.
+- [ ] Upload the video to YouTube as Unlisted and verify playback from the jury's perspective.
+- [ ] Commit and push the reviewed implementation, required assets, examples, evidence and documentation. Exclude credentials, private runtime databases and raw HQ exports.
+- [ ] Verify a fresh clone of the intended public branch starts using the README; record the exact commit in the submission evidence.
+- [ ] Confirm the repository link on the HQ team page and in the submission form.
+- [ ] Paste the final copy and actual video URL into HQ; review public-results consent and optional fields.
+- [ ] Submit the project explicitly and verify submitted status before the freeze. Autosaved DRAFT is not submitted.
+- [ ] Rehearse the separate [60-second live pitch](demo-script.md#60-second-live-pitch).
+
+The discovery/management and monetary-budget gaps are product gaps, not items that documentation can mark complete. The [jury guide](jury-guide.md) preserves their status even if submission proceeds.

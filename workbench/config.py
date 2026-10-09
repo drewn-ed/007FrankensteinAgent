@@ -23,20 +23,23 @@ class Config:
     key: str = field(default="", repr=False)
     model: str = "gemini-3.5-flash-lite"
     free_confirmed: bool = False
-    max_calls: int = 12
+    max_calls: int = 18
     max_output: int = 8192
     max_seconds: int = 240
     image: str = "python:3.12-slim"
     data_dir: Path = ROOT / ".runtime"
+    provider: str = "gemini"
+    chatgpt_auth_dir: Path = Path.home() / ".config" / "007-frankenstein"
 
     @classmethod
     def from_env(cls):
         load_env()
+        provider = os.environ.get("MODEL_PROVIDER", "gemini")
         return cls(key=os.environ.get("GEMINI_API_KEY", ""),
-                   model=os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite"),
+                   provider=provider,
+                   model=os.environ.get("CHATGPT_MODEL", "") if provider == "chatgpt" else os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite"),
                    free_confirmed=os.environ.get("GEMINI_FREE_TIER_CONFIRMED") == "true",
-                   max_calls=bounded_int("MAX_MODEL_CALLS", 12, 20),
+                   max_calls=bounded_int("MAX_MODEL_CALLS", 18, 20),
                    max_output=bounded_int("MAX_OUTPUT_TOKENS", 8192, 8192),
                    max_seconds=bounded_int("MAX_RUN_SECONDS", 240, 600),
                    image=os.environ.get("SANDBOX_IMAGE", "python:3.12-slim"))
-

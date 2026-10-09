@@ -1,6 +1,6 @@
-# Learning workspace landing page
+# Wisp landing page
 
-A short English landing page for David's experimental learning workspace. The product name remains open. This page presents the idea and links to the project; it does not run the agent.
+A short English landing page for Wisp, David's experimental learning workspace. David selected the name on October 9, 2026. This page presents the idea and links to the project; it does not run the agent.
 
 ## Design source
 

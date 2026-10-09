@@ -10,7 +10,9 @@ button { font: 500 .875rem/1.5 var(--ds-font-text); cursor: pointer; }
 .wrap { width: min(89%, 1400px); margin-inline: auto; }
 .opening { position: relative; isolation: isolate; }
 .site-header { display: flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 108px; }
-.brand { display: grid; place-items: center; width: 56px; height: 56px; flex-shrink: 0; border-radius: 12px; background: #F5F2EC; color-scheme: light; }
+.brand { display: inline-flex; align-items: center; gap: .75rem; flex-shrink: 0; text-decoration: none; }
+.brand-name { font: 400 2rem/1.25 var(--ds-font-display); }
+.brand-icon { display: grid; place-items: center; width: 56px; height: 56px; flex-shrink: 0; border-radius: 12px; background: #F5F2EC; color-scheme: light; }
 .brand img { width: 48px; height: 48px; }
 .site-header nav { display: flex; align-items: center; gap: 2rem; font-size: .875rem; }
 .site-header nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
@@ -65,8 +67,8 @@ h3 { font-size: 1.5rem; line-height: 1.333; margin-block: 1.25rem .875rem; }
 }
 @media (max-width: 700px) {
   .wrap { width: calc(100% - 3rem); }
-  .site-header { min-height: 92px; gap: .75rem; }
-  .site-header nav { gap: 1rem; }
+  .site-header { min-height: 92px; gap: .75rem; flex-wrap: wrap; padding-block: 1rem; }
+  .site-header nav { gap: 1rem; margin-left: auto; }
   .site-header nav a:first-child { display: none; }
   #theme-toggle { padding-inline: .75rem; }
   .hero { min-height: 0; padding-block: 38px 70px; }

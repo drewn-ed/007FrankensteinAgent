@@ -1,0 +1,16 @@
+{
+  "replay": true,
+  "fresh_agent_generation": false,
+  "ai_paused": true,
+  "model_configured": false,
+  "sandbox_tests_passed": 7,
+  "model_calls": 0,
+  "registry_unchanged": true,
+  "participants": 16,
+  "assigned": 10,
+  "waiting": 6,
+  "run_ids": [
+    "89d8e4555b4946b3a820fbc388471e31",
+    "7fb4b20c27064e3ab9c2e94533f1ef08"
+  ]
+}

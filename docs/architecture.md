@@ -28,6 +28,14 @@ A capability defines `run(data)` with JSON input/output schemas, a title, descri
 
 **Improve** is a separate correction path: a new case must first fail the old implementation. Two repairs are tested against the combined old/new cases. The first passing candidate becomes a new version; otherwise the previous active version remains. A failure while merely using an installed skill stops the task; it is not an unbounded automatic repair loop.
 
+## PATCH and BLACKOUT execution path
+
+PATCH renders forms from active tested compute contracts. [`local_actions.py`](../workbench/local_actions.py) checks project scope, active version, code fingerprint, complete passing test report and input schema before execution, then rechecks the record before running code in Docker. Unsupported fields are rejected. It saves a result artifact and execution evidence without reaching the planner or provider. Browser-plan and discovery skills are excluded.
+
+BLACKOUT persists `ai_paused` in SQLite. The normal task entry point rejects requests before provider readiness checks; corrections and schedules use that same gate. The switch cannot change during an active task. Saved action execution remains available and records zero model calls; the switch does not disable networking or remove earlier learning costs.
+
+[`action_app.py`](../workbench/action_app.py) is a fixed, explicitly invoked Fieldwork adapter. It binds current application inputs to a revision/hash when loaded, rejects stale previews, inactive versions and changed artifacts, and independently checks the applied allocation including group integrity. Replacing the roster clears existing assignments; the UI names that effect. An uncertain apply is marked for review and cannot be blindly retried from the same preview. Generated code retains compute-only permission.
+
 ## Team-written infrastructure versus agent-generated work
 
 | Component | Origin and role |

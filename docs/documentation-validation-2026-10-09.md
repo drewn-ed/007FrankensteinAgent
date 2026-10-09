@@ -35,3 +35,15 @@ The synthetic revised and late-registration CSVs were extracted from the existin
 The local working tree contains parallel implementation and UI changes. This is not a commit-pinned release validation or a claim about the public repository/freeze snapshot. A clean-clone installation, publication, video recording/upload and HQ submission were not performed by this documentation task. The earlier live evidence remains dated and traceable in the [jury guide](jury-guide.md).
 
 Agent-generated discovery/management and independent dollar-budget enforcement remain incomplete. Native clicks/text entry remain unverified. The documentation does not convert these gaps into successful tests or imply a controlled speed/cost advantage.
+
+## Follow-up: PATCH and BLACKOUT
+
+Reviewed implementation commit `f59f457` and its published learning, fresh-session, Blackout and replay evidence. Updated the jury guide, architecture, HQ copy, demo/pitch scripts, documentation index and in-app Quick guide to include the two features. This is a documentation follow-up, not a new model-generated learning run or HQ submission.
+
+- Full infrastructure suite rerun: **79 tests passed in 52.684 seconds**, including real Docker execution and the Chrome Fieldwork handoff. [Full test output](documentation-evidence-2026-10-09/patch-blackout-tests.txt).
+- Credential-free recorded replay in a fresh isolated store: **7 original tests passed**, 16 attendees, 10 seated, 6 waiting; zero model calls and unchanged registry. [Replay report](documentation-evidence-2026-10-09/patch-blackout-replay.json). The optional replay UI did not start because requested port 8791 was already occupied; the recorded-code verification completed before that bind attempt.
+- Independently checked the running application on port 8767: Blackout was on, Library → Actions listed learned skills, and the CSV-cleaner preview completed with **0 AI calls**, 18 participants and one duplicate rejected. It explicitly reported no external application change. No apply action was requested.
+- JavaScript syntax and diff whitespace checks passed. The new Quick guide section rendered in the browser.
+- Revised HQ story fields contain **1,811 / 3,000**, **1,802 / 2,000** and **1,963 / 2,000** characters.
+
+The existing discovery/management and independent dollar-budget gaps remain. The evidence demonstrates bounded saved computation, not general reasoning without a model or zero total cost. Historical evidence and original run outcomes remain unchanged.

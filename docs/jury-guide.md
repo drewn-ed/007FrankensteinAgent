@@ -32,6 +32,23 @@ These runs prove a new conversation using declared persistent skills and explici
 
 The successful runs used `gpt-6.1-sol`: 15, 15 and 11 model calls, approximately 216, 173 and 81 seconds. Different tasks and different creation/reuse states make these unsuitable for a speedup claim. Five earlier Gemini failures are retained in the summary, including failed tests, invalid JSON, an unknown action and exhausted quota. Provider selection was changed explicitly for validation, not by an automatic fallback.
 
+## PATCH and BLACKOUT: additional recorded proof
+
+**PATCH** exposes active, tested compute skills as editable actions in **Library → Actions**. **BLACKOUT** persistently blocks model tasks, corrections and scheduled model dispatches while those actions continue to run in Docker. Previewing does not modify the application; the fixed Fieldwork adapter requires a separate operator action and verifies the result.
+
+The [additional evidence bundle](patch-blackout-evidence-2026-10-09/README.md) records:
+
+| Stage | Observed result |
+| --- | --- |
+| Learning | 9 model calls; agent-created CSV cleaner and group-preserving allocator; 3 + 4 passing tests. 17 rows → 16 attendees, 10 seated / 6 waiting with capacities 5/4/4. |
+| Fresh conversation | Hall A closed and a late pair added: 18 attendees → 8 seated / 10 waiting. Both existing skills used in 3 model calls; no installation; unchanged registry. |
+| Blackout | Both saved actions executed with 0 model calls and an unchanged registry; a new AI task was rejected. Explicit roster replacement and allocation were checked in Chrome. Different Fieldwork capacities of 10/8/6 seated all 16. |
+| Credential-free replay | Original code hashes checked, all 7 original tests rerun in Docker, 16 attendees → 10 seated / 6 waiting reproduced without a configured model. |
+
+A preceding failed learning attempt is retained. Zero model calls applies to the later local executions, excluding learning and hardware costs. Blackout does not disconnect the internet or interpret new natural-language tasks without AI. PATCH forms and the adapter are team-written infrastructure, not agent-created discovery/management. The allocator preserves groups deterministically; it does not optimize global seat utilization.
+
+To inspect the recorded actions without model access, run `uv run python scripts/replay_blackout.py --serve` after the README setup, then open [localhost:8789](http://127.0.0.1:8789). On subsequent runs supply a fresh `--data-dir`; the script refuses to replace an existing registry. This is explicitly labeled recorded-code replay, not fresh generation or autonomous wiring.
+
 ## Frankenstein requirements
 
 | Requirement | Current assessment | Evidence or gap |

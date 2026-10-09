@@ -28,6 +28,8 @@ Our concrete user is an event organizer. A messy registration file must become a
 
 The user gives an outcome and source files. The agent identifies a missing operation, declares its JSON interface and compute-only permission, writes Python, runs tests in Docker and registers the skill only if it passes. A fixed browser connector applies results in the connected application and captures the downloaded report. In a new chat, the planner can combine earlier skills without asking the user to wire them together.
 
+PATCH turns tested compute skills into actions with editable inputs, local previews and downloadable results. BLACKOUT pauses AI while those saved actions keep running without model calls. Supported Fieldwork changes require a separate explicit apply action.
+
 The intended value is reusable operational logic with visible evidence: source, versions, tests and outcomes. Corrections can become regression cases, and replacement versions must preserve earlier tests. Projects, files, saved workflows, schedules and usage history make this a working environment around that loop.
 
 Built solo by David. The demonstrated scenario uses synthetic data in Fieldwork, a local event app. Customer demand and productivity gains have not been measured. Agent-created discovery/management and an independent monetary budget remain incomplete, so we do not claim the full Frankenstein checklist is satisfied.
@@ -47,7 +49,7 @@ Three recorded live runs use ChatGPT model gpt-6.1-sol, real Docker tests and a 
 
 The repository includes prompts, event logs, code, schemas, test results, provenance and captured application states. A separate check verifies preservation of unaffected seats. All three generated skills remain compute-only; the connector keeps the same browser origin. New input files are explicitly supplied by the user.
 
-The application also supports version inspection, correction with retained tests, deactivation, task cancellation, file transfer and persistent local schedules. See docs/jury-guide.md for evidence and reproduction steps.
+Additional PATCH/BLACKOUT evidence: the agent created a group-aware cleaner and allocator in 9 model calls (7 tests). With AI paused, both saved actions ran with 0 calls and an unchanged registry; explicit Fieldwork import/allocation was verified. A fresh-conversation task reused both in 3 calls, installing nothing: 18 attendees, 8 seated, 10 waiting. A credential-free replay reproduces the original 16-attendee, 10-seated/6-waiting result. See docs/jury-guide.md.
 ```
 
 ## What is simulated, missing or fragile — maximum 2,000 characters
@@ -62,7 +64,7 @@ The fresh-session evidence uses an empty conversation with persistent skills and
 
 Five earlier Gemini attempts failed; their IDs and reasons remain in the evidence. Quota, transport errors or generated test failures can stop a new run. The successful runs used an explicitly selected ChatGPT connection, not a hidden fallback.
 
-Browser control allows one origin and blocks redirects/WebSockets. Other websites and native apps require human outcome review. The macOS bridge compiles, but actual native clicks/typing await permission and validation. Schedules require the local server to remain running and the computer awake. Binary files can be transferred but are not interpreted. Team sharing, external MCP integration and always-on hosting are absent. Demand, time savings, comparative performance and a full accessibility audit are unverified.
+Browser control allows one origin and blocks redirects/WebSockets. Other websites and native apps require human outcome review. The macOS bridge compiles, but actual native clicks/typing await permission and validation. Schedules require the local server to remain running and the computer awake. Binary files can be transferred but are not interpreted. Team sharing, external MCP integration and always-on hosting are absent. Blackout pauses model calls, not internet access; new natural-language work needs AI. PATCH forms/adapter are team-written. Zero calls excludes learning/compute costs. A preceding learning stream failure is retained. Demand, savings and accessibility remain unverified.
 ```
 
 ## Stack and partner tools — optional

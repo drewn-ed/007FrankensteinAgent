@@ -13,6 +13,8 @@ Current public-facing documentation is in English. Historical research and inter
 
 ## Evidence and implementation notes
 
+- [PATCH and BLACKOUT verification](patch-blackout-evidence-2026-10-09/README.md): learned actions, zero-model execution, group bookings, fresh-session composition and credential-free replay.
+
 - [Operations extension](operations-extension-2026-10-09.md): recorded browser showcase, attachments, schedules and native-connector status.
 - [Machine-readable showcase summary](operations-evidence-2026-10-09/summary.json) and [generated skills](operations-evidence-2026-10-09/generated-skills.json).
 - [Documentation validation](documentation-validation-2026-10-09.md): checks performed for this documentation revision.

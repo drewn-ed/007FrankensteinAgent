@@ -29,6 +29,8 @@ class Config:
     image: str = "python:3.12-slim"
     data_dir: Path = ROOT / ".runtime"
     provider: str = "gemini"
+    max_run_usd: str = "0"
+    spend_policy: str = "strict"
     chatgpt_auth_dir: Path = Path.home() / ".config" / "007-frankenstein"
 
     @classmethod
@@ -37,6 +39,8 @@ class Config:
         provider = os.environ.get("MODEL_PROVIDER", "gemini")
         return cls(key=os.environ.get("GEMINI_API_KEY", ""),
                    provider=provider,
+                   max_run_usd=os.environ.get("MAX_RUN_USD", "0"),
+                   spend_policy=os.environ.get("SPEND_POLICY", "strict"),
                    model=os.environ.get("CHATGPT_MODEL", "") if provider == "chatgpt" else os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite"),
                    free_confirmed=os.environ.get("GEMINI_FREE_TIER_CONFIRMED") == "true",
                    max_calls=bounded_int("MAX_MODEL_CALLS", 18, 20),

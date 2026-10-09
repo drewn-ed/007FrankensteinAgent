@@ -4,6 +4,7 @@ import time
 from jsonschema import Draft202012Validator, ValidationError, SchemaError
 from .model import Budget, RunError, ModelFormatError
 from .store import digest, encoded
+from .spend import SpendLedger
 from . import catalog
 from .event_validation import verify_event
 from .browser_control import plan_schema, check_plan_controls, equivalent_plans, text_matches
@@ -262,17 +263,19 @@ class Engine:
         return record, report
 
     def execute(self, run):
-        budget = Budget(self.config.max_calls, self.config.max_seconds, cancelled=lambda: run.get("cancel_requested", False))
+        budget = Budget(self.config.max_calls, self.config.max_seconds, cancelled=lambda: run.get("cancel_requested", False), spend=SpendLedger(self.config.max_run_usd, self.config.spend_policy))
         def save_usage(current):
             from .usage import summarize
             run.update(usage_version=1, model_usage=current.usage, model_calls=current.calls, tokens=current.tokens)
             run["cost"] = summarize(run)
+            run["spend_budget"] = current.spend.snapshot() if current.spend else None
             self.store.save_run(run)
         budget.on_usage = save_usage
         budget.on_format_retry = lambda: self.event(run, "format_retry", "The model returned malformed JSON. Retrying once with the same model, within the existing budget.")
         save_usage(budget)
         run["status"] = "running"
         self.store.save_run(run)
+        self.event(run, "spend_policy", "Financial admission is enforced before each provider request.", policy=self.config.spend_policy, max_usd=str(self.config.max_run_usd))
         try:
             if error := self.model.ready():
                 raise RunError(error)
@@ -433,7 +436,7 @@ class Engine:
                 continue
             if kind == "create":
                 manifest = public_manifest(action["manifest"])
-                if event_before is not None:
+                if event_before is not None or {"rooms", "workshops"} <= set(run.get("input", {})):
                     properties = manifest.get("output_schema", {}).get("properties", {})
                     if "allocation" in properties or "assignments" in properties:
                         required_inputs = set(manifest.get("input_schema", {}).get("properties", {}))
@@ -443,6 +446,11 @@ class Engine:
                         if not {"participants", "rooms", "workshops"} <= required_inputs:
                             history.append({"action":"create_rejected", "reason":"Allocation depends on current participants, rooms and workshops. Declare these runtime inputs explicitly; observed capacities cannot be hardcoded."})
                             continue
+                # An agent-declared catalog interface uses the fixed discovery protocol.
+                # This only classifies the proposed capability; it does not create one.
+                if ({"records", "query", "required_inputs"} <= set(manifest.get("input_schema", {}).get("properties", {}))
+                        and {"index", "matches"} <= set(manifest.get("output_schema", {}).get("properties", {}))):
+                    manifest["kind"] = "discovery"
                 if self.browser and {"origin", "steps", "expected_text"} <= set(manifest.get("output_schema", {}).get("properties", {})):
                     manifest["kind"] = "browser_plan"
                 if manifest.get("kind") == "browser_plan":
@@ -476,8 +484,21 @@ class Engine:
                     contract["test_requirements"] = "Use observed names, tags and origin. Fixture inputs must include explicit file IDs for uploads; never embed file paths or source-specific ephemeral IDs. Test plan generation, not website effects. Keep maximum 20 steps. Test only currently visible controls."
                 if manifest.get("kind") == "discovery":
                     contract["runtime_contract"] = catalog.PROTOCOL["contract"]
+                    contract["protocol_examples"] = catalog.invariant_cases()
+                    contract["test_requirements"] = "Use tiny records with short literal words so expected terms are exact. Include ALL words from id, title, description, input_fields AND output_fields, split underscores, sorted unique. Do NOT stem, translate, add synonyms, or invent words: process does not match processes, op_alpha includes op. The full index is independent of query and required_inputs; only matches are filtered. Protocol examples are fixed host fixtures; add at least three independent small cases."
                     contract["data_sample"] = {"records": catalog.records(self.store), "query": "", "required_inputs": []}
                 cases = self.ask("Designing tests", TESTER, contract, budget)["cases"]
+                if manifest.get("kind") == "discovery":
+                    # A fixed test-only oracle checks the declared protocol before
+                    # any candidate implementation exists; no candidate output is used.
+                    errors = catalog.case_errors(cases)
+                    self.event(run, "test_review", "Checking generated expectations against the fixed catalog contract before implementation.", errors=errors, draft_cases=cases)
+                    if errors:
+                        cases = self.ask("Checking catalog tests", TESTER, {**contract,
+                            "draft_cases": cases, "contract_errors": errors,
+                            "review_instruction": "Fix every contract error and return the complete cases list. Diagnostics come from the fixed protocol, not candidate code. No implementation exists yet."}, budget)["cases"]
+                    if catalog.case_errors(cases):
+                        raise RunError("Catalog test expectations contradict the fixed protocol. No implementation was generated or installed.")
                 if not isinstance(cases, list) or len(cases) < 3:
                     raise RunError("The independent test author must provide at least three tests.")
                 self.event(run, "test_plan", "Test cases were created without seeing the implementation.", cases=cases)

@@ -1,0 +1,102 @@
+{
+  "description": "Independent fixed verifier and real Docker replay of nonempty recorded event cases. These checks were written by the team after learning; they are additional evidence, not agent-authored admission tests.",
+  "learning_run_spend_note": "The first ChatGPT learning run predates financial admission enforcement. Only the later Gemini reuse run has strict zero-dollar admission evidence.",
+  "runs": [
+    {
+      "run_id": "6bacaed7078449a0a39d992f1e2ac609",
+      "status": "completed",
+      "participants": 16,
+      "assigned": 10,
+      "waitlisted": 6,
+      "expected_assignments": {
+        "g01": "agents",
+        "g02": "agents",
+        "g03": "agents",
+        "g04": "agents",
+        "g05": "design",
+        "g06": "design",
+        "g07": "design",
+        "g08": "",
+        "g09": "",
+        "g10": "story",
+        "g11": "",
+        "g12": "",
+        "g13": "",
+        "g14": "",
+        "g15": "story",
+        "g16": "design"
+      },
+      "checks": {
+        "source_csv_preserved": true,
+        "first_valid_email_order_preserved": true,
+        "actual_cleaner_output_used_by_allocator": true,
+        "room_and_workshop_inputs_preserved": true,
+        "every_participant_accounted_once": true,
+        "group_integrity_and_leader_preference_policy": true,
+        "closed_rooms_and_capacity_respected": true,
+        "nonempty_actual_outputs_replayed_in_docker": true
+      },
+      "replayed_capabilities": [
+        {
+          "id": "pfrankens_clean_workshop_roster",
+          "code_hash": "afc41ab73c094b11c3d3334847d9cb535ecdda49b6ce75b8970ba6c469df9a8b",
+          "replay_matches_recorded_output": true
+        },
+        {
+          "id": "pfrankens_allocate_workshop_groups",
+          "code_hash": "a2831d3b9afacc7c89f3793c77802585d47b71676624c800945298c6c0bf05c3",
+          "replay_matches_recorded_output": true
+        }
+      ]
+    },
+    {
+      "run_id": "bf47b3caa23b48cea2f7383f875976e5",
+      "status": "completed",
+      "participants": 18,
+      "assigned": 8,
+      "waitlisted": 10,
+      "expected_assignments": {
+        "g01": "design",
+        "g02": "design",
+        "g03": "design",
+        "g04": "story",
+        "g05": "story",
+        "g06": "story",
+        "g07": "story",
+        "g08": "",
+        "g09": "",
+        "g10": "",
+        "g11": "",
+        "g12": "",
+        "g13": "",
+        "g14": "",
+        "g15": "design",
+        "g16": "",
+        "g18": "",
+        "g19": ""
+      },
+      "checks": {
+        "source_csv_preserved": true,
+        "first_valid_email_order_preserved": true,
+        "actual_cleaner_output_used_by_allocator": true,
+        "room_and_workshop_inputs_preserved": true,
+        "every_participant_accounted_once": true,
+        "group_integrity_and_leader_preference_policy": true,
+        "closed_rooms_and_capacity_respected": true,
+        "nonempty_actual_outputs_replayed_in_docker": true
+      },
+      "replayed_capabilities": [
+        {
+          "id": "pfrankens_clean_workshop_roster",
+          "code_hash": "afc41ab73c094b11c3d3334847d9cb535ecdda49b6ce75b8970ba6c469df9a8b",
+          "replay_matches_recorded_output": true
+        },
+        {
+          "id": "pfrankens_allocate_workshop_groups",
+          "code_hash": "a2831d3b9afacc7c89f3793c77802585d47b71676624c800945298c6c0bf05c3",
+          "replay_matches_recorded_output": true
+        }
+      ]
+    }
+  ]
+}

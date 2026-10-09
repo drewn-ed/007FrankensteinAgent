@@ -1,0 +1,1121 @@
+{
+  "id": "ee86cb439c994ca2b1ae584f8c481e88",
+  "task": "Prepare workshop places from the registration CSV and the supplied rooms. Trim fields and normalize emails, keep the first valid row per email, preserve participant IDs and group_id. Allocate each nonempty group together, processing booking units by their first member in the roster. Try that member's first then second choice only if every member accepts it and the whole booking fits an open room; otherwise waitlist the entire group. Return a cleaned roster/CSV and assignments with reasons for anyone waiting. I also need to hand this desk to another coordinator tomorrow: they need to look up the available reusable operations by what they do and the input fields they accept, without another model conversation each time. That lookup must stay current as operations are added, corrected or retired, and must not recommend inactive or failed versions. Make both the event result and that ongoing operational handover usable, and verify them. Choose the implementation yourself; reuse compatible work if it already exists. Do not open or modify a live application.",
+  "input": {
+    "files": [
+      {
+        "content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\n",
+        "name": "group-bookings.csv"
+      }
+    ],
+    "rooms": [
+      {
+        "capacity": 5,
+        "id": "a",
+        "name": "Hall A",
+        "open": true
+      },
+      {
+        "capacity": 4,
+        "id": "b",
+        "name": "Room B",
+        "open": true
+      },
+      {
+        "capacity": 4,
+        "id": "c",
+        "name": "Room C",
+        "open": true
+      },
+      {
+        "capacity": 8,
+        "id": "d",
+        "name": "Studio D",
+        "open": true
+      }
+    ],
+    "workshops": [
+      {
+        "id": "agents",
+        "name": "Agents lab",
+        "room": "a",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "design",
+        "name": "Product studio",
+        "room": "b",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "story",
+        "name": "Storytelling",
+        "room": "c",
+        "time": "10:00–11:30"
+      }
+    ]
+  },
+  "kind": "task",
+  "status": "failed",
+  "created_at": 1791520595.9130611,
+  "result": null,
+  "registry_before": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "model_calls": 7,
+  "tokens": 16677,
+  "usage_version": 1,
+  "model_usage": [
+    {
+      "call": 1,
+      "purpose": "Planning",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520596.181605,
+      "status": "completed",
+      "usage": {
+        "input": 2048,
+        "output": 8,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2056,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 948
+    },
+    {
+      "call": 2,
+      "purpose": "Planning",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520597.130639,
+      "status": "failed",
+      "usage": {
+        "input": 2060,
+        "output": 215,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2275,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "format_error": {
+        "line": 1,
+        "column": 801,
+        "reason": "Extra data"
+      },
+      "duration_ms": 1053
+    },
+    {
+      "call": 3,
+      "purpose": "Planning (format retry)",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520598.184882,
+      "status": "completed",
+      "usage": {
+        "input": 2082,
+        "output": 8,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2090,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 731
+    },
+    {
+      "call": 4,
+      "purpose": "Planning",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520598.92491,
+      "status": "completed",
+      "usage": {
+        "input": 2073,
+        "output": 465,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2538,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 1707
+    },
+    {
+      "call": 5,
+      "purpose": "Designing tests",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520600.6407611,
+      "status": "completed",
+      "usage": {
+        "input": 1378,
+        "output": 738,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2116,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 2245
+    },
+    {
+      "call": 6,
+      "purpose": "Writing a skill",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520602.886678,
+      "status": "completed",
+      "usage": {
+        "input": 1882,
+        "output": 591,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2473,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 2225
+    },
+    {
+      "call": 7,
+      "purpose": "Repairing a skill",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520606.794348,
+      "status": "completed",
+      "usage": {
+        "input": 2606,
+        "output": 523,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 3129,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 1863
+    }
+  ],
+  "cost": {
+    "tracked": true,
+    "calls": 7,
+    "recorded_calls": 7,
+    "known_cost_calls": 7,
+    "unknown_cost_calls": 0,
+    "estimated_usd": 0.0,
+    "cost_complete": true,
+    "paid_equivalent_usd": 0.0106087,
+    "paid_equivalent_calls": 7,
+    "billed_usd": null
+  },
+  "spend_budget": {
+    "policy": "strict",
+    "max_usd": "0",
+    "reserved_upper_bound_usd": "0",
+    "guaranteed": true,
+    "billing_verified": false,
+    "reservations": [
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      }
+    ],
+    "blocked": []
+  },
+  "error": "The new skill failed its tests after one repair. It was not installed; review the test failures before retrying.",
+  "duration_ms": 14759,
+  "registry_after": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "events": [
+    {
+      "seq": 1,
+      "at": 1791520595.914067,
+      "kind": "spend_policy",
+      "max_usd": "0",
+      "message": "Financial admission is enforced before each provider request.",
+      "policy": "strict"
+    },
+    {
+      "seq": 2,
+      "at": 1791520596.180486,
+      "context_run_ids": [],
+      "kind": "session",
+      "message": "New session; only the persistent registry was loaded.",
+      "registry": []
+    },
+    {
+      "seq": 3,
+      "at": 1791520598.184612,
+      "kind": "format_retry",
+      "message": "The model returned malformed JSON. Retrying once with the same model, within the existing budget."
+    },
+    {
+      "seq": 4,
+      "at": 1791520600.6403189,
+      "kind": "gap",
+      "manifest": {
+        "description": "Builds an index of active, tested, compute-only registry records and finds matching IDs by query and required inputs according to the catalog protocol.",
+        "id": "catalog_plugin_search",
+        "input_schema": {
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "records": {
+              "items": {
+                "properties": {
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "input_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "output_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "permissions": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tested": {
+                    "type": "boolean"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "title",
+                  "description",
+                  "input_fields",
+                  "output_fields",
+                  "active",
+                  "tested",
+                  "permissions"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "required_inputs": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "records",
+            "query",
+            "required_inputs"
+          ],
+          "type": "object"
+        },
+        "kind": "task",
+        "output_schema": {
+          "properties": {
+            "index": {
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "input_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "terms": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "version": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "terms",
+                  "input_fields"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "matches": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "index",
+            "matches"
+          ],
+          "type": "object"
+        },
+        "permissions": [
+          "compute"
+        ],
+        "title": "Catalog Plugin Search and Index"
+      },
+      "message": "Create catalog index and search plugin matching the specified protocol to support handovers without model calls."
+    },
+    {
+      "seq": 5,
+      "at": 1791520602.886144,
+      "cases": [
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "op-1",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "terms": [
+                  "data",
+                  "cleaner",
+                  "cleans",
+                  "text",
+                  "data",
+                  "and",
+                  "filters",
+                  "fields"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "op-1"
+            ]
+          },
+          "input": {
+            "query": "clean text",
+            "records": [
+              {
+                "active": true,
+                "description": "Cleans text data and filters fields",
+                "id": "op-1",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "output_fields": [
+                  "cleaned_text"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Data Cleaner",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "Should be ignored because inactive",
+                "id": "op-2",
+                "input_fields": [
+                  "text"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Inactive Tool",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "Should be ignored because untested",
+                "id": "op-3",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "Untested Tool",
+                "version": 2
+              }
+            ],
+            "required_inputs": [
+              "text",
+              "options"
+            ]
+          },
+          "name": "Filters out inactive or untested records and matches valid queries with required inputs"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "op-4",
+                "input_fields": [
+                  "document"
+                ],
+                "terms": [
+                  "parser",
+                  "parses",
+                  "documents"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": []
+          },
+          "input": {
+            "query": "parser",
+            "records": [
+              {
+                "active": true,
+                "description": "Parses documents",
+                "id": "op-4",
+                "input_fields": [
+                  "document"
+                ],
+                "output_fields": [
+                  "json"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Parser",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "document",
+              "extra_param"
+            ]
+          },
+          "name": "Returns no matches if required inputs are not satisfied"
+        },
+        {
+          "expected": {
+            "index": [],
+            "matches": []
+          },
+          "input": {
+            "query": "anything",
+            "records": [],
+            "required_inputs": [
+              "input"
+            ]
+          },
+          "name": "Handles empty records list gracefully"
+        }
+      ],
+      "kind": "test_plan",
+      "message": "Test cases were created without seeing the implementation."
+    },
+    {
+      "seq": 6,
+      "at": 1791520606.793664,
+      "capability": "catalog_plugin_search",
+      "code_hash": "86c171db5dee45f45258ebe09479d36da39c5da6b6dcecead2a5709e9324a817",
+      "kind": "tests_failed",
+      "message": "Catalog Plugin Search and Index: 2/3 tests passed.",
+      "tests": [
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "op-1",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "terms": [
+                  "data",
+                  "cleaner",
+                  "cleans",
+                  "text",
+                  "data",
+                  "and",
+                  "filters",
+                  "fields"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "op-1"
+            ]
+          },
+          "duration_ms": 638,
+          "expected": {
+            "index": [
+              {
+                "id": "op-1",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "terms": [
+                  "data",
+                  "cleaner",
+                  "cleans",
+                  "text",
+                  "data",
+                  "and",
+                  "filters",
+                  "fields"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "op-1"
+            ]
+          },
+          "input": {
+            "query": "clean text",
+            "records": [
+              {
+                "active": true,
+                "description": "Cleans text data and filters fields",
+                "id": "op-1",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "output_fields": [
+                  "cleaned_text"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Data Cleaner",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "Should be ignored because inactive",
+                "id": "op-2",
+                "input_fields": [
+                  "text"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Inactive Tool",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "Should be ignored because untested",
+                "id": "op-3",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "Untested Tool",
+                "version": 2
+              }
+            ],
+            "required_inputs": [
+              "text",
+              "options"
+            ]
+          },
+          "name": "Filters out inactive or untested records and matches valid queries with required inputs",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [],
+            "matches": []
+          },
+          "duration_ms": 446,
+          "expected": {
+            "index": [
+              {
+                "id": "op-4",
+                "input_fields": [
+                  "document"
+                ],
+                "terms": [
+                  "parser",
+                  "parses",
+                  "documents"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": []
+          },
+          "input": {
+            "query": "parser",
+            "records": [
+              {
+                "active": true,
+                "description": "Parses documents",
+                "id": "op-4",
+                "input_fields": [
+                  "document"
+                ],
+                "output_fields": [
+                  "json"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Parser",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "document",
+              "extra_param"
+            ]
+          },
+          "name": "Returns no matches if required inputs are not satisfied",
+          "passed": false
+        },
+        {
+          "actual": {
+            "index": [],
+            "matches": []
+          },
+          "duration_ms": 593,
+          "expected": {
+            "index": [],
+            "matches": []
+          },
+          "input": {
+            "query": "anything",
+            "records": [],
+            "required_inputs": [
+              "input"
+            ]
+          },
+          "name": "Handles empty records list gracefully",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "seq": 7,
+      "at": 1791520606.794089,
+      "kind": "repair",
+      "message": "Tests blocked installation; attempting one repair."
+    },
+    {
+      "seq": 8,
+      "at": 1791520610.671933,
+      "capability": "catalog_plugin_search",
+      "code_hash": "c3848490b9f0bfc51d6197a713fdc4a7fc85e81b988401354eed846b373e6e79",
+      "kind": "tests_failed",
+      "message": "Catalog Plugin Search and Index: 1/3 tests passed.",
+      "tests": [
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "op-1",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "terms": [
+                  "data",
+                  "cleaner",
+                  "cleans",
+                  "text",
+                  "data",
+                  "and",
+                  "filters",
+                  "fields"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": []
+          },
+          "duration_ms": 470,
+          "expected": {
+            "index": [
+              {
+                "id": "op-1",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "terms": [
+                  "data",
+                  "cleaner",
+                  "cleans",
+                  "text",
+                  "data",
+                  "and",
+                  "filters",
+                  "fields"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "op-1"
+            ]
+          },
+          "input": {
+            "query": "clean text",
+            "records": [
+              {
+                "active": true,
+                "description": "Cleans text data and filters fields",
+                "id": "op-1",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "output_fields": [
+                  "cleaned_text"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Data Cleaner",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "Should be ignored because inactive",
+                "id": "op-2",
+                "input_fields": [
+                  "text"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Inactive Tool",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "Should be ignored because untested",
+                "id": "op-3",
+                "input_fields": [
+                  "text",
+                  "options"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "Untested Tool",
+                "version": 2
+              }
+            ],
+            "required_inputs": [
+              "text",
+              "options"
+            ]
+          },
+          "name": "Filters out inactive or untested records and matches valid queries with required inputs",
+          "passed": false
+        },
+        {
+          "actual": {
+            "index": [],
+            "matches": []
+          },
+          "duration_ms": 710,
+          "expected": {
+            "index": [
+              {
+                "id": "op-4",
+                "input_fields": [
+                  "document"
+                ],
+                "terms": [
+                  "parser",
+                  "parses",
+                  "documents"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": []
+          },
+          "input": {
+            "query": "parser",
+            "records": [
+              {
+                "active": true,
+                "description": "Parses documents",
+                "id": "op-4",
+                "input_fields": [
+                  "document"
+                ],
+                "output_fields": [
+                  "json"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Parser",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "document",
+              "extra_param"
+            ]
+          },
+          "name": "Returns no matches if required inputs are not satisfied",
+          "passed": false
+        },
+        {
+          "actual": {
+            "index": [],
+            "matches": []
+          },
+          "duration_ms": 828,
+          "expected": {
+            "index": [],
+            "matches": []
+          },
+          "input": {
+            "query": "anything",
+            "records": [],
+            "required_inputs": [
+              "input"
+            ]
+          },
+          "name": "Handles empty records list gracefully",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "seq": 9,
+      "at": 1791520610.672671,
+      "kind": "error",
+      "message": "The new skill failed its tests after one repair. It was not installed; review the test failures before retrying."
+    }
+  ],
+  "registry_before_records": [],
+  "registry_after_records": [],
+  "catalog": null
+}

@@ -93,7 +93,7 @@ class TransportTests(unittest.TestCase):
         class AuthFixture:
             def status(self): return {"connected": True}
             def access_token(self): return 'synthetic-token'
-        return ChatGPTModel(replace(Config(), provider='chatgpt', model='fixture-model'), AuthFixture())
+        return ChatGPTModel(replace(Config(), provider='chatgpt', model='fixture-model', spend_policy='existing_plan'), AuthFixture())
 
     def event_stream(self, *events):
         return io.BytesIO(''.join('data: ' + json.dumps(e) + '\n\n' for e in events).encode())

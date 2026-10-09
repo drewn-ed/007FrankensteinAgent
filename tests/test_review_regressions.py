@@ -59,7 +59,7 @@ class PersistenceRegression(unittest.TestCase):
         a.remember_app({'connected':True,'origin':'https://example.test','elements':[{'name':'Private A'}]})
         self.assertEqual(b.applications(),[]);self.assertEqual(self.store.applications(),[])
         self.assertEqual(a.applications()[0]['elements'],[{'name':'Private A'}])
-        app=Application(Config(data_dir=Path(self.temp.name)))
+        app=Application(Config(data_dir=Path(self.temp.name), free_confirmed=True))
         try:
             app.store.save_workspace({**EMPTY,'projects':[{'id':'a','name':'A'}]})
             app.store.scoped('b').accept({'id':'other'},'fixture',[{}],[{'passed':True}],{})

@@ -32,39 +32,39 @@ PATCH turns tested compute skills into actions with editable inputs, local previ
 
 The intended value is reusable operational logic with visible evidence: source, versions, tests and outcomes. Corrections can become regression cases, and replacement versions must preserve earlier tests. Projects, files, saved workflows, schedules and usage history make this a working environment around that loop.
 
-Built solo by David. The demonstrated scenario uses synthetic data in Fieldwork, a local event app. Customer demand and productivity gains have not been measured. Agent-created discovery/management and an independent monetary budget remain incomplete, so we do not claim the full Frankenstein checklist is satisfied.
+Built solo by David. The demonstrated scenario uses synthetic data in Fieldwork, a local event app. Customer demand and productivity gains have not been measured. The latest evidence includes a generated discovery tool and fresh-process composition. Strict financial admission is demonstrated on the later Gemini reuse; the earlier ChatGPT learning run predates that gate.
 ```
 
 ## What works end-to-end — maximum 2,000 characters
 
 <!-- hq:what_works -->
 ```text
-Three recorded live runs use ChatGPT model gpt-6.1-sol, real Docker tests and a separate Chrome session. The attendees and target event app are synthetic; the executions are real.
+The latest learning run used 17 ChatGPT calls to create three executable capabilities: a registration cleaner, a group-preserving allocator and an operations catalog. They passed 4, 3 and 7 tests respectively before registration. The catalog builds a current index and finds compatible operations by their metadata and accepted inputs; its algorithm was generated, while its protocol and authority checks are team-written.
 
-1. Open the event: 28 CSV rows become 24 valid attendees, all 24 seated. The agent creates separate CSV normalization and preference/capacity allocation skills, passes four tests for each, imports the roster, applies the checked plan and downloads the report.
+A different task ran in a separate Python process with an empty conversation and the saved registry. Hall A closed and a late group arrived. In three Gemini Free calls, the agent executed the generated catalog and combined the earlier cleaner and allocator. Result: 18 attendees, eight seated and ten waiting. No capability was installed or rewritten; the registry hash stayed unchanged. Generated permissions remained compute-only.
 
-2. Room closure: the revised roster has 25 attendees. Hall A closes and Agents lab moves to an 8-seat room. The agent reuses normalization and creates a tested replanning skill. Result: 22 seated, 3 waiting, with unaffected bookings preserved.
+This second run used the new strict $0 financial admission policy. The earlier ChatGPT learning process did not have that gate and is not presented as financially capped.
 
-3. Fresh-chat reuse: another late registration brings the roster to 26. With no prior conversation and an explicitly attached baseline report, the agent combines the earlier normalization and replanning skills. Result: 22 seated, 4 waiting and an exported report. No skill is installed and the registry hash is unchanged.
+Separate PATCH/BLACKOUT evidence shows editable action inputs, Docker execution with AI paused and zero model calls, plus explicit verified application of results to Fieldwork in Chrome. A credential-free replay reproduces those earlier saved actions. These browser/local-action runs are distinct from the latest creation/discovery run.
 
-The repository includes prompts, event logs, code, schemas, test results, provenance and captured application states. A separate check verifies preservation of unaffected seats. All three generated skills remain compute-only; the connector keeps the same browser origin. New input files are explicitly supplied by the user.
-
-Additional PATCH/BLACKOUT evidence: the agent created a group-aware cleaner and allocator in 9 model calls (7 tests). With AI paused, both saved actions ran with 0 calls and an unchanged registry; explicit Fieldwork import/allocation was verified. A fresh-conversation task reused both in 3 calls, installing nothing: 18 attendees, 8 seated, 10 waiting. A credential-free replay reproduces the original 16-attendee, 10-seated/6-waiting result. See docs/jury-guide.md.
+The repository retains task inputs, generated code, tests, source run IDs, catalog results, registry snapshots and failures. A portable two-phase verification harness allows reviewers to attempt new learning and separate-process reuse with their own confirmed Gemini Free project.
 ```
 
 ## What is simulated, missing or fragile — maximum 2,000 characters
 
 <!-- hq:limitations -->
 ```text
-Fieldwork, attendee records and event conditions are synthetic. The target application, browser connector, registry and outcome verifier are team-written infrastructure. Only the documented generated skills are claimed as model-created.
+Fieldwork and attendee data are synthetic. The application, connector, registry, catalog protocol, permission checks and PATCH forms are team-written. Only the recorded capability implementations are claimed as agent-generated.
 
-Agent-created discovery/management has not been demonstrated. The catalog protocol and UI search do not satisfy that requirement by themselves. Calls, elapsed time and repair attempts are bounded in code, but there is no independent dollar budget. Gemini requires user-confirmed Free-tier status; ChatGPT uses authorized account allowances. Billing is not verified and usage estimates are not spending enforcement. There is no automatic paid API/provider fallback.
+The latest allocator passed three generated tests, but all used empty rosters. This is weak coverage, not proof of correct allocation for arbitrary inputs. Actual populated outputs are inspectable. Generated tests and bounded outcome checks do not guarantee correctness or optimality.
 
-The fresh-session evidence uses an empty conversation with persistent skills and explicit inputs, not a full process restart between all three browser tasks. Generated tests may misunderstand the contract. The showcase verifier checks defined constraints and preservation, not global optimality or arbitrary intent.
+The successful learning run used ChatGPT before the monetary gate existed. The later reuse used strict $0 Gemini Free admission. Strict mode blocks unpriced routes before inference, but requires billing to remain disabled in the operator's Google project; Wisp cannot verify billing or force a free-only request. Optional ChatGPT existing_plan mode has no local USD guarantee. There is no automatic paid fallback.
 
-Five earlier Gemini attempts failed; their IDs and reasons remain in the evidence. Quota, transport errors or generated test failures can stop a new run. The successful runs used an explicitly selected ChatGPT connection, not a hidden fallback.
+Six additional Gemini attempts are retained, including partial generation and invalid-JSON failures; earlier demonstration failures are retained separately. Fresh learning can stop on quota, transport, generated-code or test failures.
 
-Browser control allows one origin and blocks redirects/WebSockets. Other websites and native apps require human outcome review. The macOS bridge compiles, but actual native clicks/typing await permission and validation. Schedules require the local server to remain running and the computer awake. Binary files can be transferred but are not interpreted. Team sharing, external MCP integration and always-on hosting are absent. Blackout pauses model calls, not internet access; new natural-language work needs AI. PATCH forms/adapter are team-written. Zero calls excludes learning/compute costs. A preceding learning stream failure is retained. Demand, savings and accessibility remain unverified.
+Browser control is single-origin and blocks redirects/WebSockets. Native macOS clicking/typing remains unverified. Schedules need the local server awake. Binary attachments are transferable but not interpreted. There is no team sharing, external MCP integration or always-on hosting.
+
+BLACKOUT runs saved computations without AI; new language tasks still need a model, and external sites may need internet. Zero model calls excludes learning and hardware costs. Customer demand, time savings and accessibility have not been validated.
 ```
 
 ## Stack and partner tools — optional

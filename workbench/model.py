@@ -29,6 +29,17 @@ class Budget:
     on_usage: object = None
     format_retry_used: bool = False
     on_format_retry: object = None
+    spend: object = None
+
+    def authorize_spend(self, config):
+        from .spend import SpendLedger, SpendError
+        try:
+            if self.spend is None:
+                self.spend = SpendLedger(config.max_run_usd, config.spend_policy)
+            return self.spend.authorize(config)
+        except SpendError as error:
+            self.notify_usage()
+            raise RunError(str(error)) from None
 
     def notify_usage(self):
         if self.on_usage:
@@ -82,11 +93,14 @@ class Gemini:
     def ask(self, system, payload, budget):
         if error := self.ready():
             raise RunError(error)
+        budget.check()
+        admission = budget.authorize_spend(self.config)
         budget.reserve()  # Failed requests count too. No automatic retry/fallback.
         started = time.monotonic()
         record = {"call": budget.calls, "purpose": budget.purpose, "provider": "Google Gemini",
                   "model": self.config.model, "started_at": time.time(), "status": "pending", "usage": None,
-                  "pricing": price_snapshot(self.config.model, self.config.free_confirmed)}
+                  "pricing": price_snapshot(self.config.model, self.config.free_confirmed),
+                  "spend_admission": admission}
         budget.usage.append(record)
         budget.notify_usage()
         try:

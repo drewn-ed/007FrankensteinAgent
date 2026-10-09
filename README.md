@@ -22,7 +22,7 @@ The recorded demonstration uses **synthetic attendees in a local application, wi
 
 The three successful runs used `gpt-6.1-sol` through an explicitly selected ChatGPT connection. [Logs, generated code and tests](docs/jury-guide.md#recorded-demonstration) include earlier unsuccessful Gemini attempts. The timings are not a controlled speed or cost comparison.
 
-**Track status:** creation, test-gated installation and composition in a fresh conversation have evidence. **Agent-created discovery/management is not yet demonstrated.** The runtime bounds calls and time, but does not enforce an independent dollar budget. The complete Frankenstein checklist is therefore **not claimed as satisfied**. [Requirement-by-requirement status](docs/jury-guide.md#frankenstein-requirements).
+**Latest track evidence:** a live 17-call ChatGPT run created and tested a roster cleaner, group allocator and executable discovery/catalog tool. A separate Python process then used Gemini Free in strict $0 mode to find and combine the two earlier task skills: **18 attendees → 8 seated, 10 waiting**, three model calls, no installation and an unchanged registry. The first learning process predates the financial gate and is **not** a strict-budget proof. The allocator's three generated tests all used empty rosters, so coverage is weak despite passing. [Final evidence and retained failures](docs/frankenstein-final-evidence-2026-10-09/) · [Requirement-by-requirement status](docs/jury-guide.md#frankenstein-requirements).
 
 ## PATCH and BLACKOUT
 
@@ -79,8 +79,10 @@ Open **[http://127.0.0.1:8767](http://127.0.0.1:8767)**. Use the checkout contai
 
 Choose one model connection:
 
-- **ChatGPT:** open **Personal workspace → Settings → Continue with ChatGPT**, complete account consent, choose an available model and click **Activate model**. Connecting the account and activating a model are separate steps. No Gemini key is needed on this path.
+- **ChatGPT, outside strict-budget mode:** this connection has no local USD guarantee. To use it deliberately, set `SPEND_POLICY=existing_plan` in `.env` and restart; then open **Personal workspace → Settings → Continue with ChatGPT**, complete account consent, choose an available model and click **Activate model**. Connecting the account and activating a model are separate steps. No Gemini key is needed on this path.
 - **Gemini:** put your own `GEMINI_API_KEY` in `.env`. Confirm the associated project is on the Free tier, then set `GEMINI_FREE_TIER_CONFIRMED=true`. Keep `MODEL_PROVIDER=gemini` and restart the server. The checked-in default is `gemini-3.5-flash-lite`; the adapter has an explicit model allowlist.
+
+**Financial policy:** shipped defaults are `SPEND_POLICY=strict` and `MAX_RUN_USD=0`. Strict mode admits only the allowlisted, operator-confirmed Gemini Free route; unpriced routes, including ChatGPT plan inference, are blocked before model HTTP requests. Keep billing disabled in Google AI Studio. Wisp cannot programmatically verify billing or force a free-only request. The separate `existing_plan` mode is an explicit exception with no local dollar guarantee and does not satisfy the strict spend-cap demonstration. Settings shows the policy; each task’s Usage & cost shows its admission record.
 
 Tasks, readable attachments and relevant application observations are sent to the selected provider. Credentials stay outside the UI and generated-code sandbox. There is **no automatic provider switch or paid API fallback**. ChatGPT account allowances and credits depend on the user's provider settings; usage reporting is not a billing statement.
 

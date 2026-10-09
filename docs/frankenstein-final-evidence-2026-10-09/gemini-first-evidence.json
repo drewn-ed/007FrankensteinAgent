@@ -1,0 +1,3619 @@
+{
+  "id": "c6595760bcf64c6e86099df9e85de855",
+  "task": "Prepare workshop places from the registration CSV and the supplied rooms. Trim fields and normalize emails, keep the first valid row per email, preserve participant IDs and group_id. Allocate each nonempty group together, processing booking units by their first member in the roster. Try that member's first then second choice only if every member accepts it and the whole booking fits an open room; otherwise waitlist the entire group. Return a cleaned roster/CSV and assignments with reasons for anyone waiting. I also need to hand this desk to another coordinator tomorrow: they need to look up the available reusable operations by what they do and the input fields they accept, without another model conversation each time. That lookup must stay current as operations are added, corrected or retired, and must not recommend inactive or failed versions. Make both the event result and that ongoing operational handover usable, and verify them. Choose the implementation yourself; reuse compatible work if it already exists. Do not open or modify a live application.",
+  "input": {
+    "files": [
+      {
+        "content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\n",
+        "name": "group-bookings.csv"
+      }
+    ],
+    "rooms": [
+      {
+        "capacity": 5,
+        "id": "a",
+        "name": "Hall A",
+        "open": true
+      },
+      {
+        "capacity": 4,
+        "id": "b",
+        "name": "Room B",
+        "open": true
+      },
+      {
+        "capacity": 4,
+        "id": "c",
+        "name": "Room C",
+        "open": true
+      },
+      {
+        "capacity": 8,
+        "id": "d",
+        "name": "Studio D",
+        "open": true
+      }
+    ],
+    "workshops": [
+      {
+        "id": "agents",
+        "name": "Agents lab",
+        "room": "a",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "design",
+        "name": "Product studio",
+        "room": "b",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "story",
+        "name": "Storytelling",
+        "room": "c",
+        "time": "10:00–11:30"
+      }
+    ]
+  },
+  "kind": "task",
+  "status": "failed",
+  "created_at": 1791520983.403598,
+  "result": null,
+  "registry_before": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "model_calls": 10,
+  "tokens": 35265,
+  "usage_version": 1,
+  "model_usage": [
+    {
+      "call": 1,
+      "purpose": "Planning",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520984.465463,
+      "status": "completed",
+      "usage": {
+        "input": 2048,
+        "output": 8,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2056,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 1052
+    },
+    {
+      "call": 2,
+      "purpose": "Planning",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520985.525552,
+      "status": "completed",
+      "usage": {
+        "input": 2060,
+        "output": 236,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2296,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 1307
+    },
+    {
+      "call": 3,
+      "purpose": "Designing tests",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520986.8879921,
+      "status": "completed",
+      "usage": {
+        "input": 1882,
+        "output": 1031,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2913,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 2733
+    },
+    {
+      "call": 4,
+      "purpose": "Checking catalog tests",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520989.630553,
+      "status": "completed",
+      "usage": {
+        "input": 3017,
+        "output": 1031,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 4048,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 2653
+    },
+    {
+      "call": 5,
+      "purpose": "Writing a skill",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520992.286198,
+      "status": "completed",
+      "usage": {
+        "input": 2579,
+        "output": 1144,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 3723,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 3328
+    },
+    {
+      "call": 6,
+      "purpose": "Planning",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791521007.2518039,
+      "status": "failed",
+      "usage": {
+        "input": 4810,
+        "output": 460,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 5270,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "format_error": {
+        "line": 1,
+        "column": 1738,
+        "reason": "Extra data"
+      },
+      "duration_ms": 1731
+    },
+    {
+      "call": 7,
+      "purpose": "Planning (format retry)",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791521008.983964,
+      "status": "completed",
+      "usage": {
+        "input": 4832,
+        "output": 225,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 5057,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 1415
+    },
+    {
+      "call": 8,
+      "purpose": "Designing tests",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791521010.4061,
+      "status": "completed",
+      "usage": {
+        "input": 1138,
+        "output": 762,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 1900,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 1993
+    },
+    {
+      "call": 9,
+      "purpose": "Writing a skill",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791521012.401612,
+      "status": "completed",
+      "usage": {
+        "input": 1757,
+        "output": 1294,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 3051,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 3527
+    },
+    {
+      "call": 10,
+      "purpose": "Repairing a skill",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791521022.444366,
+      "status": "completed",
+      "usage": {
+        "input": 3673,
+        "output": 1278,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 4951,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 3408
+    }
+  ],
+  "cost": {
+    "tracked": true,
+    "calls": 10,
+    "recorded_calls": 10,
+    "known_cost_calls": 10,
+    "unknown_cost_calls": 0,
+    "estimated_usd": 0.0,
+    "cost_complete": true,
+    "paid_equivalent_usd": 0.0270113,
+    "paid_equivalent_calls": 10,
+    "billed_usd": null
+  },
+  "spend_budget": {
+    "policy": "strict",
+    "max_usd": "0",
+    "reserved_upper_bound_usd": "0",
+    "guaranteed": true,
+    "billing_verified": false,
+    "reservations": [
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      }
+    ],
+    "blocked": []
+  },
+  "error": "The new skill failed its tests after one repair. It was not installed; review the test failures before retrying.",
+  "duration_ms": 47755,
+  "registry_after": "d7a6a957a3660442b92e0fefdc4800971e2b18924cc6e471b54c620cc5b03185",
+  "events": [
+    {
+      "seq": 35,
+      "at": 1791520983.417394,
+      "kind": "spend_policy",
+      "max_usd": "0",
+      "message": "Financial admission is enforced before each provider request.",
+      "policy": "strict"
+    },
+    {
+      "seq": 36,
+      "at": 1791520984.454606,
+      "context_run_ids": [],
+      "kind": "session",
+      "message": "New session; only the persistent registry was loaded.",
+      "registry": []
+    },
+    {
+      "seq": 37,
+      "at": 1791520986.886053,
+      "kind": "gap",
+      "manifest": {
+        "description": "Indexes and searches active, tested, compute-only registry records by query terms and required input fields without model calls.",
+        "id": "catalog_index_plugin",
+        "input_schema": {
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "records": {
+              "items": {
+                "properties": {
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "input_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "output_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "permissions": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tested": {
+                    "type": "boolean"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "title",
+                  "description",
+                  "input_fields",
+                  "output_fields",
+                  "active",
+                  "tested",
+                  "permissions"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "required_inputs": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "records",
+            "query",
+            "required_inputs"
+          ],
+          "type": "object"
+        },
+        "kind": "discovery",
+        "output_schema": {
+          "properties": {
+            "index": {
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "input_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "terms": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "version": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "terms",
+                  "input_fields"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "matches": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "index",
+            "matches"
+          ],
+          "type": "object"
+        },
+        "permissions": [
+          "compute"
+        ],
+        "title": "Catalog Index and Search Plugin"
+      },
+      "message": "Create catalog index and search plugin to enable coordinator handover lookup by query and required inputs over active tested compute-only registry records."
+    },
+    {
+      "seq": 38,
+      "at": 1791520989.629864,
+      "draft_cases": [
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "terms": [
+                  "criteria",
+                  "data",
+                  "filter",
+                  "result",
+                  "records"
+                ],
+                "version": 1
+              },
+              {
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "terms": [
+                  "csv",
+                  "data",
+                  "file",
+                  "parse"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "filter_data"
+            ]
+          },
+          "input": {
+            "query": "data",
+            "records": [
+              {
+                "active": true,
+                "description": "parse csv data",
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "output_fields": [
+                  "data"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "parse_csv",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "filter records",
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "output_fields": [
+                  "result"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "filter_data",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "data"
+            ]
+          },
+          "name": "Basic indexing with query and required inputs filtering"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "terms": [
+                  "safe",
+                  "valid",
+                  "op",
+                  "x",
+                  "y"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "valid_op"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "safe",
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "valid_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "untested",
+                "id": "untested_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "untested_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "network",
+                "id": "network_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "network_op",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Excludes untested and overprivileged records"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "terms": [
+                  "a",
+                  "b",
+                  "desc",
+                  "field",
+                  "in",
+                  "one",
+                  "out",
+                  "title"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "a_b"
+            ]
+          },
+          "input": {
+            "query": "field",
+            "records": [
+              {
+                "active": true,
+                "description": "desc",
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "output_fields": [
+                  "out_field"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "title_one",
+                "version": 2
+              }
+            ],
+            "required_inputs": [
+              "in_field"
+            ]
+          },
+          "name": "Underscores separate words and terms are sorted alphabetically"
+        }
+      ],
+      "errors": [
+        {
+          "case": 0,
+          "error": "Expected output does not match the fixed catalog contract.",
+          "expected_by_contract": {
+            "index": [
+              {
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "terms": [
+                  "criteria",
+                  "data",
+                  "filter",
+                  "records",
+                  "result"
+                ],
+                "version": 1
+              },
+              {
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "terms": [
+                  "csv",
+                  "data",
+                  "file",
+                  "parse"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "filter_data"
+            ]
+          },
+          "name": "Basic indexing with query and required inputs filtering",
+          "provided_expected": {
+            "index": [
+              {
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "terms": [
+                  "criteria",
+                  "data",
+                  "filter",
+                  "result",
+                  "records"
+                ],
+                "version": 1
+              },
+              {
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "terms": [
+                  "csv",
+                  "data",
+                  "file",
+                  "parse"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "filter_data"
+            ]
+          },
+          "term_differences": []
+        },
+        {
+          "case": 1,
+          "error": "Expected output does not match the fixed catalog contract.",
+          "expected_by_contract": {
+            "index": [
+              {
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "terms": [
+                  "op",
+                  "safe",
+                  "valid",
+                  "x",
+                  "y"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "valid_op"
+            ]
+          },
+          "name": "Excludes untested and overprivileged records",
+          "provided_expected": {
+            "index": [
+              {
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "terms": [
+                  "safe",
+                  "valid",
+                  "op",
+                  "x",
+                  "y"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "valid_op"
+            ]
+          },
+          "term_differences": []
+        }
+      ],
+      "kind": "test_review",
+      "message": "Checking generated expectations against the fixed catalog contract before implementation."
+    },
+    {
+      "seq": 39,
+      "at": 1791520992.285198,
+      "cases": [
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "terms": [
+                  "criteria",
+                  "data",
+                  "filter",
+                  "records",
+                  "result"
+                ],
+                "version": 1
+              },
+              {
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "terms": [
+                  "csv",
+                  "data",
+                  "file",
+                  "parse"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "filter_data"
+            ]
+          },
+          "input": {
+            "query": "data",
+            "records": [
+              {
+                "active": true,
+                "description": "parse csv data",
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "output_fields": [
+                  "data"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "parse_csv",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "filter records",
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "output_fields": [
+                  "result"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "filter_data",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "data"
+            ]
+          },
+          "name": "Basic indexing with query and required inputs filtering"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "terms": [
+                  "op",
+                  "safe",
+                  "valid",
+                  "x",
+                  "y"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "valid_op"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "safe",
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "valid_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "untested",
+                "id": "untested_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "untested_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "network",
+                "id": "network_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "network_op",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Excludes untested and overprivileged records"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "terms": [
+                  "a",
+                  "b",
+                  "desc",
+                  "field",
+                  "in",
+                  "one",
+                  "out",
+                  "title"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "a_b"
+            ]
+          },
+          "input": {
+            "query": "field",
+            "records": [
+              {
+                "active": true,
+                "description": "desc",
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "output_fields": [
+                  "out_field"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "title_one",
+                "version": 2
+              }
+            ],
+            "required_inputs": [
+              "in_field"
+            ]
+          },
+          "name": "Underscores separate words and terms are sorted alphabetically"
+        }
+      ],
+      "kind": "test_plan",
+      "message": "Test cases were created without seeing the implementation."
+    },
+    {
+      "seq": 40,
+      "at": 1791521005.975036,
+      "capability": "catalog_index_plugin",
+      "code_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+      "kind": "tests_passed",
+      "message": "Catalog Index and Search Plugin: 6/6 tests passed.",
+      "tests": [
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "terms": [
+                  "criteria",
+                  "data",
+                  "filter",
+                  "records",
+                  "result"
+                ],
+                "version": 1
+              },
+              {
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "terms": [
+                  "csv",
+                  "data",
+                  "file",
+                  "parse"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "filter_data"
+            ]
+          },
+          "duration_ms": 889,
+          "expected": {
+            "index": [
+              {
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "terms": [
+                  "criteria",
+                  "data",
+                  "filter",
+                  "records",
+                  "result"
+                ],
+                "version": 1
+              },
+              {
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "terms": [
+                  "csv",
+                  "data",
+                  "file",
+                  "parse"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "filter_data"
+            ]
+          },
+          "input": {
+            "query": "data",
+            "records": [
+              {
+                "active": true,
+                "description": "parse csv data",
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "output_fields": [
+                  "data"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "parse_csv",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "filter records",
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "output_fields": [
+                  "result"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "filter_data",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "data"
+            ]
+          },
+          "name": "Basic indexing with query and required inputs filtering",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "terms": [
+                  "op",
+                  "safe",
+                  "valid",
+                  "x",
+                  "y"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "valid_op"
+            ]
+          },
+          "duration_ms": 906,
+          "expected": {
+            "index": [
+              {
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "terms": [
+                  "op",
+                  "safe",
+                  "valid",
+                  "x",
+                  "y"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "valid_op"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "safe",
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "valid_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "untested",
+                "id": "untested_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "untested_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "network",
+                "id": "network_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "network_op",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Excludes untested and overprivileged records",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "terms": [
+                  "a",
+                  "b",
+                  "desc",
+                  "field",
+                  "in",
+                  "one",
+                  "out",
+                  "title"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "a_b"
+            ]
+          },
+          "duration_ms": 2342,
+          "expected": {
+            "index": [
+              {
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "terms": [
+                  "a",
+                  "b",
+                  "desc",
+                  "field",
+                  "in",
+                  "one",
+                  "out",
+                  "title"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "a_b"
+            ]
+          },
+          "input": {
+            "query": "field",
+            "records": [
+              {
+                "active": true,
+                "description": "desc",
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "output_fields": [
+                  "out_field"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "title_one",
+                "version": 2
+              }
+            ],
+            "required_inputs": [
+              "in_field"
+            ]
+          },
+          "name": "Underscores separate words and terms are sorted alphabetically",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows",
+              "render_report"
+            ]
+          },
+          "duration_ms": 2633,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows",
+              "render_report"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "",
+                "id": "old",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "old",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "bad",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "bad",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "unsafe",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "unsafe",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Inactive and failed records stay outside the index",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "duration_ms": 1876,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "rows"
+            ]
+          },
+          "name": "Required input fields restrict selection",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "duration_ms": 1688,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "clean",
+            "records": [
+              {
+                "active": false,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 2
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Deactivated version is excluded after a correction",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "seq": 41,
+      "at": 1791521005.979489,
+      "capability": "catalog_index_plugin",
+      "kind": "installed",
+      "message": "Saved: Catalog Index and Search Plugin · v1",
+      "permissions": [
+        "compute"
+      ],
+      "version": 1
+    },
+    {
+      "seq": 42,
+      "at": 1791521007.249963,
+      "capability": "catalog_index_plugin",
+      "code_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+      "index_size": 0,
+      "kind": "discovered",
+      "matches": [],
+      "message": "The learned catalog found 0 matching skills.",
+      "query": "",
+      "required_inputs": [],
+      "source_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "version": 1
+    },
+    {
+      "seq": 43,
+      "at": 1791521008.983562,
+      "kind": "format_retry",
+      "message": "The model returned malformed JSON. Retrying once with the same model, within the existing budget."
+    },
+    {
+      "seq": 44,
+      "at": 1791521010.405788,
+      "kind": "gap",
+      "manifest": {
+        "description": "Clean registration CSV, handle group allocations based on first and second choices, capacities, and room openness, and return cleaned CSV and assignments with reasons.",
+        "id": "process_workshop_allocations",
+        "input_schema": {
+          "properties": {
+            "csv_content": {
+              "type": "string"
+            },
+            "rooms": {
+              "items": {
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "workshops": {
+              "items": {
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "csv_content",
+            "rooms",
+            "workshops"
+          ],
+          "type": "object"
+        },
+        "output_schema": {
+          "properties": {
+            "assignments": {
+              "items": {
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "cleaned_csv": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "cleaned_csv",
+            "assignments"
+          ],
+          "type": "object"
+        },
+        "permissions": [
+          "compute"
+        ],
+        "title": "Process Workshop Allocations"
+      },
+      "message": "Create skill to process registrations, group bookings, room allocation, and format assignments and roster"
+    },
+    {
+      "seq": 45,
+      "at": 1791521012.4010859,
+      "cases": [
+        {
+          "expected": {
+            "assignments": [
+              {}
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\n"
+          },
+          "input": {
+            "csv_content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\n",
+            "rooms": [
+              {}
+            ],
+            "workshops": [
+              {}
+            ]
+          },
+          "name": "Standard group allocation with duplicate email removal"
+        },
+        {
+          "expected": {
+            "assignments": [
+              {}
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,design,studio-a\ng05,Taylor Chen,taylor@example.test,agents,design,studio-a\n"
+          },
+          "input": {
+            "csv_content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,design,studio-a\ng05,Taylor Chen,taylor@example.test,agents,design,studio-a\n",
+            "rooms": [
+              {}
+            ],
+            "workshops": [
+              {}
+            ]
+          },
+          "name": "Group waitlisted due to capacity constraints"
+        },
+        {
+          "expected": {
+            "assignments": [],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\n"
+          },
+          "input": {
+            "csv_content": "id,name,email,first_choice,second_choice,group_id\n",
+            "rooms": [],
+            "workshops": []
+          },
+          "name": "Empty CSV handling"
+        }
+      ],
+      "kind": "test_plan",
+      "message": "Test cases were created without seeing the implementation."
+    },
+    {
+      "seq": 46,
+      "at": 1791521022.437506,
+      "capability": "process_workshop_allocations",
+      "code_hash": "ca5aa97823d66b06628b7a720e4c12293836af4a258067e3eb3ea01526df1b80",
+      "kind": "tests_failed",
+      "message": "Process Workshop Allocations: 0/3 tests passed.",
+      "tests": [
+        {
+          "actual": {
+            "assignments": [
+              {
+                "id": "g01",
+                "name": "Alex Morgan",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g02",
+                "name": "Sam Rivera",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g03",
+                "name": "Robin Lee",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              }
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\r\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\r\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\r\ng03,Robin Lee,robin@example.test,agents,design,studio-a\r\n"
+          },
+          "duration_ms": 2256,
+          "expected": {
+            "assignments": [
+              {}
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\n"
+          },
+          "input": {
+            "csv_content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\n",
+            "rooms": [
+              {}
+            ],
+            "workshops": [
+              {}
+            ]
+          },
+          "name": "Standard group allocation with duplicate email removal",
+          "passed": false
+        },
+        {
+          "actual": {
+            "assignments": [
+              {
+                "id": "g01",
+                "name": "Alex Morgan",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g02",
+                "name": "Sam Rivera",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g03",
+                "name": "Robin Lee",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g04",
+                "name": "Jordan Kim",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g05",
+                "name": "Taylor Chen",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              }
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\r\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\r\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\r\ng03,Robin Lee,robin@example.test,agents,design,studio-a\r\ng04,Jordan Kim,jordan@example.test,agents,design,studio-a\r\ng05,Taylor Chen,taylor@example.test,agents,design,studio-a\r\n"
+          },
+          "duration_ms": 2576,
+          "expected": {
+            "assignments": [
+              {}
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,design,studio-a\ng05,Taylor Chen,taylor@example.test,agents,design,studio-a\n"
+          },
+          "input": {
+            "csv_content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,design,studio-a\ng05,Taylor Chen,taylor@example.test,agents,design,studio-a\n",
+            "rooms": [
+              {}
+            ],
+            "workshops": [
+              {}
+            ]
+          },
+          "name": "Group waitlisted due to capacity constraints",
+          "passed": false
+        },
+        {
+          "actual": {
+            "assignments": [],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\r\n"
+          },
+          "duration_ms": 1663,
+          "expected": {
+            "assignments": [],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\n"
+          },
+          "input": {
+            "csv_content": "id,name,email,first_choice,second_choice,group_id\n",
+            "rooms": [],
+            "workshops": []
+          },
+          "name": "Empty CSV handling",
+          "passed": false
+        }
+      ]
+    },
+    {
+      "seq": 47,
+      "at": 1791521022.44259,
+      "kind": "repair",
+      "message": "Tests blocked installation; attempting one repair."
+    },
+    {
+      "seq": 48,
+      "at": 1791521031.163648,
+      "capability": "process_workshop_allocations",
+      "code_hash": "78e9fee9f41db7e3a3f92fe190945057f995f9c80a247b38deeb3d3f8da7d971",
+      "kind": "tests_failed",
+      "message": "Process Workshop Allocations: 1/3 tests passed.",
+      "tests": [
+        {
+          "actual": {
+            "assignments": [
+              {
+                "id": "g01",
+                "name": "Alex Morgan",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g02",
+                "name": "Sam Rivera",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g03",
+                "name": "Robin Lee",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              }
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\n"
+          },
+          "duration_ms": 1359,
+          "expected": {
+            "assignments": [
+              {}
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\n"
+          },
+          "input": {
+            "csv_content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\n",
+            "rooms": [
+              {}
+            ],
+            "workshops": [
+              {}
+            ]
+          },
+          "name": "Standard group allocation with duplicate email removal",
+          "passed": false
+        },
+        {
+          "actual": {
+            "assignments": [
+              {
+                "id": "g01",
+                "name": "Alex Morgan",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g02",
+                "name": "Sam Rivera",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g03",
+                "name": "Robin Lee",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g04",
+                "name": "Jordan Kim",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              },
+              {
+                "id": "g05",
+                "name": "Taylor Chen",
+                "reason": "Capacity or room constraints",
+                "status": "waitlisted",
+                "workshop": null
+              }
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,design,studio-a\ng05,Taylor Chen,taylor@example.test,agents,design,studio-a\n"
+          },
+          "duration_ms": 2328,
+          "expected": {
+            "assignments": [
+              {}
+            ],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,design,studio-a\ng05,Taylor Chen,taylor@example.test,agents,design,studio-a\n"
+          },
+          "input": {
+            "csv_content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,design,studio-a\ng05,Taylor Chen,taylor@example.test,agents,design,studio-a\n",
+            "rooms": [
+              {}
+            ],
+            "workshops": [
+              {}
+            ]
+          },
+          "name": "Group waitlisted due to capacity constraints",
+          "passed": false
+        },
+        {
+          "actual": {
+            "assignments": [],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\n"
+          },
+          "duration_ms": 1616,
+          "expected": {
+            "assignments": [],
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\n"
+          },
+          "input": {
+            "csv_content": "id,name,email,first_choice,second_choice,group_id\n",
+            "rooms": [],
+            "workshops": []
+          },
+          "name": "Empty CSV handling",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "seq": 49,
+      "at": 1791521031.165974,
+      "kind": "error",
+      "message": "The new skill failed its tests after one repair. It was not installed; review the test failures before retrying."
+    }
+  ],
+  "registry_before_records": [],
+  "registry_after_records": [
+    {
+      "cases": [
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "terms": [
+                  "criteria",
+                  "data",
+                  "filter",
+                  "records",
+                  "result"
+                ],
+                "version": 1
+              },
+              {
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "terms": [
+                  "csv",
+                  "data",
+                  "file",
+                  "parse"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "filter_data"
+            ]
+          },
+          "input": {
+            "query": "data",
+            "records": [
+              {
+                "active": true,
+                "description": "parse csv data",
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "output_fields": [
+                  "data"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "parse_csv",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "filter records",
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "output_fields": [
+                  "result"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "filter_data",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "data"
+            ]
+          },
+          "name": "Basic indexing with query and required inputs filtering"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "terms": [
+                  "op",
+                  "safe",
+                  "valid",
+                  "x",
+                  "y"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "valid_op"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "safe",
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "valid_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "untested",
+                "id": "untested_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "untested_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "network",
+                "id": "network_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "network_op",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Excludes untested and overprivileged records"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "terms": [
+                  "a",
+                  "b",
+                  "desc",
+                  "field",
+                  "in",
+                  "one",
+                  "out",
+                  "title"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "a_b"
+            ]
+          },
+          "input": {
+            "query": "field",
+            "records": [
+              {
+                "active": true,
+                "description": "desc",
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "output_fields": [
+                  "out_field"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "title_one",
+                "version": 2
+              }
+            ],
+            "required_inputs": [
+              "in_field"
+            ]
+          },
+          "name": "Underscores separate words and terms are sorted alphabetically"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows",
+              "render_report"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "",
+                "id": "old",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "old",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "bad",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "bad",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "unsafe",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "unsafe",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Inactive and failed records stay outside the index"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "rows"
+            ]
+          },
+          "name": "Required input fields restrict selection"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "clean",
+            "records": [
+              {
+                "active": false,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 2
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Deactivated version is excluded after a correction"
+        }
+      ],
+      "code": "import unicodedata\nimport re\n\ndef normalize_text(text):\n    if not text:\n        return \"\"\n    # Normalize accents\n    nfkd_form = unicodedata.normalize('NFKD', text)\n    only_ascii = ''.join([c for c in nfkd_form if not unicodedata.combining(c)])\n    # Lowercase\n    return only_ascii.lower()\n\ndef extract_words(text):\n    if not text:\n        return set()\n    norm = normalize_text(text)\n    # Replace underscores and any non-alphanumeric chars with spaces\n    cleaned = re.sub(r'[_\\W]+', ' ', norm)\n    tokens = cleaned.split()\n    return set(tokens)\n\ndef run(data):\n    records = data.get('records', [])\n    query = data.get('query', '')\n    required_inputs = data.get('required_inputs', [])\n\n    # Filter records: active == true, tested == true, permissions == [\"compute\"]\n    valid_records = []\n    for r in records:\n        if r.get('active') is True and r.get('tested') is True:\n            perms = r.get('permissions', [])\n            if perms == ['compute']:\n                valid_records.append(r)\n\n    # If there are multiple versions of the same id, handle them or group by id\n    # The protocol example suggests keeping the latest or valid active version.\n    # Usually records are a list. If multiple records have the same id, we should keep the active/tested ones.\n    # Let's map id -> record, or collect all valid records. If duplicates exist, standard practice is taking the latest or valid entry.\n    # Looking at the example: \"Deactivated version is excluded after a correction\", records list can have multiple with same id.\n    \n    by_id = {}\n    for r in valid_records:\n        rid = r['id']\n        # Overwrite or collect. Assuming input list has them in order, later overwrites earlier or we take active ones.\n        by_id[rid] = r\n\n    index_list = []\n    for rid, r in sorted(by_id.items(), key=lambda x: x[0]):\n        # Derive terms from id, title, description, input_fields, output_fields\n        terms_set = set()\n        \n        for w in extract_words(r.get('id', '')):\n            terms_set.add(w)\n        for w in extract_words(r.get('title', '')):\n            terms_set.add(w)\n        for w in extract_words(r.get('description', '')):\n            terms_set.add(w);\n        for inf in r.get('input_fields', []):\n            for w in extract_words(inf):\n                terms_set.add(w)\n        for outf in r.get('output_fields', []):\n            for w in extract_words(outf):\n                terms_set.add(w)\n                \n        sorted_terms = sorted(list(terms_set))\n        index_list.append({\n            \"id\": rid,\n            \"version\": r.get('version'),\n            \"terms\": sorted_terms,\n            \"input_fields\": r.get('input_fields', [])\n        })\n\n    # Matches computation\n    norm_query = normalize_text(query)\n    query_tokens = set(re.sub(r'[_\\W]+', ' ', norm_query).split())\n\n    matches = []\n    for entry in index_list:\n        rid = entry['id']\n        r_input_fields = entry['input_fields']\n        \n        # Check required_inputs (must contain ALL required_inputs)\n        has_all_required = True\n        for req in required_inputs:\n            if req not in r_input_fields:\n                has_all_required = False\n                break\n        if not has_all_required:\n            continue\n\n        # Check query\n        if not query_tokens:\n            matches.append(rid)\n        else:\n            # Query matches when ANY normalized whole query token occurs in the entry's terms\n            matched_query = False\n            entry_terms_set = set(entry['terms'])\n            for qt in query_tokens:\n                if qt in entry_terms_set:\n                    matched_query = True\n                    break\n            if matched_query:\n                matches.append(rid)\n\n    # Sort matches by id\n    matches = sorted(list(set(matches)))\n\n    return {\n        \"index\": index_list,\n        \"matches\": matches\n    }\n",
+      "code_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+      "created_at": 1791521005.978254,
+      "manifest": {
+        "description": "Indexes and searches active, tested, compute-only registry records by query terms and required input fields without model calls.",
+        "id": "catalog_index_plugin",
+        "input_schema": {
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "records": {
+              "items": {
+                "properties": {
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "input_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "output_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "permissions": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tested": {
+                    "type": "boolean"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "title",
+                  "description",
+                  "input_fields",
+                  "output_fields",
+                  "active",
+                  "tested",
+                  "permissions"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "required_inputs": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "records",
+            "query",
+            "required_inputs"
+          ],
+          "type": "object"
+        },
+        "kind": "discovery",
+        "output_schema": {
+          "properties": {
+            "index": {
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "input_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "terms": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "version": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "terms",
+                  "input_fields"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "matches": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "index",
+            "matches"
+          ],
+          "type": "object"
+        },
+        "permissions": [
+          "compute"
+        ],
+        "title": "Catalog Index and Search Plugin"
+      },
+      "provenance": {
+        "model": "gemini-3.5-flash-lite",
+        "parent": null,
+        "run_id": "c6595760bcf64c6e86099df9e85de855",
+        "source": "agent",
+        "test_source": "independent_model_context"
+      },
+      "tests": [
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "terms": [
+                  "criteria",
+                  "data",
+                  "filter",
+                  "records",
+                  "result"
+                ],
+                "version": 1
+              },
+              {
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "terms": [
+                  "csv",
+                  "data",
+                  "file",
+                  "parse"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "filter_data"
+            ]
+          },
+          "duration_ms": 889,
+          "expected": {
+            "index": [
+              {
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "terms": [
+                  "criteria",
+                  "data",
+                  "filter",
+                  "records",
+                  "result"
+                ],
+                "version": 1
+              },
+              {
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "terms": [
+                  "csv",
+                  "data",
+                  "file",
+                  "parse"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "filter_data"
+            ]
+          },
+          "input": {
+            "query": "data",
+            "records": [
+              {
+                "active": true,
+                "description": "parse csv data",
+                "id": "parse_csv",
+                "input_fields": [
+                  "file"
+                ],
+                "output_fields": [
+                  "data"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "parse_csv",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "filter records",
+                "id": "filter_data",
+                "input_fields": [
+                  "data",
+                  "criteria"
+                ],
+                "output_fields": [
+                  "result"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "filter_data",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "data"
+            ]
+          },
+          "name": "Basic indexing with query and required inputs filtering",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "terms": [
+                  "op",
+                  "safe",
+                  "valid",
+                  "x",
+                  "y"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "valid_op"
+            ]
+          },
+          "duration_ms": 906,
+          "expected": {
+            "index": [
+              {
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "terms": [
+                  "op",
+                  "safe",
+                  "valid",
+                  "x",
+                  "y"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "valid_op"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "safe",
+                "id": "valid_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "valid_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "untested",
+                "id": "untested_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "untested_op",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "network",
+                "id": "network_op",
+                "input_fields": [
+                  "x"
+                ],
+                "output_fields": [
+                  "y"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "network_op",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Excludes untested and overprivileged records",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "terms": [
+                  "a",
+                  "b",
+                  "desc",
+                  "field",
+                  "in",
+                  "one",
+                  "out",
+                  "title"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "a_b"
+            ]
+          },
+          "duration_ms": 2342,
+          "expected": {
+            "index": [
+              {
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "terms": [
+                  "a",
+                  "b",
+                  "desc",
+                  "field",
+                  "in",
+                  "one",
+                  "out",
+                  "title"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "a_b"
+            ]
+          },
+          "input": {
+            "query": "field",
+            "records": [
+              {
+                "active": true,
+                "description": "desc",
+                "id": "a_b",
+                "input_fields": [
+                  "in_field"
+                ],
+                "output_fields": [
+                  "out_field"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "title_one",
+                "version": 2
+              }
+            ],
+            "required_inputs": [
+              "in_field"
+            ]
+          },
+          "name": "Underscores separate words and terms are sorted alphabetically",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows",
+              "render_report"
+            ]
+          },
+          "duration_ms": 2633,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows",
+              "render_report"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "",
+                "id": "old",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "old",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "bad",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "bad",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "unsafe",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "unsafe",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Inactive and failed records stay outside the index",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "duration_ms": 1876,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "rows"
+            ]
+          },
+          "name": "Required input fields restrict selection",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "duration_ms": 1688,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "clean",
+            "records": [
+              {
+                "active": false,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 2
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Deactivated version is excluded after a correction",
+          "passed": true
+        }
+      ],
+      "version": 1
+    }
+  ],
+  "catalog": {
+    "helper_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+    "helper_id": "catalog_index_plugin",
+    "helper_version": 1,
+    "index": [],
+    "source_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "updated_at": 1791521007.24822
+  }
+}

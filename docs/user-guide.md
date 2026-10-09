@@ -4,7 +4,7 @@ This guide describes the current local application. All example attendees are sy
 
 ## Before the first task
 
-Start Docker and the Wisp server, open [localhost:8767](http://127.0.0.1:8767), and check **Personal workspace → Settings → Runtime & limits**. Configure and activate a model. A connected ChatGPT account alone does not select the active model.
+Start Docker and the Wisp server, open [localhost:8767](http://127.0.0.1:8767), and check **Personal workspace → Settings → Runtime & limits**. For the default strict $0 policy, configure an allowlisted Gemini model and confirm that its project has billing disabled. ChatGPT plan inference is blocked in strict mode. The optional `SPEND_POLICY=existing_plan` requires a deliberate local configuration change and has no local USD guarantee; connecting an account alone does not activate a model.
 
 For the full event example, use `MAX_MODEL_CALLS=20` and `MAX_RUN_SECONDS=600` in `.env`, then restart the server before the run. Only one task executes at a time. **Stop task** prevents further steps after the current operation; it does not undo changes already made.
 
@@ -120,7 +120,26 @@ uv run python scripts/replay_blackout.py --serve
 
 Open [localhost:8789](http://127.0.0.1:8789). This uses a separate `.runtime/blackout-replay` store, reruns the 7 saved tests in Docker, and recreates the two recorded skills with explicit evidence-replay provenance. It runs their recorded inputs without model inference and reproduces **16 attendees, 10 seated, 6 waiting**. Inspect **Library → Actions** and try changed inputs within their interfaces. Omit `--serve` if you only want the verification report.
 
-The replay does not generate new skills and should not be presented as doing so. It needs the already-downloaded Docker image, but no model account, key or inference request. Agent-created skill discovery/management remains unproven by this demonstration.
+The replay does not generate new skills and should not be presented as doing so. It needs the already-downloaded Docker image, but no model account, key or inference request. This replay does not itself prove generated discovery. The separate [final evidence](frankenstein-final-evidence-2026-10-09/) records an agent-created catalog and fresh-process reuse.
+
+## Inspect or attempt the full creation/discovery flow
+
+The [final evidence bundle](frankenstein-final-evidence-2026-10-09/) contains a 17-call ChatGPT learning run and a separate three-call Gemini Free reuse process. The latter uses the learned catalog, cleaner and allocator under strict $0 admission, with no new installation. The first learning process predates the monetary gate. Its allocator tests all used empty rosters; inspect that coverage limitation before trusting other inputs.
+
+To attempt fresh creation with your own confirmed Gemini Free project, use separate invocations:
+
+```sh
+uv run python scripts/verify_frankenstein.py --phase first
+uv run python scripts/verify_frankenstein.py --phase second
+```
+
+This harness is team-written verification infrastructure, not an agent-created tool. The first phase requires an empty registry, and the second requires the generated task and discovery capabilities. Each attempt retains a unique evidence file, including failures, in `.runtime/frankenstein-verification`; use `--data-dir` for another workspace. A fresh full learning attempt can fail: the published successful chain used ChatGPT for learning and Gemini for strict reuse, rather than demonstrating both fresh phases with Gemini.
+
+## Financial policy
+
+**Settings → Runtime & limits** shows the policy and per-run USD cap. The shipped `SPEND_POLICY=strict`, `MAX_RUN_USD=0` configuration admits operator-confirmed Gemini Free requests and blocks unknown-price routes before inference. Keep billing disabled in Google AI Studio; Wisp cannot verify billing state or enforce a provider-side free-only flag. Calls and elapsed time have separate limits.
+
+**Usage & cost** shows a task’s financial admission, reservations and blocked requests separately from estimated usage. Earlier tasks may have no admission record. Explicit `existing_plan` mode uses provider-managed ChatGPT allowances and credits; it does not supply a local dollar guarantee and is not the strict-budget demonstration path. There is no automatic paid fallback.
 
 ## Inspect and improve a result
 
@@ -152,7 +171,8 @@ Schedules persist across server restarts. They require the local server to run a
 
 | Symptom | What to check |
 | --- | --- |
-| Setup needed | Open Settings; select and activate a ChatGPT model, or configure the Gemini key and Free-tier confirmation |
+| Setup needed | Open Settings; for strict mode configure the Gemini key and confirm billing remains disabled |
+| Financial limit blocked | The provider has no verified USD upper bound. Use confirmed Gemini Free; ChatGPT plan inference is unavailable under the strict cap |
 | Docker unavailable or missing image | Start Docker; run `docker pull python:3.12-slim`. There is no host-execution fallback |
 | Blackout is on | Run an existing action, or resume AI before sending a chat task, correction or scheduled task |
 | Action changed or inactive | Reopen the action to review its current tested version; reactivate a version through Skills only if appropriate |

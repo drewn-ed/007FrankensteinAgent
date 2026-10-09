@@ -1,0 +1,2147 @@
+{
+  "id": "a660b75808654138b0c2d2cdd3a06446",
+  "task": "Prepare workshop places from the registration CSV and the supplied rooms. Trim fields and normalize emails, keep the first valid row per email, preserve participant IDs and group_id. Allocate each nonempty group together, processing booking units by their first member in the roster. Try that member's first then second choice only if every member accepts it and the whole booking fits an open room; otherwise waitlist the entire group. Return a cleaned roster/CSV and assignments with reasons for anyone waiting. I also need to hand this desk to another coordinator tomorrow: they need to look up the available reusable operations by what they do and the input fields they accept, without another model conversation each time. That lookup must stay current as operations are added, corrected or retired, and must not recommend inactive or failed versions. Make both the event result and that ongoing operational handover usable, and verify them. Choose the implementation yourself; reuse compatible work if it already exists. Do not open or modify a live application.",
+  "input": {
+    "files": [
+      {
+        "content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\n",
+        "name": "group-bookings.csv"
+      }
+    ],
+    "rooms": [
+      {
+        "capacity": 5,
+        "id": "a",
+        "name": "Hall A",
+        "open": true
+      },
+      {
+        "capacity": 4,
+        "id": "b",
+        "name": "Room B",
+        "open": true
+      },
+      {
+        "capacity": 4,
+        "id": "c",
+        "name": "Room C",
+        "open": true
+      },
+      {
+        "capacity": 8,
+        "id": "d",
+        "name": "Studio D",
+        "open": true
+      }
+    ],
+    "workshops": [
+      {
+        "id": "agents",
+        "name": "Agents lab",
+        "room": "a",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "design",
+        "name": "Product studio",
+        "room": "b",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "story",
+        "name": "Storytelling",
+        "room": "c",
+        "time": "10:00–11:30"
+      }
+    ]
+  },
+  "kind": "task",
+  "status": "failed",
+  "created_at": 1791520766.931062,
+  "result": null,
+  "registry_before": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "model_calls": 5,
+  "tokens": 14217,
+  "usage_version": 1,
+  "model_usage": [
+    {
+      "call": 1,
+      "purpose": "Planning",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520767.275594,
+      "status": "completed",
+      "usage": {
+        "input": 2048,
+        "output": 8,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2056,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 823
+    },
+    {
+      "call": 2,
+      "purpose": "Planning",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520768.099927,
+      "status": "completed",
+      "usage": {
+        "input": 2060,
+        "output": 451,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2511,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 1739
+    },
+    {
+      "call": 3,
+      "purpose": "Designing tests",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520769.873187,
+      "status": "completed",
+      "usage": {
+        "input": 944,
+        "output": 1195,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2139,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 3123
+    },
+    {
+      "call": 4,
+      "purpose": "Writing a skill",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520772.9994738,
+      "status": "completed",
+      "usage": {
+        "input": 1778,
+        "output": 929,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 2707,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 3078
+    },
+    {
+      "call": 5,
+      "purpose": "Repairing a skill",
+      "provider": "Google Gemini",
+      "model": "gemini-3.5-flash-lite",
+      "started_at": 1791520785.644595,
+      "status": "completed",
+      "usage": {
+        "input": 4097,
+        "output": 707,
+        "thinking": 0,
+        "cached_input": 0,
+        "total": 4804,
+        "tool_input": 0
+      },
+      "pricing": {
+        "tier": "free_confirmed",
+        "currency": "USD",
+        "source": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-09",
+        "paid_standard_per_million": {
+          "input": 0.3,
+          "output": 2.5,
+          "cached_input": 0.03
+        }
+      },
+      "spend_admission": {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      "resolved_model": "gemini-3.5-flash-lite",
+      "service_tier": "standard",
+      "duration_ms": 2220
+    }
+  ],
+  "cost": {
+    "tracked": true,
+    "calls": 5,
+    "recorded_calls": 5,
+    "known_cost_calls": 5,
+    "unknown_cost_calls": 0,
+    "estimated_usd": 0.0,
+    "cost_complete": true,
+    "paid_equivalent_usd": 0.0115031,
+    "paid_equivalent_calls": 5,
+    "billed_usd": null
+  },
+  "spend_budget": {
+    "policy": "strict",
+    "max_usd": "0",
+    "reserved_upper_bound_usd": "0",
+    "guaranteed": true,
+    "billing_verified": false,
+    "reservations": [
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      },
+      {
+        "provider": "gemini",
+        "basis": "Operator-confirmed Free tier; billing must remain disabled; no paid fallback",
+        "upper_bound_usd": "0",
+        "admitted": true
+      }
+    ],
+    "blocked": []
+  },
+  "error": "The new skill failed its tests after one repair. It was not installed; review the test failures before retrying.",
+  "duration_ms": 34541,
+  "registry_after": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "events": [
+    {
+      "seq": 10,
+      "at": 1791520766.9339352,
+      "kind": "spend_policy",
+      "max_usd": "0",
+      "message": "Financial admission is enforced before each provider request.",
+      "policy": "strict"
+    },
+    {
+      "seq": 11,
+      "at": 1791520767.273901,
+      "context_run_ids": [],
+      "kind": "session",
+      "message": "New session; only the persistent registry was loaded.",
+      "registry": []
+    },
+    {
+      "seq": 12,
+      "at": 1791520769.870641,
+      "kind": "gap",
+      "manifest": {
+        "description": "Build an index of active, tested, compute-only registry records and match queries against terms and required input fields.",
+        "id": "catalog_plugin",
+        "input_schema": {
+          "properties": {
+            "query": {
+              "type": "string"
+            },
+            "records": {
+              "items": {
+                "properties": {
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "input_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "output_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "permissions": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "tested": {
+                    "type": "boolean"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "title",
+                  "description",
+                  "input_fields",
+                  "output_fields",
+                  "active",
+                  "tested",
+                  "permissions"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "required_inputs": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "records",
+            "query",
+            "required_inputs"
+          ],
+          "type": "object"
+        },
+        "kind": "discovery",
+        "output_schema": {
+          "properties": {
+            "index": {
+              "items": {
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "input_fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "terms": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "version": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id",
+                  "version",
+                  "terms",
+                  "input_fields"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "matches": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "index",
+            "matches"
+          ],
+          "type": "object"
+        },
+        "permissions": [
+          "compute"
+        ],
+        "title": "Catalog Plugin"
+      },
+      "message": "Create catalog index and search plugin to enable offline capability lookup by purpose and input fields for the incoming coordinator."
+    },
+    {
+      "seq": 13,
+      "at": 1791520772.998632,
+      "cases": [
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "op_alpha",
+                "input_fields": [
+                  "text",
+                  "format"
+                ],
+                "terms": [
+                  "alpha",
+                  "data",
+                  "format",
+                  "process",
+                  "processes",
+                  "processor",
+                  "result",
+                  "text"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "op_alpha"
+            ]
+          },
+          "input": {
+            "query": "process",
+            "records": [
+              {
+                "active": true,
+                "description": "Processes text data",
+                "id": "op_alpha",
+                "input_fields": [
+                  "text",
+                  "format"
+                ],
+                "output_fields": [
+                  "result"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Data Processor",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "Resizes images",
+                "id": "op_beta",
+                "input_fields": [
+                  "image"
+                ],
+                "output_fields": [
+                  "resized"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Image Resizer",
+                "version": 2
+              },
+              {
+                "active": true,
+                "description": "Calculates math values",
+                "id": "op_gamma",
+                "input_fields": [
+                  "text",
+                  "numbers"
+                ],
+                "output_fields": [
+                  "sum"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "Untested Math",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "Performs admin actions",
+                "id": "op_delta",
+                "input_fields": [
+                  "text"
+                ],
+                "output_fields": [
+                  "status"
+                ],
+                "permissions": [
+                  "compute",
+                  "admin"
+                ],
+                "tested": true,
+                "title": "Admin Tool",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "text"
+            ]
+          },
+          "name": "Filters out inactive, untested, and non-compute records, matches query and required inputs"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "beta_op",
+                "input_fields": [
+                  "data",
+                  "extra"
+                ],
+                "terms": [
+                  "beta",
+                  "data",
+                  "does",
+                  "extra",
+                  "out",
+                  "things",
+                  "tool"
+                ],
+                "version": 1
+              },
+              {
+                "id": "zeta_op",
+                "input_fields": [
+                  "data"
+                ],
+                "terms": [
+                  "data",
+                  "does",
+                  "out",
+                  "things",
+                  "tool",
+                  "zeta"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "beta_op",
+              "zeta_op"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "Does zeta things",
+                "id": "zeta_op",
+                "input_fields": [
+                  "data"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Zeta tool",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "Does beta things",
+                "id": "beta_op",
+                "input_fields": [
+                  "data",
+                  "extra"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Beta tool",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "data"
+            ]
+          },
+          "name": "Empty query returns all valid compatible IDs matching required inputs, sorts index and matches"
+        },
+        {
+          "expected": {
+            "index": [
+              {
+                "id": "op_special",
+                "input_fields": [
+                  "input_file"
+                ],
+                "terms": [
+                  "analy",
+                  "cafe",
+                  "data",
+                  "des",
+                  "evalue",
+                  "file",
+                  "input",
+                  "op",
+                  "output",
+                  "report",
+                  "special",
+                  "zer"
+                ],
+                "version": 3
+              }
+            ],
+            "matches": [
+              "op_special"
+            ]
+          },
+          "input": {
+            "query": "cafe",
+            "records": [
+              {
+                "active": true,
+                "description": "Évalue des données!",
+                "id": "op_special",
+                "input_fields": [
+                  "input_file"
+                ],
+                "output_fields": [
+                  "output_report"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Café Analy-zer",
+                "version": 3
+              }
+            ],
+            "required_inputs": [
+              "input_file"
+            ]
+          },
+          "name": "Handles accents, punctuation stripping, and underscore separation in terms"
+        }
+      ],
+      "kind": "test_plan",
+      "message": "Test cases were created without seeing the implementation."
+    },
+    {
+      "seq": 14,
+      "at": 1791520785.637623,
+      "capability": "catalog_plugin",
+      "code_hash": "bf860e7f94eaa98e47f4fff9a73d32e818eef7e1c68d09a01a8a21e731b17e08",
+      "kind": "tests_failed",
+      "message": "Catalog Plugin: 3/6 tests passed.",
+      "tests": [
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "op_alpha",
+                "input_fields": [
+                  "text",
+                  "format"
+                ],
+                "terms": [
+                  "alpha",
+                  "data",
+                  "format",
+                  "op",
+                  "processes",
+                  "processor",
+                  "result",
+                  "text"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": []
+          },
+          "duration_ms": 2106,
+          "expected": {
+            "index": [
+              {
+                "id": "op_alpha",
+                "input_fields": [
+                  "text",
+                  "format"
+                ],
+                "terms": [
+                  "alpha",
+                  "data",
+                  "format",
+                  "process",
+                  "processes",
+                  "processor",
+                  "result",
+                  "text"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "op_alpha"
+            ]
+          },
+          "input": {
+            "query": "process",
+            "records": [
+              {
+                "active": true,
+                "description": "Processes text data",
+                "id": "op_alpha",
+                "input_fields": [
+                  "text",
+                  "format"
+                ],
+                "output_fields": [
+                  "result"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Data Processor",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "Resizes images",
+                "id": "op_beta",
+                "input_fields": [
+                  "image"
+                ],
+                "output_fields": [
+                  "resized"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Image Resizer",
+                "version": 2
+              },
+              {
+                "active": true,
+                "description": "Calculates math values",
+                "id": "op_gamma",
+                "input_fields": [
+                  "text",
+                  "numbers"
+                ],
+                "output_fields": [
+                  "sum"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "Untested Math",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "Performs admin actions",
+                "id": "op_delta",
+                "input_fields": [
+                  "text"
+                ],
+                "output_fields": [
+                  "status"
+                ],
+                "permissions": [
+                  "compute",
+                  "admin"
+                ],
+                "tested": true,
+                "title": "Admin Tool",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "text"
+            ]
+          },
+          "name": "Filters out inactive, untested, and non-compute records, matches query and required inputs",
+          "passed": false
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "beta_op",
+                "input_fields": [
+                  "data",
+                  "extra"
+                ],
+                "terms": [
+                  "beta",
+                  "data",
+                  "does",
+                  "extra",
+                  "op",
+                  "out",
+                  "things",
+                  "tool"
+                ],
+                "version": 1
+              },
+              {
+                "id": "zeta_op",
+                "input_fields": [
+                  "data"
+                ],
+                "terms": [
+                  "data",
+                  "does",
+                  "op",
+                  "out",
+                  "things",
+                  "tool",
+                  "zeta"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "beta_op",
+              "zeta_op"
+            ]
+          },
+          "duration_ms": 1800,
+          "expected": {
+            "index": [
+              {
+                "id": "beta_op",
+                "input_fields": [
+                  "data",
+                  "extra"
+                ],
+                "terms": [
+                  "beta",
+                  "data",
+                  "does",
+                  "extra",
+                  "out",
+                  "things",
+                  "tool"
+                ],
+                "version": 1
+              },
+              {
+                "id": "zeta_op",
+                "input_fields": [
+                  "data"
+                ],
+                "terms": [
+                  "data",
+                  "does",
+                  "out",
+                  "things",
+                  "tool",
+                  "zeta"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "beta_op",
+              "zeta_op"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "Does zeta things",
+                "id": "zeta_op",
+                "input_fields": [
+                  "data"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Zeta tool",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "Does beta things",
+                "id": "beta_op",
+                "input_fields": [
+                  "data",
+                  "extra"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Beta tool",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "data"
+            ]
+          },
+          "name": "Empty query returns all valid compatible IDs matching required inputs, sorts index and matches",
+          "passed": false
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "op_special",
+                "input_fields": [
+                  "input_file"
+                ],
+                "terms": [
+                  "analy",
+                  "cafe",
+                  "des",
+                  "donnees",
+                  "evalue",
+                  "file",
+                  "input",
+                  "op",
+                  "output",
+                  "report",
+                  "special",
+                  "zer"
+                ],
+                "version": 3
+              }
+            ],
+            "matches": [
+              "op_special"
+            ]
+          },
+          "duration_ms": 1254,
+          "expected": {
+            "index": [
+              {
+                "id": "op_special",
+                "input_fields": [
+                  "input_file"
+                ],
+                "terms": [
+                  "analy",
+                  "cafe",
+                  "data",
+                  "des",
+                  "evalue",
+                  "file",
+                  "input",
+                  "op",
+                  "output",
+                  "report",
+                  "special",
+                  "zer"
+                ],
+                "version": 3
+              }
+            ],
+            "matches": [
+              "op_special"
+            ]
+          },
+          "input": {
+            "query": "cafe",
+            "records": [
+              {
+                "active": true,
+                "description": "Évalue des données!",
+                "id": "op_special",
+                "input_fields": [
+                  "input_file"
+                ],
+                "output_fields": [
+                  "output_report"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Café Analy-zer",
+                "version": 3
+              }
+            ],
+            "required_inputs": [
+              "input_file"
+            ]
+          },
+          "name": "Handles accents, punctuation stripping, and underscore separation in terms",
+          "passed": false
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows",
+              "render_report"
+            ]
+          },
+          "duration_ms": 1504,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows",
+              "render_report"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "",
+                "id": "old",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "old",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "bad",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "bad",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "unsafe",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "unsafe",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Inactive and failed records stay outside the index",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "duration_ms": 1297,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "rows"
+            ]
+          },
+          "name": "Required input fields restrict selection",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "duration_ms": 1557,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "clean",
+            "records": [
+              {
+                "active": false,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 2
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Deactivated version is excluded after a correction",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "seq": 15,
+      "at": 1791520785.642011,
+      "kind": "repair",
+      "message": "Tests blocked installation; attempting one repair."
+    },
+    {
+      "seq": 16,
+      "at": 1791520801.4702332,
+      "capability": "catalog_plugin",
+      "code_hash": "08cbc0cfc6ee1e4199229d354bbfea623df6f9fa625b11c38f6eda28336077c5",
+      "kind": "tests_failed",
+      "message": "Catalog Plugin: 3/6 tests passed.",
+      "tests": [
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "op_alpha",
+                "input_fields": [
+                  "text",
+                  "format"
+                ],
+                "terms": [
+                  "alpha",
+                  "data",
+                  "format",
+                  "op",
+                  "processes",
+                  "processor",
+                  "result",
+                  "text"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": []
+          },
+          "duration_ms": 1160,
+          "expected": {
+            "index": [
+              {
+                "id": "op_alpha",
+                "input_fields": [
+                  "text",
+                  "format"
+                ],
+                "terms": [
+                  "alpha",
+                  "data",
+                  "format",
+                  "process",
+                  "processes",
+                  "processor",
+                  "result",
+                  "text"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "op_alpha"
+            ]
+          },
+          "input": {
+            "query": "process",
+            "records": [
+              {
+                "active": true,
+                "description": "Processes text data",
+                "id": "op_alpha",
+                "input_fields": [
+                  "text",
+                  "format"
+                ],
+                "output_fields": [
+                  "result"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Data Processor",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "Resizes images",
+                "id": "op_beta",
+                "input_fields": [
+                  "image"
+                ],
+                "output_fields": [
+                  "resized"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Image Resizer",
+                "version": 2
+              },
+              {
+                "active": true,
+                "description": "Calculates math values",
+                "id": "op_gamma",
+                "input_fields": [
+                  "text",
+                  "numbers"
+                ],
+                "output_fields": [
+                  "sum"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "Untested Math",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "Performs admin actions",
+                "id": "op_delta",
+                "input_fields": [
+                  "text"
+                ],
+                "output_fields": [
+                  "status"
+                ],
+                "permissions": [
+                  "compute",
+                  "admin"
+                ],
+                "tested": true,
+                "title": "Admin Tool",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "text"
+            ]
+          },
+          "name": "Filters out inactive, untested, and non-compute records, matches query and required inputs",
+          "passed": false
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "beta_op",
+                "input_fields": [
+                  "data",
+                  "extra"
+                ],
+                "terms": [
+                  "beta",
+                  "data",
+                  "does",
+                  "extra",
+                  "op",
+                  "out",
+                  "things",
+                  "tool"
+                ],
+                "version": 1
+              },
+              {
+                "id": "zeta_op",
+                "input_fields": [
+                  "data"
+                ],
+                "terms": [
+                  "data",
+                  "does",
+                  "op",
+                  "out",
+                  "things",
+                  "tool",
+                  "zeta"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "beta_op",
+              "zeta_op"
+            ]
+          },
+          "duration_ms": 1417,
+          "expected": {
+            "index": [
+              {
+                "id": "beta_op",
+                "input_fields": [
+                  "data",
+                  "extra"
+                ],
+                "terms": [
+                  "beta",
+                  "data",
+                  "does",
+                  "extra",
+                  "out",
+                  "things",
+                  "tool"
+                ],
+                "version": 1
+              },
+              {
+                "id": "zeta_op",
+                "input_fields": [
+                  "data"
+                ],
+                "terms": [
+                  "data",
+                  "does",
+                  "out",
+                  "things",
+                  "tool",
+                  "zeta"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "beta_op",
+              "zeta_op"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "Does zeta things",
+                "id": "zeta_op",
+                "input_fields": [
+                  "data"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Zeta tool",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "Does beta things",
+                "id": "beta_op",
+                "input_fields": [
+                  "data",
+                  "extra"
+                ],
+                "output_fields": [
+                  "out"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Beta tool",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "data"
+            ]
+          },
+          "name": "Empty query returns all valid compatible IDs matching required inputs, sorts index and matches",
+          "passed": false
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "op_special",
+                "input_fields": [
+                  "input_file"
+                ],
+                "terms": [
+                  "analy",
+                  "cafe",
+                  "des",
+                  "donnees",
+                  "evalue",
+                  "file",
+                  "input",
+                  "op",
+                  "output",
+                  "report",
+                  "special",
+                  "zer"
+                ],
+                "version": 3
+              }
+            ],
+            "matches": [
+              "op_special"
+            ]
+          },
+          "duration_ms": 3692,
+          "expected": {
+            "index": [
+              {
+                "id": "op_special",
+                "input_fields": [
+                  "input_file"
+                ],
+                "terms": [
+                  "analy",
+                  "cafe",
+                  "data",
+                  "des",
+                  "evalue",
+                  "file",
+                  "input",
+                  "op",
+                  "output",
+                  "report",
+                  "special",
+                  "zer"
+                ],
+                "version": 3
+              }
+            ],
+            "matches": [
+              "op_special"
+            ]
+          },
+          "input": {
+            "query": "cafe",
+            "records": [
+              {
+                "active": true,
+                "description": "Évalue des données!",
+                "id": "op_special",
+                "input_fields": [
+                  "input_file"
+                ],
+                "output_fields": [
+                  "output_report"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "Café Analy-zer",
+                "version": 3
+              }
+            ],
+            "required_inputs": [
+              "input_file"
+            ]
+          },
+          "name": "Handles accents, punctuation stripping, and underscore separation in terms",
+          "passed": false
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows",
+              "render_report"
+            ]
+          },
+          "duration_ms": 1531,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows",
+              "render_report"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              },
+              {
+                "active": false,
+                "description": "",
+                "id": "old",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "old",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "bad",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": false,
+                "title": "bad",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "unsafe",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute",
+                  "network"
+                ],
+                "tested": true,
+                "title": "unsafe",
+                "version": 1
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Inactive and failed records stay outside the index",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "duration_ms": 4017,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 1
+              },
+              {
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "terms": [
+                  "render",
+                  "report",
+                  "rows",
+                  "summary"
+                ],
+                "version": 1
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "",
+            "records": [
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "render_report",
+                "input_fields": [
+                  "summary"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "render_report",
+                "version": 1
+              }
+            ],
+            "required_inputs": [
+              "rows"
+            ]
+          },
+          "name": "Required input fields restrict selection",
+          "passed": true
+        },
+        {
+          "actual": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "duration_ms": 1727,
+          "expected": {
+            "index": [
+              {
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "terms": [
+                  "clean",
+                  "rows"
+                ],
+                "version": 2
+              }
+            ],
+            "matches": [
+              "clean_rows"
+            ]
+          },
+          "input": {
+            "query": "clean",
+            "records": [
+              {
+                "active": false,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 1
+              },
+              {
+                "active": true,
+                "description": "",
+                "id": "clean_rows",
+                "input_fields": [
+                  "rows"
+                ],
+                "output_fields": [
+                  "rows"
+                ],
+                "permissions": [
+                  "compute"
+                ],
+                "tested": true,
+                "title": "clean_rows",
+                "version": 2
+              }
+            ],
+            "required_inputs": []
+          },
+          "name": "Deactivated version is excluded after a correction",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "seq": 17,
+      "at": 1791520801.472409,
+      "kind": "error",
+      "message": "The new skill failed its tests after one repair. It was not installed; review the test failures before retrying."
+    }
+  ],
+  "registry_before_records": [],
+  "registry_after_records": [],
+  "catalog": null
+}

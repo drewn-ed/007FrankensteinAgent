@@ -49,7 +49,7 @@ BLACKOUT persists `ai_paused` in SQLite. The normal task entry point rejects req
 | [Published generated skills](operations-evidence-2026-10-09/generated-skills.json) | Live-model CSV normalization, allocation and replanning, each with four passing recorded cases |
 | [`tests/`](../tests/) | Handwritten infrastructure fixtures and regressions; not competition evidence of generated capabilities |
 
-The optional discovery plugin computes an index and matches over registry records in Docker. The host checks IDs, versions, eligibility and required input fields before accepting results. It cannot authorize installation or change permissions. No successful creation/use of this plugin is present in the published showcase. Raw registry inspection remains available to the planner.
+The optional discovery plugin computes an index and matches over registry records in Docker. The host checks IDs, versions, eligibility and required input fields before accepting results. It cannot authorize installation or change permissions. The [final evidence](frankenstein-final-evidence-2026-10-09/) records actual agent creation with seven passing tests and execution in both learning and a separate reuse process. Raw registry inspection remains available to the planner.
 
 ## Where code executes
 
@@ -77,12 +77,15 @@ Fieldwork's outcome adapter checks roster fidelity, complete attendee accounting
 | `MAX_MODEL_CALLS` | 18 | 20; failed requests count |
 | `MAX_RUN_SECONDS` | 240 | 600 seconds; checked throughout the loop and passed to bounded operations |
 | `MAX_OUTPUT_TOKENS` | 8192 | 8192 for Gemini; not sent by the ChatGPT adapter |
+| `MAX_RUN_USD` / `SPEND_POLICY` | `0` / `strict` | Pre-inference monetary admission; unknown-price routes blocked |
 | New-skill repair | One | Failed second candidate stops installation |
 | Malformed model JSON | One retry per run | Same selected model, within the original budget |
 | Repeated identical pure computation | One cached reuse | Further repetition stops the run |
 | Provider quota/transport error | No automatic retry/fallback | Run stops |
 
-The recorded long showcase used the 20-call / 600-second configuration. These are operational bounds, **not an independent monetary cap**. Gemini requires user confirmation of Free-tier status and an allowlisted model; the application cannot verify billing. ChatGPT uses the user's authorized plan access; the application does not enforce a provider-side token/dollar reservation. The UI records returned usage and leaves unknown costs unpriced. This remains a gap against a strict reading of the track's spend-cap requirement.
+The recorded long showcase used 20 calls / 600 seconds and predates the monetary gate. [`spend.py`](../workbench/spend.py) now checks each request before inference. The default strict policy has a $0 per-run cap and admits only an allowlisted Gemini model with operator-confirmed Free-tier status. Unknown-price routes are rejected. Decimal reservations cannot exceed the cap; failed requests retain reservations instead of assuming zero consumption. Infrastructure tests cover these boundaries. Final run `bf47b3caa23b48cea2f7383f875976e5` used three Gemini Free calls under this strict gate. Its source capabilities came from the earlier ChatGPT learning process, which did not have the gate; do not retroactively label that learning run financially capped.
+
+This is conditional on billing remaining disabled: Wisp cannot inspect Google billing or force a free-only request. The optional `SPEND_POLICY=existing_plan` permits ChatGPT plan inference but explicitly has **no local USD guarantee**; it is not a strict-cap path. The official [SIWC preview limitations](https://developers.openai.com/siwc/token-sharing-open-source/preview-limitations) reject `max_output_tokens`, and no per-request USD ceiling is available. Existing-plan costs remain unknown, not zero. There is no automatic paid fallback. UI/API expose the policy separately from usage estimates and preserve each run’s admission record.
 
 ## Data and credentials
 
@@ -99,4 +102,4 @@ Schedules persist in SQLite and dispatch through the same engine, budget and con
 
 ## What is not implemented
 
-No team sharing, multi-origin sessions, external MCP service integration, universal desktop control, hosted always-on service, automatic wake agent or general offline natural-language planning. There is no verified global dollar cap, completed accessibility audit, controlled productivity benchmark or proven customer demand. See the [jury guide](jury-guide.md) for the exact evidence boundary.
+No team sharing, multi-origin sessions, external MCP service integration, universal desktop control, hosted always-on service, automatic wake agent or general offline natural-language planning. There is no universal cross-provider dollar cap or programmatic billing verification; unpriced routes are blocked in strict mode. There is no completed accessibility audit, controlled productivity benchmark or proven customer demand. See the [jury guide](jury-guide.md) for the exact evidence boundary.

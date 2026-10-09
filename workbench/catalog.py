@@ -110,3 +110,59 @@ def invariant_cases():
          "expected": {"matches": ["clean_rows"],
                       "index": [{"id": "clean_rows", "version": 2, "input_fields": ["rows"], "terms": ["clean", "rows"]}]}}
     ]
+
+
+def case_errors(cases):
+    """Validate test-author expectations BEFORE implementation using the fixed contract.
+
+    This oracle is for test admission only. It is never a runtime discovery
+    fallback, never installs a helper, and does not use candidate code or output.
+    The model still supplies the cases; inconsistent expectations are rejected.
+    """
+    import re
+    import unicodedata
+
+    def words(value):
+        value = unicodedata.normalize("NFKD", value.lower())
+        value = "".join(char for char in value if not unicodedata.combining(char))
+        return set(re.findall(r"[^\W_]+", value))
+
+    errors = []
+    if not isinstance(cases, list):
+        return [{"error": "Test cases must be a list."}]
+    for number, case in enumerate(cases):
+        try:
+            data = case["input"]
+            expected = case["expected"]
+            index = []
+            for record in data["records"]:
+                if not (record["active"] and record["tested"] and record["permissions"] == ["compute"]):
+                    continue
+                sources = [record["id"], record["title"], record["description"], *record["input_fields"], *record["output_fields"]]
+                terms = set()
+                for source in sources:
+                    terms.update(words(source))
+                index.append({"id": record["id"], "version": record["version"], "input_fields": record["input_fields"], "terms": sorted(terms)})
+            index.sort(key=lambda entry: entry["id"])
+            query = words(data["query"])
+            required = set(data["required_inputs"])
+            matches = [entry["id"] for entry in index
+                       if required.issubset(entry["input_fields"]) and (not query or query.intersection(entry["terms"]))]
+            contract_expected = {"index": index, "matches": matches}
+            if expected != contract_expected:
+                differences = []
+                supplied_entries = {entry["id"]: entry for entry in expected.get("index", [])}
+                for entry in index:
+                    supplied = supplied_entries.get(entry["id"], {})
+                    supplied_terms = set(supplied.get("terms", []))
+                    missing = sorted(set(entry["terms"]) - supplied_terms)
+                    extra = sorted(supplied_terms - set(entry["terms"]))
+                    if missing or extra:
+                        differences.append({"id": entry["id"], "missing_terms": missing, "extra_terms": extra})
+                errors.append({"case": number, "name": case.get("name", "Unnamed case"),
+                               "error": "Expected output does not match the fixed catalog contract.",
+                               "term_differences": differences, "expected_by_contract": contract_expected,
+                               "provided_expected": expected})
+        except (KeyError, TypeError, AttributeError, ValueError):
+            errors.append({"case": number, "error": "Malformed catalog contract test."})
+    return errors

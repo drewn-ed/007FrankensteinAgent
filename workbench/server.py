@@ -13,6 +13,7 @@ from urllib.parse import urlsplit, parse_qs
 from .config import Config, ROOT
 from .engine import Engine, PERMISSIONS
 from .providers import create_model
+from .spend import policy_status
 from .chatgpt_auth import ChatGPTAuth
 from .sandbox import Sandbox
 from .store import Store, WorkspaceConflict, digest
@@ -59,13 +60,16 @@ class Application:
     def busy(self):
         return self.future is not None and not self.future.done()
 
+    def model_status(self):
+        return self.model.ready() or policy_status(self.config)["error"]
+
     def start(self, task, inputs, kind, project_id=None, chat_id=None, use_browser=False, use_desktop=False, expected_connection=None):
         with self.lock:
             if self.busy():
                 raise ValueError("Another task is running. Wait for it to finish.")
             if self.store.setting("ai_paused", False):
                 raise ValueError("Blackout is on. Use a saved action, or resume AI to start a new task.")
-            if error := self.model.ready():
+            if error := self.model_status():
                 raise ValueError(error)
             projects = self.store.workspace()["projects"]
             project = next((p for p in projects if p["id"] == project_id), None)
@@ -134,6 +138,8 @@ class Application:
             if model not in {m["slug"] for m in self.chatgpt.models()}:
                 raise RunError("Choose a model available to the connected ChatGPT account.")
             config = replace(self.config, provider="chatgpt", model=model)
+            if error := policy_status(config)["error"]:
+                raise RunError(error)
             candidate = create_model(config, self.chatgpt)
             if error := candidate.ready():
                 raise RunError(error)
@@ -205,14 +211,15 @@ def handler_for(app, port):
                 except RunError as error:
                     return self.reply({"error": str(error)}, 400)
             if path == "/api/state":
-                return self.reply({"model": app.config.model, "model_ready": app.model.ready() is None,
-                                   "model_status": app.model.ready(), "free_tier_confirmed": app.config.provider == "gemini" and app.config.free_confirmed,
+                return self.reply({"model": app.config.model, "model_ready": app.model_status() is None,
+                                   "model_status": app.model_status(), "free_tier_confirmed": app.config.provider == "gemini" and app.config.free_confirmed,
                                    "provider": app.config.provider,
                                    "provider_label": "ChatGPT plan" if app.config.provider == "chatgpt" else "Gemini",
                                    "permissions": PERMISSIONS, "busy": app.busy(), "ai_paused": app.store.setting("ai_paused", False),
                                    "runs": app.store.runs(), "registry": app.store.registry(), "versions": app.store.versions(),
                                    "applications": app.store.applications(),
-                                   "limits": {"calls": app.config.max_calls, "seconds": app.config.max_seconds}})
+                                   "spend_policy": policy_status(app.config),
+                                   "limits": {"calls": app.config.max_calls, "seconds": app.config.max_seconds, "max_usd": app.config.max_run_usd}})
             if path.startswith("/api/actions/"):
                 try:
                     if path.endswith("/context"):
@@ -223,7 +230,7 @@ def handler_for(app, port):
                 except RunError as error:
                     return self.reply({"error": str(error)}, 400)
             if path == "/api/health":
-                return self.reply({"sandbox": app.sandbox.status(), "model_ready": app.model.ready() is None})
+                return self.reply({"sandbox": app.sandbox.status(), "model_ready": app.model_status() is None})
             if path == "/api/workspace":
                 return self.reply(app.store.workspace())
             if path == "/api/analytics":
@@ -233,6 +240,7 @@ def handler_for(app, port):
                 if not record:
                     return self.reply({"error": "Run not found"}, 404)
                 return self.reply({"run_id": record["id"], "task": record["task"], "status": record["status"],
+                                   "spend_budget": record.get("spend_budget"),
                                    "cost": summarize(record), "calls": [{**call, "cost": estimate(call)} for call in record.get("model_usage", [])],
                                    "operations": operations(app.store.events(record["id"]), app.store.versions(), record["id"])})
             if path == "/api/desktop/state":

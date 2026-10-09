@@ -1,0 +1,982 @@
+{
+  "description": "Independent real-Docker replay of the actual agent-generated catalog against synthetic registry lifecycle changes. The domain records and updates below are handwritten test fixtures, not additional agent-created abilities.",
+  "source_run_id": "6bacaed7078449a0a39d992f1e2ac609",
+  "source_run_status": "completed",
+  "source_run_error": null,
+  "source_evidence": "learning-chatgpt.json",
+  "helper_id": "pfrankens_workshop_operations_catalog",
+  "helper_code_hash": "dca610b7350afccff91a179f4f5cad1157508917877f964a798b55ada50428d7",
+  "source": "agent-generated catalog replay; handwritten domain metadata fixtures",
+  "model_calls": 0,
+  "permissions": [
+    "compute"
+  ],
+  "checks": {
+    "original_generated_catalog_cases_pass_again": true,
+    "rebuilds_index_for_new_active_version": true,
+    "deactivated_version_not_discoverable": true,
+    "reflects_operator_rollback_without_changing_authority": true,
+    "lookup_never_changes_registry_or_permissions": true,
+    "no_model_required": true,
+    "original_evidence_unmodified": true
+  },
+  "snapshots": [
+    {
+      "stage": "initial_v1",
+      "catalog": {
+        "helper_hash": "dca610b7350afccff91a179f4f5cad1157508917877f964a798b55ada50428d7",
+        "helper_id": "pfrankens_workshop_operations_catalog",
+        "helper_version": 1,
+        "index": [
+          {
+            "id": "contact_roster",
+            "input_fields": [
+              "emails"
+            ],
+            "terms": [
+              "addresses",
+              "contact",
+              "emails",
+              "in",
+              "normalize",
+              "order",
+              "roster",
+              "source"
+            ],
+            "version": 1
+          }
+        ],
+        "source_hash": "b222e33b6c59454f295826b733f59731b6b166123e5ab416d68136a16be37866",
+        "updated_at": 1791521285.405907
+      },
+      "matched_versions": [
+        {
+          "id": "contact_roster",
+          "version": 1
+        }
+      ],
+      "registry_unchanged_by_lookup": true
+    },
+    {
+      "stage": "updated_v2",
+      "catalog": {
+        "helper_hash": "dca610b7350afccff91a179f4f5cad1157508917877f964a798b55ada50428d7",
+        "helper_id": "pfrankens_workshop_operations_catalog",
+        "helper_version": 1,
+        "index": [
+          {
+            "id": "contact_roster",
+            "input_fields": [
+              "emails"
+            ],
+            "terms": [
+              "addresses",
+              "contact",
+              "emails",
+              "in",
+              "normalize",
+              "order",
+              "roster",
+              "source"
+            ],
+            "version": 2
+          }
+        ],
+        "source_hash": "a129896b361d41536fe09c895860006233d089c66a18d5449ecf0a7886c0bcb2",
+        "updated_at": 1791521290.207444
+      },
+      "matched_versions": [
+        {
+          "id": "contact_roster",
+          "version": 2
+        }
+      ],
+      "registry_unchanged_by_lookup": true
+    },
+    {
+      "stage": "deactivated",
+      "catalog": {
+        "helper_hash": "dca610b7350afccff91a179f4f5cad1157508917877f964a798b55ada50428d7",
+        "helper_id": "pfrankens_workshop_operations_catalog",
+        "helper_version": 1,
+        "index": [],
+        "source_hash": "f21e245a55832da2532a5c9b84d5ffc92b90a311b1e202f7d7f6900d010bad6d",
+        "updated_at": 1791521292.8577769
+      },
+      "matched_versions": [],
+      "registry_unchanged_by_lookup": true
+    },
+    {
+      "stage": "operator_rollback_to_v1",
+      "catalog": {
+        "helper_hash": "dca610b7350afccff91a179f4f5cad1157508917877f964a798b55ada50428d7",
+        "helper_id": "pfrankens_workshop_operations_catalog",
+        "helper_version": 1,
+        "index": [
+          {
+            "id": "contact_roster",
+            "input_fields": [
+              "emails"
+            ],
+            "terms": [
+              "addresses",
+              "contact",
+              "emails",
+              "in",
+              "normalize",
+              "order",
+              "roster",
+              "source"
+            ],
+            "version": 1
+          }
+        ],
+        "source_hash": "02ff2ac1aaad2e8e8ac34d0e0ff0e955f8d7b92c5459666bec87504bfcabd68a",
+        "updated_at": 1791521295.17109
+      },
+      "matched_versions": [
+        {
+          "id": "contact_roster",
+          "version": 1
+        }
+      ],
+      "registry_unchanged_by_lookup": true
+    }
+  ],
+  "events": [
+    {
+      "seq": 3,
+      "at": 1791521285.410069,
+      "capability": "pfrankens_workshop_operations_catalog",
+      "code_hash": "dca610b7350afccff91a179f4f5cad1157508917877f964a798b55ada50428d7",
+      "index_size": 1,
+      "kind": "discovered",
+      "matches": [
+        "contact_roster"
+      ],
+      "message": "The learned catalog found 1 matching skills.",
+      "query": "CONTACT",
+      "required_inputs": [
+        "emails"
+      ],
+      "source_hash": "b222e33b6c59454f295826b733f59731b6b166123e5ab416d68136a16be37866",
+      "version": 1
+    },
+    {
+      "seq": 6,
+      "at": 1791521290.221278,
+      "capability": "pfrankens_workshop_operations_catalog",
+      "code_hash": "dca610b7350afccff91a179f4f5cad1157508917877f964a798b55ada50428d7",
+      "index_size": 1,
+      "kind": "discovered",
+      "matches": [
+        "contact_roster"
+      ],
+      "message": "The learned catalog found 1 matching skills.",
+      "query": "CONTACT",
+      "required_inputs": [
+        "emails"
+      ],
+      "source_hash": "a129896b361d41536fe09c895860006233d089c66a18d5449ecf0a7886c0bcb2",
+      "version": 1
+    },
+    {
+      "seq": 7,
+      "at": 1791521292.859242,
+      "capability": "pfrankens_workshop_operations_catalog",
+      "code_hash": "dca610b7350afccff91a179f4f5cad1157508917877f964a798b55ada50428d7",
+      "index_size": 0,
+      "kind": "discovered",
+      "matches": [],
+      "message": "The learned catalog found 0 matching skills.",
+      "query": "CONTACT",
+      "required_inputs": [
+        "emails"
+      ],
+      "source_hash": "f21e245a55832da2532a5c9b84d5ffc92b90a311b1e202f7d7f6900d010bad6d",
+      "version": 1
+    },
+    {
+      "seq": 8,
+      "at": 1791521295.176235,
+      "capability": "pfrankens_workshop_operations_catalog",
+      "code_hash": "dca610b7350afccff91a179f4f5cad1157508917877f964a798b55ada50428d7",
+      "index_size": 1,
+      "kind": "discovered",
+      "matches": [
+        "contact_roster"
+      ],
+      "message": "The learned catalog found 1 matching skills.",
+      "query": "CONTACT",
+      "required_inputs": [
+        "emails"
+      ],
+      "source_hash": "02ff2ac1aaad2e8e8ac34d0e0ff0e955f8d7b92c5459666bec87504bfcabd68a",
+      "version": 1
+    }
+  ],
+  "catalog_test_report": [
+    {
+      "name": "Index only the active tested compute-only version, excluding historical, failed, and overprivileged records",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "alpha_op",
+            "version": 2,
+            "terms": [
+              "alpha",
+              "op",
+              "ready",
+              "x",
+              "y"
+            ],
+            "input_fields": [
+              "x"
+            ]
+          }
+        ],
+        "matches": [
+          "alpha_op"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "alpha_op",
+            "input_fields": [
+              "x"
+            ],
+            "terms": [
+              "alpha",
+              "op",
+              "ready",
+              "x",
+              "y"
+            ],
+            "version": 2
+          }
+        ],
+        "matches": [
+          "alpha_op"
+        ]
+      },
+      "input": {
+        "query": "",
+        "records": [
+          {
+            "active": false,
+            "description": "Historical",
+            "id": "alpha_op",
+            "input_fields": [
+              "old"
+            ],
+            "output_fields": [],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "Old",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "failed_op",
+            "input_fields": [],
+            "output_fields": [],
+            "permissions": [
+              "compute"
+            ],
+            "tested": false,
+            "title": "Failed",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "Ready",
+            "id": "alpha_op",
+            "input_fields": [
+              "x"
+            ],
+            "output_fields": [
+              "y"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "Alpha",
+            "version": 2
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "unsafe_op",
+            "input_fields": [],
+            "output_fields": [],
+            "permissions": [
+              "compute",
+              "browser"
+            ],
+            "tested": true,
+            "title": "Unsafe",
+            "version": 1
+          }
+        ],
+        "required_inputs": []
+      },
+      "duration_ms": 1003
+    },
+    {
+      "name": "Normalize accents and punctuation, deduplicate terms, and match any whole query token rather than substrings",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "a_room",
+            "version": 1,
+            "terms": [
+              "a",
+              "capacity",
+              "room",
+              "rooms",
+              "seats"
+            ],
+            "input_fields": [
+              "rooms"
+            ]
+          },
+          {
+            "id": "z_pack",
+            "version": 3,
+            "terms": [
+              "cafe",
+              "cleaned",
+              "csv",
+              "emails",
+              "pack",
+              "roster",
+              "text",
+              "trim",
+              "z"
+            ],
+            "input_fields": [
+              "csv_text"
+            ]
+          }
+        ],
+        "matches": [
+          "z_pack"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "a_room",
+            "input_fields": [
+              "rooms"
+            ],
+            "terms": [
+              "a",
+              "capacity",
+              "room",
+              "rooms",
+              "seats"
+            ],
+            "version": 1
+          },
+          {
+            "id": "z_pack",
+            "input_fields": [
+              "csv_text"
+            ],
+            "terms": [
+              "cafe",
+              "cleaned",
+              "csv",
+              "emails",
+              "pack",
+              "roster",
+              "text",
+              "trim",
+              "z"
+            ],
+            "version": 3
+          }
+        ],
+        "matches": [
+          "z_pack"
+        ]
+      },
+      "input": {
+        "query": "CAFÉ, seat missing!",
+        "records": [
+          {
+            "active": true,
+            "description": "TRIM, emails. Café!",
+            "id": "z_pack",
+            "input_fields": [
+              "csv_text"
+            ],
+            "output_fields": [
+              "cleaned_csv"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "Café—Roster",
+            "version": 3
+          },
+          {
+            "active": true,
+            "description": "Capacity",
+            "id": "a_room",
+            "input_fields": [
+              "rooms"
+            ],
+            "output_fields": [
+              "seats"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "Rooms",
+            "version": 1
+          }
+        ],
+        "required_inputs": []
+      },
+      "duration_ms": 962
+    },
+    {
+      "name": "An empty query matches only records containing every exact required input while retaining the full sorted index",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "a",
+            "version": 4,
+            "terms": [
+              "a",
+              "rooms",
+              "roster"
+            ],
+            "input_fields": [
+              "rooms",
+              "roster"
+            ]
+          },
+          {
+            "id": "b",
+            "version": 7,
+            "terms": [
+              "b",
+              "csv",
+              "rooms",
+              "roster",
+              "text"
+            ],
+            "input_fields": [
+              "Roster",
+              "rooms",
+              "csv_text"
+            ]
+          },
+          {
+            "id": "c",
+            "version": 2,
+            "terms": [
+              "c",
+              "roster"
+            ],
+            "input_fields": [
+              "Roster"
+            ]
+          }
+        ],
+        "matches": [
+          "b"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "a",
+            "input_fields": [
+              "rooms",
+              "roster"
+            ],
+            "terms": [
+              "a",
+              "rooms",
+              "roster"
+            ],
+            "version": 4
+          },
+          {
+            "id": "b",
+            "input_fields": [
+              "Roster",
+              "rooms",
+              "csv_text"
+            ],
+            "terms": [
+              "b",
+              "csv",
+              "rooms",
+              "roster",
+              "text"
+            ],
+            "version": 7
+          },
+          {
+            "id": "c",
+            "input_fields": [
+              "Roster"
+            ],
+            "terms": [
+              "c",
+              "roster"
+            ],
+            "version": 2
+          }
+        ],
+        "matches": [
+          "b"
+        ]
+      },
+      "input": {
+        "query": "",
+        "records": [
+          {
+            "active": true,
+            "description": "",
+            "id": "b",
+            "input_fields": [
+              "Roster",
+              "rooms",
+              "csv_text"
+            ],
+            "output_fields": [],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "",
+            "version": 7
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "c",
+            "input_fields": [
+              "Roster"
+            ],
+            "output_fields": [],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "",
+            "version": 2
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "a",
+            "input_fields": [
+              "rooms",
+              "roster"
+            ],
+            "output_fields": [],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "",
+            "version": 4
+          }
+        ],
+        "required_inputs": [
+          "rooms",
+          "Roster"
+        ]
+      },
+      "duration_ms": 786
+    },
+    {
+      "name": "An empty registry produces an empty rebuilt index and no matches",
+      "passed": true,
+      "actual": {
+        "index": [],
+        "matches": []
+      },
+      "expected": {
+        "index": [],
+        "matches": []
+      },
+      "input": {
+        "query": "workshop",
+        "records": [],
+        "required_inputs": [
+          "rooms"
+        ]
+      },
+      "duration_ms": 823
+    },
+    {
+      "name": "Inactive and failed records stay outside the index",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "version": 1,
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "input_fields": [
+              "rows"
+            ]
+          },
+          {
+            "id": "render_report",
+            "version": 1,
+            "terms": [
+              "render",
+              "report",
+              "rows",
+              "summary"
+            ],
+            "input_fields": [
+              "summary"
+            ]
+          }
+        ],
+        "matches": [
+          "clean_rows",
+          "render_report"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "version": 1
+          },
+          {
+            "id": "render_report",
+            "input_fields": [
+              "summary"
+            ],
+            "terms": [
+              "render",
+              "report",
+              "rows",
+              "summary"
+            ],
+            "version": 1
+          }
+        ],
+        "matches": [
+          "clean_rows",
+          "render_report"
+        ]
+      },
+      "input": {
+        "query": "",
+        "records": [
+          {
+            "active": true,
+            "description": "",
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "clean_rows",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "render_report",
+            "input_fields": [
+              "summary"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "render_report",
+            "version": 1
+          },
+          {
+            "active": false,
+            "description": "",
+            "id": "old",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "old",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "bad",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": false,
+            "title": "bad",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "unsafe",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute",
+              "network"
+            ],
+            "tested": true,
+            "title": "unsafe",
+            "version": 1
+          }
+        ],
+        "required_inputs": []
+      },
+      "duration_ms": 1196
+    },
+    {
+      "name": "Required input fields restrict selection",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "version": 1,
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "input_fields": [
+              "rows"
+            ]
+          },
+          {
+            "id": "render_report",
+            "version": 1,
+            "terms": [
+              "render",
+              "report",
+              "rows",
+              "summary"
+            ],
+            "input_fields": [
+              "summary"
+            ]
+          }
+        ],
+        "matches": [
+          "clean_rows"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "version": 1
+          },
+          {
+            "id": "render_report",
+            "input_fields": [
+              "summary"
+            ],
+            "terms": [
+              "render",
+              "report",
+              "rows",
+              "summary"
+            ],
+            "version": 1
+          }
+        ],
+        "matches": [
+          "clean_rows"
+        ]
+      },
+      "input": {
+        "query": "",
+        "records": [
+          {
+            "active": true,
+            "description": "",
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "clean_rows",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "render_report",
+            "input_fields": [
+              "summary"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "render_report",
+            "version": 1
+          }
+        ],
+        "required_inputs": [
+          "rows"
+        ]
+      },
+      "duration_ms": 2142
+    },
+    {
+      "name": "Deactivated version is excluded after a correction",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "version": 2,
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "input_fields": [
+              "rows"
+            ]
+          }
+        ],
+        "matches": [
+          "clean_rows"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "version": 2
+          }
+        ],
+        "matches": [
+          "clean_rows"
+        ]
+      },
+      "input": {
+        "query": "clean",
+        "records": [
+          {
+            "active": false,
+            "description": "",
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "clean_rows",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "clean_rows",
+            "version": 2
+          }
+        ],
+        "required_inputs": []
+      },
+      "duration_ms": 3292
+    }
+  ]
+}

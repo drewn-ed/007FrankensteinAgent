@@ -59,13 +59,16 @@ class ChatGPTModel:
     def ask(self, system, payload, budget):
         if error := self.ready():
             raise RunError(error)
+        budget.check()
+        admission = budget.authorize_spend(self.config)
         token = self.auth.access_token()
         budget.reserve()
         started = time.monotonic()
         record = {"call": budget.calls, "purpose": budget.purpose, "provider": "OpenAI · ChatGPT plan",
                   "model": self.config.model, "started_at": time.time(), "status": "pending", "usage": None,
                   "pricing": {"tier": "chatgpt_plan", "currency": "USD", "paid_standard_per_million": None,
-                              "source": "https://developers.openai.com/siwc/token-sharing-open-source"}}
+                              "source": "https://developers.openai.com/siwc/token-sharing-open-source"},
+                  "spend_admission": admission}
         budget.usage.append(record)
         budget.notify_usage()
         try:

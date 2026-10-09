@@ -1,0 +1,872 @@
+{
+  "description": "Independent real-Docker replay of the actual agent-generated catalog against synthetic registry lifecycle changes. The domain records and updates below are handwritten test fixtures, not additional agent-created abilities.",
+  "source_run_id": "c6595760bcf64c6e86099df9e85de855",
+  "source_run_status": "failed",
+  "source_run_error": "The new skill failed its tests after one repair. It was not installed; review the test failures before retrying.",
+  "source_evidence": "gemini-first-evidence.json",
+  "helper_id": "catalog_index_plugin",
+  "helper_code_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+  "source": "agent-generated catalog replay; handwritten domain metadata fixtures",
+  "model_calls": 0,
+  "permissions": [
+    "compute"
+  ],
+  "checks": {
+    "original_generated_catalog_cases_pass_again": true,
+    "rebuilds_index_for_new_active_version": true,
+    "deactivated_version_not_discoverable": true,
+    "reflects_operator_rollback_without_changing_authority": true,
+    "lookup_never_changes_registry_or_permissions": true,
+    "no_model_required": true,
+    "original_evidence_unmodified": true
+  },
+  "snapshots": [
+    {
+      "stage": "initial_v1",
+      "catalog": {
+        "helper_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+        "helper_id": "catalog_index_plugin",
+        "helper_version": 1,
+        "index": [
+          {
+            "id": "contact_roster",
+            "input_fields": [
+              "emails"
+            ],
+            "terms": [
+              "addresses",
+              "contact",
+              "emails",
+              "in",
+              "normalize",
+              "order",
+              "roster",
+              "source"
+            ],
+            "version": 1
+          }
+        ],
+        "source_hash": "b222e33b6c59454f295826b733f59731b6b166123e5ab416d68136a16be37866",
+        "updated_at": 1791521089.823307
+      },
+      "matched_versions": [
+        {
+          "id": "contact_roster",
+          "version": 1
+        }
+      ],
+      "registry_unchanged_by_lookup": true
+    },
+    {
+      "stage": "updated_v2",
+      "catalog": {
+        "helper_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+        "helper_id": "catalog_index_plugin",
+        "helper_version": 1,
+        "index": [
+          {
+            "id": "contact_roster",
+            "input_fields": [
+              "emails"
+            ],
+            "terms": [
+              "addresses",
+              "contact",
+              "emails",
+              "in",
+              "normalize",
+              "order",
+              "roster",
+              "source"
+            ],
+            "version": 2
+          }
+        ],
+        "source_hash": "a129896b361d41536fe09c895860006233d089c66a18d5449ecf0a7886c0bcb2",
+        "updated_at": 1791521091.063476
+      },
+      "matched_versions": [
+        {
+          "id": "contact_roster",
+          "version": 2
+        }
+      ],
+      "registry_unchanged_by_lookup": true
+    },
+    {
+      "stage": "deactivated",
+      "catalog": {
+        "helper_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+        "helper_id": "catalog_index_plugin",
+        "helper_version": 1,
+        "index": [],
+        "source_hash": "f21e245a55832da2532a5c9b84d5ffc92b90a311b1e202f7d7f6900d010bad6d",
+        "updated_at": 1791521091.740969
+      },
+      "matched_versions": [],
+      "registry_unchanged_by_lookup": true
+    },
+    {
+      "stage": "operator_rollback_to_v1",
+      "catalog": {
+        "helper_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+        "helper_id": "catalog_index_plugin",
+        "helper_version": 1,
+        "index": [
+          {
+            "id": "contact_roster",
+            "input_fields": [
+              "emails"
+            ],
+            "terms": [
+              "addresses",
+              "contact",
+              "emails",
+              "in",
+              "normalize",
+              "order",
+              "roster",
+              "source"
+            ],
+            "version": 1
+          }
+        ],
+        "source_hash": "02ff2ac1aaad2e8e8ac34d0e0ff0e955f8d7b92c5459666bec87504bfcabd68a",
+        "updated_at": 1791521092.5364249
+      },
+      "matched_versions": [
+        {
+          "id": "contact_roster",
+          "version": 1
+        }
+      ],
+      "registry_unchanged_by_lookup": true
+    }
+  ],
+  "events": [
+    {
+      "seq": 3,
+      "at": 1791521089.824495,
+      "capability": "catalog_index_plugin",
+      "code_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+      "index_size": 1,
+      "kind": "discovered",
+      "matches": [
+        "contact_roster"
+      ],
+      "message": "The learned catalog found 1 matching skills.",
+      "query": "CONTACT",
+      "required_inputs": [
+        "emails"
+      ],
+      "source_hash": "b222e33b6c59454f295826b733f59731b6b166123e5ab416d68136a16be37866",
+      "version": 1
+    },
+    {
+      "seq": 6,
+      "at": 1791521091.064332,
+      "capability": "catalog_index_plugin",
+      "code_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+      "index_size": 1,
+      "kind": "discovered",
+      "matches": [
+        "contact_roster"
+      ],
+      "message": "The learned catalog found 1 matching skills.",
+      "query": "CONTACT",
+      "required_inputs": [
+        "emails"
+      ],
+      "source_hash": "a129896b361d41536fe09c895860006233d089c66a18d5449ecf0a7886c0bcb2",
+      "version": 1
+    },
+    {
+      "seq": 7,
+      "at": 1791521091.741578,
+      "capability": "catalog_index_plugin",
+      "code_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+      "index_size": 0,
+      "kind": "discovered",
+      "matches": [],
+      "message": "The learned catalog found 0 matching skills.",
+      "query": "CONTACT",
+      "required_inputs": [
+        "emails"
+      ],
+      "source_hash": "f21e245a55832da2532a5c9b84d5ffc92b90a311b1e202f7d7f6900d010bad6d",
+      "version": 1
+    },
+    {
+      "seq": 8,
+      "at": 1791521092.537427,
+      "capability": "catalog_index_plugin",
+      "code_hash": "608d422fac6f8d7291b67c6bff8d93da5dcc615256f5c9e4048ab115a3f7f32d",
+      "index_size": 1,
+      "kind": "discovered",
+      "matches": [
+        "contact_roster"
+      ],
+      "message": "The learned catalog found 1 matching skills.",
+      "query": "CONTACT",
+      "required_inputs": [
+        "emails"
+      ],
+      "source_hash": "02ff2ac1aaad2e8e8ac34d0e0ff0e955f8d7b92c5459666bec87504bfcabd68a",
+      "version": 1
+    }
+  ],
+  "catalog_test_report": [
+    {
+      "name": "Basic indexing with query and required inputs filtering",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "filter_data",
+            "version": 1,
+            "terms": [
+              "criteria",
+              "data",
+              "filter",
+              "records",
+              "result"
+            ],
+            "input_fields": [
+              "data",
+              "criteria"
+            ]
+          },
+          {
+            "id": "parse_csv",
+            "version": 1,
+            "terms": [
+              "csv",
+              "data",
+              "file",
+              "parse"
+            ],
+            "input_fields": [
+              "file"
+            ]
+          }
+        ],
+        "matches": [
+          "filter_data"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "filter_data",
+            "input_fields": [
+              "data",
+              "criteria"
+            ],
+            "terms": [
+              "criteria",
+              "data",
+              "filter",
+              "records",
+              "result"
+            ],
+            "version": 1
+          },
+          {
+            "id": "parse_csv",
+            "input_fields": [
+              "file"
+            ],
+            "terms": [
+              "csv",
+              "data",
+              "file",
+              "parse"
+            ],
+            "version": 1
+          }
+        ],
+        "matches": [
+          "filter_data"
+        ]
+      },
+      "input": {
+        "query": "data",
+        "records": [
+          {
+            "active": true,
+            "description": "parse csv data",
+            "id": "parse_csv",
+            "input_fields": [
+              "file"
+            ],
+            "output_fields": [
+              "data"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "parse_csv",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "filter records",
+            "id": "filter_data",
+            "input_fields": [
+              "data",
+              "criteria"
+            ],
+            "output_fields": [
+              "result"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "filter_data",
+            "version": 1
+          }
+        ],
+        "required_inputs": [
+          "data"
+        ]
+      },
+      "duration_ms": 1100
+    },
+    {
+      "name": "Excludes untested and overprivileged records",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "valid_op",
+            "version": 1,
+            "terms": [
+              "op",
+              "safe",
+              "valid",
+              "x",
+              "y"
+            ],
+            "input_fields": [
+              "x"
+            ]
+          }
+        ],
+        "matches": [
+          "valid_op"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "valid_op",
+            "input_fields": [
+              "x"
+            ],
+            "terms": [
+              "op",
+              "safe",
+              "valid",
+              "x",
+              "y"
+            ],
+            "version": 1
+          }
+        ],
+        "matches": [
+          "valid_op"
+        ]
+      },
+      "input": {
+        "query": "",
+        "records": [
+          {
+            "active": true,
+            "description": "safe",
+            "id": "valid_op",
+            "input_fields": [
+              "x"
+            ],
+            "output_fields": [
+              "y"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "valid_op",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "untested",
+            "id": "untested_op",
+            "input_fields": [
+              "x"
+            ],
+            "output_fields": [
+              "y"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": false,
+            "title": "untested_op",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "network",
+            "id": "network_op",
+            "input_fields": [
+              "x"
+            ],
+            "output_fields": [
+              "y"
+            ],
+            "permissions": [
+              "compute",
+              "network"
+            ],
+            "tested": true,
+            "title": "network_op",
+            "version": 1
+          }
+        ],
+        "required_inputs": []
+      },
+      "duration_ms": 536
+    },
+    {
+      "name": "Underscores separate words and terms are sorted alphabetically",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "a_b",
+            "version": 2,
+            "terms": [
+              "a",
+              "b",
+              "desc",
+              "field",
+              "in",
+              "one",
+              "out",
+              "title"
+            ],
+            "input_fields": [
+              "in_field"
+            ]
+          }
+        ],
+        "matches": [
+          "a_b"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "a_b",
+            "input_fields": [
+              "in_field"
+            ],
+            "terms": [
+              "a",
+              "b",
+              "desc",
+              "field",
+              "in",
+              "one",
+              "out",
+              "title"
+            ],
+            "version": 2
+          }
+        ],
+        "matches": [
+          "a_b"
+        ]
+      },
+      "input": {
+        "query": "field",
+        "records": [
+          {
+            "active": true,
+            "description": "desc",
+            "id": "a_b",
+            "input_fields": [
+              "in_field"
+            ],
+            "output_fields": [
+              "out_field"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "title_one",
+            "version": 2
+          }
+        ],
+        "required_inputs": [
+          "in_field"
+        ]
+      },
+      "duration_ms": 698
+    },
+    {
+      "name": "Inactive and failed records stay outside the index",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "version": 1,
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "input_fields": [
+              "rows"
+            ]
+          },
+          {
+            "id": "render_report",
+            "version": 1,
+            "terms": [
+              "render",
+              "report",
+              "rows",
+              "summary"
+            ],
+            "input_fields": [
+              "summary"
+            ]
+          }
+        ],
+        "matches": [
+          "clean_rows",
+          "render_report"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "version": 1
+          },
+          {
+            "id": "render_report",
+            "input_fields": [
+              "summary"
+            ],
+            "terms": [
+              "render",
+              "report",
+              "rows",
+              "summary"
+            ],
+            "version": 1
+          }
+        ],
+        "matches": [
+          "clean_rows",
+          "render_report"
+        ]
+      },
+      "input": {
+        "query": "",
+        "records": [
+          {
+            "active": true,
+            "description": "",
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "clean_rows",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "render_report",
+            "input_fields": [
+              "summary"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "render_report",
+            "version": 1
+          },
+          {
+            "active": false,
+            "description": "",
+            "id": "old",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "old",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "bad",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": false,
+            "title": "bad",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "unsafe",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute",
+              "network"
+            ],
+            "tested": true,
+            "title": "unsafe",
+            "version": 1
+          }
+        ],
+        "required_inputs": []
+      },
+      "duration_ms": 764
+    },
+    {
+      "name": "Required input fields restrict selection",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "version": 1,
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "input_fields": [
+              "rows"
+            ]
+          },
+          {
+            "id": "render_report",
+            "version": 1,
+            "terms": [
+              "render",
+              "report",
+              "rows",
+              "summary"
+            ],
+            "input_fields": [
+              "summary"
+            ]
+          }
+        ],
+        "matches": [
+          "clean_rows"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "version": 1
+          },
+          {
+            "id": "render_report",
+            "input_fields": [
+              "summary"
+            ],
+            "terms": [
+              "render",
+              "report",
+              "rows",
+              "summary"
+            ],
+            "version": 1
+          }
+        ],
+        "matches": [
+          "clean_rows"
+        ]
+      },
+      "input": {
+        "query": "",
+        "records": [
+          {
+            "active": true,
+            "description": "",
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "clean_rows",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "render_report",
+            "input_fields": [
+              "summary"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "render_report",
+            "version": 1
+          }
+        ],
+        "required_inputs": [
+          "rows"
+        ]
+      },
+      "duration_ms": 715
+    },
+    {
+      "name": "Deactivated version is excluded after a correction",
+      "passed": true,
+      "actual": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "version": 2,
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "input_fields": [
+              "rows"
+            ]
+          }
+        ],
+        "matches": [
+          "clean_rows"
+        ]
+      },
+      "expected": {
+        "index": [
+          {
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "terms": [
+              "clean",
+              "rows"
+            ],
+            "version": 2
+          }
+        ],
+        "matches": [
+          "clean_rows"
+        ]
+      },
+      "input": {
+        "query": "clean",
+        "records": [
+          {
+            "active": false,
+            "description": "",
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "clean_rows",
+            "version": 1
+          },
+          {
+            "active": true,
+            "description": "",
+            "id": "clean_rows",
+            "input_fields": [
+              "rows"
+            ],
+            "output_fields": [
+              "rows"
+            ],
+            "permissions": [
+              "compute"
+            ],
+            "tested": true,
+            "title": "clean_rows",
+            "version": 2
+          }
+        ],
+        "required_inputs": []
+      },
+      "duration_ms": 776
+    }
+  ]
+}

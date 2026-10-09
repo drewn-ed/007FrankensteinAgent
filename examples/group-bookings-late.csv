@@ -1,0 +1,20 @@
+id,name,email,first_choice,second_choice,group_id
+g01,Alex Morgan,alex@example.test,agents,design,studio-a
+g02,Sam Rivera,sam@example.test,agents,design,studio-a
+g03,Robin Lee,robin@example.test,agents,design,studio-a
+g04,Jordan Kim,jordan@example.test,agents,story,
+g05,Taylor Chen,taylor@example.test,design,story,studio-b
+g06,Casey Park,casey@example.test,design,story,studio-b
+g07,Morgan Hall,morgan@example.test,design,story,studio-b
+g08,Avery King,avery@example.test,agents,design,studio-c
+g09,Riley Scott,riley@example.test,agents,design,studio-c
+g10,Jamie Green,jamie@example.test,story,agents,
+g11,Drew Adams,drew@example.test,agents,story,studio-d
+g12,Quinn Baker,quinn@example.test,agents,story,studio-d
+g13,Reese Bell,reese@example.test,agents,story,studio-d
+g14,Rowan Gray,rowan@example.test,agents,story,studio-d
+g15,Charlie Fox,charlie@example.test,story,design,
+g16,Finley Hill,finley@example.test,design,agents,
+g17,Alex duplicate, ALEX@example.test ,agents,design,studio-a
+g18,Sky Miles,sky@example.test,design,story,studio-e
+g19,Blair Wood,blair@example.test,design,story,studio-e

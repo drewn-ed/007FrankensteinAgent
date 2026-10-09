@@ -1,0 +1,1353 @@
+{
+  "chat_id": null,
+  "conversation": [],
+  "cost": {
+    "billed_usd": null,
+    "calls": 3,
+    "cost_complete": false,
+    "estimated_usd": null,
+    "known_cost_calls": 0,
+    "paid_equivalent_calls": 0,
+    "paid_equivalent_usd": null,
+    "recorded_calls": 3,
+    "tracked": true,
+    "unknown_cost_calls": 3
+  },
+  "created_at": 1791519036.065343,
+  "duration_ms": 78325,
+  "id": "675b3b38bd2843f4a1527e6af6764029",
+  "input": {
+    "files": [
+      {
+        "content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\ng18,Sky Miles,sky@example.test,design,story,studio-e\ng19,Blair Wood,blair@example.test,design,story,studio-e\n",
+        "name": "group-bookings-late.csv"
+      }
+    ],
+    "rooms": [
+      {
+        "capacity": 5,
+        "id": "a",
+        "name": "Hall A",
+        "open": false
+      },
+      {
+        "capacity": 4,
+        "id": "b",
+        "name": "Room B",
+        "open": true
+      },
+      {
+        "capacity": 4,
+        "id": "c",
+        "name": "Room C",
+        "open": true
+      },
+      {
+        "capacity": 8,
+        "id": "d",
+        "name": "Studio D",
+        "open": true
+      }
+    ],
+    "workshops": [
+      {
+        "id": "agents",
+        "name": "Agents lab",
+        "room": "a",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "design",
+        "name": "Product studio",
+        "room": "b",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "story",
+        "name": "Storytelling",
+        "room": "c",
+        "time": "10:00–11:30"
+      }
+    ]
+  },
+  "kind": "task",
+  "message": "Revised planning allocation prepared using the saved CSV-cleaning and group-booking allocation operations. Of 18 valid participants, 8 are allocated and 10 are waitlisted. One duplicate registration was excluded. No live application was changed.",
+  "mode": "data",
+  "model_calls": 3,
+  "model_usage": [
+    {
+      "call": 1,
+      "duration_ms": 11766,
+      "model": "gpt-6.1-sol",
+      "pricing": {
+        "currency": "USD",
+        "paid_standard_per_million": null,
+        "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+        "tier": "chatgpt_plan"
+      },
+      "provider": "OpenAI · ChatGPT plan",
+      "purpose": "Planning",
+      "resolved_model": "gpt-6.1-sol",
+      "started_at": 1791519036.163831,
+      "status": "completed",
+      "usage": {
+        "cached_input": 0,
+        "input": 3842,
+        "output": 426,
+        "thinking": 0,
+        "tool_input": 0,
+        "total": 4268
+      }
+    },
+    {
+      "call": 2,
+      "duration_ms": 15973,
+      "model": "gpt-6.1-sol",
+      "pricing": {
+        "currency": "USD",
+        "paid_standard_per_million": null,
+        "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+        "tier": "chatgpt_plan"
+      },
+      "provider": "OpenAI · ChatGPT plan",
+      "purpose": "Planning",
+      "resolved_model": "gpt-6.1-sol",
+      "started_at": 1791519048.6395001,
+      "status": "completed",
+      "usage": {
+        "cached_input": 0,
+        "input": 5048,
+        "output": 808,
+        "thinking": 0,
+        "tool_input": 0,
+        "total": 5856
+      }
+    },
+    {
+      "call": 3,
+      "duration_ms": 49196,
+      "model": "gpt-6.1-sol",
+      "pricing": {
+        "currency": "USD",
+        "paid_standard_per_million": null,
+        "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+        "tier": "chatgpt_plan"
+      },
+      "provider": "OpenAI · ChatGPT plan",
+      "purpose": "Planning",
+      "resolved_model": "gpt-6.1-sol",
+      "started_at": 1791519065.193593,
+      "status": "completed",
+      "usage": {
+        "cached_input": 0,
+        "input": 5822,
+        "output": 2368,
+        "thinking": 40,
+        "tool_input": 0,
+        "total": 8230
+      }
+    }
+  ],
+  "permissions": [
+    "compute",
+    "files:artifacts"
+  ],
+  "project_id": "patch-workshops",
+  "project_instructions": "All data is synthetic. Preserve group bookings and reject unsupported cases explicitly. Skills should have clear interfaces and readable English titles.",
+  "registry_after": "856281fe8840556e89db822dc2ab5f7bdb473af54cf56cfc90325368afbd8fa3",
+  "registry_before": "856281fe8840556e89db822dc2ab5f7bdb473af54cf56cfc90325368afbd8fa3",
+  "registry_scope": {
+    "includes_shared": true,
+    "project_id": "patch-workshops"
+  },
+  "result": {
+    "allocation": [
+      {
+        "allocated_count": 4,
+        "capacity": 4,
+        "participants": [
+          {
+            "choice_rank": 2,
+            "group_id": "studio-a",
+            "id": "g01",
+            "name": "Alex Morgan"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-a",
+            "id": "g02",
+            "name": "Sam Rivera"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-a",
+            "id": "g03",
+            "name": "Robin Lee"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "",
+            "id": "g15",
+            "name": "Charlie Fox"
+          }
+        ],
+        "remaining_seats": 0,
+        "room_id": "b",
+        "room_name": "Room B",
+        "time": "10:00–11:30",
+        "workshop_id": "design",
+        "workshop_name": "Product studio"
+      },
+      {
+        "allocated_count": 4,
+        "capacity": 4,
+        "participants": [
+          {
+            "choice_rank": 2,
+            "group_id": "",
+            "id": "g04",
+            "name": "Jordan Kim"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-b",
+            "id": "g05",
+            "name": "Taylor Chen"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-b",
+            "id": "g06",
+            "name": "Casey Park"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-b",
+            "id": "g07",
+            "name": "Morgan Hall"
+          }
+        ],
+        "remaining_seats": 0,
+        "room_id": "c",
+        "room_name": "Room C",
+        "time": "10:00–11:30",
+        "workshop_id": "story",
+        "workshop_name": "Storytelling"
+      }
+    ],
+    "allocation_errors": [],
+    "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng18,Sky Miles,sky@example.test,design,story,studio-e\ng19,Blair Wood,blair@example.test,design,story,studio-e\n",
+    "cleaned_roster": [
+      {
+        "email": "alex@example.test",
+        "first_choice": "agents",
+        "group_id": "studio-a",
+        "id": "g01",
+        "name": "Alex Morgan",
+        "second_choice": "design"
+      },
+      {
+        "email": "sam@example.test",
+        "first_choice": "agents",
+        "group_id": "studio-a",
+        "id": "g02",
+        "name": "Sam Rivera",
+        "second_choice": "design"
+      },
+      {
+        "email": "robin@example.test",
+        "first_choice": "agents",
+        "group_id": "studio-a",
+        "id": "g03",
+        "name": "Robin Lee",
+        "second_choice": "design"
+      },
+      {
+        "email": "jordan@example.test",
+        "first_choice": "agents",
+        "group_id": "",
+        "id": "g04",
+        "name": "Jordan Kim",
+        "second_choice": "story"
+      },
+      {
+        "email": "taylor@example.test",
+        "first_choice": "design",
+        "group_id": "studio-b",
+        "id": "g05",
+        "name": "Taylor Chen",
+        "second_choice": "story"
+      },
+      {
+        "email": "casey@example.test",
+        "first_choice": "design",
+        "group_id": "studio-b",
+        "id": "g06",
+        "name": "Casey Park",
+        "second_choice": "story"
+      },
+      {
+        "email": "morgan@example.test",
+        "first_choice": "design",
+        "group_id": "studio-b",
+        "id": "g07",
+        "name": "Morgan Hall",
+        "second_choice": "story"
+      },
+      {
+        "email": "avery@example.test",
+        "first_choice": "agents",
+        "group_id": "studio-c",
+        "id": "g08",
+        "name": "Avery King",
+        "second_choice": "design"
+      },
+      {
+        "email": "riley@example.test",
+        "first_choice": "agents",
+        "group_id": "studio-c",
+        "id": "g09",
+        "name": "Riley Scott",
+        "second_choice": "design"
+      },
+      {
+        "email": "jamie@example.test",
+        "first_choice": "story",
+        "group_id": "",
+        "id": "g10",
+        "name": "Jamie Green",
+        "second_choice": "agents"
+      },
+      {
+        "email": "drew@example.test",
+        "first_choice": "agents",
+        "group_id": "studio-d",
+        "id": "g11",
+        "name": "Drew Adams",
+        "second_choice": "story"
+      },
+      {
+        "email": "quinn@example.test",
+        "first_choice": "agents",
+        "group_id": "studio-d",
+        "id": "g12",
+        "name": "Quinn Baker",
+        "second_choice": "story"
+      },
+      {
+        "email": "reese@example.test",
+        "first_choice": "agents",
+        "group_id": "studio-d",
+        "id": "g13",
+        "name": "Reese Bell",
+        "second_choice": "story"
+      },
+      {
+        "email": "rowan@example.test",
+        "first_choice": "agents",
+        "group_id": "studio-d",
+        "id": "g14",
+        "name": "Rowan Gray",
+        "second_choice": "story"
+      },
+      {
+        "email": "charlie@example.test",
+        "first_choice": "story",
+        "group_id": "",
+        "id": "g15",
+        "name": "Charlie Fox",
+        "second_choice": "design"
+      },
+      {
+        "email": "finley@example.test",
+        "first_choice": "design",
+        "group_id": "",
+        "id": "g16",
+        "name": "Finley Hill",
+        "second_choice": "agents"
+      },
+      {
+        "email": "sky@example.test",
+        "first_choice": "design",
+        "group_id": "studio-e",
+        "id": "g18",
+        "name": "Sky Miles",
+        "second_choice": "story"
+      },
+      {
+        "email": "blair@example.test",
+        "first_choice": "design",
+        "group_id": "studio-e",
+        "id": "g19",
+        "name": "Blair Wood",
+        "second_choice": "story"
+      }
+    ],
+    "cleaning": {
+      "accepted_count": 18,
+      "errors": [],
+      "rejected_rows": [
+        {
+          "email": "alex@example.test",
+          "id": "g17",
+          "name": "Alex duplicate",
+          "reason": "Duplicate email: the first valid registration is retained.",
+          "retained_registration_id": "g01",
+          "row_number": 18
+        }
+      ],
+      "source_row_count": 19
+    },
+    "policy": "Keep the first valid registration per normalized email. Process bookings in first-member roster order, keeping groups together. Try the first member's first preference, then second preference, only when every member accepts that workshop and the entire booking fits its open room.",
+    "reused_operations": [
+      "ppatchwor_clean_workshop_registration_csv",
+      "ppatchwor_allocate_group_workshop_bookings"
+    ],
+    "unavailable_or_unused_rooms": [
+      {
+        "allocated_count": 0,
+        "reason": "Hall A is closed, so Agents lab cannot accept any bookings.",
+        "room_id": "a",
+        "room_name": "Hall A",
+        "workshop_id": "agents"
+      },
+      {
+        "allocated_count": 0,
+        "capacity": 8,
+        "reason": "No supplied workshop is assigned to Studio D. The allocation policy does not relocate workshops or consider other workshops.",
+        "room_id": "d",
+        "room_name": "Studio D"
+      }
+    ],
+    "waitlisted_bookings": [
+      {
+        "group_id": "studio-c",
+        "participants": [
+          {
+            "id": "g08",
+            "name": "Avery King"
+          },
+          {
+            "id": "g09",
+            "name": "Riley Scott"
+          }
+        ],
+        "reason": "Agents lab's room is closed. Product studio had only 1 seat remaining when this two-person booking was considered; the group cannot be split."
+      },
+      {
+        "group_id": "",
+        "participants": [
+          {
+            "id": "g10",
+            "name": "Jamie Green"
+          }
+        ],
+        "reason": "Storytelling was full when this booking was considered. Agents lab's room is closed."
+      },
+      {
+        "group_id": "studio-d",
+        "participants": [
+          {
+            "id": "g11",
+            "name": "Drew Adams"
+          },
+          {
+            "id": "g12",
+            "name": "Quinn Baker"
+          },
+          {
+            "id": "g13",
+            "name": "Reese Bell"
+          },
+          {
+            "id": "g14",
+            "name": "Rowan Gray"
+          }
+        ],
+        "reason": "Agents lab's room is closed. Storytelling was full, so the four-person booking could not fit. The group cannot be split."
+      },
+      {
+        "group_id": "",
+        "participants": [
+          {
+            "id": "g16",
+            "name": "Finley Hill"
+          }
+        ],
+        "reason": "Product studio was full when this booking was considered. Agents lab's room is closed."
+      },
+      {
+        "group_id": "studio-e",
+        "participants": [
+          {
+            "id": "g18",
+            "name": "Sky Miles"
+          },
+          {
+            "id": "g19",
+            "name": "Blair Wood"
+          }
+        ],
+        "reason": "Product studio and Storytelling were both full when this new two-person booking was considered. The group cannot be split."
+      }
+    ]
+  },
+  "status": "completed",
+  "task": "Hall A is now unavailable, and this updated registration file includes a new two-person booking. Prepare a revised allocation using the attached current rooms and workshops. Apply the same first-valid-email cleaning and first-member-order booking policy: keep groups together, choose the first member's first preference then second only if every member accepts it and the whole booking fits an open room; otherwise waitlist the whole booking. List everyone who cannot be accommodated and why. Include the cleaned roster and CSV. This is a new planning session; do not change a live application. Find and reuse compatible saved operations rather than writing the same logic again.",
+  "tokens": 18354,
+  "usage_version": 1,
+  "events": [
+    {
+      "seq": 154,
+      "at": 1791519036.1589901,
+      "context_run_ids": [],
+      "kind": "session",
+      "message": "New session; only the persistent registry was loaded.",
+      "registry": [
+        {
+          "code_hash": "b645ea584d1d82904ff37fa75f8c8eb5732169590cebb8afa035e63d0afeb1c9",
+          "manifest": {
+            "description": "Sjednotí emaily na malá písmena, odstraní okolní mezery a odstraní duplicitní registrace stejného emailu na stejný workshop (zachová první záznam). Vrací vyčištěný seznam a počet odstraněných duplicit.",
+            "id": "clean_registrations",
+            "input_schema": {
+              "properties": {
+                "registrations": {
+                  "items": {
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "workshop": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "registrations"
+              ],
+              "type": "object"
+            },
+            "kind": "task",
+            "output_schema": {
+              "properties": {
+                "cleaned_registrations": {
+                  "type": "array"
+                },
+                "removed_duplicates_count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "cleaned_registrations",
+                "removed_duplicates_count"
+              ],
+              "type": "object"
+            },
+            "permissions": [
+              "compute"
+            ],
+            "title": "Očištění registrací"
+          },
+          "version": 2
+        },
+        {
+          "code_hash": "d6cf34ee6695526a6f0b34d686fc84cc6277227a5ed7dfc3c099f578b5aeab13",
+          "manifest": {
+            "description": "Allocate parsed, cleaned participants independently of CSV cleaning. Preserve input values without normalization. Validate unique nonempty participant IDs and emails, nonempty names, valid first choices and optional valid second choices; validate unique nonempty room and workshop IDs, nonnegative integer capacities, and workshop references to existing rooms. Reject multiple workshops referencing the same room as an unsupported configuration; this operation assumes one concurrent session and initially empty rooms. On validation failure return English errors and empty assignment and waitlist arrays. Each nonempty group_id forms one booking unit including all its members even when noncontiguous; each empty group_id is an individual unit. Process units by the input index of their first member. Try only the first member's first_choice followed by their nonempty second_choice, skipping repeated choices. A candidate is accepted only when every unit member lists it as either preference, its room is open, and remaining seats accommodate the entire unit. Assign the whole unit and decrement that room's remaining seats, or waitlist the whole unit with an English reason. Never split groups, reorder units to fill seats, or consider other workshops. Return assignments and waitlist separately in original participant order. choice_rank is each assigned participant's own preference rank, prioritizing first_choice when both choices match.",
+            "id": "ppatchwor_allocate_group_workshop_bookings",
+            "input_schema": {
+              "properties": {
+                "participants": {
+                  "items": {
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "first_choice": {
+                        "type": "string"
+                      },
+                      "group_id": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "second_choice": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "email",
+                      "first_choice",
+                      "second_choice",
+                      "group_id"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "rooms": {
+                  "items": {
+                    "properties": {
+                      "capacity": {
+                        "minimum": 0,
+                        "type": "integer"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "open": {
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "capacity",
+                      "open"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "workshops": {
+                  "items": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "room": {
+                        "type": "string"
+                      },
+                      "time": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "room",
+                      "time"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "participants",
+                "rooms",
+                "workshops"
+              ],
+              "type": "object"
+            },
+            "kind": "task",
+            "output_schema": {
+              "properties": {
+                "assignments": {
+                  "items": {
+                    "properties": {
+                      "choice_rank": {
+                        "enum": [
+                          1,
+                          2
+                        ],
+                        "type": "integer"
+                      },
+                      "group_id": {
+                        "type": "string"
+                      },
+                      "participant_id": {
+                        "type": "string"
+                      },
+                      "room_id": {
+                        "type": "string"
+                      },
+                      "workshop_id": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "participant_id",
+                      "group_id",
+                      "workshop_id",
+                      "room_id",
+                      "choice_rank"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "errors": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "waitlist": {
+                  "items": {
+                    "properties": {
+                      "group_id": {
+                        "type": "string"
+                      },
+                      "participant_id": {
+                        "type": "string"
+                      },
+                      "reason": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "participant_id",
+                      "group_id",
+                      "reason"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "assignments",
+                "waitlist",
+                "errors"
+              ],
+              "type": "object"
+            },
+            "permissions": [
+              "compute"
+            ],
+            "title": "Allocate workshop bookings without splitting groups"
+          },
+          "version": 1
+        },
+        {
+          "code_hash": "3b54cfc8668edabe16e280af6dc0795b3a0e3fb12c55a9c667e04fd898d63a36",
+          "manifest": {
+            "description": "Parse CSV with required headers id,name,email,first_choice,second_choice,group_id, preserving row order and these fields. Trim surrounding whitespace on every field, collapse internal whitespace in names, and lowercase emails. Preserve case of IDs and preferences. Reject malformed rows, missing IDs, duplicate IDs among previously accepted rows, empty names, invalid emails (require one @ with nonempty local and domain portions and no whitespace), unknown or empty first_choice, and nonempty second_choice not in workshop_ids. Empty second_choice is permitted. Reject duplicate emails only after row validation, retaining the first valid registration per normalized email. Rejected rows do not reserve an ID or email. Treat group_id as an opaque trimmed string, with empty meaning individual. Reject duplicate or missing required headers and unsupported extra headers explicitly rather than silently guessing. Return accepted participants in roster order, a CSV serialized with the six required headers in that order, and rejected row numbers and English reasons. CSV row numbers count the header as row 1. Structural errors return an English errors array with no participants or cleaned CSV.",
+            "id": "ppatchwor_clean_workshop_registration_csv",
+            "input_schema": {
+              "properties": {
+                "csv_text": {
+                  "type": "string"
+                },
+                "workshop_ids": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "csv_text",
+                "workshop_ids"
+              ],
+              "type": "object"
+            },
+            "kind": "task",
+            "output_schema": {
+              "properties": {
+                "cleaned_csv": {
+                  "type": "string"
+                },
+                "errors": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                "participants": {
+                  "items": {
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "first_choice": {
+                        "type": "string"
+                      },
+                      "group_id": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "second_choice": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "email",
+                      "first_choice",
+                      "second_choice",
+                      "group_id"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "rejected_rows": {
+                  "items": {
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "reason": {
+                        "type": "string"
+                      },
+                      "row_number": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "row_number",
+                      "id",
+                      "email",
+                      "reason"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "participants",
+                "cleaned_csv",
+                "rejected_rows",
+                "errors"
+              ],
+              "type": "object"
+            },
+            "permissions": [
+              "compute"
+            ],
+            "title": "Clean workshop registration CSV"
+          },
+          "version": 1
+        }
+      ]
+    },
+    {
+      "seq": 155,
+      "at": 1791519048.636888,
+      "capability": "ppatchwor_clean_workshop_registration_csv",
+      "code_hash": "3b54cfc8668edabe16e280af6dc0795b3a0e3fb12c55a9c667e04fd898d63a36",
+      "input": {
+        "csv_text": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\ng18,Sky Miles,sky@example.test,design,story,studio-e\ng19,Blair Wood,blair@example.test,design,story,studio-e\n",
+        "workshop_ids": [
+          "agents",
+          "design",
+          "story"
+        ]
+      },
+      "kind": "used",
+      "message": "Used: Clean workshop registration CSV · v1",
+      "output": {
+        "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng18,Sky Miles,sky@example.test,design,story,studio-e\ng19,Blair Wood,blair@example.test,design,story,studio-e\n",
+        "errors": [],
+        "participants": [
+          {
+            "email": "alex@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g01",
+            "name": "Alex Morgan",
+            "second_choice": "design"
+          },
+          {
+            "email": "sam@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g02",
+            "name": "Sam Rivera",
+            "second_choice": "design"
+          },
+          {
+            "email": "robin@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g03",
+            "name": "Robin Lee",
+            "second_choice": "design"
+          },
+          {
+            "email": "jordan@example.test",
+            "first_choice": "agents",
+            "group_id": "",
+            "id": "g04",
+            "name": "Jordan Kim",
+            "second_choice": "story"
+          },
+          {
+            "email": "taylor@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g05",
+            "name": "Taylor Chen",
+            "second_choice": "story"
+          },
+          {
+            "email": "casey@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g06",
+            "name": "Casey Park",
+            "second_choice": "story"
+          },
+          {
+            "email": "morgan@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g07",
+            "name": "Morgan Hall",
+            "second_choice": "story"
+          },
+          {
+            "email": "avery@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-c",
+            "id": "g08",
+            "name": "Avery King",
+            "second_choice": "design"
+          },
+          {
+            "email": "riley@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-c",
+            "id": "g09",
+            "name": "Riley Scott",
+            "second_choice": "design"
+          },
+          {
+            "email": "jamie@example.test",
+            "first_choice": "story",
+            "group_id": "",
+            "id": "g10",
+            "name": "Jamie Green",
+            "second_choice": "agents"
+          },
+          {
+            "email": "drew@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g11",
+            "name": "Drew Adams",
+            "second_choice": "story"
+          },
+          {
+            "email": "quinn@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g12",
+            "name": "Quinn Baker",
+            "second_choice": "story"
+          },
+          {
+            "email": "reese@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g13",
+            "name": "Reese Bell",
+            "second_choice": "story"
+          },
+          {
+            "email": "rowan@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g14",
+            "name": "Rowan Gray",
+            "second_choice": "story"
+          },
+          {
+            "email": "charlie@example.test",
+            "first_choice": "story",
+            "group_id": "",
+            "id": "g15",
+            "name": "Charlie Fox",
+            "second_choice": "design"
+          },
+          {
+            "email": "finley@example.test",
+            "first_choice": "design",
+            "group_id": "",
+            "id": "g16",
+            "name": "Finley Hill",
+            "second_choice": "agents"
+          },
+          {
+            "email": "sky@example.test",
+            "first_choice": "design",
+            "group_id": "studio-e",
+            "id": "g18",
+            "name": "Sky Miles",
+            "second_choice": "story"
+          },
+          {
+            "email": "blair@example.test",
+            "first_choice": "design",
+            "group_id": "studio-e",
+            "id": "g19",
+            "name": "Blair Wood",
+            "second_choice": "story"
+          }
+        ],
+        "rejected_rows": [
+          {
+            "email": "alex@example.test",
+            "id": "g17",
+            "reason": "Duplicate email: the first valid registration is retained.",
+            "row_number": 18
+          }
+        ]
+      },
+      "version": 1
+    },
+    {
+      "seq": 156,
+      "at": 1791519065.1910698,
+      "capability": "ppatchwor_allocate_group_workshop_bookings",
+      "code_hash": "d6cf34ee6695526a6f0b34d686fc84cc6277227a5ed7dfc3c099f578b5aeab13",
+      "input": {
+        "participants": [
+          {
+            "email": "alex@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g01",
+            "name": "Alex Morgan",
+            "second_choice": "design"
+          },
+          {
+            "email": "sam@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g02",
+            "name": "Sam Rivera",
+            "second_choice": "design"
+          },
+          {
+            "email": "robin@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g03",
+            "name": "Robin Lee",
+            "second_choice": "design"
+          },
+          {
+            "email": "jordan@example.test",
+            "first_choice": "agents",
+            "group_id": "",
+            "id": "g04",
+            "name": "Jordan Kim",
+            "second_choice": "story"
+          },
+          {
+            "email": "taylor@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g05",
+            "name": "Taylor Chen",
+            "second_choice": "story"
+          },
+          {
+            "email": "casey@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g06",
+            "name": "Casey Park",
+            "second_choice": "story"
+          },
+          {
+            "email": "morgan@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g07",
+            "name": "Morgan Hall",
+            "second_choice": "story"
+          },
+          {
+            "email": "avery@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-c",
+            "id": "g08",
+            "name": "Avery King",
+            "second_choice": "design"
+          },
+          {
+            "email": "riley@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-c",
+            "id": "g09",
+            "name": "Riley Scott",
+            "second_choice": "design"
+          },
+          {
+            "email": "jamie@example.test",
+            "first_choice": "story",
+            "group_id": "",
+            "id": "g10",
+            "name": "Jamie Green",
+            "second_choice": "agents"
+          },
+          {
+            "email": "drew@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g11",
+            "name": "Drew Adams",
+            "second_choice": "story"
+          },
+          {
+            "email": "quinn@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g12",
+            "name": "Quinn Baker",
+            "second_choice": "story"
+          },
+          {
+            "email": "reese@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g13",
+            "name": "Reese Bell",
+            "second_choice": "story"
+          },
+          {
+            "email": "rowan@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g14",
+            "name": "Rowan Gray",
+            "second_choice": "story"
+          },
+          {
+            "email": "charlie@example.test",
+            "first_choice": "story",
+            "group_id": "",
+            "id": "g15",
+            "name": "Charlie Fox",
+            "second_choice": "design"
+          },
+          {
+            "email": "finley@example.test",
+            "first_choice": "design",
+            "group_id": "",
+            "id": "g16",
+            "name": "Finley Hill",
+            "second_choice": "agents"
+          },
+          {
+            "email": "sky@example.test",
+            "first_choice": "design",
+            "group_id": "studio-e",
+            "id": "g18",
+            "name": "Sky Miles",
+            "second_choice": "story"
+          },
+          {
+            "email": "blair@example.test",
+            "first_choice": "design",
+            "group_id": "studio-e",
+            "id": "g19",
+            "name": "Blair Wood",
+            "second_choice": "story"
+          }
+        ],
+        "rooms": [
+          {
+            "capacity": 5,
+            "id": "a",
+            "name": "Hall A",
+            "open": false
+          },
+          {
+            "capacity": 4,
+            "id": "b",
+            "name": "Room B",
+            "open": true
+          },
+          {
+            "capacity": 4,
+            "id": "c",
+            "name": "Room C",
+            "open": true
+          },
+          {
+            "capacity": 8,
+            "id": "d",
+            "name": "Studio D",
+            "open": true
+          }
+        ],
+        "workshops": [
+          {
+            "id": "agents",
+            "name": "Agents lab",
+            "room": "a",
+            "time": "10:00–11:30"
+          },
+          {
+            "id": "design",
+            "name": "Product studio",
+            "room": "b",
+            "time": "10:00–11:30"
+          },
+          {
+            "id": "story",
+            "name": "Storytelling",
+            "room": "c",
+            "time": "10:00–11:30"
+          }
+        ]
+      },
+      "kind": "used",
+      "message": "Used: Allocate workshop bookings without splitting groups · v1",
+      "output": {
+        "assignments": [
+          {
+            "choice_rank": 2,
+            "group_id": "studio-a",
+            "participant_id": "g01",
+            "room_id": "b",
+            "workshop_id": "design"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-a",
+            "participant_id": "g02",
+            "room_id": "b",
+            "workshop_id": "design"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-a",
+            "participant_id": "g03",
+            "room_id": "b",
+            "workshop_id": "design"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "",
+            "participant_id": "g04",
+            "room_id": "c",
+            "workshop_id": "story"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-b",
+            "participant_id": "g05",
+            "room_id": "c",
+            "workshop_id": "story"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-b",
+            "participant_id": "g06",
+            "room_id": "c",
+            "workshop_id": "story"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "studio-b",
+            "participant_id": "g07",
+            "room_id": "c",
+            "workshop_id": "story"
+          },
+          {
+            "choice_rank": 2,
+            "group_id": "",
+            "participant_id": "g15",
+            "room_id": "b",
+            "workshop_id": "design"
+          }
+        ],
+        "errors": [],
+        "waitlist": [
+          {
+            "group_id": "studio-c",
+            "participant_id": "g08",
+            "reason": "The room for workshop 'agents' is closed. Workshop 'design' has insufficient remaining seats for the entire booking."
+          },
+          {
+            "group_id": "studio-c",
+            "participant_id": "g09",
+            "reason": "The room for workshop 'agents' is closed. Workshop 'design' has insufficient remaining seats for the entire booking."
+          },
+          {
+            "group_id": "",
+            "participant_id": "g10",
+            "reason": "Workshop 'story' has insufficient remaining seats for the entire booking. The room for workshop 'agents' is closed."
+          },
+          {
+            "group_id": "studio-d",
+            "participant_id": "g11",
+            "reason": "The room for workshop 'agents' is closed. Workshop 'story' has insufficient remaining seats for the entire booking."
+          },
+          {
+            "group_id": "studio-d",
+            "participant_id": "g12",
+            "reason": "The room for workshop 'agents' is closed. Workshop 'story' has insufficient remaining seats for the entire booking."
+          },
+          {
+            "group_id": "studio-d",
+            "participant_id": "g13",
+            "reason": "The room for workshop 'agents' is closed. Workshop 'story' has insufficient remaining seats for the entire booking."
+          },
+          {
+            "group_id": "studio-d",
+            "participant_id": "g14",
+            "reason": "The room for workshop 'agents' is closed. Workshop 'story' has insufficient remaining seats for the entire booking."
+          },
+          {
+            "group_id": "",
+            "participant_id": "g16",
+            "reason": "Workshop 'design' has insufficient remaining seats for the entire booking. The room for workshop 'agents' is closed."
+          },
+          {
+            "group_id": "studio-e",
+            "participant_id": "g18",
+            "reason": "Workshop 'design' has insufficient remaining seats for the entire booking. Workshop 'story' has insufficient remaining seats for the entire booking."
+          },
+          {
+            "group_id": "studio-e",
+            "participant_id": "g19",
+            "reason": "Workshop 'design' has insufficient remaining seats for the entire booking. Workshop 'story' has insufficient remaining seats for the entire booking."
+          }
+        ]
+      },
+      "version": 1
+    },
+    {
+      "seq": 157,
+      "at": 1791519114.393497,
+      "kind": "finished",
+      "message": "Revised planning allocation prepared using the saved CSV-cleaning and group-booking allocation operations. Of 18 valid participants, 8 are allocated and 10 are waitlisted. One duplicate registration was excluded. No live application was changed."
+    }
+  ]
+}

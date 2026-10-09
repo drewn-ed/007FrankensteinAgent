@@ -9,7 +9,7 @@ def source_roster(inputs):
     for file in (inputs or {}).get('files', []):
         if file.get('name', '').endswith('.csv') and isinstance(file.get('content'), str):
             reader = csv.DictReader(io.StringIO(file['content']))
-            if set(reader.fieldnames or []) != {'id', 'name', 'email', 'first_choice', 'second_choice'}: continue
+            if set(reader.fieldnames or []) not in ({'id', 'name', 'email', 'first_choice', 'second_choice'}, {'id', 'name', 'email', 'first_choice', 'second_choice', 'group_id'}): continue
             rows, seen = [], set()
             for row in reader:
                 item = {k: (v or '').strip() for k,v in row.items()}
@@ -43,6 +43,13 @@ def verify_event(after, before, inputs, preserve_unaffected=False):
     for wid,count in counts.items():
         r=rooms[workshops[wid]['room']]
         if count>(r['capacity'] if r['open'] else 0): raise RunError('The allocation exceeds available room capacity.')
+    groups, destinations = {}, {a['participant_id']:a['workshop_id'] for a in after['assignments']}
+    for p in expected:
+        if not p.get('group_id'): continue
+        group, destination = p['group_id'], destinations.get(p['id'])
+        if group in groups and groups[group] != destination:
+            raise RunError('A group booking was split across workshops or the waitlist.')
+        groups[group] = destination
     if preserve_unaffected:
         old_workshops = {w['id']:w for w in before.get('workshops', [])}
         old_rooms = {r['id']:r for r in before.get('rooms', [])}
@@ -52,5 +59,5 @@ def verify_event(after, before, inputs, preserve_unaffected=False):
             if old['workshop_id'] in unaffected and old['participant_id'] in people and current.get(old['participant_id']) != old['workshop_id']:
                 raise RunError('An existing reservation in an unaffected workshop was changed.')
     return {'unaffected_reservations_preserved': preserve_unaffected, 'verified_constraints': True, 'participants':len(people), 'assigned':len(after['assignments']), 'waitlist':len(after['waitlist']), 'first_preferences':first,
-            'checks':['Source roster matches', 'Every attendee accounted for once', 'Preferences respected', 'Available capacities respected', 'New allocation applied'],
+            'checks':(['Group bookings kept together'] if groups else [])+['Source roster matches', 'Every attendee accounted for once', 'Preferences respected', 'Available capacities respected', 'New allocation applied'],
             'scope':'Showcase constraints only; not a proof of optimal allocation or all user intent.'}

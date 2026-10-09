@@ -1,0 +1,453 @@
+{
+  "chat_id": null,
+  "conversation": [],
+  "cost": {
+    "billed_usd": null,
+    "calls": 3,
+    "cost_complete": false,
+    "estimated_usd": null,
+    "known_cost_calls": 0,
+    "paid_equivalent_calls": 0,
+    "paid_equivalent_usd": null,
+    "recorded_calls": 3,
+    "tracked": true,
+    "unknown_cost_calls": 3
+  },
+  "created_at": 1791518550.201067,
+  "duration_ms": 48713,
+  "error": "OpenAI stream ended without a completed response. No partial result was accepted.",
+  "id": "553824c274264e22b4c79727aef1137e",
+  "input": {
+    "files": [
+      {
+        "content": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\n",
+        "name": "group-bookings.csv"
+      }
+    ],
+    "rooms": [
+      {
+        "capacity": 5,
+        "id": "a",
+        "name": "Hall A",
+        "open": true
+      },
+      {
+        "capacity": 4,
+        "id": "b",
+        "name": "Room B",
+        "open": true
+      },
+      {
+        "capacity": 4,
+        "id": "c",
+        "name": "Room C",
+        "open": true
+      },
+      {
+        "capacity": 8,
+        "id": "d",
+        "name": "Studio D",
+        "open": true
+      }
+    ],
+    "workshops": [
+      {
+        "id": "agents",
+        "name": "Agents lab",
+        "room": "a",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "design",
+        "name": "Product studio",
+        "room": "b",
+        "time": "10:00–11:30"
+      },
+      {
+        "id": "story",
+        "name": "Storytelling",
+        "room": "c",
+        "time": "10:00–11:30"
+      }
+    ]
+  },
+  "kind": "task",
+  "mode": "data",
+  "model_calls": 3,
+  "model_usage": [
+    {
+      "call": 1,
+      "duration_ms": 18624,
+      "model": "gpt-6.1-sol",
+      "pricing": {
+        "currency": "USD",
+        "paid_standard_per_million": null,
+        "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+        "tier": "chatgpt_plan"
+      },
+      "provider": "OpenAI · ChatGPT plan",
+      "purpose": "Planning",
+      "resolved_model": "gpt-6.1-sol",
+      "started_at": 1791518551.506231,
+      "status": "completed",
+      "usage": {
+        "cached_input": 0,
+        "input": 2406,
+        "output": 512,
+        "thinking": 108,
+        "tool_input": 0,
+        "total": 3026
+      }
+    },
+    {
+      "call": 2,
+      "duration_ms": 23455,
+      "model": "gpt-6.1-sol",
+      "pricing": {
+        "currency": "USD",
+        "paid_standard_per_million": null,
+        "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+        "tier": "chatgpt_plan"
+      },
+      "provider": "OpenAI · ChatGPT plan",
+      "purpose": "Designing tests",
+      "resolved_model": "gpt-6.1-sol",
+      "started_at": 1791518570.142949,
+      "status": "completed",
+      "usage": {
+        "cached_input": 0,
+        "input": 1427,
+        "output": 875,
+        "thinking": 134,
+        "tool_input": 0,
+        "total": 2436
+      }
+    },
+    {
+      "call": 3,
+      "duration_ms": 5315,
+      "model": "gpt-6.1-sol",
+      "pricing": {
+        "currency": "USD",
+        "paid_standard_per_million": null,
+        "source": "https://developers.openai.com/siwc/token-sharing-open-source",
+        "tier": "chatgpt_plan"
+      },
+      "provider": "OpenAI · ChatGPT plan",
+      "purpose": "Writing a skill",
+      "started_at": 1791518593.5990138,
+      "status": "failed",
+      "usage": null
+    }
+  ],
+  "permissions": [
+    "compute",
+    "files:artifacts"
+  ],
+  "project_id": "patch-workshops",
+  "project_instructions": "All data is synthetic. Preserve group bookings and reject unsupported cases explicitly. Skills should have clear interfaces and readable English titles.",
+  "registry_after": "626a14b4bbf2c54cf0da0ce114b228238ef1c04b6305418cc56cc4fb11aa9479",
+  "registry_before": "626a14b4bbf2c54cf0da0ce114b228238ef1c04b6305418cc56cc4fb11aa9479",
+  "registry_scope": {
+    "includes_shared": true,
+    "project_id": "patch-workshops"
+  },
+  "result": null,
+  "status": "failed",
+  "task": "Prepare workshop allocations from this registration CSV and the supplied rooms and workshops. Normalize whitespace and email case, keep the first valid registration for each email, reject invalid IDs or preferences. Keep every nonempty group_id together: all members attend the same workshop or all wait. Process booking units in the order of their first member in the cleaned roster. For each unit, try the first member's first choice then second choice, only if every member accepts that workshop and the open room has enough remaining seats. Otherwise waitlist the whole unit. Empty group_id means an individual booking. Do not split groups to fill leftover seats. Return cleaned participants, cleaned CSV, assignments and waitlist; preserve roster order in final arrays. Allocation must be reusable on parsed participants with current rooms/workshops, independently of CSV cleaning. Do not open a browser or change a live application. Use existing compatible capabilities if available.",
+  "tokens": 5462,
+  "usage_version": 1,
+  "events": [
+    {
+      "seq": 127,
+      "at": 1791518550.2507122,
+      "context_run_ids": [],
+      "kind": "session",
+      "message": "New session; only the persistent registry was loaded.",
+      "registry": [
+        {
+          "code_hash": "b645ea584d1d82904ff37fa75f8c8eb5732169590cebb8afa035e63d0afeb1c9",
+          "manifest": {
+            "description": "Sjednotí emaily na malá písmena, odstraní okolní mezery a odstraní duplicitní registrace stejného emailu na stejný workshop (zachová první záznam). Vrací vyčištěný seznam a počet odstraněných duplicit.",
+            "id": "clean_registrations",
+            "input_schema": {
+              "properties": {
+                "registrations": {
+                  "items": {
+                    "properties": {
+                      "email": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "workshop": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              },
+              "required": [
+                "registrations"
+              ],
+              "type": "object"
+            },
+            "kind": "task",
+            "output_schema": {
+              "properties": {
+                "cleaned_registrations": {
+                  "type": "array"
+                },
+                "removed_duplicates_count": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "cleaned_registrations",
+                "removed_duplicates_count"
+              ],
+              "type": "object"
+            },
+            "permissions": [
+              "compute"
+            ],
+            "title": "Očištění registrací"
+          },
+          "version": 2
+        }
+      ]
+    },
+    {
+      "seq": 128,
+      "at": 1791518570.1401038,
+      "kind": "gap",
+      "manifest": {
+        "description": "Parse a registration CSV with exactly the headers id,name,email,first_choice,second_choice,group_id (header order may vary). Reject unsupported headers, missing headers, malformed CSV, or rows with incorrect column counts explicitly. Trim surrounding whitespace and collapse internal whitespace runs in field values; lowercase email. Preserve all other values and case. Validate that id, name and email are nonempty, email contains exactly one @ with nonempty sides and no whitespace, first_choice is a supplied workshop ID, and second_choice is either empty or a supplied workshop ID. Accept only unique nonempty participant IDs. Keep the first valid registration per normalized email; invalid rows must not reserve emails or IDs. Check duplicate email before duplicate ID against previously accepted rows. Preserve nonempty group_id and roster order without removing a group when one row is rejected. Return accepted participants, a serialized cleaned CSV with the canonical header order, and rejected source rows with 1-based data-row numbers and English reasons. Unsupported file structure returns no participants and a nonempty errors list.",
+        "id": "ppatchwor_clean_workshop_registration_csv",
+        "input_schema": {
+          "properties": {
+            "csv_text": {
+              "type": "string"
+            },
+            "valid_workshop_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "csv_text",
+            "valid_workshop_ids"
+          ],
+          "type": "object"
+        },
+        "kind": "task",
+        "output_schema": {
+          "properties": {
+            "cleaned_csv": {
+              "type": "string"
+            },
+            "errors": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "participants": {
+              "items": {
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "first_choice": {
+                    "type": "string"
+                  },
+                  "group_id": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "second_choice": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "email",
+                  "first_choice",
+                  "second_choice",
+                  "group_id"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            },
+            "rejected_rows": {
+              "items": {
+                "properties": {
+                  "reason": {
+                    "type": "string"
+                  },
+                  "row_number": {
+                    "type": "integer"
+                  },
+                  "values": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "row_number",
+                  "values",
+                  "reason"
+                ],
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "participants",
+            "cleaned_csv",
+            "rejected_rows",
+            "errors"
+          ],
+          "type": "object"
+        },
+        "permissions": [
+          "compute"
+        ],
+        "title": "Clean workshop registration CSV"
+      },
+      "message": "The existing cleaner deduplicates by email and workshop and lacks CSV parsing, participant IDs, preferences, and group preservation. A separate registration cleaner is required; allocation will remain independently reusable."
+    },
+    {
+      "seq": 129,
+      "at": 1791518593.598635,
+      "cases": [
+        {
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\nP01,Alex Morgan,alex@example.test,Agents,Design,Studio A\n",
+            "errors": [],
+            "participants": [
+              {
+                "email": "alex@example.test",
+                "first_choice": "Agents",
+                "group_id": "Studio A",
+                "id": "P01",
+                "name": "Alex Morgan",
+                "second_choice": "Design"
+              }
+            ],
+            "rejected_rows": []
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice,group_id\n  P01  ,  Alex   Morgan  ,  Alex@EXAMPLE.TEST  ,  Agents  ,  Design  ,  Studio   A  \n",
+            "valid_workshop_ids": [
+              "Agents",
+              "Design"
+            ]
+          },
+          "name": "Normalize surrounding and internal whitespace and lowercase email without changing other case"
+        },
+        {
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\np2,Sam,sam@example.test,agents,design,team\np1,Lee,lee@example.test,design,,\np3,Robin,robin@example.test,design,agents,team\n",
+            "errors": [],
+            "participants": [
+              {
+                "email": "sam@example.test",
+                "first_choice": "agents",
+                "group_id": "team",
+                "id": "p2",
+                "name": "Sam",
+                "second_choice": "design"
+              },
+              {
+                "email": "lee@example.test",
+                "first_choice": "design",
+                "group_id": "",
+                "id": "p1",
+                "name": "Lee",
+                "second_choice": ""
+              },
+              {
+                "email": "robin@example.test",
+                "first_choice": "design",
+                "group_id": "team",
+                "id": "p3",
+                "name": "Robin",
+                "second_choice": "agents"
+              }
+            ],
+            "rejected_rows": []
+          },
+          "input": {
+            "csv_text": "email,group_id,second_choice,name,id,first_choice\nsam@example.test,team,design,Sam,p2,agents\nlee@example.test,,,Lee,p1,design\nrobin@example.test,team,agents,Robin,p3,design\n",
+            "valid_workshop_ids": [
+              "agents",
+              "design"
+            ]
+          },
+          "name": "Accept reordered headers and preserve roster order and noncontiguous group membership"
+        },
+        {
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\n",
+            "errors": [],
+            "participants": [],
+            "rejected_rows": []
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice,group_id\n",
+            "valid_workshop_ids": []
+          },
+          "name": "Accept a header-only CSV as an empty roster"
+        },
+        {
+          "expected": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\np1,\"Lee, \"\"L\"\"\",lee@example.test,story,,\n",
+            "errors": [],
+            "participants": [
+              {
+                "email": "lee@example.test",
+                "first_choice": "story",
+                "group_id": "",
+                "id": "p1",
+                "name": "Lee, \"L\"",
+                "second_choice": ""
+              }
+            ],
+            "rejected_rows": []
+          },
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice,group_id\np1,\"Lee, \"\"L\"\"\",lee@example.test,story,,\n",
+            "valid_workshop_ids": [
+              "story"
+            ]
+          },
+          "name": "Parse and serialize quoted commas and escaped quotation marks while allowing an empty second choice"
+        }
+      ],
+      "kind": "test_plan",
+      "message": "Test cases were created without seeing the implementation."
+    },
+    {
+      "seq": 130,
+      "at": 1791518598.914916,
+      "kind": "error",
+      "message": "OpenAI stream ended without a completed response. No partial result was accepted."
+    }
+  ]
+}

@@ -15,6 +15,8 @@ For the full event example, use `MAX_MODEL_CALLS=20` and `MAX_RUN_SECONDS=600` i
 | New chat | A fresh conversation; create it inside the same project to retain access to that project's skills |
 | Projects | Related chats and persistent instructions; project skills are scoped, with shared skills also available |
 | Computer | Connect a website or a supported native macOS application |
+| Library → Actions | Run a learned compute skill with editable inputs and a preview, without asking the model |
+| Blackout (header) | Pause AI tasks while keeping saved local actions available |
 | Library → Skills | Inspect a generated skill's interface, permissions, code, test results and versions; improve or deactivate it |
 | Library → Saved workflows | Reuse a completed task's instructions with fresh inputs, or schedule its original inputs |
 | Library → Schedules | Run once or repeat while the local server is running |
@@ -64,6 +66,62 @@ The recorded result was **26 attendees, 22 assigned, 4 waiting**. The agent comb
 
 Check your own steps and evidence: did it use earlier IDs/versions, avoid installations, preserve unaffected seats and export the actual result? A new installation means that run does not establish creation-free reuse, even if its final allocation is correct.
 
+## PATCH: run a learned action
+
+A tested, active **compute skill** automatically becomes an action in **Library → Actions**. This panel and its forms are application infrastructure; the skill's source and original task remain inspectable. Browser plans and discovery tools do not become standalone local actions.
+
+1. Open **Library → Actions** and select an action. Check its project, version and test count.
+2. Review the inputs. Wisp prefills the last successful input for that version, or a saved test example when there is no previous run. These are examples to review, not fresh data from your application.
+3. Edit the generated fields or choose **Import inputs**. JSON supplies the complete input object. CSV import fills the action's single declared CSV text field and retains the other values; actions without that interface require JSON. Inputs are limited to 120 KB.
+4. Choose **Preview result**. The recorded code runs in the existing Docker sandbox, with compute permission only, no network and an eight-second timeout. Invalid or unsupported fields are rejected rather than silently ignored.
+5. Review the output, choose **Download result**, or open **View run & evidence**. The result includes the skill version, model-call count and execution duration. Schema validation and saved tests do not prove every business rule for a new input.
+
+If a skill was deactivated or its active version changed since you opened the form, reopen the action. PATCH does not silently substitute a different version. Unsupported requirements need an improved skill and tests, which requires AI again.
+
+### Apply a preview to Fieldwork
+
+Only the included Fieldwork showcase has this direct handoff. Connect it in **Computer** first. A compatible allocation action offers **Use current Fieldwork data** to load its roster, rooms and workshops; supported replanners can also receive the current assignments and waitlist. Otherwise supply the action's declared inputs yourself.
+
+After previewing, **Apply to Fieldwork** checks that the source data still matches, validates the allocation, applies it through the fixed browser connector and checks the resulting application state. A room or roster change requires a fresh preview. This explicit handoff adds no browser permission to generated Python and uses no model call.
+
+If a skill returns richer allocation records, the fixed adapter applies only the participant/workshop IDs and waitlist IDs that Fieldwork accepts. The evidence records this conversion; explanatory fields stay in the original downloadable preview.
+
+A compatible normalization result containing matching `cleaned_csv` and `participants` offers **Replace Fieldwork roster**. This replaces the roster and **clears previous seat assignments and the waitlist**; review the result before choosing it. Generate an allocation preview afterward to assign seats again.
+
+The Fieldwork CSV format supports optional `group_id`. Its independent allocation check rejects splitting a group between workshops or between seats and the waitlist. This check does **not** upgrade an older skill: the chosen normalization and allocation interfaces must explicitly support group data and the required policy. Group-aware skill generation is separate from the fixed application's checker.
+
+An apply attempt that cannot verify its result is marked for review. Inspect Fieldwork before continuing; the app does not promise rollback or blindly retry the same preview. Other websites and native applications do not have this direct PATCH adapter. For those, download the output or use a normal connected-agent task with AI enabled.
+
+## BLACKOUT: keep working with AI paused
+
+When the current task has finished, click **Blackout** in the header, or **Pause AI** in **Library → Actions**. The server saves this state across restarts and rejects new AI tasks, corrections and scheduled AI dispatches. The pause cannot be changed during an active task.
+
+Open a saved action, change its input and choose **Preview result**. It executes the saved tested code directly, without consulting the selected model or requiring working provider quota. A successful result shows **0 AI calls** and **Completed while Blackout was on**. Supported Fieldwork apply buttons still work because that explicit connector operation does not use a model.
+
+Click **Blackout on** in the header, or **Resume AI** in Actions, to allow model tasks again. If a scheduled dispatch was rejected during Blackout, check **Library → Schedules** and resume that paused schedule deliberately.
+
+Blackout switches off Wisp's AI execution path; it does not disable your computer's internet connection. Local computations need the running server, Docker and the already-downloaded sandbox image. Connected external applications may still need internet. Creating new skills, repairing them or interpreting a new natural-language problem requires AI. Zero model calls describes this execution only and excludes earlier learning, testing and local compute costs.
+
+### Recorded group-booking example
+
+The [PATCH/BLACKOUT evidence](patch-blackout-evidence-2026-10-09/) records two genuinely agent-created skills: CSV normalization and allocation that keeps group bookings together. The successful learning run used 9 model calls and passed 3 normalization tests plus 4 allocation tests. A preceding provider-stream failure is retained.
+
+The learning input had 17 CSV rows, 16 unique attendees and workshop-room capacities of 5, 4 and 4; its result was 10 seats and 6 people waiting. The later Blackout check reused both skills with zero model calls and an unchanged registry. It explicitly imported the roster and applied an independently checked allocation in Fieldwork. Fieldwork's available workshop rooms had capacities of 10, 8 and 6, so that separate application check seated all 16. These different outputs reflect different inputs, not an improvement in allocation quality.
+
+A separate fresh-conversation task closed Hall A and added a late pair. It combined both existing skills in 3 model calls, with no installation and an unchanged registry: **18 attendees, 8 seated, 10 waiting**. This demonstrates AI-planned reuse in a new conversation; it is distinct from direct Blackout execution.
+
+### Try the recorded actions without model credentials
+
+After completing the Python, uv and Docker setup in the README, run:
+
+```sh
+uv run python scripts/replay_blackout.py --serve
+```
+
+Open [localhost:8789](http://127.0.0.1:8789). This uses a separate `.runtime/blackout-replay` store, reruns the 7 saved tests in Docker, and recreates the two recorded skills with explicit evidence-replay provenance. It runs their recorded inputs without model inference and reproduces **16 attendees, 10 seated, 6 waiting**. Inspect **Library → Actions** and try changed inputs within their interfaces. Omit `--serve` if you only want the verification report.
+
+The replay does not generate new skills and should not be presented as doing so. It needs the already-downloaded Docker image, but no model account, key or inference request. Agent-created skill discovery/management remains unproven by this demonstration.
+
 ## Inspect and improve a result
 
 Expand the steps in a chat, then choose **View evidence** or **More options → Execution details**. **View result** opens the JSON result and any downloadable artifacts. **More options → Usage & cost** shows per-call usage, including failed attempts when the provider reports it.
@@ -96,6 +154,9 @@ Schedules persist across server restarts. They require the local server to run a
 | --- | --- |
 | Setup needed | Open Settings; select and activate a ChatGPT model, or configure the Gemini key and Free-tier confirmation |
 | Docker unavailable or missing image | Start Docker; run `docker pull python:3.12-slim`. There is no host-execution fallback |
+| Blackout is on | Run an existing action, or resume AI before sending a chat task, correction or scheduled task |
+| Action changed or inactive | Reopen the action to review its current tested version; reactivate a version through Skills only if appropriate |
+| Preview no longer matches Fieldwork | Load current Fieldwork data and preview again before applying |
 | Quota / provider failure | Read the failed task; retry deliberately when service is available. The app does not silently switch providers |
 | Run reached its limit | Inspect the steps; simplify the task or use the documented 20-call / 600-second ceiling for the event walkthrough |
 | Needs input | Attach the actual source or baseline; a new chat intentionally lacks previous conversation |

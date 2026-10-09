@@ -1,0 +1,1199 @@
+{
+  "note": "Actual previously model-created code, direct local API execution with AI paused; live Fieldwork browser imports and applies.",
+  "runs": [
+    {
+      "action": {
+        "code_hash": "3b54cfc8668edabe16e280af6dc0795b3a0e3fb12c55a9c667e04fd898d63a36",
+        "id": "ppatchwor_clean_workshop_registration_csv",
+        "version": 1
+      },
+      "ai_paused": true,
+      "app_context": null,
+      "artifacts": [
+        {
+          "id": "1fd7fd67e54d490b85405da8837ed6e9",
+          "mime": "application/json",
+          "name": "action-result.json",
+          "run_id": "6b3b0cbdc0ec45f580627b45e931346f",
+          "size": 4226,
+          "source": "local_action"
+        }
+      ],
+      "conversation": [],
+      "created_at": 1791519003.226018,
+      "duration_ms": 1138,
+      "duration_seconds": 1.138,
+      "finished_at": 1791519004.3721511,
+      "id": "6b3b0cbdc0ec45f580627b45e931346f",
+      "input": {
+        "csv_text": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\n",
+        "workshop_ids": [
+          "agents",
+          "design",
+          "story"
+        ]
+      },
+      "kind": "local_action",
+      "message": "Saved action completed locally. Review the result before using it. No external application was changed.",
+      "mode": "local",
+      "model_calls": 0,
+      "model_usage": [],
+      "permissions": [
+        "compute"
+      ],
+      "project_id": "patch-workshops",
+      "registry_after": "856281fe8840556e89db822dc2ab5f7bdb473af54cf56cfc90325368afbd8fa3",
+      "registry_before": "856281fe8840556e89db822dc2ab5f7bdb473af54cf56cfc90325368afbd8fa3",
+      "result": {
+        "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\n",
+        "errors": [],
+        "participants": [
+          {
+            "email": "alex@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g01",
+            "name": "Alex Morgan",
+            "second_choice": "design"
+          },
+          {
+            "email": "sam@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g02",
+            "name": "Sam Rivera",
+            "second_choice": "design"
+          },
+          {
+            "email": "robin@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g03",
+            "name": "Robin Lee",
+            "second_choice": "design"
+          },
+          {
+            "email": "jordan@example.test",
+            "first_choice": "agents",
+            "group_id": "",
+            "id": "g04",
+            "name": "Jordan Kim",
+            "second_choice": "story"
+          },
+          {
+            "email": "taylor@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g05",
+            "name": "Taylor Chen",
+            "second_choice": "story"
+          },
+          {
+            "email": "casey@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g06",
+            "name": "Casey Park",
+            "second_choice": "story"
+          },
+          {
+            "email": "morgan@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g07",
+            "name": "Morgan Hall",
+            "second_choice": "story"
+          },
+          {
+            "email": "avery@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-c",
+            "id": "g08",
+            "name": "Avery King",
+            "second_choice": "design"
+          },
+          {
+            "email": "riley@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-c",
+            "id": "g09",
+            "name": "Riley Scott",
+            "second_choice": "design"
+          },
+          {
+            "email": "jamie@example.test",
+            "first_choice": "story",
+            "group_id": "",
+            "id": "g10",
+            "name": "Jamie Green",
+            "second_choice": "agents"
+          },
+          {
+            "email": "drew@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g11",
+            "name": "Drew Adams",
+            "second_choice": "story"
+          },
+          {
+            "email": "quinn@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g12",
+            "name": "Quinn Baker",
+            "second_choice": "story"
+          },
+          {
+            "email": "reese@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g13",
+            "name": "Reese Bell",
+            "second_choice": "story"
+          },
+          {
+            "email": "rowan@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g14",
+            "name": "Rowan Gray",
+            "second_choice": "story"
+          },
+          {
+            "email": "charlie@example.test",
+            "first_choice": "story",
+            "group_id": "",
+            "id": "g15",
+            "name": "Charlie Fox",
+            "second_choice": "design"
+          },
+          {
+            "email": "finley@example.test",
+            "first_choice": "design",
+            "group_id": "",
+            "id": "g16",
+            "name": "Finley Hill",
+            "second_choice": "agents"
+          }
+        ],
+        "rejected_rows": [
+          {
+            "email": "alex@example.test",
+            "id": "g17",
+            "reason": "Duplicate email: the first valid registration is retained.",
+            "row_number": 18
+          }
+        ]
+      },
+      "status": "completed",
+      "task": "Clean workshop registration CSV",
+      "tokens": 0,
+      "usage_version": 1,
+      "verification": "output_schema",
+      "application_apply": {
+        "status": "completed",
+        "origin": "https://event.workspace.demo",
+        "source_revision": 0,
+        "before_hash": "5559131917d7944563ee54e8a9738f676d95f538b465f547f7ed9f0c5510c2b9",
+        "started_at": 1791519004.610812,
+        "operation": "replace_roster",
+        "verification": {
+          "participants": 16,
+          "checks": [
+            "Imported roster matches preview",
+            "Previous assignments cleared"
+          ]
+        },
+        "finished_at": 1791519005.167285
+      },
+      "events": [
+        {
+          "seq": 143,
+          "ai_paused": true,
+          "at": 1791519003.242692,
+          "kind": "local_action",
+          "message": "Running saved code locally. No model or application connection is used.",
+          "permissions": [
+            "compute"
+          ]
+        },
+        {
+          "seq": 144,
+          "at": 1791519004.368308,
+          "capability": "ppatchwor_clean_workshop_registration_csv",
+          "code_hash": "3b54cfc8668edabe16e280af6dc0795b3a0e3fb12c55a9c667e04fd898d63a36",
+          "input": {
+            "csv_text": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\ng17,Alex duplicate, ALEX@example.test ,agents,design,studio-a\n",
+            "workshop_ids": [
+              "agents",
+              "design",
+              "story"
+            ]
+          },
+          "kind": "used",
+          "message": "Executed the saved, tested version without AI.",
+          "output": {
+            "cleaned_csv": "id,name,email,first_choice,second_choice,group_id\ng01,Alex Morgan,alex@example.test,agents,design,studio-a\ng02,Sam Rivera,sam@example.test,agents,design,studio-a\ng03,Robin Lee,robin@example.test,agents,design,studio-a\ng04,Jordan Kim,jordan@example.test,agents,story,\ng05,Taylor Chen,taylor@example.test,design,story,studio-b\ng06,Casey Park,casey@example.test,design,story,studio-b\ng07,Morgan Hall,morgan@example.test,design,story,studio-b\ng08,Avery King,avery@example.test,agents,design,studio-c\ng09,Riley Scott,riley@example.test,agents,design,studio-c\ng10,Jamie Green,jamie@example.test,story,agents,\ng11,Drew Adams,drew@example.test,agents,story,studio-d\ng12,Quinn Baker,quinn@example.test,agents,story,studio-d\ng13,Reese Bell,reese@example.test,agents,story,studio-d\ng14,Rowan Gray,rowan@example.test,agents,story,studio-d\ng15,Charlie Fox,charlie@example.test,story,design,\ng16,Finley Hill,finley@example.test,design,agents,\n",
+            "errors": [],
+            "participants": [
+              {
+                "email": "alex@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-a",
+                "id": "g01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "sam@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-a",
+                "id": "g02",
+                "name": "Sam Rivera",
+                "second_choice": "design"
+              },
+              {
+                "email": "robin@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-a",
+                "id": "g03",
+                "name": "Robin Lee",
+                "second_choice": "design"
+              },
+              {
+                "email": "jordan@example.test",
+                "first_choice": "agents",
+                "group_id": "",
+                "id": "g04",
+                "name": "Jordan Kim",
+                "second_choice": "story"
+              },
+              {
+                "email": "taylor@example.test",
+                "first_choice": "design",
+                "group_id": "studio-b",
+                "id": "g05",
+                "name": "Taylor Chen",
+                "second_choice": "story"
+              },
+              {
+                "email": "casey@example.test",
+                "first_choice": "design",
+                "group_id": "studio-b",
+                "id": "g06",
+                "name": "Casey Park",
+                "second_choice": "story"
+              },
+              {
+                "email": "morgan@example.test",
+                "first_choice": "design",
+                "group_id": "studio-b",
+                "id": "g07",
+                "name": "Morgan Hall",
+                "second_choice": "story"
+              },
+              {
+                "email": "avery@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-c",
+                "id": "g08",
+                "name": "Avery King",
+                "second_choice": "design"
+              },
+              {
+                "email": "riley@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-c",
+                "id": "g09",
+                "name": "Riley Scott",
+                "second_choice": "design"
+              },
+              {
+                "email": "jamie@example.test",
+                "first_choice": "story",
+                "group_id": "",
+                "id": "g10",
+                "name": "Jamie Green",
+                "second_choice": "agents"
+              },
+              {
+                "email": "drew@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-d",
+                "id": "g11",
+                "name": "Drew Adams",
+                "second_choice": "story"
+              },
+              {
+                "email": "quinn@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-d",
+                "id": "g12",
+                "name": "Quinn Baker",
+                "second_choice": "story"
+              },
+              {
+                "email": "reese@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-d",
+                "id": "g13",
+                "name": "Reese Bell",
+                "second_choice": "story"
+              },
+              {
+                "email": "rowan@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-d",
+                "id": "g14",
+                "name": "Rowan Gray",
+                "second_choice": "story"
+              },
+              {
+                "email": "charlie@example.test",
+                "first_choice": "story",
+                "group_id": "",
+                "id": "g15",
+                "name": "Charlie Fox",
+                "second_choice": "design"
+              },
+              {
+                "email": "finley@example.test",
+                "first_choice": "design",
+                "group_id": "",
+                "id": "g16",
+                "name": "Finley Hill",
+                "second_choice": "agents"
+              }
+            ],
+            "rejected_rows": [
+              {
+                "email": "alex@example.test",
+                "id": "g17",
+                "reason": "Duplicate email: the first valid registration is retained.",
+                "row_number": 18
+              }
+            ]
+          },
+          "version": 1
+        },
+        {
+          "seq": 145,
+          "at": 1791519004.3718069,
+          "kind": "completed",
+          "message": "Output matched the declared schema. This is not an independent check of every business rule."
+        },
+        {
+          "seq": 146,
+          "at": 1791519004.6116102,
+          "kind": "application_approval",
+          "message": "Operator requested applying this exact preview to the local Fieldwork showcase. Generated code retains compute-only permission.",
+          "result_hash": "d0c4b364feb6f632bd588f0fb4e6bbf61771561a37850199a0235d559a46da44"
+        },
+        {
+          "seq": 147,
+          "at": 1791519005.167296,
+          "kind": "application_verified",
+          "message": "The approved roster was imported and checked in Fieldwork.",
+          "model_calls": 0,
+          "participants": 16
+        }
+      ]
+    },
+    {
+      "action": {
+        "code_hash": "d6cf34ee6695526a6f0b34d686fc84cc6277227a5ed7dfc3c099f578b5aeab13",
+        "id": "ppatchwor_allocate_group_workshop_bookings",
+        "version": 1
+      },
+      "ai_paused": true,
+      "app_context": {
+        "origin": "https://event.workspace.demo",
+        "revision": 1,
+        "state_hash": "4c57a79411e5a4ffed9c1a028555582c3bf9694ed62e8cc9633c36116bb3f681"
+      },
+      "artifacts": [
+        {
+          "id": "fe97bb80abc64148ac1fe5e55adf8f20",
+          "mime": "application/json",
+          "name": "action-result.json",
+          "run_id": "88a6cb8a912f40c28b21cb180adddea8",
+          "size": 2425,
+          "source": "local_action"
+        }
+      ],
+      "conversation": [],
+      "created_at": 1791519005.2753642,
+      "duration_ms": 477,
+      "duration_seconds": 0.477,
+      "finished_at": 1791519005.762002,
+      "id": "88a6cb8a912f40c28b21cb180adddea8",
+      "input": {
+        "participants": [
+          {
+            "email": "alex@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g01",
+            "name": "Alex Morgan",
+            "second_choice": "design"
+          },
+          {
+            "email": "sam@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g02",
+            "name": "Sam Rivera",
+            "second_choice": "design"
+          },
+          {
+            "email": "robin@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-a",
+            "id": "g03",
+            "name": "Robin Lee",
+            "second_choice": "design"
+          },
+          {
+            "email": "jordan@example.test",
+            "first_choice": "agents",
+            "group_id": "",
+            "id": "g04",
+            "name": "Jordan Kim",
+            "second_choice": "story"
+          },
+          {
+            "email": "taylor@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g05",
+            "name": "Taylor Chen",
+            "second_choice": "story"
+          },
+          {
+            "email": "casey@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g06",
+            "name": "Casey Park",
+            "second_choice": "story"
+          },
+          {
+            "email": "morgan@example.test",
+            "first_choice": "design",
+            "group_id": "studio-b",
+            "id": "g07",
+            "name": "Morgan Hall",
+            "second_choice": "story"
+          },
+          {
+            "email": "avery@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-c",
+            "id": "g08",
+            "name": "Avery King",
+            "second_choice": "design"
+          },
+          {
+            "email": "riley@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-c",
+            "id": "g09",
+            "name": "Riley Scott",
+            "second_choice": "design"
+          },
+          {
+            "email": "jamie@example.test",
+            "first_choice": "story",
+            "group_id": "",
+            "id": "g10",
+            "name": "Jamie Green",
+            "second_choice": "agents"
+          },
+          {
+            "email": "drew@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g11",
+            "name": "Drew Adams",
+            "second_choice": "story"
+          },
+          {
+            "email": "quinn@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g12",
+            "name": "Quinn Baker",
+            "second_choice": "story"
+          },
+          {
+            "email": "reese@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g13",
+            "name": "Reese Bell",
+            "second_choice": "story"
+          },
+          {
+            "email": "rowan@example.test",
+            "first_choice": "agents",
+            "group_id": "studio-d",
+            "id": "g14",
+            "name": "Rowan Gray",
+            "second_choice": "story"
+          },
+          {
+            "email": "charlie@example.test",
+            "first_choice": "story",
+            "group_id": "",
+            "id": "g15",
+            "name": "Charlie Fox",
+            "second_choice": "design"
+          },
+          {
+            "email": "finley@example.test",
+            "first_choice": "design",
+            "group_id": "",
+            "id": "g16",
+            "name": "Finley Hill",
+            "second_choice": "agents"
+          }
+        ],
+        "rooms": [
+          {
+            "capacity": 10,
+            "id": "a",
+            "name": "Hall A",
+            "open": true
+          },
+          {
+            "capacity": 8,
+            "id": "b",
+            "name": "Room B",
+            "open": true
+          },
+          {
+            "capacity": 6,
+            "id": "c",
+            "name": "Room C",
+            "open": true
+          },
+          {
+            "capacity": 8,
+            "id": "d",
+            "name": "Studio D",
+            "open": true
+          }
+        ],
+        "workshops": [
+          {
+            "id": "agents",
+            "name": "Agents lab",
+            "room": "a",
+            "time": "10:00\u201311:30"
+          },
+          {
+            "id": "design",
+            "name": "Product studio",
+            "room": "b",
+            "time": "10:00\u201311:30"
+          },
+          {
+            "id": "story",
+            "name": "Storytelling",
+            "room": "c",
+            "time": "10:00\u201311:30"
+          }
+        ]
+      },
+      "kind": "local_action",
+      "message": "Saved action completed locally. Review the result before using it. No external application was changed.",
+      "mode": "local",
+      "model_calls": 0,
+      "model_usage": [],
+      "permissions": [
+        "compute"
+      ],
+      "project_id": "patch-workshops",
+      "registry_after": "856281fe8840556e89db822dc2ab5f7bdb473af54cf56cfc90325368afbd8fa3",
+      "registry_before": "856281fe8840556e89db822dc2ab5f7bdb473af54cf56cfc90325368afbd8fa3",
+      "result": {
+        "assignments": [
+          {
+            "choice_rank": 1,
+            "group_id": "studio-a",
+            "participant_id": "g01",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-a",
+            "participant_id": "g02",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-a",
+            "participant_id": "g03",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "",
+            "participant_id": "g04",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-b",
+            "participant_id": "g05",
+            "room_id": "b",
+            "workshop_id": "design"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-b",
+            "participant_id": "g06",
+            "room_id": "b",
+            "workshop_id": "design"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-b",
+            "participant_id": "g07",
+            "room_id": "b",
+            "workshop_id": "design"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-c",
+            "participant_id": "g08",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-c",
+            "participant_id": "g09",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "",
+            "participant_id": "g10",
+            "room_id": "c",
+            "workshop_id": "story"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-d",
+            "participant_id": "g11",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-d",
+            "participant_id": "g12",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-d",
+            "participant_id": "g13",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "studio-d",
+            "participant_id": "g14",
+            "room_id": "a",
+            "workshop_id": "agents"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "",
+            "participant_id": "g15",
+            "room_id": "c",
+            "workshop_id": "story"
+          },
+          {
+            "choice_rank": 1,
+            "group_id": "",
+            "participant_id": "g16",
+            "room_id": "b",
+            "workshop_id": "design"
+          }
+        ],
+        "errors": [],
+        "waitlist": []
+      },
+      "status": "completed",
+      "task": "Allocate workshop bookings without splitting groups",
+      "tokens": 0,
+      "usage_version": 1,
+      "verification": "output_schema",
+      "application_apply": {
+        "status": "completed",
+        "origin": "https://event.workspace.demo",
+        "source_revision": 1,
+        "before_hash": "4c57a79411e5a4ffed9c1a028555582c3bf9694ed62e8cc9633c36116bb3f681",
+        "started_at": 1791519006.0356328,
+        "verification": {
+          "unaffected_reservations_preserved": false,
+          "verified_constraints": true,
+          "participants": 16,
+          "assigned": 16,
+          "waitlist": 0,
+          "first_preferences": 16,
+          "checks": [
+            "Group bookings kept together",
+            "Source roster matches",
+            "Every attendee accounted for once",
+            "Preferences respected",
+            "Available capacities respected",
+            "New allocation applied"
+          ],
+          "scope": "Showcase constraints only; not a proof of optimal allocation or all user intent."
+        },
+        "finished_at": 1791519006.921108
+      },
+      "events": [
+        {
+          "seq": 148,
+          "ai_paused": true,
+          "at": 1791519005.294299,
+          "kind": "local_action",
+          "message": "Running saved code locally. No model or application connection is used.",
+          "permissions": [
+            "compute"
+          ]
+        },
+        {
+          "seq": 149,
+          "at": 1791519005.7587771,
+          "capability": "ppatchwor_allocate_group_workshop_bookings",
+          "code_hash": "d6cf34ee6695526a6f0b34d686fc84cc6277227a5ed7dfc3c099f578b5aeab13",
+          "input": {
+            "participants": [
+              {
+                "email": "alex@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-a",
+                "id": "g01",
+                "name": "Alex Morgan",
+                "second_choice": "design"
+              },
+              {
+                "email": "sam@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-a",
+                "id": "g02",
+                "name": "Sam Rivera",
+                "second_choice": "design"
+              },
+              {
+                "email": "robin@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-a",
+                "id": "g03",
+                "name": "Robin Lee",
+                "second_choice": "design"
+              },
+              {
+                "email": "jordan@example.test",
+                "first_choice": "agents",
+                "group_id": "",
+                "id": "g04",
+                "name": "Jordan Kim",
+                "second_choice": "story"
+              },
+              {
+                "email": "taylor@example.test",
+                "first_choice": "design",
+                "group_id": "studio-b",
+                "id": "g05",
+                "name": "Taylor Chen",
+                "second_choice": "story"
+              },
+              {
+                "email": "casey@example.test",
+                "first_choice": "design",
+                "group_id": "studio-b",
+                "id": "g06",
+                "name": "Casey Park",
+                "second_choice": "story"
+              },
+              {
+                "email": "morgan@example.test",
+                "first_choice": "design",
+                "group_id": "studio-b",
+                "id": "g07",
+                "name": "Morgan Hall",
+                "second_choice": "story"
+              },
+              {
+                "email": "avery@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-c",
+                "id": "g08",
+                "name": "Avery King",
+                "second_choice": "design"
+              },
+              {
+                "email": "riley@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-c",
+                "id": "g09",
+                "name": "Riley Scott",
+                "second_choice": "design"
+              },
+              {
+                "email": "jamie@example.test",
+                "first_choice": "story",
+                "group_id": "",
+                "id": "g10",
+                "name": "Jamie Green",
+                "second_choice": "agents"
+              },
+              {
+                "email": "drew@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-d",
+                "id": "g11",
+                "name": "Drew Adams",
+                "second_choice": "story"
+              },
+              {
+                "email": "quinn@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-d",
+                "id": "g12",
+                "name": "Quinn Baker",
+                "second_choice": "story"
+              },
+              {
+                "email": "reese@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-d",
+                "id": "g13",
+                "name": "Reese Bell",
+                "second_choice": "story"
+              },
+              {
+                "email": "rowan@example.test",
+                "first_choice": "agents",
+                "group_id": "studio-d",
+                "id": "g14",
+                "name": "Rowan Gray",
+                "second_choice": "story"
+              },
+              {
+                "email": "charlie@example.test",
+                "first_choice": "story",
+                "group_id": "",
+                "id": "g15",
+                "name": "Charlie Fox",
+                "second_choice": "design"
+              },
+              {
+                "email": "finley@example.test",
+                "first_choice": "design",
+                "group_id": "",
+                "id": "g16",
+                "name": "Finley Hill",
+                "second_choice": "agents"
+              }
+            ],
+            "rooms": [
+              {
+                "capacity": 10,
+                "id": "a",
+                "name": "Hall A",
+                "open": true
+              },
+              {
+                "capacity": 8,
+                "id": "b",
+                "name": "Room B",
+                "open": true
+              },
+              {
+                "capacity": 6,
+                "id": "c",
+                "name": "Room C",
+                "open": true
+              },
+              {
+                "capacity": 8,
+                "id": "d",
+                "name": "Studio D",
+                "open": true
+              }
+            ],
+            "workshops": [
+              {
+                "id": "agents",
+                "name": "Agents lab",
+                "room": "a",
+                "time": "10:00\u201311:30"
+              },
+              {
+                "id": "design",
+                "name": "Product studio",
+                "room": "b",
+                "time": "10:00\u201311:30"
+              },
+              {
+                "id": "story",
+                "name": "Storytelling",
+                "room": "c",
+                "time": "10:00\u201311:30"
+              }
+            ]
+          },
+          "kind": "used",
+          "message": "Executed the saved, tested version without AI.",
+          "output": {
+            "assignments": [
+              {
+                "choice_rank": 1,
+                "group_id": "studio-a",
+                "participant_id": "g01",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-a",
+                "participant_id": "g02",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-a",
+                "participant_id": "g03",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "",
+                "participant_id": "g04",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-b",
+                "participant_id": "g05",
+                "room_id": "b",
+                "workshop_id": "design"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-b",
+                "participant_id": "g06",
+                "room_id": "b",
+                "workshop_id": "design"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-b",
+                "participant_id": "g07",
+                "room_id": "b",
+                "workshop_id": "design"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-c",
+                "participant_id": "g08",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-c",
+                "participant_id": "g09",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "",
+                "participant_id": "g10",
+                "room_id": "c",
+                "workshop_id": "story"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-d",
+                "participant_id": "g11",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-d",
+                "participant_id": "g12",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-d",
+                "participant_id": "g13",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "studio-d",
+                "participant_id": "g14",
+                "room_id": "a",
+                "workshop_id": "agents"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "",
+                "participant_id": "g15",
+                "room_id": "c",
+                "workshop_id": "story"
+              },
+              {
+                "choice_rank": 1,
+                "group_id": "",
+                "participant_id": "g16",
+                "room_id": "b",
+                "workshop_id": "design"
+              }
+            ],
+            "errors": [],
+            "waitlist": []
+          },
+          "version": 1
+        },
+        {
+          "seq": 150,
+          "at": 1791519005.761608,
+          "kind": "completed",
+          "message": "Output matched the declared schema. This is not an independent check of every business rule."
+        },
+        {
+          "seq": 151,
+          "at": 1791519006.036096,
+          "kind": "application_approval",
+          "message": "Operator requested applying this exact preview to the local Fieldwork showcase. Generated code retains compute-only permission.",
+          "result_hash": "7b0aafe1c621a0a7583c8f30609a3b20e1ba702600155d9804a387069c8ee4fb"
+        },
+        {
+          "seq": 152,
+          "at": 1791519006.0372071,
+          "kind": "application_projection",
+          "message": "Applying only participant/workshop IDs and waitlist IDs. Extra explanation fields remain in the original result.",
+          "projection": {
+            "assignments": [
+              {
+                "participant_id": "g01",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g02",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g03",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g04",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g05",
+                "workshop_id": "design"
+              },
+              {
+                "participant_id": "g06",
+                "workshop_id": "design"
+              },
+              {
+                "participant_id": "g07",
+                "workshop_id": "design"
+              },
+              {
+                "participant_id": "g08",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g09",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g10",
+                "workshop_id": "story"
+              },
+              {
+                "participant_id": "g11",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g12",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g13",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g14",
+                "workshop_id": "agents"
+              },
+              {
+                "participant_id": "g15",
+                "workshop_id": "story"
+              },
+              {
+                "participant_id": "g16",
+                "workshop_id": "design"
+              }
+            ],
+            "waitlist": []
+          }
+        },
+        {
+          "seq": 153,
+          "at": 1791519006.9211142,
+          "kind": "application_verified",
+          "message": "The approved preview was applied and independently checked in Fieldwork.",
+          "model_calls": 0,
+          "verification": {
+            "assigned": 16,
+            "checks": [
+              "Group bookings kept together",
+              "Source roster matches",
+              "Every attendee accounted for once",
+              "Preferences respected",
+              "Available capacities respected",
+              "New allocation applied"
+            ],
+            "first_preferences": 16,
+            "participants": 16,
+            "scope": "Showcase constraints only; not a proof of optimal allocation or all user intent.",
+            "unaffected_reservations_preserved": false,
+            "verified_constraints": true,
+            "waitlist": 0
+          }
+        }
+      ]
+    }
+  ]
+}

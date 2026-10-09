@@ -21,9 +21,17 @@ from .desktop_control import DesktopControl
 from .files import FileVault
 from .scheduler import Scheduler
 from .model import RunError
+from . import action_app
+from .local_actions import LocalActions, action_detail
 from .usage import analytics, summarize, operations, estimate
 
 WEB = ROOT / "web"
+
+
+class WorkspaceHTTPServer(ThreadingHTTPServer):
+    # Modern browsers fetch many ES modules, fonts and icons concurrently.
+    request_queue_size = 128
+
 
 
 class Application:
@@ -35,6 +43,7 @@ class Application:
         self.store = Store(config.data_dir)
         self.engine = Engine(config, self.model, self.sandbox, self.store)
         self.vault = FileVault(config.data_dir)
+        self.local_actions = LocalActions(self.store, self.sandbox, self.vault)
         self.browser = BrowserControl(self.vault)
         self.desktop = DesktopControl()
         self.pool = ThreadPoolExecutor(max_workers=1)
@@ -54,6 +63,8 @@ class Application:
         with self.lock:
             if self.busy():
                 raise ValueError("Another task is running. Wait for it to finish.")
+            if self.store.setting("ai_paused", False):
+                raise ValueError("Blackout is on. Use a saved action, or resume AI to start a new task.")
             if error := self.model.ready():
                 raise ValueError(error)
             projects = self.store.workspace()["projects"]
@@ -79,6 +90,24 @@ class Application:
             engine = Engine(self.config, self.model, self.sandbox, self.store.scoped(project_id), connector, self.vault)
             if connector: connector.attach_files(file_paths, run["id"])
             self.future = self.pool.submit(engine.execute, run)
+            return run
+
+    def set_blackout(self, paused):
+        if not isinstance(paused, bool):
+            raise ValueError("Specify whether AI should be paused.")
+        with self.lock:
+            if self.busy():
+                raise ValueError("Wait for the current task to finish before changing Blackout.")
+            self.store.set_setting("ai_paused", paused)
+        return {"ai_paused": paused}
+
+    def start_local(self, body):
+        with self.lock:
+            if self.busy():
+                raise ValueError("Another task is running. Wait for it to finish.")
+            run = self.local_actions.prepare(body, ai_paused=self.store.setting("ai_paused", False))
+            self.current_run = run
+            self.future = self.pool.submit(self.local_actions.execute, run)
             return run
 
     def start_scheduled(self, task, inputs, *, mode="data", connection=None, **kwargs):
@@ -180,10 +209,19 @@ def handler_for(app, port):
                                    "model_status": app.model.ready(), "free_tier_confirmed": app.config.provider == "gemini" and app.config.free_confirmed,
                                    "provider": app.config.provider,
                                    "provider_label": "ChatGPT plan" if app.config.provider == "chatgpt" else "Gemini",
-                                   "permissions": PERMISSIONS, "busy": app.busy(),
+                                   "permissions": PERMISSIONS, "busy": app.busy(), "ai_paused": app.store.setting("ai_paused", False),
                                    "runs": app.store.runs(), "registry": app.store.registry(), "versions": app.store.versions(),
                                    "applications": app.store.applications(),
                                    "limits": {"calls": app.config.max_calls, "seconds": app.config.max_seconds}})
+            if path.startswith("/api/actions/"):
+                try:
+                    if path.endswith("/context"):
+                        with app.lock:
+                            if app.busy(): raise RunError("Wait for the current task to finish.")
+                            return self.reply(action_app.context(app.store, app.browser, path.split("/")[-2]))
+                    return self.reply(action_detail(app.store, path.rsplit("/", 1)[-1]))
+                except RunError as error:
+                    return self.reply({"error": str(error)}, 400)
             if path == "/api/health":
                 return self.reply({"sandbox": app.sandbox.status(), "model_ready": app.model.ready() is None})
             if path == "/api/workspace":
@@ -248,6 +286,16 @@ def handler_for(app, port):
                 body = json.loads(self.rfile.read(size))
                 if not isinstance(body, dict):
                     raise ValueError("Expected object")
+                if self.path == "/api/blackout":
+                    return self.reply(app.set_blackout(body.get("paused")))
+                if self.path == "/api/actions/apply":
+                    with app.lock:
+                        if app.busy(): raise RunError("Wait for the current task to finish.")
+                        run = app.store.run(body.get("run_id"))
+                        if not run: raise RunError("Preview not found.")
+                        return self.reply(action_app.apply(app.store, app.browser, app.vault, run))
+                if self.path == "/api/actions/run":
+                    return self.reply(app.start_local(body), 202)
                 if self.path == "/api/files/upload":
                     return self.reply(app.vault.upload(body), 201)
                 if self.path == "/api/schedules/create":
@@ -334,7 +382,7 @@ def main():
     args = parser.parse_args()
     app = Application(Config.from_env())
     app.scheduler.start_loop()
-    server = ThreadingHTTPServer(("127.0.0.1", args.port), handler_for(app, args.port))
+    server = WorkspaceHTTPServer(("127.0.0.1", args.port), handler_for(app, args.port))
     print(f"Wisp running at http://127.0.0.1:{args.port}", flush=True)
     try:
         server.serve_forever()

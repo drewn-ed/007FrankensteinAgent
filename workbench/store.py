@@ -29,6 +29,7 @@ class Store:
         CREATE TABLE IF NOT EXISTS active(id TEXT PRIMARY KEY, version INTEGER);
         CREATE TABLE IF NOT EXISTS runs(id TEXT PRIMARY KEY, body TEXT);
         CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY AUTOINCREMENT, run_id TEXT, body TEXT);
+        CREATE TABLE IF NOT EXISTS runtime_settings(key TEXT PRIMARY KEY, body TEXT);
         CREATE TABLE IF NOT EXISTS catalog_state(key TEXT PRIMARY KEY, body TEXT);
         CREATE TABLE IF NOT EXISTS workspace_state(key TEXT PRIMARY KEY, body TEXT);
         CREATE TABLE IF NOT EXISTS application_maps(origin TEXT PRIMARY KEY, body TEXT);
@@ -39,6 +40,15 @@ class Store:
 
     def close(self):
         self.db.close()
+
+    def setting(self, key, default=None):
+        with self.lock:
+            row = self.db.execute("SELECT body FROM runtime_settings WHERE key=?", (key,)).fetchone()
+        return json.loads(row[0]) if row else default
+
+    def set_setting(self, key, value):
+        with self.lock, self.db:
+            self.db.execute("INSERT OR REPLACE INTO runtime_settings VALUES(?,?)", (key, encoded(value)))
 
     def registry(self):
         with self.lock:

@@ -2,7 +2,7 @@
 
 **An agent workspace that turns missing steps into tested skills it can use again.**
 
-Wisp helps people who repeatedly prepare files and operate business applications. Give it a task and the relevant inputs. When a reusable operation is missing, the agent writes Python, tests it in Docker, and registers it only after the tests pass. Later tasks can combine those saved skills. Corrections can become regression tests for a new version.
+Wisp helps people who repeatedly prepare files and operate business applications. Give it a task and the relevant inputs. When a reusable operation is missing, the agent writes Python, tests it in Docker, and registers it only after the tests pass. Later tasks can combine those saved skills. Corrections can become regression tests for a new version. **PATCH** turns those tested compute skills into actions with editable inputs and result previews. **BLACKOUT** pauses AI while saved actions continue to run locally.
 
 Built solo by David for **Agents 0.0.7 — From Dusk Till Dawn #01**, track **Frankenstein**. **Wisp** is the product name selected by David on 9 October 2026. The public repository is [drewn-ed/Wisp](https://github.com/drewn-ed/Wisp). **Fieldwork** is the fictional event application used to demonstrate it.
 
@@ -24,12 +24,33 @@ The three successful runs used `gpt-6.1-sol` through an explicitly selected Chat
 
 **Track status:** creation, test-gated installation and composition in a fresh conversation have evidence. **Agent-created discovery/management is not yet demonstrated.** The runtime bounds calls and time, but does not enforce an independent dollar budget. The complete Frankenstein checklist is therefore **not claimed as satisfied**. [Requirement-by-requirement status](docs/jury-guide.md#frankenstein-requirements).
 
+## PATCH and BLACKOUT
+
+**PATCH:** after the agent creates a tested compute skill, it appears in **Library → Actions**. Open it, review or import its inputs, and choose **Preview result**. The saved code runs in Docker and produces a downloadable result. A supported Fieldwork preview can then be applied with an explicit click; previewing alone changes nothing in the application.
+
+**BLACKOUT:** click **Blackout** in the header while no task is running, then run an action again with new inputs. The server blocks AI tasks and the action runs without a planner or provider call. Its result shows **0 AI calls** and whether Blackout was on. This is a server-enforced AI pause, not a physical internet disconnection. Docker and the local server must remain available; external applications can still require a connection.
+
+A new installation has no learned actions. Create them with a model first; later executions need no working model key or quota. This does not make new natural-language requests work without AI, and zero inference calls do not mean zero setup, learning or compute cost. [Step-by-step instructions and boundaries](docs/user-guide.md#patch-run-a-learned-action).
+
+**Recorded group-booking proof:** a successful learning run used 9 model calls to create CSV normalization and group-preserving allocation skills, passing 3 and 4 tests respectively. Its supplied 5/4/4-seat room scenario produced 16 unique attendees from 17 CSV rows, with 10 seated and 6 waiting. With Blackout enabled, both saved skills then ran with **0 model calls and an unchanged registry**; an AI task was rejected. Explicit import and allocation in Fieldwork were independently checked. That application used different room capacities and seated all 16 attendees. The [evidence bundle](docs/patch-blackout-evidence-2026-10-09/) also retains the earlier failed learning attempt, which ended with a provider stream disconnect. These are synthetic scenarios, not a controlled savings benchmark.
+
+A later task in a fresh conversation closed Hall A and added a late pair: **18 attendees → 8 seated, 10 waiting**. It used both existing skills in 3 model calls, installed nothing and preserved the registry hash. This is AI-planned composition; the Blackout executions above are direct saved actions.
+
+**Try the recorded actions without an account or API key** after installing the local prerequisites:
+
+```sh
+uv run python scripts/replay_blackout.py --serve
+```
+
+Open **[http://127.0.0.1:8789](http://127.0.0.1:8789)**. The replay uses a separate `.runtime/blackout-replay` store, reruns all 7 saved tests in Docker and loads the two recorded agent-created skills with explicit replay provenance. It reproduces **16 attendees → 10 seated, 6 waiting with 0 model calls**. This demonstrates execution of recorded code, not fresh learning. Omit `--serve` to run the check and print its report only.
+
 ## How the jury can try it
 
 **This is currently a local, source-distributed prototype, not a downloadable desktop installer or a hosted agent service.** The interface opens in a browser, but the Python runtime, Docker sandbox and application connectors run on the reviewer's own computer. Opening our localhost URL on another computer does not connect to the demonstration machine.
 
 | Review path | What the reviewer needs | Accessibility permission? |
 | --- | --- | --- |
+| Replay learned actions without a model account | Python, uv, Docker and the downloaded sandbox image; use the replay command above | No |
 | Inspect recorded evidence | A browser for the repository, logs and generated-code bundle in the [jury guide](docs/jury-guide.md) | No |
 | Run the file/browser showcase | Clone this implementation; install the prerequisites below; start the local server; connect a model using the reviewer's own account or key | No |
 | Try native macOS control | The same local setup, plus Apple Command Line Tools and a running macOS application to test | Yes, explicitly granted on that Mac |
@@ -106,6 +127,9 @@ To stop Wisp, finish or stop the current task and press **Ctrl+C** in the server
 
 - Projects, persistent chats, scoped skills and saved workflows.
 - Skill creation, contract tests, a persistent versioned registry, correction with regression tests, deactivation and reactivation of tested versions.
+- PATCH actions generated from active, tested compute interfaces, with editable inputs, previews and downloadable outputs.
+- BLACKOUT: a persistent server-side AI pause; saved actions still execute without model calls.
+- Explicit Fieldwork handoff for supported roster and allocation previews, with independent checks before and after application.
 - A fixed browser connector for one approved origin, file upload/download and operator review for external changes.
 - Local one-time and repeating schedules; the server must remain running and the computer awake.
 - Task history, execution evidence and provider-reported token usage.
@@ -126,7 +150,7 @@ uv run python -m workbench.cli \
   --input examples/registrations.json --data-dir .runtime/verification
 ```
 
-Infrastructure tests cover isolation, failed-test rejection, permission boundaries, budget stops, persistence, corrections, browser constraints, files, schedules and usage. They do not substitute for agent-generated demonstration evidence. See [validation and limitations](docs/jury-guide.md).
+Infrastructure tests cover isolation, failed-test rejection, permission boundaries, budget stops, persistence, corrections, browser constraints, files, schedules and usage. PATCH/BLACKOUT tests also exercise real Docker execution without a provider, stale or inactive skill rejection, unsupported inputs, persistent AI pause and an explicit Fieldwork handoff in Chrome. These use infrastructure fixtures and do not substitute for agent-generated demonstration evidence. See [validation and limitations](docs/jury-guide.md).
 
 ## Current limits
 

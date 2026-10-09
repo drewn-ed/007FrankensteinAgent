@@ -1,28 +1,19 @@
 # Wisp landing page
 
-First landing-page draft for David's Agents 0.0.7 project, October 9, 2026. David confirmed the name **Wisp** on October 9, 2026; it replaces the earlier “Learning workspace” placeholder.
+Live site: [wisp-landing.vercel.app](https://wisp-landing.vercel.app/).
 
-The editable, buildless site is in `dist/index.html` and `dist/style.css`. Serve `dist` with any static HTTP server. No installation, JavaScript runtime or API key is needed in the browser.
+A short English introduction to Wisp, David's experimental learning workspace. The page presents the idea and links to the project; it does not run the agent.
 
-## Content and visual sources
+## Editing and preview
 
-- Copy follows the product blueprint and submission draft in the parent project's `docs/`. The page identifies the product as an experimental prototype and describes composition in a fresh session as a goal, not a verified result.
-- `dist/assets/tokens.css` and `dist/assets/fonts/` are copies of the approved `design/` tokens and local fonts. Do not edit generated tokens here; refresh from the visual system when it changes. Font licenses and provenance are included.
-- `dist/assets/pixel-ghost.svg` is David's approved project logo.
-- `dist/assets/ghost-background.png` is the existing ImageGen background from `design/landing/ghost-background-v1.png`; it is decorative. The original remains unchanged.
-- No third-party icon library is used by this page.
+Edit `dist/index.html`, `dist/style.css` and `dist/theme.js`. Serve this directory with `python3 -m http.server 4173 --directory landing/dist` from the repository root. There are no dependencies to install or build steps to run.
 
-The main action scrolls to the learning-loop explanation. The project link opens the current public repository. David renamed it to `drewn-ed/Wisp` on October 9, 2026. The landing page is a product presentation, not evidence of an HQ submission.
-
-## Initial verification
-
-- Local assets, stylesheet font references and anchor targets resolve.
-- Local browser review at desktop, 390 px and 320 px: no horizontal overflow, images load, heading/body font families match the manual.
-- Main action navigates to the learning-loop section. No browser console errors or warnings observed.
-- Reduced motion disables smooth scrolling and hover transitions.
-
-This checks the landing page only. It does not validate the learning agent's capabilities or establish a full accessibility audit.
+The page uses the approved Geist Pixel Square and IBM Plex Mono fonts, shared design tokens, pixel ghost logo and light/dark v2 backgrounds. Assets come from the reviewed landing-page branch (`bff5213`). Font licenses and provenance are included under `dist/assets/fonts/`. Keep text as HTML; the artwork is decorative. On mobile the artwork follows the text. Light is the default, and the theme choice is stored locally when browser storage is available.
 
 ## Vercel deployment
 
-The production Vercel project `wisp-landing` serves `landing/dist` from the `main` branch of `drewn-ed/Wisp`. Set Root Directory to `landing`; the included `vercel.json` selects a static deployment without dependency installation or build commands. The light/dark page, saved theme preference, Wisp wordmark and v2 hero backgrounds come from the reviewed landing-page branch (`bff5213`). No backend or environment variables are required.
+The Vercel project `wisp-landing` is connected to `drewn-ed/Wisp`, production branch `main`, Root Directory `landing`. The included `vercel.json` publishes only `dist`, with no installation or build command. No environment variables, API keys or backend are required.
+
+Production commit `022feed` was verified on October 9, 2026: Vercel reported Ready, the public domain returned HTTP 200 without authentication, and the live page displayed Wisp with a working light/dark switch. Earlier ChatGPT Sites previews are separate, older versions.
+
+Local browser checks also covered 1440, 390 and 320 px layouts, local assets, anchor navigation and theme persistence. These checks apply to the landing page, not the agent's runtime behavior or a full accessibility audit.

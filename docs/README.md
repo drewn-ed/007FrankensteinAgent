@@ -5,6 +5,7 @@ Current public-facing documentation is in English. Historical research and inter
 | Start here | Purpose |
 | --- | --- |
 | [Project README](../README.md) | Product, recorded outcome, setup and current limits |
+| [Jury quickstart](jury-quickstart.md) | Clean installation, credential-free replay, exact provider configuration, expected outcomes and troubleshooting |
 | [User guide](user-guide.md) | UI instructions, event walkthrough, corrections, schedules and troubleshooting |
 | [Jury guide](jury-guide.md) | Track requirements mapped to source evidence and remaining gaps |
 | [Architecture](architecture.md) | Execution lifecycle, infrastructure, generated skills and permission boundaries |

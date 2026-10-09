@@ -1,6 +1,6 @@
 # Using Wisp
 
-This guide describes the current local application. All example attendees are synthetic. For installation and provider setup, start with the [README](../README.md#run-locally).
+This guide describes the current local application. All example attendees are synthetic. For a complete clean installation, exact model settings and a no-account demo, start with the [jury quickstart](jury-quickstart.md). The [README](../README.md#run-locally) contains the shorter setup reference.
 
 ## Before the first task
 

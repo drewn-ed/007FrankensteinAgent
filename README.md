@@ -8,6 +8,8 @@ Built solo by David for **Agents 0.0.7 — From Dusk Till Dawn #01**, track **Fr
 
 [Use the application](docs/user-guide.md) · [Review the evidence](docs/jury-guide.md) · [Architecture and boundaries](docs/architecture.md) · [Submission text](docs/submission-draft.md)
 
+**Reviewers: start with the [step-by-step jury quickstart](docs/jury-quickstart.md).** It covers a clean installation, a working demo without any model account, optional fresh learning with your own credentials, expected results and troubleshooting. **No API key, subscription or reverse proxy is needed for the recorded-code replay.** Fresh learning needs either your own confirmed Gemini Free API key or an eligible ChatGPT account with plan-usage permission. A generic OpenAI API key or reverse API proxy is not supported by this version.
+
 ## See what it does
 
 An event organizer has a messy registration file, workshop preferences and limited room capacity. Then a room becomes unavailable. Wisp cleans the roster, creates allocation logic, applies the result in the connected application and downloads an operations report.
@@ -55,16 +57,16 @@ Open **[http://127.0.0.1:8789](http://127.0.0.1:8789)**. The replay uses a separ
 | Run the file/browser showcase | Clone this implementation; install the prerequisites below; start the local server; connect a model using the reviewer's own account or key | No |
 | Try native macOS control | The same local setup, plus Apple Command Line Tools and a running macOS application to test | Yes, explicitly granted on that Mac |
 
-**Recommended first trial:** run the Fieldwork browser showcase. It exercises real skill generation, sandbox tests, browser uploads/actions/downloads and reuse without access to the reviewer's native applications or personal website accounts. The scenario and its data are synthetic. Model inference still requires internet access and available provider allowance; evidence inspection does not.
+**Recommended first trial:** run the credential-free replay, then optionally configure a model and run the Fieldwork browser showcase. The replay is a reliable way to inspect saved actions without provider setup; it is explicitly not fresh generation. The live showcase exercises real skill generation, sandbox tests, browser uploads/actions/downloads and reuse without access to personal website accounts. Model inference requires internet access and available provider allowance.
 
 There is **no separate bridge download or browser extension** for this checkout. The browser connector is included in the repository. The native bridge source is included too and is compiled locally when the reviewer opens the desktop connection tab. There is no signed/notarized release installer, one-click `.dmg`, remote-control relay or cloud-hosted demo in this version. Development checks were performed on macOS; a fresh Windows/Linux installation is not validated, and native control is macOS-only.
 
 ## Run locally
 
-Prerequisites: **Python 3.11+**, [uv](https://docs.astral.sh/uv/), a running Docker engine, and the `python:3.12-slim` image. Browser control also needs Node.js, npm and installed Google Chrome. Development validation was performed on macOS; native application control is macOS-only.
+Prerequisites: **Git, Python 3.11+, [uv](https://docs.astral.sh/uv/), a running Docker engine**, and the `python:3.12-slim` image. Browser control and the full test suite also need **Node.js 20+**, npm and installed Google Chrome. Development validation was performed on macOS; native application control is macOS-only. Native Windows Python is unsupported because authentication imports the Unix `fcntl` module; Linux/WSL installation and browser integration have not been validated.
 
 ```sh
-git clone --branch codex/learning-agent-mvp https://github.com/drewn-ed/Wisp.git Wisp
+git clone --branch main https://github.com/drewn-ed/Wisp.git Wisp
 cd Wisp
 uv sync --frozen
 npm ci --ignore-scripts
@@ -72,6 +74,7 @@ docker pull python:3.12-slim
 # Create local settings only if they do not already exist.
 test -f .env || cp .env.example .env
 chmod 600 .env
+# This opens the UI without credentials. Configure a provider below for new AI tasks.
 uv run python -m workbench.server
 ```
 
@@ -81,6 +84,8 @@ Choose one model connection:
 
 - **ChatGPT, outside strict-budget mode:** this connection has no local USD guarantee. To use it deliberately, set `SPEND_POLICY=existing_plan` in `.env` and restart; then open **Personal workspace → Settings → Continue with ChatGPT**, complete account consent, choose an available model and click **Activate model**. Connecting the account and activating a model are separate steps. No Gemini key is needed on this path.
 - **Gemini:** put your own `GEMINI_API_KEY` in `.env`. Confirm the associated project is on the Free tier, then set `GEMINI_FREE_TIER_CONFIRMED=true`. Keep `MODEL_PROVIDER=gemini` and restart the server. The checked-in default is `gemini-3.5-flash-lite`; the adapter has an explicit model allowlist.
+
+See [exact configuration blocks and sign-in steps](docs/jury-quickstart.md#3-optional-connect-a-model-for-fresh-learning). No shared key is bundled. A ChatGPT subscription is not an OpenAI API key, and account eligibility/allowance must be confirmed by the actual sign-in flow. Wisp uses the [documented Sign in with ChatGPT plan-usage flow](https://developers.openai.com/siwc/token-sharing-open-source/sign-in), not a reverse proxy or extracted Codex token. There is no custom base URL setting, `OPENAI_API_KEY` adapter or proxy installation step.
 
 **Financial policy:** shipped defaults are `SPEND_POLICY=strict` and `MAX_RUN_USD=0`. Strict mode admits only the allowlisted, operator-confirmed Gemini Free route; unpriced routes, including ChatGPT plan inference, are blocked before model HTTP requests. Keep billing disabled in Google AI Studio. Wisp cannot programmatically verify billing or force a free-only request. The separate `existing_plan` mode is an explicit exception with no local dollar guarantee and does not satisfy the strict spend-cap demonstration. Settings shows the policy; each task’s Usage & cost shows its admission record.
 
@@ -121,6 +126,10 @@ The full walkthrough takes several minutes and needs working model quota. It is 
 | Desktop connector cannot compile | Check that `swiftc --version` works after installing Apple Command Line Tools |
 | Desktop connection remains disabled | Follow the Accessibility steps above; `trusted: false` means macOS has not authorized the connector's access |
 | Model is unavailable or quota is exhausted | Use the reviewer's own connection in Settings or `.env`; inspect the error. There is no bundled shared API key or automatic paid fallback |
+| ChatGPT activation is blocked by the financial limit | Strict mode deliberately rejects this unpriced route. Only if you choose provider-managed plan usage, set `SPEND_POLICY=existing_plan` in `.env`, restart, then activate the model; this removes the local USD guarantee |
+| A replay says its registry already exists | Keep the old evidence and rerun with a fresh folder, for example `uv run python scripts/replay_blackout.py --serve --data-dir .runtime/jury-replay-2` |
+| New chat says Blackout is on | Replay intentionally starts with AI paused. Use the normal server on port 8767 with your configured provider for fresh learning; saved actions remain available on port 8789 |
+| ChatGPT sign-in is unavailable for the account | Access depends on the selected account/workspace policy and allowance. Use confirmed Gemini Free or the credential-free replay; a subscription alone does not guarantee this integration is eligible |
 | Scheduled work does not execute | Keep the local server running and the computer awake; connected-app tasks may still wait for operator approval |
 
 To stop Wisp, finish or stop the current task and press **Ctrl+C** in the server terminal. Tasks, files, skills and schedules persist in the local `.runtime/` directory; stopping the server does not remove them. Browser reconnection starts a fresh isolated browser session, so retain exported reports. Closing only the web page does not stop the server or its scheduler.

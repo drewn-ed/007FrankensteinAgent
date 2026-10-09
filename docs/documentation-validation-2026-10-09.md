@@ -1,5 +1,7 @@
 # Documentation validation — 9 October 2026
 
+**This is a chronological validation log.** Earlier gap statements and test counts describe their original revision. Current reproduction steps are in the [jury quickstart](jury-quickstart.md); current discovery and financial-gate evidence is in the [final bundle](frankenstein-final-evidence-2026-10-09/README.md).
+
 This revision rewrites the public README and submission copy, adds the user/architecture/jury/video guides, expands the in-app Quick guide and extracts two synthetic CSV fixtures for the later demonstration tasks. It does not change the learning engine or claim a new live-model acceptance run.
 
 ## Checks performed
@@ -47,3 +49,16 @@ Reviewed implementation commit `f59f457` and its published learning, fresh-sessi
 - Revised HQ story fields contain **1,811 / 3,000**, **1,802 / 2,000** and **1,963 / 2,000** characters.
 
 The existing discovery/management and independent dollar-budget gaps remain. The evidence demonstrates bounded saved computation, not general reasoning without a model or zero total cost. Historical evidence and original run outcomes remain unchanged.
+
+## Follow-up: clean reviewer setup after the final fixes
+
+Verified committed implementation `8b22251` from a fresh local Git clone, with no `.env` file or bundled model key. The same Mac supplied the already-installed Git/uv/Python/Node/Chrome/Docker prerequisites and sandbox image; this was not a clean OS installation.
+
+- `uv sync --frozen`: passed and created a new environment from the lockfile.
+- `npm ci --ignore-scripts`: passed.
+- `uv run python scripts/replay_blackout.py`: passed all 7 saved tests; 16 participants, 10 assigned, 6 waiting; no configured model, 0 calls, unchanged registry.
+- A separate normal server on port 8793 returned HTTP 200 for the UI; `/api/health` reported Docker ready and model unavailable, as expected without credentials. It was stopped after verification.
+- README and the new jury quickstart now distinguish credential-free replay, confirmed Gemini Free, eligible ChatGPT OAuth plan usage and unsupported API-key/proxy routes. Node 20+ and the native Windows `fcntl` limitation are explicit.
+- No new model calls, account authorizations, permission changes or HQ submission were performed for this setup review.
+
+The previous implementation verification passed 99 tests and demonstrated actual generated catalog management and fresh-process composition. Financial evidence remains scoped: original ChatGPT learning predates the gate; later Gemini reuse records strict $0 admission. See the final bundle for failures, prerequisites and limitations.

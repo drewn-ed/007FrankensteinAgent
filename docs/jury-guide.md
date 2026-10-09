@@ -2,6 +2,8 @@
 
 **Wisp · 007 Frankenstein — solo prototype by David.** Documentation reviewed on 9 October 2026. The [Frankenstein brief](https://hq.agents007.ai/topics#frankenstein) and [submission form](https://hq.agents007.ai/submit) were re-read in authenticated HQ on that date. No submission was made by this documentation update.
 
+**Want to run it? Start with the [jury quickstart](jury-quickstart.md).** It gives exact installation commands, a no-account replay, expected outputs and optional Gemini/ChatGPT setup. No reverse proxy is needed or supported. This guide below maps the evidence to the track requirements.
+
 ## The user and the value
 
 The intended user repeatedly prepares operational data and acts on it in an application. Our concrete example is an event organizer handling messy registrations, workshop preferences and a room closure. The useful output is a checked seating plan and downloadable report, with every attendee accounted for and unaffected bookings preserved.
@@ -97,4 +99,4 @@ HQ gives 35% to user value/track relevance, 25% to originality, 20% to an end-to
 
 Required publication items are the public repository, English project fields and a playable **YouTube Unlisted video no longer than 90 seconds**, submitted before **9 October 2026, 07:14 Europe/Prague**. The separate stage pitch is **60 seconds**, per the organizers' message relayed by David. See [submission copy and checklist](submission-draft.md) and [video/pitch scripts](demo-script.md).
 
-At this documentation review the HQ form was an unsubmitted draft with empty project and link fields. Local documentation, a draft form and a video script do not establish submission, upload or inclusion in the freeze snapshot.
+Submission status must be checked in HQ itself; this guide is not a live status display. Local documentation, a draft form and a video script do not establish submission, upload or inclusion in the freeze snapshot.

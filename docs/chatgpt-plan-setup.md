@@ -4,7 +4,9 @@ Implementováno podle oficiálního Sign in with ChatGPT pro lokální aplikace,
 
 ## Postup
 
-1. Nainstalovat závislosti pomocí `uv sync`, spustit `uv run python -m workbench.server`.
+Aktuální návod pro porotu je v [jury quickstart](jury-quickstart.md#option-b-continue-with-chatgpt-provider-managed-plan-usage). Přístup závisí na způsobilosti konkrétního účtu/workspace a jeho dostupné kvótě, nikoli jen na existenci předplatného. Obecný OpenAI API klíč ani reverse proxy tento adaptér nepodporuje.
+
+1. Nainstalovat závislosti pomocí `uv sync --frozen`. Pro vědomé použití ChatGPT nastavit v lokálním `.env` `SPEND_POLICY=existing_plan`, potom spustit/restartovat `uv run python -m workbench.server`. Výchozí `strict` tuto neoceněnou cestu blokuje; `existing_plan` nemá lokální dolarovou garanci.
 2. Otevřít Personal workspace / Settings → **Continue with ChatGPT**.
 3. V přihlašovacím okně OpenAI sám potvrdit účet, workspace a oprávnění používat předplatné pro **Wisp**. Přístup ke konverzacím se tímto flow neposkytuje. Pokud nechceš placené čerpání, nepovoluj aplikaci kredity po vyčerpání plánu; zkontroluj její oprávnění v ChatGPT Settings → Usage.
 4. Po návratu otevřít Settings, vybrat model z katalogu připojeného účtu a zvolit **Activate model**. Připojený účet a aktivní poskytovatel jsou samostatné stavy; přihlášení samo model nepřepíná. Aktivní volba je označena **Active model**, opakované přihlášení je označeno **Reconnect account**.

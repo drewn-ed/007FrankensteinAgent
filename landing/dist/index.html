@@ -4,39 +4,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#F5F2EC">
-  <title>Wisp — a workspace that learns from your work</title>
+  <title>Wisp — An agent that learns your way</title>
   <meta name="description" content="Wisp is an experimental AI workspace that turns tasks and corrections into tested, reusable skills. Built for Agents 0.0.7, Frankenstein track.">
   <link rel="icon" type="image/svg+xml" href="./assets/pixel-ghost.svg">
   <link rel="preload" href="./assets/fonts/GeistPixel-Square.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./assets/tokens.css">
+  <script src="./theme.js"></script>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="opening">
-    <div class="hero-art" aria-hidden="true">
-      <img src="./assets/ghost-background.png" width="1672" height="941" alt="" fetchpriority="high">
-    </div>
+
     <header class="site-header wrap">
       <a class="brand" href="#" aria-label="Wisp home">
-        <img src="./assets/pixel-ghost.svg" alt="" width="48" height="48">
-        <span>Wisp</span>
+        <span class="brand-icon"><img src="./assets/pixel-ghost.svg" alt="" width="48" height="48"></span>
+        <span class="brand-name">Wisp</span>
       </a>
       <nav aria-label="Main navigation">
         <a href="#how-it-works">The idea</a>
-        <a class="project-link" href="https://github.com/drewn-ed/Wisp">Explore the project</a>
+        <a class="project-link" href="https://github.com/drewn-ed/Wisp">GitHub</a>
+        <button id="theme-toggle" type="button" aria-label="Switch to dark theme" hidden>Dark mode</button>
       </nav>
     </header>
     <main id="main">
-      <section class="hero wrap" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="pixel-dot" aria-hidden="true"></span>A little more capable, every time.</p>
-          <h1 id="hero-title">Your work.<br>Its next skill.</h1>
-          <p class="intro">An AI workspace that turns your tasks and corrections into tested skills it can use again.</p>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy wrap">
+          <p class="eyebrow"><span class="pixel-dot" aria-hidden="true"></span>Your learning workspace</p>
+          <h1 id="hero-title">An agent that<br>learns your way.</h1>
+          <p class="intro">Turn a task into a tested skill.<br>Keep it for the next one.</p>
           <a class="primary-action" href="#how-it-works">See how it learns</a>
           <p class="prototype-note">An experimental prototype. Built to keep learning.</p>
         </div>
-        <div class="hero-bottom" aria-hidden="true">
+        <div class="hero-art" aria-hidden="true"></div>
+        <div class="hero-bottom wrap" aria-hidden="true">
           <span>Made for the work ahead.</span>
           <span class="chapter">01 / The idea</span>
         </div>
@@ -73,7 +74,7 @@
       </section>
     </main>
     <footer class="site-footer wrap">
-      <div class="footer-brand"><img src="./assets/pixel-ghost.svg" width="24" height="24" alt=""><span>Built by David for Agents 0.0.7</span></div>
+      <div class="footer-brand"><img src="./assets/pixel-ghost.svg" width="24" height="24" alt=""><span>Wisp · Built by David for Agents 0.0.7</span></div>
       <span>Frankenstein track · 2026</span>
     </footer>
   </div>

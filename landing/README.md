@@ -22,3 +22,7 @@ The main action scrolls to the learning-loop explanation. The project link opens
 - Reduced motion disables smooth scrolling and hover transitions.
 
 This checks the landing page only. It does not validate the learning agent's capabilities or establish a full accessibility audit.
+
+## Vercel deployment
+
+The production Vercel project `wisp-landing` serves `landing/dist` from the `main` branch of `drewn-ed/Wisp`. Set Root Directory to `landing`; the included `vercel.json` selects a static deployment without dependency installation or build commands. The light/dark page, saved theme preference, Wisp wordmark and v2 hero backgrounds come from the reviewed landing-page branch (`bff5213`). No backend or environment variables are required.

@@ -15,7 +15,7 @@ The local skill matched GitHub blob e12e54729729f4f188fbc8cbe30df8de36007f5e whe
 PROJECT AND SOURCES OF TRUTH
 Project root: /Users/daved/Documents/ChatGPT/007 Agent - Hackathon
 Running product: http://127.0.0.1:8767/
-Repository: https://github.com/drewn-ed/007FrankensteinAgent
+Repository: https://github.com/drewn-ed/Wisp
 
 Use the current LOCAL working tree, which contains implementation and evidence that may not yet be on GitHub's default branch. Do not reset, replace, switch branches or publish the project. Read these files relative to the project root:
 - AGENTS.md and docs/hackathon-brief.md
@@ -45,7 +45,7 @@ Use the actual supplied logo image in the opening/product reveal and closing fra
 - PNG: design/logo/pixel-ghost.png — transparent 768×768, suitable for import.
 - Master SVG: design/logo/pixel-ghost.svg — preferred when crisp scaling is supported.
 - Preview: design/logo/pixel-ghost-preview.png.
-- Confirmed remote asset: https://github.com/drewn-ed/007FrankensteinAgent/blob/codex/pixel-ghost-logo/design/logo/pixel-ghost.png
+- Confirmed remote asset: https://github.com/drewn-ed/Wisp/blob/codex/pixel-ghost-logo/design/logo/pixel-ghost.png
 
 It is the approved ink-colored pixel ghost with orange wing details. Preserve its stepped silhouette, eye cutouts, proportions and colors. Do not redraw it as an AI mascot, generate a replacement or animate it into a different shape. A short position/scale entrance is enough.
 

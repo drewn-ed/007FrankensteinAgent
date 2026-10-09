@@ -74,7 +74,7 @@ Python 3.11+, SQLite, Docker (Python 3.12 sandbox), JSON Schema, HTML/CSS/JavaSc
 
 ## Links
 
-- Repository: [drewn-ed/007FrankensteinAgent](https://github.com/drewn-ed/007FrankensteinAgent). Verify the public commit actually includes the implementation, runtime assets, lockfiles and these guides; working-tree files alone are not visible to the jury.
+- Repository: [drewn-ed/Wisp](https://github.com/drewn-ed/Wisp). Verify the public commit actually includes the implementation, runtime assets, lockfiles and these guides; working-tree files alone are not visible to the jury.
 - Live demo: optional. The app currently runs locally; do not enter `localhost` or `event.workspace.demo` as a public demo URL. A marketing landing page is not a hosted application.
 - YouTube Unlisted video: **not supplied**. Insert only a real playable link, no placeholder.
 - Best ElevenLabs Use: current implementation has no ElevenLabs integration; the existing evidence does not justify entering that side prize.
@@ -83,7 +83,7 @@ Python 3.11+, SQLite, Docker (Python 3.12 sandbox), JSON Schema, HTML/CSS/JavaSc
 
 The verified deadline is **9 October 2026, 07:14 Europe/Prague**. Later commits are not judged. This checklist records unfinished publication work, not a claim it has happened.
 
-- [x] Product name confirmed: **Wisp**. Use it in HQ, video and repository; the GitHub repository rename is handled separately by David.
+- [x] Product name confirmed: **Wisp**. Use it in HQ, video and repository; David has also renamed the GitHub repository to `drewn-ed/Wisp`.
 - [ ] Review the three story fields against the final evidence; retain every remaining limitation.
 - [ ] Record a running-product demo, no longer than 90 seconds; retain failures and label speedups/synthetic data.
 - [ ] Upload the video to YouTube as Unlisted and verify playback from the jury's perspective.

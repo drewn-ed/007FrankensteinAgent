@@ -4,7 +4,7 @@
 
 Wisp helps people who repeatedly prepare files and operate business applications. Give it a task and the relevant inputs. When a reusable operation is missing, the agent writes Python, tests it in Docker, and registers it only after the tests pass. Later tasks can combine those saved skills. Corrections can become regression tests for a new version.
 
-Built solo by David for **Agents 0.0.7 — From Dusk Till Dawn #01**, track **Frankenstein**. **Wisp** is the product name selected by David on 9 October 2026. The repository is currently named `007FrankensteinAgent`; its GitHub rename is pending. **Fieldwork** is the fictional event application used to demonstrate it.
+Built solo by David for **Agents 0.0.7 — From Dusk Till Dawn #01**, track **Frankenstein**. **Wisp** is the product name selected by David on 9 October 2026. The public repository is [drewn-ed/Wisp](https://github.com/drewn-ed/Wisp). **Fieldwork** is the fictional event application used to demonstrate it.
 
 [Use the application](docs/user-guide.md) · [Review the evidence](docs/jury-guide.md) · [Architecture and boundaries](docs/architecture.md) · [Submission text](docs/submission-draft.md)
 
@@ -43,7 +43,7 @@ There is **no separate bridge download or browser extension** for this checkout.
 Prerequisites: **Python 3.11+**, [uv](https://docs.astral.sh/uv/), a running Docker engine, and the `python:3.12-slim` image. Browser control also needs Node.js, npm and installed Google Chrome. Development validation was performed on macOS; native application control is macOS-only.
 
 ```sh
-git clone --branch codex/learning-agent-mvp https://github.com/drewn-ed/007FrankensteinAgent.git Wisp
+git clone --branch codex/learning-agent-mvp https://github.com/drewn-ed/Wisp.git Wisp
 cd Wisp
 uv sync --frozen
 npm ci --ignore-scripts

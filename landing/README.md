@@ -12,7 +12,7 @@ The editable, buildless site is in `dist/index.html` and `dist/style.css`. Serve
 - `dist/assets/ghost-background.png` is the existing ImageGen background from `design/landing/ghost-background-v1.png`; it is decorative. The original remains unchanged.
 - No third-party icon library is used by this page.
 
-The main action scrolls to the learning-loop explanation. The project link opens the current public repository. Its GitHub name is still `007FrankensteinAgent`; David will rename it separately. The landing page is a product presentation, not evidence of an HQ submission.
+The main action scrolls to the learning-loop explanation. The project link opens the current public repository. David renamed it to `drewn-ed/Wisp` on October 9, 2026. The landing page is a product presentation, not evidence of an HQ submission.
 
 ## Initial verification
 

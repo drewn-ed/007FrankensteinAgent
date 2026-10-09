@@ -6,7 +6,7 @@ Rozlišení videa a živého pitche doplněno **9. 10. 2026** podle zprávy orga
 
 ## Kontext a zdroje
 
-- **Potvrzený název 9. 10.: Wisp.** David výslovně zvolil název produktu. Používej Wisp v aktuálních README, UI, dokumentaci, prezentacích a videu. Workspace / Learning workspace jsou dřívější pracovní názvy; Frankenstein je soutěžní track a Fieldwork demonstrační aplikace. GitHub repozitář přejmenuje David zvlášť; do té doby zachovej funkční původní URL. Neměň historické důkazy, uložená data, technické identifikátory ani oprávnění kvůli přejmenování.
+- **Potvrzený název 9. 10.: Wisp.** David výslovně zvolil název produktu. Používej Wisp v aktuálních README, UI, dokumentaci, prezentacích a videu. Workspace / Learning workspace jsou dřívější pracovní názvy; Frankenstein je soutěžní track a Fieldwork demonstrační aplikace. David přejmenoval GitHub repozitář na `drewn-ed/Wisp`; nová adresa byla ověřena při úspěšném pushi 9. 10. Neměň historické důkazy, uložená data, technické identifikátory ani oprávnění kvůli přejmenování.
 
 - **Dokumentace pro porotu 9. 10.:** aktuální anglický vstup je `README.md` a [index dokumentace](docs/README.md): návod k aplikaci, architektura, důkazy, texty do HQ a scénáře videa/pitche. Potvrzený název produktu je Wisp; Fieldwork je syntetická cílová aplikace. Při tvorbě byly znovu přečteny track a formulář v přihlášeném HQ. Podklady nejsou odevzdání ani potvrzení zveřejnění pracovního stromu. Agentem vytvořená správa/discovery zůstává nedoložená a samostatný dolarový limit není implementovaný. Starší audity a návrhy zachovávají historický stav, nikoli aktuální návod.
 
@@ -16,7 +16,7 @@ Rozlišení videa a živého pitche doplněno **9. 10. 2026** podle zprávy orga
 
 - Stavíme projekt pro **Agents 0.0.7 — From Dusk Till Dawn #01**, track **Frankenstein**.
 - Na projektu pracuje **David sám — Frankenstein sólo**. Petr na tomto projektu nespolupracuje.
-- Tento veřejný repozitář obsahuje podklady: <https://github.com/drewn-ed/007FrankensteinAgent>. Nepovažuj tento repozitář automaticky za aktuální zdroj implementace ani finální odevzdávané repo.
+- Veřejný repozitář <https://github.com/drewn-ed/Wisp> obsahuje implementaci a podklady; změny byly pushnuté na `main` i `codex/learning-agent-mvp` dne 9. 10. Push sám nepotvrzuje odevzdání v HQ ani zahrnutí commitu do hodnoticího snapshotu.
 - **Stitch není Davidův projekt a není součástí tohoto zadání.** David nyní zkoumá jiné zadání; dřívější směr a stack nebyly v této fázi potvrzené; aktuální název je Wisp.
 - **Aktuální směr 9. 10.:** David chce pokračovat v pracovním prostředí s agentem, který si osvojuje aplikace a postupy. Žádá celkovou produktovou koncepci, užitečné navazující funkce a kritické posouzení škálovatelnosti. Výchozí je [produktový návrh](docs/learning-agent-product-blueprint-2026-10-09.md); úzký scénář v handoffu není definicí celého produktu. YouTube, Meta Ads a DaVinci jsou jen příklady. Konkrétní rozsah implementace, integrace a stack zůstávají otevřené.
 - Samostatný Davidův projekt pro tvorbu videí je mimo rozsah tohoto projektu; bez nového požadavku do něj nevstupuj ani jej neupravuj.

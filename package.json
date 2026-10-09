@@ -1,0 +1,7 @@
+{
+  "name": "learning-workspace-landing",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": { "build": "node landing/scripts/build.mjs" },
+  "engines": { "node": ">=22" }
+}
